@@ -211,3 +211,4 @@ python-sdk
 .idea
 #/mcp_resources/
 /data/product-data/
+/resources/
