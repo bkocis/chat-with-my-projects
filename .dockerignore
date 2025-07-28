@@ -1,0 +1,55 @@
+# Git files
+.git
+.gitignore
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Local development files
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentation
+*.md
+!README.md
+
+# Scripts that aren't needed in container
+docker-run.sh
+modelcontextprotocol-llm-full-test.txt
+
+# Original stdio server (not needed for HTTP version)
+resources/ 

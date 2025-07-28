@@ -1,0 +1,47 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Keep Streamlit config
+!.streamlit/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+setup_env.md
+
+# Test files
+test_*.py
+
+# Image files (keep only essential ones)
+*.jpg
+*.jpeg
+*.png
+!check24-logo3.png
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp 
