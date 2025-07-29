@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-MCP HTTP Client for GitHub Repositories Server
+MCP HTTP Client for Credit Card Server
 
-This client connects to the GitHub repositories MCP server and provides
+This client connects to the credit card MCP server and provides
 an easy interface for calling tools and reading resources.
-Enhanced with Azure OpenAI for ReAct (Reasoning and Acting) capabilities.
+Enhanced with Azure OpenAI o1-preview for ReAct (Reasoning and Acting) capabilities.
 """
 
 import json
@@ -16,12 +16,12 @@ from openai import AzureOpenAI
 
 
 class MCPClient:
-    """HTTP-based MCP client for the GitHub repositories server"""
+    """HTTP-based MCP client for the credit card server"""
     
     def __init__(self, server_url: str = None):
         if server_url is None:
             # Use environment variable or default to localhost for development
-            server_url = os.getenv("MCP_SERVER_URL", "http://localhost:8081/mcp")
+            server_url = os.getenv("MCP_SERVER_URL", "http://localhost:8080/mcp")
         self.server_url = server_url
         self.session_id = None
         self.session = requests.Session()
@@ -39,7 +39,7 @@ class MCPClient:
                         "protocolVersion": "2025-06-18",
                         "capabilities": {},
                         "clientInfo": {
-                            "name": "streamlit-github-repos-client",
+                            "name": "streamlit-credit-card-client",
                             "version": "1.0.0"
                         }
                     }
@@ -126,21 +126,50 @@ class MCPClient:
             print(f"Error listing tools: {e}")
             return []
     
-    def list_readme_files(self) -> str:
-        """List all README files in all repositories"""
-        return self.call_tool("list_readme_files", {})
+    def get_debug_status(self) -> str:
+        """Get debug status from the server"""
+        return self.call_tool("debug_data_status", {})
     
-    def get_readme_content(self, path: str) -> str:
-        """Get the content of a specific README file"""
-        return self.call_tool("get_readme_content", {"path": path})
+    def search_credit_cards(self, search_term: str = "", card_type: str = None, 
+                          max_annual_cost: float = None) -> str:
+        """Search for credit cards"""
+        args = {}
+        if search_term:
+            args["search_term"] = search_term
+        if card_type:
+            args["card_type"] = card_type
+        if max_annual_cost is not None:
+            args["max_annual_cost"] = max_annual_cost
+            
+        return self.call_tool("search_credit_cards", args)
     
-    def get_all_readmes_content(self) -> str:
-        """Get the content of all README files as a list of {path, content} objects"""
-        return self.call_tool("get_all_readmes_content", {})
+    def search_cards_by_bank(self, bank_name: str) -> str:
+        """Search for credit cards by bank name"""
+        return self.call_tool("search_cards_by_bank", {"bank_name": bank_name})
     
-    def get_all_readmes_summary(self) -> str:
-        """Get a summary (first 10 lines or 1000 chars) of all README files"""
-        return self.call_tool("get_all_readmes_summary", {})
+    def find_best_cards_for_intent(self, user_intent: str, budget: float = None, 
+                                 required_features: List[str] = None) -> str:
+        """Find best cards for user intent"""
+        args = {"user_intent": user_intent}
+        if budget is not None:
+            args["budget"] = budget
+        if required_features:
+            args["required_features"] = required_features
+            
+        return self.call_tool("find_best_cards_for_intent", args)
+    
+    def compare_credit_cards(self, product_ids: List[int], 
+                           criteria: List[str] = None) -> str:
+        """Compare multiple credit cards"""
+        args = {"product_ids": product_ids}
+        if criteria:
+            args["comparison_criteria"] = criteria
+            
+        return self.call_tool("compare_credit_cards", args)
+    
+    def sql_query(self, query: str) -> str:
+        """Execute SQL query"""
+        return self.call_tool("sql_query", {"query": query})
 
 
 class QueryProcessor:
@@ -153,42 +182,115 @@ class QueryProcessor:
         """Process a natural language query and return appropriate response"""
         query_lower = query.lower()
         
-        # List README files queries
-        if any(word in query_lower for word in ["list", "show", "find"]) and "readme" in query_lower and "files" in query_lower:
-            return self.client.list_readme_files()
+        # Debug/status queries
+        if any(word in query_lower for word in ["status", "debug", "data", "loaded", "available"]):
+            return self.client.get_debug_status()
         
-        # Get all README content
-        if any(word in query_lower for word in ["all", "full"]) and "content" in query_lower and "readme" in query_lower:
-            return self.client.get_all_readmes_content()
+        # Bank-specific searches
+        if "bank" in query_lower:
+            # Extract bank name
+            words = query.split()
+            bank_idx = next((i for i, word in enumerate(words) if word.lower() == "bank"), -1)
+            if bank_idx >= 0 and bank_idx < len(words) - 1:
+                bank_name = words[bank_idx + 1]
+                return self.client.search_cards_by_bank(bank_name)
         
-        # Get README summaries
-        if "summary" in query_lower or "summaries" in query_lower:
-            return self.client.get_all_readmes_summary()
+        # Intent-based searches
+        if any(word in query_lower for word in ["best", "recommend", "suitable", "intent", "need", "want"]):
+            # Extract budget if mentioned
+            budget = self._extract_budget(query)
+            features = self._extract_features(query)
+            return self.client.find_best_cards_for_intent(query, budget, features)
         
-        # Get specific README content
-        if "readme" in query_lower and any(word in query_lower for word in ["content", "show", "get"]) and "specific" in query_lower:
-            # This would need a path parameter - for now return instruction
-            return "Please use the 'Get Specific README' tool in Advanced Options to specify a file path."
+        # Comparison queries
+        if any(word in query_lower for word in ["compare", "comparison", "versus", "vs", "difference"]):
+            # Try to extract product IDs or suggest using search first
+            product_ids = self._extract_product_ids(query)
+            if product_ids and len(product_ids) >= 2:
+                return self.client.compare_credit_cards(product_ids)
+            else:
+                return "To compare credit cards, please first search for cards and provide their IDs. Example: 'compare cards 1, 2, 3'"
         
-        # General repository exploration queries
-        if any(word in query_lower for word in ["repositories", "repos", "projects", "documentation"]):
-            # Default to showing summaries for general exploration
-            return self.client.get_all_readmes_summary()
+        # SQL queries
+        if query_lower.startswith("sql:") or "select" in query_lower:
+            sql_query = query.replace("sql:", "").strip()
+            return self.client.sql_query(sql_query)
         
-        # Technology/language specific queries
-        if any(tech in query_lower for tech in ["python", "javascript", "java", "c++", "golang", "rust", "machine learning", "ai", "data"]):
-            # Get all content to search through
-            return self.client.get_all_readmes_content()
+        # General search
+        card_type = self._extract_card_type(query)
+        max_cost = self._extract_budget(query)
         
-        # Default: get README summaries for any other query
-        return self.client.get_all_readmes_summary()
+        return self.client.search_credit_cards(query, card_type, max_cost)
     
+    def _extract_budget(self, query: str) -> Optional[float]:
+        """Extract budget/cost information from query"""
+        import re
+        
+        # Look for patterns like "under 50", "max 100", "budget 75", "€50", "$50"
+        patterns = [
+            r"under\s+(\d+)",
+            r"max\s+(\d+)",
+            r"budget\s+(\d+)",
+            r"[€$]\s*(\d+)",
+            r"(\d+)\s*[€$]",
+            r"cost\s+(\d+)",
+            r"below\s+(\d+)"
+        ]
+        
+        for pattern in patterns:
+            match = re.search(pattern, query.lower())
+            if match:
+                return float(match.group(1))
+        
+        return None
+    
+    def _extract_card_type(self, query: str) -> Optional[str]:
+        """Extract card type from query"""
+        query_lower = query.lower()
+        
+        if "credit" in query_lower:
+            return "CREDIT"
+        elif "debit" in query_lower:
+            return "DEBIT"
+        elif "charge" in query_lower:
+            return "CHARGE"
+        elif "prepaid" in query_lower:
+            return "PREPAID"
+        
+        return None
+    
+    def _extract_features(self, query: str) -> List[str]:
+        """Extract required features from query"""
+        features = []
+        query_lower = query.lower()
+        
+        if any(word in query_lower for word in ["travel", "insurance", "abroad"]):
+            features.append("travel_insurance")
+        if any(word in query_lower for word in ["mobile", "contactless", "apple pay", "google pay"]):
+            features.append("mobile_payment")
+        if "worldwide" in query_lower and "payment" in query_lower:
+            features.append("free_worldwide_payments")
+        if "worldwide" in query_lower and "withdrawal" in query_lower:
+            features.append("free_worldwide_withdrawal")
+        
+        return features
+    
+    def _extract_product_ids(self, query: str) -> List[int]:
+        """Extract product IDs from query"""
+        import re
+        
+        # Look for patterns like "1, 2, 3" or "cards 1 2 3" or "IDs 1,2,3"
+        numbers = re.findall(r'\b\d+\b', query)
+        try:
+            return [int(n) for n in numbers if 1 <= int(n) <= 1000]
+        except ValueError:
+            return []
 
 
 
 class ReActAgent:
     """
-    Reasoning and Acting agent using Azure OpenAI.
+    Reasoning and Acting agent using Azure OpenAI o1-preview model.
     Implements the ReAct pattern for intelligent tool usage.
     """
     
@@ -198,12 +300,16 @@ class ReActAgent:
         self.conversation_context = []  # Store execution trace
         self._initialize_azure_client()
         
-        # Available tools description for the AI model
+        # Available tools description for the o1 model
         self.tools_description = {
-            "list_readme_files": "List all README files in all GitHub repositories",
-            "get_readme_content": "Get the content of a specific README file (path)",
-            "get_all_readmes_content": "Get the content of all README files as a list of {path, content} objects",
-            "get_all_readmes_summary": "Get a summary (first 10 lines or 1000 chars) of all README files"
+            "search_credit_cards": "Search for credit cards with optional filters (search_term, card_type, max_annual_cost)",
+            "search_cards_by_bank": "Find credit cards from a specific bank (bank_name)",
+            "find_best_cards_for_intent": "Find cards matching user intent (user_intent, budget, required_features)",
+            "compare_credit_cards": "Compare multiple cards by IDs (product_ids, comparison_criteria)",
+            "get_detailed_card_info": "Get comprehensive details about a specific credit card (product_id)",
+            "analyze_user_preferences": "Analyze user profile and provide personalized recommendations (age_group, spending_habits, usage_pattern)",
+            "sql_query": "Execute SQL queries on the credit card database (query)",
+            "debug_data_status": "Get debug information about the server data status"
         }
     
     def _initialize_azure_client(self):
@@ -214,7 +320,7 @@ class ReActAgent:
                 api_version=os.getenv("AZURE_OPENAI_API_VERSION", "2024-12-01-preview"),
                 azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT")
             )
-            self.model_name = os.getenv("AZURE_OPENAI_MODEL_NAME", "gpt-4o")
+            self.model_name = os.getenv("AZURE_OPENAI_MODEL_NAME", "o1-preview-0912")
         except Exception as e:
             print(f"Failed to initialize Azure OpenAI client: {e}")
             self.azure_client = None
@@ -305,7 +411,7 @@ class ReActAgent:
                     context_text += f"**Result:** {action_result['result'][:500]}...\n\n"
         
         prompt = f"""
-You are an intelligent GitHub repository assistant that helps users explore and understand GitHub repositories. 
+You are an intelligent credit card assistant that helps users find and compare credit cards. 
 You have access to the following tools:
 
 {json.dumps(self.tools_description, indent=2)}
@@ -326,7 +432,7 @@ If you have sufficient information to answer the user's query, write:
 FINAL_ANSWER: [your complete response to the user]
 
 Think step by step about:
-1. What information the user is asking for about the repositories
+1. What information the user is asking for
 2. What tools you need to use to get that information
 3. How to combine the results to provide a helpful answer
 
@@ -369,14 +475,39 @@ Be specific and actionable in your reasoning.
         args = action.get("args", {})
         
         try:
-            if tool_name == "list_readme_files":
-                return self.mcp_client.list_readme_files()
-            elif tool_name == "get_readme_content":
-                return self.mcp_client.get_readme_content(args.get("path", ""))
-            elif tool_name == "get_all_readmes_content":
-                return self.mcp_client.get_all_readmes_content()
-            elif tool_name == "get_all_readmes_summary":
-                return self.mcp_client.get_all_readmes_summary()
+            if tool_name == "search_credit_cards":
+                return self.mcp_client.search_credit_cards(
+                    search_term=args.get("search_term", ""),
+                    card_type=args.get("card_type"),
+                    max_annual_cost=args.get("max_annual_cost")
+                )
+            elif tool_name == "search_cards_by_bank":
+                return self.mcp_client.search_cards_by_bank(args.get("bank_name", ""))
+            elif tool_name == "find_best_cards_for_intent":
+                return self.mcp_client.find_best_cards_for_intent(
+                    user_intent=args.get("user_intent", ""),
+                    budget=args.get("budget"),
+                    required_features=args.get("required_features")
+                )
+            elif tool_name == "compare_credit_cards":
+                return self.mcp_client.compare_credit_cards(
+                    product_ids=args.get("product_ids", []),
+                    criteria=args.get("comparison_criteria")
+                )
+            elif tool_name == "get_detailed_card_info":
+                return self.mcp_client.call_tool("get_detailed_card_info", {
+                    "product_id": args.get("product_id")
+                })
+            elif tool_name == "analyze_user_preferences":
+                return self.mcp_client.call_tool("analyze_user_preferences", {
+                    "age_group": args.get("age_group"),
+                    "spending_habits": args.get("spending_habits"),
+                    "usage_pattern": args.get("usage_pattern")
+                })
+            elif tool_name == "sql_query":
+                return self.mcp_client.sql_query(args.get("query", ""))
+            elif tool_name == "debug_data_status":
+                return self.mcp_client.get_debug_status()
             else:
                 return f"Unknown tool: {tool_name}"
         except Exception as e:
@@ -405,7 +536,7 @@ Be specific and actionable in your reasoning.
                     context_summary += f"**{action_result['action']['tool']}**: {action_result['result'][:500]}\n\n"
             
             final_prompt = f"""
-Based on the user query and the information gathered from the GitHub repositories, provide a comprehensive and helpful answer.
+Based on the user query and the information gathered from the credit card database, provide a comprehensive and helpful answer.
 
 ## User Query:
 {user_query}
@@ -413,7 +544,7 @@ Based on the user query and the information gathered from the GitHub repositorie
 ## Information Gathered:
 {context_summary}
 
-Provide a clear, well-formatted response that directly answers the user's question. Include specific details about repositories, their purposes, technologies used, and any other relevant information.
+Provide a clear, well-formatted response that directly answers the user's question. Include specific details about credit cards, their features, costs, and benefits where relevant.
 """
             
             response = self.azure_client.chat.completions.create(
