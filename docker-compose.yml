@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  github-repos-mcp:
+    build: .
+    container_name: github-repos-mcp-server
+    ports:
+      - "8081:8081"
+    volumes:
+      # Mount the GitHub repositories directory (adjust path as needed)
+      - ${GITHUB_REPOS_ROOT:-/home/snow/Documents/Projects/github-repositories}:/github-repos:ro
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - GITHUB_REPOS_ROOT=/github-repos
+      - MCP_SERVER_URL=http://localhost:8081/mcp
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/mcp", "-X", "POST", "-H", "Content-Type: application/json", "-d", '{"jsonrpc":"2.0","method":"initialize","id":1,"params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"health-check","version":"1.0.0"}}}']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - mcp-network
+
+  github-repos-client:
+    build: mcp-client-streamlit
+    container_name: github-repos-streamlit-app
+    ports:
+      - "8501:8501"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - MCP_SERVER_URL=http://github-repos-mcp:8081/mcp
+      # Azure OpenAI environment variables (optional - will be passed from host)
+      - AZURE_OPENAI_API_KEY=${AZURE_OPENAI_API_KEY:-}
+      - AZURE_OPENAI_ENDPOINT=${AZURE_OPENAI_ENDPOINT:-}
+      - AZURE_OPENAI_MODEL_NAME=${AZURE_OPENAI_MODEL_NAME:-}
+      - AZURE_OPENAI_API_VERSION=${AZURE_OPENAI_API_VERSION:-2024-12-01-preview}
+    depends_on:
+      github-repos-mcp:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    networks:
+      - mcp-network
+
+networks:
+  mcp-network:
+    driver: bridge 
