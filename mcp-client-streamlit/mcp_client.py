@@ -4,7 +4,7 @@ MCP HTTP Client for Credit Card Server
 
 This client connects to the credit card MCP server and provides
 an easy interface for calling tools and reading resources.
-Enhanced with Azure OpenAI o1-preview for ReAct (Reasoning and Acting) capabilities.
+Enhanced with Azure OpenAI o1-preview and Ollama for ReAct (Reasoning and Acting) capabilities.
 """
 
 import json
@@ -14,6 +14,12 @@ import os
 from typing import Dict, List, Any, Optional, Tuple
 from openai import AzureOpenAI
 
+# Try to import ollama, make it optional
+try:
+    import ollama
+    OLLAMA_AVAILABLE = True
+except ImportError:
+    OLLAMA_AVAILABLE = False
 
 class MCPClient:
     """HTTP-based MCP client for the credit card server"""
@@ -559,16 +565,359 @@ Provide a clear, well-formatted response that directly answers the user's questi
             return f"Error generating final answer: {e}"
 
 
-class EnhancedQueryProcessor(QueryProcessor):
+class OllamaReActAgent:
     """
-    Enhanced query processor that uses ReAct agent for intelligent responses
+    Reasoning and Acting agent using Ollama local models.
+    Implements the ReAct pattern for intelligent tool usage with local LLMs.
     """
     
-    def __init__(self, mcp_client: MCPClient, use_react: bool = True):
+    def __init__(self, mcp_client: MCPClient, model_name: str = None, ollama_host: str = None):
+        self.mcp_client = mcp_client
+        self.model_name = model_name or os.getenv("OLLAMA_MODEL_NAME", "llama3.1:8b")
+        self.ollama_host = ollama_host or os.getenv("OLLAMA_HOST", "http://localhost:11434")
+        self.ollama_available = OLLAMA_AVAILABLE
+        self.conversation_context = []  # Store execution trace
+        
+        # Available tools description for the model
+        self.tools_description = {
+            "search_credit_cards": "Search for credit cards with optional filters (search_term, card_type, max_annual_cost)",
+            "search_cards_by_bank": "Find credit cards from a specific bank (bank_name)",
+            "find_best_cards_for_intent": "Find cards matching user intent (user_intent, budget, required_features)",
+            "compare_credit_cards": "Compare multiple cards by IDs (product_ids, comparison_criteria)",
+            "get_detailed_card_info": "Get comprehensive details about a specific credit card (product_id)",
+            "analyze_user_preferences": "Analyze user profile and provide personalized recommendations (age_group, spending_habits, usage_pattern)",
+            "sql_query": "Execute SQL queries on the credit card database (query)",
+            "debug_data_status": "Get debug information about the server data status"
+        }
+        
+        # Test Ollama connectivity
+        self._test_ollama_connection()
+    
+    def _test_ollama_connection(self) -> bool:
+        """Test if Ollama is available and responsive"""
+        if not self.ollama_available:
+            print("Warning: Ollama package not installed. Install with: pip install ollama")
+            return False
+        
+        try:
+            # Test connection by listing models
+            models = ollama.list()
+            model_names = [model['name'] for model in models.get('models', [])]
+            
+            if self.model_name not in model_names:
+                print(f"Warning: Model '{self.model_name}' not found in Ollama. Available models: {model_names}")
+                # Try to use the first available model
+                if model_names:
+                    self.model_name = model_names[0]
+                    print(f"Using model: {self.model_name}")
+                else:
+                    print("No models available in Ollama. Please pull a model first.")
+                    return False
+            
+            return True
+        except Exception as e:
+            print(f"Failed to connect to Ollama: {e}")
+            return False
+    
+    def reason_and_act(self, user_query: str, max_iterations: int = 3) -> str:
+        """
+        Main ReAct loop: Reason about the query, act with tools, and provide final answer.
+        Returns the final answer and stores execution trace in self.conversation_context.
+        """
+        if not self.ollama_available:
+            return "Error: Ollama not available. Please install ollama package and ensure Ollama server is running."
+        
+        # Reset conversation context for new query
+        self.conversation_context = []
+        final_result = ""
+        
+        for iteration in range(max_iterations):
+            try:
+                # Reasoning phase
+                reasoning_prompt = self._build_reasoning_prompt(user_query, self.conversation_context, iteration)
+                
+                reasoning_response = ollama.chat(
+                    model=self.model_name,
+                    messages=[{"role": "user", "content": reasoning_prompt}],
+                    options={
+                        "temperature": 0.1,  # Lower temperature for more consistent reasoning
+                        "top_p": 0.9,
+                        "num_predict": 1000  # Limit response length
+                    }
+                )
+                
+                reasoning_text = reasoning_response['message']['content']
+                
+                # Parse the reasoning to extract actions
+                actions = self._parse_actions_from_reasoning(reasoning_text)
+                
+                if not actions:
+                    # No more actions needed, provide final answer
+                    final_result = self._generate_final_answer(user_query, self.conversation_context, reasoning_text)
+                    break
+                
+                # Acting phase - execute the planned actions
+                action_results = []
+                for action in actions:
+                    result = self._execute_action(action)
+                    action_results.append({
+                        "action": action,
+                        "result": result
+                    })
+                
+                # Add to conversation context
+                self.conversation_context.append({
+                    "iteration": iteration + 1,
+                    "reasoning": reasoning_text,
+                    "actions": actions,
+                    "results": action_results
+                })
+                
+                # Check if we have enough information for a final answer
+                if self._has_sufficient_information(action_results):
+                    final_result = self._generate_final_answer(user_query, self.conversation_context)
+                    break
+                    
+            except Exception as e:
+                error_msg = f"Error in ReAct iteration {iteration + 1}: {e}"
+                # Add error to conversation context
+                self.conversation_context.append({
+                    "iteration": iteration + 1,
+                    "reasoning": f"Error occurred: {e}",
+                    "actions": [],
+                    "results": []
+                })
+                return error_msg
+        
+        return final_result or "Unable to process query within maximum iterations."
+    
+    def get_execution_trace(self) -> List[Dict]:
+        """Get the execution trace from the last query"""
+        return self.conversation_context.copy()
+    
+    def _build_reasoning_prompt(self, user_query: str, context: List[Dict], iteration: int) -> str:
+        """Build the reasoning prompt for the Ollama model"""
+        
+        context_text = ""
+        if context:
+            context_text = "\n\n## Previous Actions and Results:\n"
+            for ctx in context:
+                context_text += f"\n### Iteration {ctx['iteration']}:\n"
+                context_text += f"**Reasoning:** {ctx['reasoning']}\n"
+                for action_result in ctx['results']:
+                    context_text += f"**Action:** {action_result['action']}\n"
+                    context_text += f"**Result:** {action_result['result'][:500]}...\n\n"
+        
+        prompt = f"""You are an intelligent credit card assistant that helps users find and compare credit cards. 
+You have access to the following tools:
+
+{json.dumps(self.tools_description, indent=2)}
+
+## User Query:
+{user_query}
+
+{context_text}
+
+## Your Task:
+Based on the user query{'and previous context' if context else ''}, reason about what actions you need to take.
+
+If this is iteration {iteration + 1} and you need to gather more information, specify the tool calls you want to make in this format:
+ACTION: tool_name
+ARGS: {{"arg1": "value1", "arg2": "value2"}}
+
+If you have sufficient information to answer the user's query, write:
+FINAL_ANSWER: [your complete response to the user]
+
+Think step by step about:
+1. What information the user is asking for
+2. What tools you need to use to get that information
+3. How to combine the results to provide a helpful answer
+
+Be specific and actionable in your reasoning. Only provide one ACTION per response unless multiple actions are clearly needed.
+"""
+        
+        return prompt
+    
+    def _parse_actions_from_reasoning(self, reasoning_text: str) -> List[Dict[str, Any]]:
+        """Parse action commands from the reasoning text"""
+        actions = []
+        lines = reasoning_text.split('\n')
+        
+        current_action = None
+        for line in lines:
+            line = line.strip()
+            if line.startswith('ACTION:'):
+                if current_action:
+                    actions.append(current_action)
+                current_action = {"tool": line[7:].strip(), "args": {}}
+            elif line.startswith('ARGS:') and current_action:
+                try:
+                    args_text = line[5:].strip()
+                    current_action["args"] = json.loads(args_text)
+                except json.JSONDecodeError:
+                    # Try to parse as simple key=value pairs
+                    current_action["args"] = {}
+            elif line.startswith('FINAL_ANSWER:'):
+                # No more actions needed
+                break
+        
+        if current_action:
+            actions.append(current_action)
+        
+        return actions
+    
+    def _execute_action(self, action: Dict[str, Any]) -> str:
+        """Execute a single action using the MCP client"""
+        tool_name = action.get("tool", "")
+        args = action.get("args", {})
+        
+        try:
+            if tool_name == "search_credit_cards":
+                return self.mcp_client.search_credit_cards(
+                    search_term=args.get("search_term", ""),
+                    card_type=args.get("card_type"),
+                    max_annual_cost=args.get("max_annual_cost")
+                )
+            elif tool_name == "search_cards_by_bank":
+                return self.mcp_client.search_cards_by_bank(args.get("bank_name", ""))
+            elif tool_name == "find_best_cards_for_intent":
+                return self.mcp_client.find_best_cards_for_intent(
+                    user_intent=args.get("user_intent", ""),
+                    budget=args.get("budget"),
+                    required_features=args.get("required_features")
+                )
+            elif tool_name == "compare_credit_cards":
+                return self.mcp_client.compare_credit_cards(
+                    product_ids=args.get("product_ids", []),
+                    criteria=args.get("comparison_criteria")
+                )
+            elif tool_name == "get_detailed_card_info":
+                return self.mcp_client.call_tool("get_detailed_card_info", {
+                    "product_id": args.get("product_id")
+                })
+            elif tool_name == "analyze_user_preferences":
+                return self.mcp_client.call_tool("analyze_user_preferences", {
+                    "age_group": args.get("age_group"),
+                    "spending_habits": args.get("spending_habits"),
+                    "usage_pattern": args.get("usage_pattern")
+                })
+            elif tool_name == "sql_query":
+                return self.mcp_client.sql_query(args.get("query", ""))
+            elif tool_name == "debug_data_status":
+                return self.mcp_client.get_debug_status()
+            else:
+                return f"Unknown tool: {tool_name}"
+        except Exception as e:
+            return f"Error executing {tool_name}: {e}"
+    
+    def _has_sufficient_information(self, action_results: List[Dict]) -> bool:
+        """Check if we have enough information to provide a final answer"""
+        # Simple heuristic: if we have at least one successful result, we can provide an answer
+        for result in action_results:
+            if not result["result"].startswith("Error"):
+                return True
+        return False
+    
+    def _generate_final_answer(self, user_query: str, context: List[Dict], reasoning_text: str = "") -> str:
+        """Generate the final answer using the Ollama model"""
+        try:
+            # Check if reasoning_text already contains a FINAL_ANSWER
+            if "FINAL_ANSWER:" in reasoning_text:
+                final_answer_start = reasoning_text.find("FINAL_ANSWER:") + 13
+                return reasoning_text[final_answer_start:].strip()
+            
+            # Otherwise, generate a final answer based on context
+            context_summary = ""
+            for ctx in context:
+                for action_result in ctx['results']:
+                    context_summary += f"**{action_result['action']['tool']}**: {action_result['result'][:500]}\n\n"
+            
+            final_prompt = f"""Based on the user query and the information gathered from the credit card database, provide a comprehensive and helpful answer.
+
+## User Query:
+{user_query}
+
+## Information Gathered:
+{context_summary}
+
+Provide a clear, well-formatted response that directly answers the user's question. Include specific details about credit cards, their features, costs, and benefits where relevant.
+"""
+            
+            response = ollama.chat(
+                model=self.model_name,
+                messages=[{"role": "user", "content": final_prompt}],
+                options={
+                    "temperature": 0.3,
+                    "num_predict": 500
+                }
+            )
+            
+            return response['message']['content']
+            
+        except Exception as e:
+            return f"Error generating final answer: {e}"
+
+
+class EnhancedQueryProcessor(QueryProcessor):
+    """
+    Enhanced query processor that uses ReAct agent for intelligent responses.
+    Supports both Azure OpenAI and Ollama implementations.
+    """
+    
+    def __init__(self, mcp_client: MCPClient, use_react: bool = True, agent_type: str = None):
         super().__init__(mcp_client)
         self.use_react = use_react
-        self.react_agent = ReActAgent(mcp_client) if use_react else None
+        
+        # Determine agent type from parameter or environment variable
+        self.agent_type = agent_type or os.getenv("REACT_AGENT_TYPE", "azure")  # default to azure for backwards compatibility
+        
+        # Initialize the appropriate agent
+        self.react_agent = None
         self.last_execution_trace = None
+        
+        if use_react:
+            self._initialize_react_agent()
+    
+    def _initialize_react_agent(self):
+        """Initialize the appropriate ReAct agent based on agent_type"""
+        try:
+            if self.agent_type.lower() == "ollama":
+                self.react_agent = OllamaReActAgent(self.mcp_client)
+                print(f"Initialized Ollama ReAct agent with model: {self.react_agent.model_name}")
+            else:  # default to azure
+                self.react_agent = ReActAgent(self.mcp_client)
+                print("Initialized Azure OpenAI ReAct agent")
+        except Exception as e:
+            print(f"Failed to initialize {self.agent_type} ReAct agent: {e}")
+            self.react_agent = None
+    
+    def switch_agent_type(self, agent_type: str):
+        """Switch between Azure and Ollama agents at runtime"""
+        if agent_type.lower() in ["azure", "ollama"]:
+            self.agent_type = agent_type.lower()
+            if self.use_react:
+                self._initialize_react_agent()
+            return True
+        return False
+    
+    def get_agent_info(self) -> Dict[str, Any]:
+        """Get information about the current agent"""
+        if not self.react_agent:
+            return {"type": "none", "available": False}
+        
+        if isinstance(self.react_agent, OllamaReActAgent):
+            return {
+                "type": "ollama",
+                "available": self.react_agent.ollama_available,
+                "model": self.react_agent.model_name,
+                "host": self.react_agent.ollama_host
+            }
+        else:
+            return {
+                "type": "azure",
+                "available": self.react_agent.azure_client is not None,
+                "model": getattr(self.react_agent, 'model_name', 'unknown')
+            }
     
     def process_query(self, query: str, use_react: bool = None) -> str:
         """Process a query using either ReAct agent or traditional logic"""
@@ -577,7 +926,18 @@ class EnhancedQueryProcessor(QueryProcessor):
         # Reset execution trace
         self.last_execution_trace = None
         
-        if use_react and self.react_agent and self.react_agent.azure_client:
+        if use_react and self.react_agent:
+            # Check if the agent is properly initialized
+            if isinstance(self.react_agent, OllamaReActAgent):
+                if not self.react_agent.ollama_available:
+                    print("Ollama agent not available, falling back to traditional processing")
+                    return super().process_query(query)
+            elif isinstance(self.react_agent, ReActAgent):
+                if not self.react_agent.azure_client:
+                    print("Azure OpenAI agent not available, falling back to traditional processing")
+                    return super().process_query(query)
+            
+            # Use ReAct agent
             result = self.react_agent.reason_and_act(query)
             self.last_execution_trace = self.react_agent.get_execution_trace()
             return result

@@ -88,4 +88,4 @@ build_run_clean: ## Build image, run container, and clean up previous resources
 	@echo -e "$(GREEN)Build, run, and clean process completed successfully!$(NC)"
 
 prune:
-	docker compose down ; docker rmi -f mcp-servers-credit-card-client mcp-servers-credit-card-mcp; docker system prune -f ; docker compose up
+	docker compose down ; docker rmi -f chat-with-my-github-github-repos-mcp:latest chat-with-my-github-github-repos-client:latest ; docker system prune -f ; docker compose up
