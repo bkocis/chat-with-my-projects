@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-MCP HTTP Client for Credit Card Server
+MCP HTTP Client for GitHub Repositories Server
 
-This client connects to the credit card MCP server and provides
+This client connects to the GitHub repositories MCP server and provides
 an easy interface for calling tools and reading resources.
 Enhanced with Azure OpenAI GPT-4o and Ollama for ReAct (Reasoning and Acting) capabilities.
 """
@@ -22,7 +22,7 @@ except ImportError:
     OLLAMA_AVAILABLE = False
 
 class MCPClient:
-    """HTTP-based MCP client for the credit card server"""
+    """HTTP-based MCP client for the GitHub repositories server"""
     
     def __init__(self, server_url: str = None):
         if server_url is None:
@@ -45,7 +45,7 @@ class MCPClient:
                         "protocolVersion": "2025-06-18",
                         "capabilities": {},
                         "clientInfo": {
-                            "name": "streamlit-credit-card-client",
+                            "name": "streamlit-github-repos-client",
                             "version": "1.0.0"
                         }
                     }
@@ -133,53 +133,12 @@ class MCPClient:
             return []
     
     def get_debug_status(self) -> str:
-        """Get debug status from the server"""
+        """Get debug status from the server (legacy method)"""
         return self.call_tool("debug_data_status", {})
-    
-    def search_credit_cards(self, search_term: str = "", card_type: str = None, 
-                          max_annual_cost: float = None) -> str:
-        """Search for credit cards"""
-        args = {}
-        if search_term:
-            args["search_term"] = search_term
-        if card_type:
-            args["card_type"] = card_type
-        if max_annual_cost is not None:
-            args["max_annual_cost"] = max_annual_cost
-            
-        return self.call_tool("search_credit_cards", args)
-    
-    def search_cards_by_bank(self, bank_name: str) -> str:
-        """Search for credit cards by bank name"""
-        return self.call_tool("search_cards_by_bank", {"bank_name": bank_name})
-    
-    def find_best_cards_for_intent(self, user_intent: str, budget: float = None, 
-                                 required_features: List[str] = None) -> str:
-        """Find best cards for user intent"""
-        args = {"user_intent": user_intent}
-        if budget is not None:
-            args["budget"] = budget
-        if required_features:
-            args["required_features"] = required_features
-            
-        return self.call_tool("find_best_cards_for_intent", args)
-    
-    def compare_credit_cards(self, product_ids: List[int], 
-                           criteria: List[str] = None) -> str:
-        """Compare multiple credit cards"""
-        args = {"product_ids": product_ids}
-        if criteria:
-            args["comparison_criteria"] = criteria
-            
-        return self.call_tool("compare_credit_cards", args)
-    
-    def sql_query(self, query: str) -> str:
-        """Execute SQL query"""
-        return self.call_tool("sql_query", {"query": query})
 
 
 class QueryProcessor:
-    """Process natural language queries and determine appropriate MCP tool calls"""
+    """Process natural language queries and determine appropriate MCP tool calls for GitHub repositories"""
     
     def __init__(self, mcp_client: MCPClient):
         self.client = mcp_client
@@ -190,114 +149,67 @@ class QueryProcessor:
         
         # Debug/status queries
         if any(word in query_lower for word in ["status", "debug", "data", "loaded", "available"]):
-            return self.client.get_debug_status()
+            return self.client.call_tool("get_technology_statistics", {})
         
-        # Bank-specific searches
-        if "bank" in query_lower:
-            # Extract bank name
+        # Language-specific searches
+        if any(word in query_lower for word in ["python", "javascript", "java", "typescript", "go", "rust", "c++", "c#"]):
+            # Extract language name
+            languages = ["python", "javascript", "java", "typescript", "go", "rust", "c++", "c#", "php", "ruby", "swift", "kotlin"]
+            for lang in languages:
+                if lang in query_lower:
+                    return self.client.call_tool("search_repositories_by_language", {"language": lang})
+        
+        # Framework-specific searches
+        if any(word in query_lower for word in ["react", "django", "flask", "express", "spring", "laravel", "rails"]):
+            frameworks = ["react", "django", "flask", "express", "spring", "laravel", "rails", "vue", "angular", "tensorflow", "pytorch"]
+            for framework in frameworks:
+                if framework in query_lower:
+                    return self.client.call_tool("search_repositories_by_framework", {"framework": framework})
+        
+        # README content searches
+        if any(word in query_lower for word in ["search", "find", "contains", "about"]):
+            # Extract search term (simple approach)
             words = query.split()
-            bank_idx = next((i for i, word in enumerate(words) if word.lower() == "bank"), -1)
-            if bank_idx >= 0 and bank_idx < len(words) - 1:
-                bank_name = words[bank_idx + 1]
-                return self.client.search_cards_by_bank(bank_name)
+            if len(words) > 1:
+                search_term = " ".join(words[1:])  # Skip the first word (search, find, etc.)
+                return self.client.call_tool("search_readme_content", {"search_term": search_term, "max_results": 10})
         
-        # Intent-based searches
-        if any(word in query_lower for word in ["best", "recommend", "suitable", "intent", "need", "want"]):
-            # Extract budget if mentioned
-            budget = self._extract_budget(query)
-            features = self._extract_features(query)
-            return self.client.find_best_cards_for_intent(query, budget, features)
+        # Repository details
+        if any(word in query_lower for word in ["details", "info", "information"]) and "repository" in query_lower:
+            # Try to extract repository name
+            words = query.split()
+            repo_words = []
+            for word in words:
+                if word.lower() not in ["details", "info", "information", "repository", "repo", "about", "get", "show"]:
+                    repo_words.append(word)
+            if repo_words:
+                repo_name = "-".join(repo_words)
+                return self.client.call_tool("get_repository_details", {"repository_name": repo_name})
         
-        # Comparison queries
-        if any(word in query_lower for word in ["compare", "comparison", "versus", "vs", "difference"]):
-            # Try to extract product IDs or suggest using search first
-            product_ids = self._extract_product_ids(query)
-            if product_ids and len(product_ids) >= 2:
-                return self.client.compare_credit_cards(product_ids)
+        # List all README files
+        if any(word in query_lower for word in ["list", "show", "all"]) and "readme" in query_lower:
+            if "summary" in query_lower:
+                return self.client.call_tool("get_all_readmes_summary", {})
             else:
-                return "To compare credit cards, please first search for cards and provide their IDs. Example: 'compare cards 1, 2, 3'"
+                return self.client.call_tool("list_readme_files", {})
         
-        # SQL queries
-        if query_lower.startswith("sql:") or "select" in query_lower:
-            sql_query = query.replace("sql:", "").strip()
-            return self.client.sql_query(sql_query)
+        # Technology statistics
+        if any(word in query_lower for word in ["statistics", "stats", "overview", "technologies", "tech"]):
+            return self.client.call_tool("get_technology_statistics", {})
         
-        # General search
-        card_type = self._extract_card_type(query)
-        max_cost = self._extract_budget(query)
+        # Largest repositories
+        if any(word in query_lower for word in ["largest", "biggest", "size"]):
+            return self.client.call_tool("get_largest_repositories", {"limit": 10})
         
-        return self.client.search_credit_cards(query, card_type, max_cost)
-    
-    def _extract_budget(self, query: str) -> Optional[float]:
-        """Extract budget/cost information from query"""
-        import re
-        
-        # Look for patterns like "under 50", "max 100", "budget 75", "€50", "$50"
-        patterns = [
-            r"under\s+(\d+)",
-            r"max\s+(\d+)",
-            r"budget\s+(\d+)",
-            r"[€$]\s*(\d+)",
-            r"(\d+)\s*[€$]",
-            r"cost\s+(\d+)",
-            r"below\s+(\d+)"
-        ]
-        
-        for pattern in patterns:
-            match = re.search(pattern, query.lower())
-            if match:
-                return float(match.group(1))
-        
-        return None
-    
-    def _extract_card_type(self, query: str) -> Optional[str]:
-        """Extract card type from query"""
-        query_lower = query.lower()
-        
-        if "credit" in query_lower:
-            return "CREDIT"
-        elif "debit" in query_lower:
-            return "DEBIT"
-        elif "charge" in query_lower:
-            return "CHARGE"
-        elif "prepaid" in query_lower:
-            return "PREPAID"
-        
-        return None
-    
-    def _extract_features(self, query: str) -> List[str]:
-        """Extract required features from query"""
-        features = []
-        query_lower = query.lower()
-        
-        if any(word in query_lower for word in ["travel", "insurance", "abroad"]):
-            features.append("travel_insurance")
-        if any(word in query_lower for word in ["mobile", "contactless", "apple pay", "google pay"]):
-            features.append("mobile_payment")
-        if "worldwide" in query_lower and "payment" in query_lower:
-            features.append("free_worldwide_payments")
-        if "worldwide" in query_lower and "withdrawal" in query_lower:
-            features.append("free_worldwide_withdrawal")
-        
-        return features
-    
-    def _extract_product_ids(self, query: str) -> List[int]:
-        """Extract product IDs from query"""
-        import re
-        
-        # Look for patterns like "1, 2, 3" or "cards 1 2 3" or "IDs 1,2,3"
-        numbers = re.findall(r'\b\d+\b', query)
-        try:
-            return [int(n) for n in numbers if 1 <= int(n) <= 1000]
-        except ValueError:
-            return []
+        # Default: treat as a README content search
+        return self.client.call_tool("search_readme_content", {"search_term": query, "max_results": 10})
 
 
 
 class ReActAgent:
     """
     Reasoning and Acting agent using Azure OpenAI GPT-4o model.
-    Implements the ReAct pattern for intelligent tool usage.
+    Implements the ReAct pattern for intelligent GitHub repository exploration.
     """
     
     def __init__(self, mcp_client: MCPClient):
@@ -306,27 +218,40 @@ class ReActAgent:
         self.conversation_context = []  # Store execution trace
         self._initialize_azure_client()
         
-        # Available tools description for the o1 model
+        # Available tools description for the model
         self.tools_description = {
-            "search_credit_cards": "Search for credit cards with optional filters (search_term, card_type, max_annual_cost)",
-            "search_cards_by_bank": "Find credit cards from a specific bank (bank_name)",
-            "find_best_cards_for_intent": "Find cards matching user intent (user_intent, budget, required_features)",
-            "compare_credit_cards": "Compare multiple cards by IDs (product_ids, comparison_criteria)",
-            "get_detailed_card_info": "Get comprehensive details about a specific credit card (product_id)",
-            "analyze_user_preferences": "Analyze user profile and provide personalized recommendations (age_group, spending_habits, usage_pattern)",
-            "sql_query": "Execute SQL queries on the credit card database (query)",
-            "debug_data_status": "Get debug information about the server data status"
+            "list_readme_files": "List all README files in all repositories (filesystem scan)",
+            "get_readme_content": "Get the content of a specific README file (path)",
+            "get_all_readmes_content": "Get the content of all README files as a list of {path, content} objects",
+            "get_all_readmes_summary": "Get a summary of all README files as a list of {path, summary} objects",
+            "search_repositories_by_language": "Find repositories that use a specific programming language (language)",
+            "search_repositories_by_framework": "Find repositories that use a specific framework or technology (framework)",
+            "search_readme_content": "Search across all README files for specific content (search_term, max_results)",
+            "get_technology_statistics": "Get comprehensive statistics about technology usage across all repositories",
+            "get_repository_recommendations": "Get recommendations for repositories similar to a given repository (repository_name, limit)",
+            "get_largest_repositories": "Get the largest repositories by file size with their technology details (limit)",
+            "get_repository_details": "Get comprehensive details about a specific repository (repository_name)"
         }
     
     def _initialize_azure_client(self):
         """Initialize Azure OpenAI client"""
         try:
+            # Check for required environment variables
+            api_key = os.getenv("AZURE_OPENAI_API_KEY")
+            endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+            
+            if not api_key or not endpoint:
+                print("Azure OpenAI credentials missing. Required: AZURE_OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT")
+                self.azure_client = None
+                return
+            
             self.azure_client = AzureOpenAI(
-                api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+                api_key=api_key,
                 api_version=os.getenv("AZURE_OPENAI_API_VERSION", "2024-12-01-preview"),
-                azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT")
+                azure_endpoint=endpoint
             )
             self.model_name = os.getenv("AZURE_OPENAI_MODEL_NAME", "gpt-4o-0513-eu")
+            print(f"Azure OpenAI client initialized successfully with model: {self.model_name}")
         except Exception as e:
             print(f"Failed to initialize Azure OpenAI client: {e}")
             self.azure_client = None
@@ -417,7 +342,7 @@ class ReActAgent:
                     context_text += f"**Result:** {action_result['result'][:500]}...\n\n"
         
         prompt = f"""
-You are an intelligent credit card assistant that helps users find and compare credit cards. 
+You are an intelligent GitHub repository assistant that helps users explore and analyze GitHub repositories. 
 You have access to the following tools:
 
 {json.dumps(self.tools_description, indent=2)}
@@ -438,7 +363,7 @@ If you have sufficient information to answer the user's query, write:
 FINAL_ANSWER: [your complete response to the user]
 
 Think step by step about:
-1. What information the user is asking for
+1. What information the user is asking for about GitHub repositories
 2. What tools you need to use to get that information
 3. How to combine the results to provide a helpful answer
 
@@ -481,39 +406,44 @@ Be specific and actionable in your reasoning.
         args = action.get("args", {})
         
         try:
-            if tool_name == "search_credit_cards":
-                return self.mcp_client.search_credit_cards(
-                    search_term=args.get("search_term", ""),
-                    card_type=args.get("card_type"),
-                    max_annual_cost=args.get("max_annual_cost")
-                )
-            elif tool_name == "search_cards_by_bank":
-                return self.mcp_client.search_cards_by_bank(args.get("bank_name", ""))
-            elif tool_name == "find_best_cards_for_intent":
-                return self.mcp_client.find_best_cards_for_intent(
-                    user_intent=args.get("user_intent", ""),
-                    budget=args.get("budget"),
-                    required_features=args.get("required_features")
-                )
-            elif tool_name == "compare_credit_cards":
-                return self.mcp_client.compare_credit_cards(
-                    product_ids=args.get("product_ids", []),
-                    criteria=args.get("comparison_criteria")
-                )
-            elif tool_name == "get_detailed_card_info":
-                return self.mcp_client.call_tool("get_detailed_card_info", {
-                    "product_id": args.get("product_id")
+            if tool_name == "list_readme_files":
+                return self.mcp_client.call_tool("list_readme_files", {})
+            elif tool_name == "get_readme_content":
+                return self.mcp_client.call_tool("get_readme_content", {
+                    "path": args.get("path", "")
                 })
-            elif tool_name == "analyze_user_preferences":
-                return self.mcp_client.call_tool("analyze_user_preferences", {
-                    "age_group": args.get("age_group"),
-                    "spending_habits": args.get("spending_habits"),
-                    "usage_pattern": args.get("usage_pattern")
+            elif tool_name == "get_all_readmes_content":
+                return self.mcp_client.call_tool("get_all_readmes_content", {})
+            elif tool_name == "get_all_readmes_summary":
+                return self.mcp_client.call_tool("get_all_readmes_summary", {})
+            elif tool_name == "search_repositories_by_language":
+                return self.mcp_client.call_tool("search_repositories_by_language", {
+                    "language": args.get("language", "")
                 })
-            elif tool_name == "sql_query":
-                return self.mcp_client.sql_query(args.get("query", ""))
-            elif tool_name == "debug_data_status":
-                return self.mcp_client.get_debug_status()
+            elif tool_name == "search_repositories_by_framework":
+                return self.mcp_client.call_tool("search_repositories_by_framework", {
+                    "framework": args.get("framework", "")
+                })
+            elif tool_name == "search_readme_content":
+                return self.mcp_client.call_tool("search_readme_content", {
+                    "search_term": args.get("search_term", ""),
+                    "max_results": args.get("max_results", 20)
+                })
+            elif tool_name == "get_technology_statistics":
+                return self.mcp_client.call_tool("get_technology_statistics", {})
+            elif tool_name == "get_repository_recommendations":
+                return self.mcp_client.call_tool("get_repository_recommendations", {
+                    "repository_name": args.get("repository_name", ""),
+                    "limit": args.get("limit", 5)
+                })
+            elif tool_name == "get_largest_repositories":
+                return self.mcp_client.call_tool("get_largest_repositories", {
+                    "limit": args.get("limit", 10)
+                })
+            elif tool_name == "get_repository_details":
+                return self.mcp_client.call_tool("get_repository_details", {
+                    "repository_name": args.get("repository_name", "")
+                })
             else:
                 return f"Unknown tool: {tool_name}"
         except Exception as e:
@@ -542,7 +472,7 @@ Be specific and actionable in your reasoning.
                     context_summary += f"**{action_result['action']['tool']}**: {action_result['result'][:500]}\n\n"
             
             final_prompt = f"""
-Based on the user query and the information gathered from the credit card database, provide a comprehensive and helpful answer.
+Based on the user query and the information gathered from the GitHub repositories, provide a comprehensive and helpful answer.
 
 ## User Query:
 {user_query}
@@ -550,7 +480,7 @@ Based on the user query and the information gathered from the credit card databa
 ## Information Gathered:
 {context_summary}
 
-Provide a clear, well-formatted response that directly answers the user's question. Include specific details about credit cards, their features, costs, and benefits where relevant.
+Provide a clear, well-formatted response that directly answers the user's question. Include specific details about repositories, their technologies, features, and characteristics where relevant.
 """
             
             response = self.azure_client.chat.completions.create(
@@ -568,7 +498,7 @@ Provide a clear, well-formatted response that directly answers the user's questi
 class OllamaReActAgent:
     """
     Reasoning and Acting agent using Ollama local models.
-    Implements the ReAct pattern for intelligent tool usage with local LLMs.
+    Implements the ReAct pattern for intelligent GitHub repository exploration with local LLMs.
     """
     
     def __init__(self, mcp_client: MCPClient, model_name: str = None, ollama_host: str = None):
@@ -580,14 +510,17 @@ class OllamaReActAgent:
         
         # Available tools description for the model
         self.tools_description = {
-            "search_credit_cards": "Search for credit cards with optional filters (search_term, card_type, max_annual_cost)",
-            "search_cards_by_bank": "Find credit cards from a specific bank (bank_name)",
-            "find_best_cards_for_intent": "Find cards matching user intent (user_intent, budget, required_features)",
-            "compare_credit_cards": "Compare multiple cards by IDs (product_ids, comparison_criteria)",
-            "get_detailed_card_info": "Get comprehensive details about a specific credit card (product_id)",
-            "analyze_user_preferences": "Analyze user profile and provide personalized recommendations (age_group, spending_habits, usage_pattern)",
-            "sql_query": "Execute SQL queries on the credit card database (query)",
-            "debug_data_status": "Get debug information about the server data status"
+            "list_readme_files": "List all README files in all repositories (filesystem scan)",
+            "get_readme_content": "Get the content of a specific README file (path)",
+            "get_all_readmes_content": "Get the content of all README files as a list of {path, content} objects",
+            "get_all_readmes_summary": "Get a summary of all README files as a list of {path, summary} objects",
+            "search_repositories_by_language": "Find repositories that use a specific programming language (language)",
+            "search_repositories_by_framework": "Find repositories that use a specific framework or technology (framework)",
+            "search_readme_content": "Search across all README files for specific content (search_term, max_results)",
+            "get_technology_statistics": "Get comprehensive statistics about technology usage across all repositories",
+            "get_repository_recommendations": "Get recommendations for repositories similar to a given repository (repository_name, limit)",
+            "get_largest_repositories": "Get the largest repositories by file size with their technology details (limit)",
+            "get_repository_details": "Get comprehensive details about a specific repository (repository_name)"
         }
         
         # Test Ollama connectivity
@@ -708,7 +641,7 @@ class OllamaReActAgent:
                     context_text += f"**Action:** {action_result['action']}\n"
                     context_text += f"**Result:** {action_result['result'][:500]}...\n\n"
         
-        prompt = f"""You are an intelligent credit card assistant that helps users find and compare credit cards. 
+        prompt = f"""You are an intelligent GitHub repository assistant that helps users explore and analyze GitHub repositories. 
 You have access to the following tools:
 
 {json.dumps(self.tools_description, indent=2)}
@@ -729,7 +662,7 @@ If you have sufficient information to answer the user's query, write:
 FINAL_ANSWER: [your complete response to the user]
 
 Think step by step about:
-1. What information the user is asking for
+1. What information the user is asking for about GitHub repositories
 2. What tools you need to use to get that information
 3. How to combine the results to provide a helpful answer
 
@@ -772,39 +705,44 @@ Be specific and actionable in your reasoning. Only provide one ACTION per respon
         args = action.get("args", {})
         
         try:
-            if tool_name == "search_credit_cards":
-                return self.mcp_client.search_credit_cards(
-                    search_term=args.get("search_term", ""),
-                    card_type=args.get("card_type"),
-                    max_annual_cost=args.get("max_annual_cost")
-                )
-            elif tool_name == "search_cards_by_bank":
-                return self.mcp_client.search_cards_by_bank(args.get("bank_name", ""))
-            elif tool_name == "find_best_cards_for_intent":
-                return self.mcp_client.find_best_cards_for_intent(
-                    user_intent=args.get("user_intent", ""),
-                    budget=args.get("budget"),
-                    required_features=args.get("required_features")
-                )
-            elif tool_name == "compare_credit_cards":
-                return self.mcp_client.compare_credit_cards(
-                    product_ids=args.get("product_ids", []),
-                    criteria=args.get("comparison_criteria")
-                )
-            elif tool_name == "get_detailed_card_info":
-                return self.mcp_client.call_tool("get_detailed_card_info", {
-                    "product_id": args.get("product_id")
+            if tool_name == "list_readme_files":
+                return self.mcp_client.call_tool("list_readme_files", {})
+            elif tool_name == "get_readme_content":
+                return self.mcp_client.call_tool("get_readme_content", {
+                    "path": args.get("path", "")
                 })
-            elif tool_name == "analyze_user_preferences":
-                return self.mcp_client.call_tool("analyze_user_preferences", {
-                    "age_group": args.get("age_group"),
-                    "spending_habits": args.get("spending_habits"),
-                    "usage_pattern": args.get("usage_pattern")
+            elif tool_name == "get_all_readmes_content":
+                return self.mcp_client.call_tool("get_all_readmes_content", {})
+            elif tool_name == "get_all_readmes_summary":
+                return self.mcp_client.call_tool("get_all_readmes_summary", {})
+            elif tool_name == "search_repositories_by_language":
+                return self.mcp_client.call_tool("search_repositories_by_language", {
+                    "language": args.get("language", "")
                 })
-            elif tool_name == "sql_query":
-                return self.mcp_client.sql_query(args.get("query", ""))
-            elif tool_name == "debug_data_status":
-                return self.mcp_client.get_debug_status()
+            elif tool_name == "search_repositories_by_framework":
+                return self.mcp_client.call_tool("search_repositories_by_framework", {
+                    "framework": args.get("framework", "")
+                })
+            elif tool_name == "search_readme_content":
+                return self.mcp_client.call_tool("search_readme_content", {
+                    "search_term": args.get("search_term", ""),
+                    "max_results": args.get("max_results", 20)
+                })
+            elif tool_name == "get_technology_statistics":
+                return self.mcp_client.call_tool("get_technology_statistics", {})
+            elif tool_name == "get_repository_recommendations":
+                return self.mcp_client.call_tool("get_repository_recommendations", {
+                    "repository_name": args.get("repository_name", ""),
+                    "limit": args.get("limit", 5)
+                })
+            elif tool_name == "get_largest_repositories":
+                return self.mcp_client.call_tool("get_largest_repositories", {
+                    "limit": args.get("limit", 10)
+                })
+            elif tool_name == "get_repository_details":
+                return self.mcp_client.call_tool("get_repository_details", {
+                    "repository_name": args.get("repository_name", "")
+                })
             else:
                 return f"Unknown tool: {tool_name}"
         except Exception as e:
@@ -832,7 +770,7 @@ Be specific and actionable in your reasoning. Only provide one ACTION per respon
                 for action_result in ctx['results']:
                     context_summary += f"**{action_result['action']['tool']}**: {action_result['result'][:500]}\n\n"
             
-            final_prompt = f"""Based on the user query and the information gathered from the credit card database, provide a comprehensive and helpful answer.
+            final_prompt = f"""Based on the user query and the information gathered from the GitHub repositories, provide a comprehensive and helpful answer.
 
 ## User Query:
 {user_query}
@@ -840,7 +778,7 @@ Be specific and actionable in your reasoning. Only provide one ACTION per respon
 ## Information Gathered:
 {context_summary}
 
-Provide a clear, well-formatted response that directly answers the user's question. Include specific details about credit cards, their features, costs, and benefits where relevant.
+Provide a clear, well-formatted response that directly answers the user's question. Include specific details about repositories, their technologies, features, and characteristics where relevant.
 """
             
             response = ollama.chat(
@@ -883,12 +821,20 @@ class EnhancedQueryProcessor(QueryProcessor):
         try:
             if self.agent_type.lower() == "ollama":
                 self.react_agent = OllamaReActAgent(self.client)
-                print(f"Initialized Ollama ReAct agent with model: {self.react_agent.model_name}")
+                if self.react_agent.ollama_available:
+                    print(f"✅ Initialized Ollama ReAct agent with model: {self.react_agent.model_name}")
+                else:
+                    print("❌ Ollama ReAct agent failed to initialize - Ollama not available")
+                    self.react_agent = None
             else:  # default to azure
                 self.react_agent = ReActAgent(self.client)
-                print("Initialized Azure OpenAI ReAct agent")
+                if self.react_agent.azure_client:
+                    print(f"✅ Initialized Azure OpenAI ReAct agent with model: {self.react_agent.model_name}")
+                else:
+                    print("❌ Azure OpenAI ReAct agent failed to initialize - missing credentials")
+                    self.react_agent = None
         except Exception as e:
-            print(f"Failed to initialize {self.agent_type} ReAct agent: {e}")
+            print(f"❌ Failed to initialize {self.agent_type} ReAct agent: {e}")
             self.react_agent = None
     
     def switch_agent_type(self, agent_type: str):
@@ -926,23 +872,34 @@ class EnhancedQueryProcessor(QueryProcessor):
         # Reset execution trace
         self.last_execution_trace = None
         
-        if use_react and self.react_agent:
-            # Check if the agent is properly initialized
-            if isinstance(self.react_agent, OllamaReActAgent):
-                if not self.react_agent.ollama_available:
-                    print("Ollama agent not available, falling back to traditional processing")
-                    return super().process_query(query)
-            elif isinstance(self.react_agent, ReActAgent):
-                if not self.react_agent.azure_client:
-                    print("Azure OpenAI agent not available, falling back to traditional processing")
-                    return super().process_query(query)
+        if use_react:
+            # Check if we have a properly initialized agent
+            if not self.react_agent:
+                print(f"⚠️  No ReAct agent available ({self.agent_type}), falling back to traditional processing")
+                return super().process_query(query)
             
-            # Use ReAct agent
-            result = self.react_agent.reason_and_act(query)
-            self.last_execution_trace = self.react_agent.get_execution_trace()
-            return result
+            # Check if the agent is properly functional
+            agent_available = False
+            if isinstance(self.react_agent, OllamaReActAgent):
+                agent_available = self.react_agent.ollama_available
+                if not agent_available:
+                    print("⚠️  Ollama agent not functional, falling back to traditional processing")
+            elif isinstance(self.react_agent, ReActAgent):
+                agent_available = self.react_agent.azure_client is not None
+                if not agent_available:
+                    print("⚠️  Azure OpenAI agent not functional, falling back to traditional processing")
+            
+            if agent_available:
+                # Use ReAct agent
+                print(f"🤖 Using {self.agent_type.title()} ReAct agent for query processing")
+                result = self.react_agent.reason_and_act(query)
+                self.last_execution_trace = self.react_agent.get_execution_trace()
+                return result
+            else:
+                return super().process_query(query)
         else:
-            # Fall back to traditional processing
+            # Use traditional processing
+            print("📝 Using traditional query processing")
             return super().process_query(query)
     
     def process_query_with_trace(self, query: str, use_react: bool = None) -> Tuple[str, Optional[List[Dict]]]:

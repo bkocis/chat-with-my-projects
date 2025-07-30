@@ -39,6 +39,12 @@ services:
       - AZURE_OPENAI_ENDPOINT=${AZURE_OPENAI_ENDPOINT:-}
       - AZURE_OPENAI_MODEL_NAME=${AZURE_OPENAI_MODEL_NAME:-}
       - AZURE_OPENAI_API_VERSION=${AZURE_OPENAI_API_VERSION:-2024-12-01-preview}
+      # Ollama environment variables
+      - OLLAMA_HOST=${OLLAMA_HOST:-http://host.docker.internal:11434}
+      - OLLAMA_MODEL_NAME=${OLLAMA_MODEL_NAME:-qwen2.5-coder:7b-instruct}
+      - REACT_AGENT_TYPE=${REACT_AGENT_TYPE:-azure}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       github-repos-mcp:
         condition: service_healthy
