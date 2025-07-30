@@ -1,0 +1,104 @@
+{
+  "repository_name": "bertelsmann-dsml-group",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bertelsmann-dsml-group",
+  "analysis_timestamp": "2025-07-30T23:57:34.819263",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bertelsmann-dsml-group/README.md",
+      "size": 1296,
+      "content": "\n#### Bertelsmann Tech Scholarhip Challenge - sg_datascience-machinelearning  \n\n## Desrciption\n\nThis repository contains related material, project files, logs and resources for the Data Sicence / Machine Learning Study Group.\n\n## The AWS ML Stack\n\nIn the course material from the Machine Learning Career Pathway lesson at the AWS Educate, there was a short quiz testing the intuition on cloud service selection matching the requirements and needs of a hypothetical client. I made a small summary for you in the [AWS_ML_stack.md](https://github.com/bkocis/bertelsmann-dsml-group/blob/master/AWS_ML_stack.md).\n\n\n\n## Projects:\n\n### 1. Sentiment analysis app deployment on AWS\n\n[Project_AWS_Sagemaker](https://github.com/bkocis/bertelsmann-dsml-group/tree/master/Project_AWS_Sagemaker) - Code from the Deep Learning Nanodegree program.\n\n#### Getting started\n\nSelection and configuration of AWS services\n\nIntroduction:\n[Building a model using SageMaker L2-1](https://www.youtube.com/watch?time_continue=39&v=nJCc4_9-iAQ&feature=emb_logo)\n\nSetting up jupyter notebooks:\n[Building a model using SageMaker - L2-4](https://www.youtube.com/watch?time_continue=147&v=TRUCNy5Eqjc&feature=emb_logo)\n\n[Cloning a repo to SageMaker](https://www.youtube.com/watch?time_continue=76&v=jqL74whe9yo&feature=emb_logo)\n",
+      "summary": "This repository contains related material, project files, logs and resources for the Data Sicence / Machine Learning Study Group. In the course material from the Machine Learning Career Pathway lesson at the AWS Educate, there was a short quiz testing the intuition on cloud service selection matching the requirements and needs of a hypothetical client. I made a small summary for you in the [AWS_ML_stack.md](https://github.com/bkocis/bertelsmann-dsml-group/blob/master/AWS_ML_stack.md). [Project_A...",
+      "line_count": 29,
+      "word_count": 130,
+      "last_modified": "2023-01-18T20:13:51.620764"
+    }
+  ],
+  "file_structure": {
+    "total_files": 22,
+    "total_size": 2214239,
+    "file_types": {
+      ".md": 3,
+      ".ipynb": 1,
+      ".png": 15,
+      ".py": 2,
+      "": 1
+    },
+    "languages": {
+      "Python": 2
+    },
+    "directories": [
+      "Project_boto",
+      "assets",
+      "Project_Sentiment_Analysis",
+      "assets/AWS_Educate_ML",
+      "Project_Sentiment_Analysis/Project_6_SageMaker_reference",
+      "Project_Sentiment_Analysis/Project_6_SageMaker",
+      "Project_Sentiment_Analysis/Project_6_SageMaker_reference/DLND-sagemaker-deployment",
+      "Project_Sentiment_Analysis/Project_6_SageMaker/sagemaker-deployment"
+    ],
+    "largest_files": [
+      [
+        "assets/Paths_to_deployment.png",
+        207641
+      ],
+      [
+        "assets/AWS_Educate_ML/Assesment_8a.png",
+        157692
+      ],
+      [
+        "assets/AWS_Educate_ML/Assesment_8.png",
+        156973
+      ],
+      [
+        "assets/AWS_Educate_ML/Assesment_7a.png",
+        156632
+      ],
+      [
+        "assets/AWS_Educate_ML/Assesment_6a.png",
+        156121
+      ],
+      [
+        "assets/AWS_Educate_ML/Assesment_7.png",
+        155879
+      ],
+      [
+        "assets/AWS_Educate_ML/Assesment_6.png",
+        155380
+      ],
+      [
+        "assets/AWS_Educate_ML/Assesment_4a.png",
+        152103
+      ],
+      [
+        "assets/AWS_Educate_ML/Assesment_4.png",
+        151547
+      ],
+      [
+        "assets/AWS_Educate_ML/AWSMLStack_3.png",
+        147456
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "eb63bd34e952a19342e145b8b85c4f71984f534c",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Wed Jan 29 01:15:23 2020 +0100",
+      "message": "aws_boto notebook update"
+    },
+    "remote_url": "https://github.com/bkocis/bertelsmann-dsml-group.git"
+  },
+  "content_hash": "ccb41f18e993f008a1456ed1d7d9088a"
+}

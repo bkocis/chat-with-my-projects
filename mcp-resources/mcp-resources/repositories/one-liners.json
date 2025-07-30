@@ -1,0 +1,69 @@
+{
+  "repository_name": "one-liners",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/one-liners",
+  "analysis_timestamp": "2025-07-30T23:57:34.982659",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/one-liners/README.md",
+      "size": 4932,
+      "content": "# One-liners\nGnu/Linux command line \"one-liners\"\n\nMost probably you are pondering how to solve a specific problem using the command line. The following solutions are specific cases that I encountered; it is most likely that you have found similar solutions. The purpose of this repository is to represent an on-line substitution of my paper-notebook of one-liners.\n\n## `find` - searching and command execution\n\n- Reverse the content of all specified text files using `find` and `vi` commands \n\n\t- `find . -iname '*.DPT' -exec vi '{}' -c ':g/^/m0' -c ':wq' \\;`\n\n- Copy one file into all sub folders in the current working directory \n\n\t- `find . -type d -exec cp file.name '{}' \\;`\n\n- swap a file using `find`, `cp` and `rename` (in two steps) in case two files are in separate folders or sub folders. The 'old.f' content and filename is swapped to 'new.f'. \n\t- `find . -iname '*.f' -exec cp ./path-to-file/new.f '{}' \\;`\n\t- `find . -iname 'new.f' -exec rename 's/old.f/new.f/' '{}' \\;`\n\n\n- search files in-between specific date\n\t- using `find`\n\t\t- `find . -newermt '2015-03-03' ! -newermt '2015-03-04'` \n\t\t- `find . -newermt 'Nov 11 03:56' ! -newermt 'Nov 11 03:59' -printf '%Tc %p\\n'`\n\n\t\t\twhere `-printf '%Tc %p\\n'` will print out the exact date \n\t\t\t\n\t\t\tto be more specific use: `-printf '%TY-%Tm-%Td--%TH:%TM:%TS'`\n\n\t\t\t`%p` prints out the path\n\n\t\t\tadding `| sort -n` to the end will do the evident sorting\n\n\t- using `ls` and `awk`\n\t\t- `ls -ltr | grep 'Nov.*5.*10' | awk '{print $NF}'`\n\n\t\tand copy them to another folder:\n\n\t\t- `ls -ltr | grep 'Nov.*5.*10' | awk '{print $NF}' | xargs -i cp '{}' folder`\n\n\n- returning path string with find:\n\n\t- ``find `pwd` ....`` will return the absolute path, since find is giving output relative to the input \n\n\t- `find . .....` \n\n\t- `find . -iname '*x' -printf '%p\\n' ` will print out the filename only without the path \n\n\n- find with subfolder depth control\n\t- `find . -maxdepth 1 -iname '*.py*` \n\n- find partial path and file \n\n\t- `find -path '*.git/logs/HEAD'`  using `iname` instead of `path` does not work\n\n- excluding folders from find \n\t- `find . -path ./some/path -prune -o -iname '*some*' -print`\n\n\tor without `-prune`\n\n\t- `find . -iname '*some*' -not -path \"./some_path/*\"` \n\t\n\tthe `*` is very much needed, otherwise it will exclude only the given path and not all paths below\n\n\t- in addition one can exclude a given folder at any level by \n\t- `find . -iname '*some*' -not path \"*/some_path/*\"`\n\t\n\n- combining regular expression with `find`. For example find all filenames that are longer then 5 characters\n\t- `find -regextype posix-egrep -regex '.*[^/]{5}'`\n\n- multiple find ; to use logical operators with `find` through regular expression \n\t- `find . -regextype posix-egrep -regex \"(.*bgg.*\\.*add.*)\"`  AND\n\t- `find . -regextype posix-egrep -regex \"(.*bgg.*|.*add.*)\"`  OR\n\n\n- chaining commands inside `find`, for example rename specific files and move them to another folder \n\t- `find . -iname '*.dat' -exec rename 's/dat/DPT/' '{}' \\; -exec mv '{}' ~/home/somewhere \\;`\n\n- remove files but skip some\n\t- `rm !(*.zip)` or `rm !(*.zip|*.dat)`\n\t- `rm -r */` to remove only folders \n\n- cleaning git repo\n\t- `find . -name \"*.pyc\" -exec git rm {} \\;`\n\n- sorting using `sort`\n\t- `sort -k 2,2n -k 3 file.txt`\n\n\t\twhere `-k 2,2n -k 3` means to sort data using the given column number. First, it will sort 2nd column (date dd field) and then 3rd column (time). Found [here](http://www.cyberciti.biz/faq/linux-unix-sort-date-data-using-sortcommand/)\n\n\n\n- a compilation of sed one-liners \n\t- http://sed.sourceforge.net/sed1line.txt\n\n\n- networking using `nmcli`\n\t- Connect to netwrok `nmcli device wifi connect <SSID> password <password> `\n\t- connect to netwrok `nmcli con up id <SSID>`\n\t- check available devices `nmcli d`\n\t- check all wifi networks in the area with signal strength `nmcli d wifi`\n\n\n## `du` - estimate file space usage\n\n\n- `du`, `df` commands to investigate storage space:\n\t- `du -sh ./* | sort -h`\n\t- `watch -n 1 \"df -h | grep \"Filesystem\" && df -h | grep '/$' && df | grep '/$'\"`\n\t- `du -sh .[^.]*` - for inspection of hidden folders only\n\t- `du -sh --exclude=/media /` - to exclude a folder from the calcuation of folder sizes \n\n## `screen` command \n\n- `screen` command add to `./.screenrc`: `termcapinfo xterm* ti@:te@`. For logging the std output of screen funciton into a file us the `-L` flag:\n\t- `screen -L -S NAME_OF_SESSION`\n\t\n\n## Related:\n\n[vi commands](https://github.com/bkocis/one-liners/blob/master/playing_with_vi.md)\n\n[awk stuff](https://github.com/bkocis/one-liners/blob/master/playing_with_awk.md)\n\n[file text manipulations](https://github.com/bkocis/one-liners/blob/master/file_text_manipulations.md)\n\n## Disclaimer \n\nThe fact you can do something doesn't necessarily mean you should! ;)\n\n## Worth checking out: \n\n[jlevy's art-of-command-line](https://github.com/jlevy/the-art-of-command-line)  \n \n[zeef/caleb.xu](https://unix-shell.zeef.com/caleb.xu)\n\n+++\n",
+      "summary": "Gnu/Linux command line \"one-liners\" Most probably you are pondering how to solve a specific problem using the command line. The following solutions are specific cases that I encountered; it is most likely that you have found similar solutions. The purpose of this repository is to represent an on-line substitution of my paper-notebook of one-liners. - Reverse the content of all specified text files using `find` and `vi` commands",
+      "line_count": 140,
+      "word_count": 753,
+      "last_modified": "2023-01-18T20:12:18.991863"
+    }
+  ],
+  "file_structure": {
+    "total_files": 5,
+    "total_size": 9357,
+    "file_types": {
+      ".md": 5
+    },
+    "languages": {},
+    "directories": [],
+    "largest_files": [
+      [
+        "README.md",
+        4932
+      ],
+      [
+        "git-cleaning.md",
+        1613
+      ],
+      [
+        "playing_with_vi.md",
+        1153
+      ],
+      [
+        "file_text_manipulations.md",
+        1134
+      ],
+      [
+        "playing_with_awk.md",
+        525
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "c3eadd2ffe782ffcf947b85b58c7e8b91d87448a",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Sun Jan 8 16:05:07 2023 +0100",
+      "message": "Update playing_with_vi.md"
+    },
+    "remote_url": "https://github.com/bkocis/one-liners.git"
+  },
+  "content_hash": "a6eecbdd7f8bd8c50f92371ad3782c56"
+}

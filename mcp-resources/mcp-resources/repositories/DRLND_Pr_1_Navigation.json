@@ -1,0 +1,93 @@
+{
+  "repository_name": "DRLND_Pr_1_Navigation",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DRLND_Pr_1_Navigation",
+  "analysis_timestamp": "2025-07-30T23:57:35.154144",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DRLND_Pr_1_Navigation/README.md",
+      "size": 3294,
+      "content": "[//]: # (Image References)\n\n[image1]: https://user-images.githubusercontent.com/10624937/42135619-d90f2f28-7d12-11e8-8823-82b970a54d7e.gif \"Trained Agent\"\n\n### Udacity Deep Reinforcement Learning Nanodegree \n# Project Navigation\n\n### Introduction\n\nFor this project, you will train an agent to navigate (and collect bananas!) in a large, square world.  \n\n![Trained Agent][image1]\n\n\nIn the project an agent has to learn to collect the maximum number of bananas randomly spread inside a virtual playground. The agent can do basic movement (turning and moving) and every time he find a banana he gets a reward. If the banana is yellow he increases the score, and if case he hits a blue banana, the score decreases by 1. The goal of the agent is to maximize the reward score.\n\nThe solution of this environment was attempted by implementation a Deep Q-network (DQN) algorithm. The DQN algorithm is a reinforcement learning application via the implementation of Q-learning method combined with a deep learning network.\n\nA reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana.  Thus, the goal of your agent is to collect as many yellow bananas as possible while avoiding blue bananas.  \n\nThe state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around agent's forward direction.  Given this information, the agent has to learn how to best select actions.  Four discrete actions are available, corresponding to:\n- **`0`** - move forward.\n- **`1`** - move backward.\n- **`2`** - turn left.\n- **`3`** - turn right.\n\nThe task is episodic, and in order to solve the environment, your agent must get an average score of +13.\n\n\n### Getting Started\n\n1. Download the environment from one of the links below.  You need only select the environment that matches your operating system:\n    - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)\n    - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)\n    - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86.zip)\n    - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)\n    \n    (_For Windows users_) Check out [this link](https://support.microsoft.com/en-us/help/827218/how-to-determine-whether-a-computer-is-running-a-32-bit-version-or-64) if you need help with determining if your computer is running a 32-bit version or 64-bit version of the Windows operating system.\n\n    (_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux_NoVis.zip) to obtain the environment.\n\n2. Place the file in the DRLND GitHub repository, in the `p1_navigation/` folder, and unzip (or decompress) the file. \n\n\n### Report \n\n__The final report summarizing the code implementation and my solution of the environemnt is in the [`report.md`](https://github.com/bkocis/DRLND_Pr_1_Navigation/blob/master/report.md)__\n",
+      "summary": "[//]: # (Image References) [image1]: https://user-images.githubusercontent.com/10624937/42135619-d90f2f28-7d12-11e8-8823-82b970a54d7e.gif \"Trained Agent\" For this project, you will train an agent to navigate (and collect bananas!) in a large, square world.",
+      "line_count": 47,
+      "word_count": 407,
+      "last_modified": "2023-01-18T20:14:19.325033"
+    }
+  ],
+  "file_structure": {
+    "total_files": 9,
+    "total_size": 676047,
+    "file_types": {
+      ".pth": 1,
+      ".ipynb": 2,
+      ".md": 2,
+      ".py": 2,
+      ".png": 2
+    },
+    "languages": {
+      "Python": 2
+    },
+    "directories": [
+      "assets"
+    ],
+    "largest_files": [
+      [
+        "Navigation.ipynb",
+        387021
+      ],
+      [
+        "assets/best_result.png",
+        134385
+      ],
+      [
+        "assets/agent_comparison.png",
+        91948
+      ],
+      [
+        "e5-dueling+ddqn+eps_decay-0p98.pth",
+        28825
+      ],
+      [
+        "report.md",
+        14639
+      ],
+      [
+        "Navigation_Pixels.ipynb",
+        7541
+      ],
+      [
+        "dqn_agent.py",
+        7004
+      ],
+      [
+        "README.md",
+        3294
+      ],
+      [
+        "model.py",
+        1390
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "be90b7674109e14caa9a7e39161b9c70058a8a6b",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Mon Nov 18 00:02:52 2019 +0100",
+      "message": "readme modified"
+    },
+    "remote_url": "https://github.com/bkocis/DRLND_Pr_1_Navigation.git"
+  },
+  "content_hash": "33b2bcfbab395a4aa38e551ac4022546"
+}

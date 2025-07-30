@@ -1,0 +1,143 @@
+{
+  "repository_name": "mlflow-set-up",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/mlflow-set-up",
+  "analysis_timestamp": "2025-07-30T23:57:34.882188",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/mlflow-set-up/README.md",
+      "size": 896,
+      "content": "# ml-flow-set-up\nInstructions for ml-flow set-up\n\nReferences\n==========\n\n- https://faun.pub/mlflow-on-google-cloud-platform-cd8c9b04a2d8\n\n- https://dlabs.ai/blog/a-step-by-step-guide-to-setting-up-mlflow-on-the-google-cloud-platform/\n\n- https://www.mlflow.org/docs/latest/tracking.html#google-cloud-storage\n\n\n`mlflow server --backend-store-uri /root/Projects/mlruns  --default-artifact-root gs://mlflow_ocr_artefacts_3/mlruns --host 172.19.39.31 --port 5000`\n\nOn Strato instance \n\n`mlflow server --host 127.0.0.1 --port 5000 --static-prefix /mlflow`\n\n\nSet-up in GCP\n=============\n\n\nSet-up in a DigitalOcean instance\n=================================\n\n\nVirtual Environments\n====================\n\nDefine env variables:\n- `.env` file \n\n- add `export NAME=VALEU` into the venv/bin/activate file \n\n- add to pycharm run config \n\n- docker: \n  - add secrets mounted point and read from that volume \n  \n \n",
+      "summary": "Instructions for ml-flow set-up References ==========",
+      "line_count": 40,
+      "word_count": 80,
+      "last_modified": "2023-01-18T20:12:12.075795"
+    },
+    {
+      "path": "mlflow_workshop/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/mlflow-set-up/mlflow_workshop/README.md",
+      "size": 1400,
+      "content": "# mlflow_workshop\n\nWelcome to the mlflow_workshop repository. These Tutorials are designed for the Check24/Data-Science Focus group.\n\n## Initial Setup \nFirst clone the repository, as follows:\n\n```python\n$ git clone https://bitbucket.check24.de/scm/th/mlflow_workshop.git\n$ cd mlflow_workshop\n```\n\nNext step, activate the conda base environment, then set up a python virtual env, as below:\n\n```python\n(base) $ python3 -m venv mlflow_venv\n(base) $ source mlflow_venv/bin/activate\n```\n\nNow, you can install the requirements in the mlflow_venv, as follows:\n\n```python\n(mlflow_venv) $ pip install -r requirements.txt\n```\n\nThen, add the virtualenv as a jupyter kernel\n\n```python\n(mlflow_venv) $ ipython kernel install --name \"mlflow_venv\" --user\n```\nNow, you can run the jupyther-lab as follows, and start the Tutorials:\n```python\n(mlflow_venv) $ jupyter-lab\n```\n\n## Repo Structure:\n```                         \n.\n├───data\n├───docs\n├───infrastructure\n└───notebooks\n```            \nYou do not need the infrastructure directory to run the tutorials for this workshop. \n<br>\nNevertheless, you find a generic file that can be utilized to construct the mlflow infrastructure on your\nPC or set it up for a new project.\n## Tutorials:\nYou find all Tutorials in the notebooks directory. Open jupyter-lab and start the hello world tutorial.\n<br> Have a Great Fun and Best of Luck! :)\n",
+      "summary": "Welcome to the mlflow_workshop repository. These Tutorials are designed for the Check24/Data-Science Focus group. First clone the repository, as follows: ```python",
+      "line_count": 50,
+      "word_count": 195,
+      "last_modified": "2023-01-18T20:12:12.075795"
+    },
+    {
+      "path": "mlflow_workshop/infrastructure/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/mlflow-set-up/mlflow_workshop/infrastructure/README.md",
+      "size": 400,
+      "content": "## Infrastructure Setup\nRun the following line to construct the mlflow infrastructure:\n\n```python\n   $ docker-compose -f docker-compose.mlflow.infrastructure.yml up -d --build\n```\nThen, run the following line to the **mlruns** directory be generated in the minio storage server:\n```python\n   $ python create_bucket.py\n```\n\nNow, you are ready to use mlflow infrastructure and run the mlflow scripts.\n\n",
+      "summary": "Run the following line to construct the mlflow infrastructure: ```python $ docker-compose -f docker-compose.mlflow.infrastructure.yml up -d --build",
+      "line_count": 12,
+      "word_count": 55,
+      "last_modified": "2023-01-18T20:12:12.087795"
+    }
+  ],
+  "file_structure": {
+    "total_files": 43,
+    "total_size": 4124920,
+    "file_types": {
+      ".md": 3,
+      "": 5,
+      ".txt": 6,
+      ".pdf": 3,
+      ".pptx": 1,
+      ".py": 3,
+      ".png": 3,
+      ".sh": 2,
+      ".env": 1,
+      ".pkl": 1,
+      ".yml": 1,
+      ".data": 2,
+      ".ipynb": 6,
+      ".xml": 1,
+      ".cmd": 1,
+      ".yaml": 3,
+      ".service": 1
+    },
+    "languages": {
+      "Python": 3,
+      "Shell": 2
+    },
+    "directories": [
+      "mlflow_workshop",
+      "infrastructure-mlflow",
+      "deployment",
+      "mlflow_workshop/docs",
+      "mlflow_workshop/gcp_mlflow",
+      "mlflow_workshop/infrastructure",
+      "mlflow_workshop/data",
+      "mlflow_workshop/notebooks",
+      "mlflow_workshop/gcp_mlflow/regression_files",
+      "mlflow_workshop/notebooks/hello_world_files",
+      "infrastructure-mlflow/k8s",
+      "infrastructure-mlflow/dockers",
+      "infrastructure-mlflow/dockers/mlflow",
+      "deployment/systemd_deployment"
+    ],
+    "largest_files": [
+      [
+        "mlflow_workshop/docs/mlflow_workshop.pptx",
+        2863638
+      ],
+      [
+        "mlflow_workshop/docs/deem_mlflow.pdf",
+        509774
+      ],
+      [
+        "mlflow_workshop/docs/ieee_mlflow.pdf",
+        229317
+      ],
+      [
+        "mlflow_workshop/docs/r_mlflow.pdf",
+        151786
+      ],
+      [
+        "mlflow_workshop/notebooks/senario4.png",
+        82740
+      ],
+      [
+        "mlflow_workshop/gcp_mlflow/regression_files/distribution_plot_all_features.png",
+        62388
+      ],
+      [
+        "mlflow_workshop/data/car.data",
+        51867
+      ],
+      [
+        "mlflow_workshop/gcp_mlflow/ElasticNet-paths.png",
+        44133
+      ],
+      [
+        "mlflow_workshop/data/auto-mpg.data",
+        30286
+      ],
+      [
+        "mlflow_workshop/notebooks/5_mlflow++.ipynb",
+        10914
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "75f45c82ba35d5f81fcac4fe188df9c578e160f3",
+      "author_name": "bkocis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Sun Jan 15 21:46:27 2023 +0100",
+      "message": "systemd deployment"
+    },
+    "remote_url": "https://github.com/bkocis/mlflow-set-up.git"
+  },
+  "content_hash": "253451e12a065ebbcca6c83da491734f"
+}

@@ -1,0 +1,108 @@
+{
+  "repository_name": "eyeknow-elderly-monitoring",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/eyeknow-elderly-monitoring",
+  "analysis_timestamp": "2025-07-30T23:57:34.930315",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/eyeknow-elderly-monitoring/README.md",
+      "size": 638,
+      "content": "## Identifying interaction and violence on elderly in CCTV videos\n\n---\n\n### Installation \n\nTested with python 3.8. Install the required dependencies:\n```bash\npip install -r requirements.txt\n```\n\nClone the offical [`yolov5` implementation from ultralytics repo](https://github.com/ultralytics/yolov5) into the `elderlyWatch/resources` folder. This will allow the main to use the object detection.\n\n### Getting started\n\nFor modification of the functionality of the code modify the `parameters.json` file in the `config` folder.\n\n#### Run the object detection \n```bash\npython case_elderly/elderlyWatch/app/main.py\n```\n\n\n\n#### Output folder\n\n",
+      "summary": "--- Tested with python 3.8. Install the required dependencies: ```bash",
+      "line_count": 25,
+      "word_count": 80,
+      "last_modified": "2023-01-18T20:12:36.844036"
+    }
+  ],
+  "file_structure": {
+    "total_files": 22,
+    "total_size": 76769,
+    "file_types": {
+      ".md": 1,
+      "": 1,
+      ".txt": 4,
+      ".py": 14,
+      ".json": 1,
+      ".sh": 1
+    },
+    "languages": {
+      "Python": 14,
+      "Shell": 1
+    },
+    "directories": [
+      "app",
+      "resources",
+      "utils",
+      "app/config",
+      "app/service",
+      "app/service/impl"
+    ],
+    "largest_files": [
+      [
+        "utils/image_composite.py",
+        12662
+      ],
+      [
+        "app/service/impl/conv_lstm.py",
+        10723
+      ],
+      [
+        "app/service/impl/conv_lstm_aws.py",
+        10272
+      ],
+      [
+        "app/service/impl/yolo_object_detection.py",
+        8753
+      ],
+      [
+        "utils/label_vs_prediction_metric.py",
+        7173
+      ],
+      [
+        "app/service/impl/mediapipe_image.py",
+        6023
+      ],
+      [
+        "app/main_api.py",
+        3822
+      ],
+      [
+        "app/main.py",
+        3791
+      ],
+      [
+        "app/service/impl/conv_lstm_inference.py",
+        3537
+      ],
+      [
+        "requirements_feeze.txt",
+        2196
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [
+      "FastAPI"
+    ],
+    "tools": [
+      "NumPy",
+      "SciPy",
+      "PyTorch",
+      "TensorFlow",
+      "Scikit-learn",
+      "Pandas"
+    ],
+    "databases": [],
+    "deployment": [
+      "Docker"
+    ],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "remote_url": "https://github.com/bkocis/eyeknow-elderly-monitoring.git"
+  },
+  "content_hash": "7cd7d88a6a88e476acbccbec31f9f57d"
+}

@@ -1,0 +1,94 @@
+{
+  "repository_name": "bertelsmann-udacity-challenge-logs",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bertelsmann-udacity-challenge-logs",
+  "analysis_timestamp": "2025-07-30T23:57:35.409835",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bertelsmann-udacity-challenge-logs/README.md",
+      "size": 1051,
+      "content": "\n#### Udacity-Bertelsmann Challenge  \n\n## Event Logs\n# CloudDevOps track\n\nThis repository is a log of activities, shared resources and tracking community of the [Udacity Bertelsmann Challenge](https://www.udacity.com/bertelsmann-tech-scholarships)\n\n## Contents\n  1. Lesson notes\n     - [Git notes](https://github.com/bkocis/bertelsmann-udacity-challenge-logs/blob/master/git_notes.md)\n     - [Cloud fundamentals notes](https://github.com/bkocis/bertelsmann-udacity-challenge-logs/blob/master/cloud_fundamentals.md)\n     - [Infrastructure-as-a-code]()\n\n\n  2. [\"60 days of Udacity\" Challenge](https://github.com/bkocis/bertelsmann-udacity-challenge-logs/blob/master/60-days-udacity.md) - A list of the posts for the daily progress in the course.\n\n---\nMy articles related to this Challenge:\n- [The power of the community and engagement](https://medium.com/@balazsnc021/the-power-of-the-community-and-engagement-42dd6b4fb153)\n\n- [Linus Torvalds, on git for Bertelsmann.](https://medium.com/@balazsnc021/linus-torvalds-on-git-for-bertelsmann-5ccc58806c85)\n",
+      "summary": "This repository is a log of activities, shared resources and tracking community of the [Udacity Bertelsmann Challenge](https://www.udacity.com/bertelsmann-tech-scholarships) 1. Lesson notes - [Git notes](https://github.com/bkocis/bertelsmann-udacity-challenge-logs/blob/master/git_notes.md)",
+      "line_count": 21,
+      "word_count": 81,
+      "last_modified": "2023-01-18T20:13:49.668745"
+    }
+  ],
+  "file_structure": {
+    "total_files": 57,
+    "total_size": 7898700,
+    "file_types": {
+      ".md": 5,
+      ".pdf": 1,
+      ".png": 51
+    },
+    "languages": {},
+    "directories": [
+      "assets",
+      "assets/60_days_Udacity"
+    ],
+    "largest_files": [
+      [
+        "60-days-udacity.pdf",
+        3795978
+      ],
+      [
+        "assets/60_days_Udacity/D19.png",
+        308580
+      ],
+      [
+        "assets/60_days_Udacity/D22.png",
+        268186
+      ],
+      [
+        "assets/60_days_Udacity/D24.png",
+        229230
+      ],
+      [
+        "assets/60_days_Udacity/complete.png",
+        174633
+      ],
+      [
+        "assets/60_days_Udacity/D31.png",
+        158896
+      ],
+      [
+        "assets/60_days_Udacity/D33.png",
+        155439
+      ],
+      [
+        "assets/60_days_Udacity/D23.png",
+        152163
+      ],
+      [
+        "assets/60_days_Udacity/D41.png",
+        136856
+      ],
+      [
+        "assets/60_days_Udacity/D35.png",
+        130442
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "9e0225fa05515ae3b271297feaf52416bb9768fd",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Tue Feb 18 18:16:32 2020 +0100",
+      "message": "update"
+    },
+    "remote_url": "https://github.com/bkocis/bertelsmann-udacity-challenge-logs.git"
+  },
+  "content_hash": "2c937ca4e0e4ef43eef6802d8013466b"
+}

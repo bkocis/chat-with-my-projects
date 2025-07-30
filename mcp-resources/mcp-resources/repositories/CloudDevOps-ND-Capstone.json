@@ -1,0 +1,108 @@
+{
+  "repository_name": "CloudDevOps-ND-Capstone",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CloudDevOps-ND-Capstone",
+  "analysis_timestamp": "2025-07-30T23:57:35.096008",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CloudDevOps-ND-Capstone/README.md",
+      "size": 6679,
+      "content": "\n[![Build Status](http://ec2-52-59-242-134.eu-central-1.compute.amazonaws.com:8080/buildStatus/icon?job=CloudDevOps-ND-Capstone%2Fmaster)](http://ec2-52-59-242-134.eu-central-1.compute.amazonaws.com:8080/job/CloudDevOps-ND-Capstone/job/master/)\n\n[![Build Status](http://ec2-52-59-242-134.eu-central-1.compute.amazonaws.com:8080/job/CloudDevOps-ND-Capstone/job/master/badge/icon?)](http://ec2-52-59-242-134.eu-central-1.compute.amazonaws.com:8080/job/CloudDevOps-ND-Capstone/job/master/)\n\n[Github Repo of the project](https://github.com/bkocis/CloudDevOps-ND-Capstone)\n\n#### Cloud DevOps Engineer Udacity Nanodegree Capstone Project\n-----\n# Deploying a Docker containerized Flask app on AWS Elastic Kubernetes Service \n\n\n## Description \n\nThe project in this repository is about continuous deployment and integration of a simple flask app using Jenkins, Docker, and Kubernetes. The flask app is tested, containerized, and deployment from a Jenkins pipeline. In the final stage the docker image is deployed into a Kubernetes cluster and made accressible with a public URL. For the later part AWS's EKS (Elastic Kubernetes Service) was used to generate a cluster of 3 instances, load balancer, and all necessary settings. \n\nThe generation and operation of the Kubernetes cluster takes place on the master instance, in this case on the same instance where Jenkins is installed. \n\nJenkins automates and supports transparent building, testing, and deployment of the project, which are defined in the Jenkins pipeline `Jenkinsfile`. The stages and the steps are self explanatory, with the exception of the agents used. In this case I used multiple agents: 1. __agent any__ - default one, basically the environment of the instance, and a __Docker image agent__. This was necessary because I wanted to include a unit test of the python app inside the Jenkins pipeline. For this to be successful, the stage has to be able to run python and the required packages. This was done in order not to install everything on the main instance where Jenkins is installed on.\n\nFurther down the pipeline, the flask app is containerizes and uploaded to Docker-hub. The Docker image can be run separately via the `run_Docker.sh`, and can be made accessible using the public address of the instance.  \n\nFor orchestration, scalability and availability the Docker image containing the flask app can be deployed on a Kubernetes cluster. The deployment and running of the Docker image on the Kubernetes cluster requires the `deployment.yml` file for the configuration of the deployment type (in this case rolling) and service ports. At the end, the Docker image can be deployed on the cluster with a few commands encapsulated inside a single stage of the Jenkins pipeline: \n\n```bash\naws eks --region <REGION_NAME> update-kubeconfig --name <CLUSTER_NAME>\nkubectl config use-context <ARN>  # something like: arn:aws:eks:eu-central-1:643313058211:cluster/<CLUSTER_NAME>\nkubectl apply -f deployment.yml\nkubectl set image deployments/<DOCKER_IMAGE_NAME> <DOCKER_IMAGE_NAME>=bkocis/<DOCKER_IMAGE_NAME>:latest\n```\n\n## Files\n\n- Jenkinsfile\n- Dockerfile\n- run_Docker.sh\n- requirement.txt\n- app.py (flask web app)\n- test.py (flask app unit test)\n- deployment.yml\n\nOther non-obligatory files, but good to have: \n- Makefile\n- index.html (for testing html linting)\n\n\n## Setup\n\n#### AWS prerequisites\n\nSome steps are required such as defining a new user, policy, save keypairs (.pem files for ssh access very important). Create a single ec2 instance (I chose a Ubuntu 18.04 AMI). \n\n#### Install Jenkins, Docker\n\n```bash \nsudo apt-get update\nsudo apt install -y default-jdk\nwget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -\nsudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'\nsudo apt-get update\nsudo apt-get install -y jenkins\nsudo systemctl start jenkins\nsudo systemctl enable jenkins\nsudo apt install tidy\nsudo apt-get install docker.io\nsudo usermod -a -G docker ubuntu\nsudo systemctl start docker\nsudo usermod -a -G docker jenkins\n```\n\n#### Install aws-cli, kubectl, eksctl \n\n```bash\n## aws-cli\ncurl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\"\nunzip awscliv2.zip \nsudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update\n# aws configure # use non-root user\n\n# eksctl\ncurl --silent --location \"https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz\" | tar xz -C /tmp\nsudo mv /tmp/eksctl /usr/local/bin\n\n# kubectl\ncurl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/kubectl\nchmod +x ./kubectl\nsudo mv ./kubectl /usr/local/bin\necho 'export PATH=$PATH:$HOME/bin' >> ~/.bash_profile\n```\n\n\n## Workflow - DON'T FORGET TO DELETE CLUSTER\n\nBefore the deployment, start the Kubernetes cluster in EKS using:\n`eksctl create cluster --name <CLUSTER_NAME> --version 1.16 --nodegroup-name standard-workers --node-type t2.medium --nodes 3 --nodes-min 1 --nodes-max 4 --node-ami auto --region <YOUR_PREFERED_REGION>`\n\nWith the cluster up and running (check `kubectl get nodes`, and `kubectr get deployments`), start the build in Jenkins. \n\nAfter the setup and successful builds don't forget to delete the eks cluster, which will terminate the ec2 instances of the workers in the cluster. `eksctl delete cluster --name=<CLUSTER_NAME>`.\nIn addition, at the end of the working day, it is a good idea to STOP the running instance (instance with Jenkins running) from the EC2 console. The next day START it again. Check the new public url address and the public IP's for the ssh access. When necessary modify the security group of the instance and change the ingress IP's.\n\n\n## Screenshots \n\n__1. Running instances created by the EKS__\n\n<img src=\"screenshots/instances.png\" width=100%>\n\n\n\n__2. AWS EKS kubernetes cluster is running and the Docker image is deployed__\n\n<img src=\"screenshots/log-rollout.png\" width=100%>\n\n\n\n__3. Load balancer is created in the process as the endpoint address for the application__\n\n<img src=\"screenshots/load-balancer.png\" width=100%>\n\n\n\n__4. The ingress rules might need to be configured, so that the port defined in the app could be available__\n\n<img src=\"screenshots/security-group-inbound-rules.png\" width=100%>\n\n\n\n__5. The Jenkins pipeline used in the project, with the build history__\n\n<img src=\"screenshots/jenkins-pipeline.png\" width=100%>\n\n\n\n__6. The deployed flask app__\n\n<img src=\"screenshots/deployed-flask-app.png\" width=100%>\n\n\n\n__7. Unit test Jenkins stage for the Flask app shows a successful test__\n\n<img src=\"screenshots/unit-testing-flask-app.png\" width=100%>\n\n\n\n\n\n",
+      "summary": "[![Build Status](http://ec2-52-59-242-134.eu-central-1.compute.amazonaws.com:8080/buildStatus/icon?job=CloudDevOps-ND-Capstone%2Fmaster)](http://ec2-52-59-242-134.eu-central-1.compute.amazonaws.com:8080/job/CloudDevOps-ND-Capstone/job/master/) [![Build Status](http://ec2-52-59-242-134.eu-central-1.compute.amazonaws.com:8080/job/CloudDevOps-ND-Capstone/job/master/badge/icon?)](http://ec2-52-59-242-134.eu-central-1.compute.amazonaws.com:8080/job/CloudDevOps-ND-Capstone/job/master/) [Github Repo of...",
+      "line_count": 142,
+      "word_count": 849,
+      "last_modified": "2023-01-18T20:13:36.964621"
+    }
+  ],
+  "file_structure": {
+    "total_files": 17,
+    "total_size": 2100331,
+    "file_types": {
+      "": 3,
+      ".md": 1,
+      ".py": 2,
+      ".html": 1,
+      ".sh": 1,
+      ".txt": 1,
+      ".yml": 1,
+      ".png": 7
+    },
+    "languages": {
+      "Python": 2,
+      "HTML": 1,
+      "Shell": 1
+    },
+    "directories": [
+      "screenshots"
+    ],
+    "largest_files": [
+      [
+        "screenshots/unit-testing-flask-app.png",
+        419528
+      ],
+      [
+        "screenshots/log-rollout.png",
+        371426
+      ],
+      [
+        "screenshots/instances.png",
+        331838
+      ],
+      [
+        "screenshots/jenkins-pipeline.png",
+        318952
+      ],
+      [
+        "screenshots/load-balancer.png",
+        299144
+      ],
+      [
+        "screenshots/security-group-inbound-rules.png",
+        283342
+      ],
+      [
+        "screenshots/deployed-flask-app.png",
+        63182
+      ],
+      [
+        "README.md",
+        6679
+      ],
+      [
+        "Jenkinsfile",
+        2835
+      ],
+      [
+        "Makefile",
+        1111
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [
+      "Flask"
+    ],
+    "tools": [],
+    "databases": [],
+    "deployment": [
+      "Docker"
+    ],
+    "testing": [],
+    "build_systems": [
+      "Make"
+    ]
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "5bff43fed0f541ead6a079fb6a68c1ee57396d81",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Tue Sep 15 16:43:52 2020 +0200",
+      "message": "readme finalization"
+    },
+    "remote_url": "https://github.com/bkocis/CloudDevOps-ND-Capstone.git"
+  },
+  "content_hash": "a0b264dc0dca1d5ef637274c69cee8aa"
+}

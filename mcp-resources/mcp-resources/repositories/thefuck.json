@@ -1,0 +1,107 @@
+{
+  "repository_name": "thefuck",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/thefuck",
+  "analysis_timestamp": "2025-07-30T23:57:35.123992",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/thefuck/README.md",
+      "size": 13133,
+      "content": "# The Fuck [![Build Status](https://travis-ci.org/nvbn/thefuck.svg?branch=master)](https://travis-ci.org/nvbn/thefuck) \n\nMagnificent app which corrects your previous console command,\ninspired by a [@liamosaur](https://twitter.com/liamosaur/)\n[tweet](https://twitter.com/liamosaur/status/506975850596536320).\n\n[![gif with examples](https://raw.githubusercontent.com/nvbn/thefuck/master/example.gif)](https://raw.githubusercontent.com/nvbn/thefuck/master/example.gif)\n\nFew more examples:\n\n```bash\n➜ apt-get install vim\nE: Could not open lock file /var/lib/dpkg/lock - open (13: Permission denied)\nE: Unable to lock the administration directory (/var/lib/dpkg/), are you root?\n\n➜ fuck\nsudo apt-get install vim [enter/↑/↓/ctrl+c]\n[sudo] password for nvbn:\nReading package lists... Done\n...\n```\n\n```bash\n➜ git push\nfatal: The current branch master has no upstream branch.\nTo push the current branch and set the remote as upstream, use\n\n    git push --set-upstream origin master\n\n\n➜ fuck\ngit push --set-upstream origin master [enter/↑/↓/ctrl+c]\nCounting objects: 9, done.\n...\n```\n\n```bash\n➜ puthon\nNo command 'puthon' found, did you mean:\n Command 'python' from package 'python-minimal' (main)\n Command 'python' from package 'python3' (main)\nzsh: command not found: puthon\n\n➜ fuck\npython [enter/↑/↓/ctrl+c]\nPython 3.4.2 (default, Oct  8 2014, 13:08:17)\n...\n```\n\n```bash\n➜ git brnch\ngit: 'brnch' is not a git command. See 'git --help'.\n\nDid you mean this?\n\tbranch\n\n➜ fuck\ngit branch [enter/↑/↓/ctrl+c]\n* master\n```\n\n```bash\n➜ lein rpl\n'rpl' is not a task. See 'lein help'.\n\nDid you mean this?\n         repl\n\n➜ fuck\nlein repl [enter/↑/↓/ctrl+c]\nnREPL server started on port 54848 on host 127.0.0.1 - nrepl://127.0.0.1:54848\nREPL-y 0.3.1\n...\n```\n\nIf you are not scared to blindly run the changed command, there is a `require_confirmation`\n[settings](#settings) option:\n\n```bash\n➜ apt-get install vim\nE: Could not open lock file /var/lib/dpkg/lock - open (13: Permission denied)\nE: Unable to lock the administration directory (/var/lib/dpkg/), are you root?\n\n➜ fuck\nsudo apt-get install vim\n[sudo] password for nvbn:\nReading package lists... Done\n...\n```\n\n## Requirements\n\n- python (2.7+ or 3.3+)\n- pip\n- python-dev\n\n## Installation [*experimental*]\n\nOn Ubuntu and OS X you can install `The Fuck` with installation script:\n \n```bash\nwget -O - https://raw.githubusercontent.com/nvbn/thefuck/master/install.sh | sh - && $0\n```\n\n## Manual installation\n\nInstall `The Fuck` with `pip`:\n\n```bash\nsudo pip install thefuck\n```\n\n[Or using an OS package manager (OS X, Ubuntu, Arch).](https://github.com/nvbn/thefuck/wiki/Installation)\n\nYou should place this command in your `.bash_profile`, `.bashrc`, `.zshrc` or other startup script:\n\n```bash\neval \"$(thefuck --alias)\"\n# You can use whatever you want as an alias, like for Mondays:\neval \"$(thefuck --alias FUCK)\"\n```\n\n[Or in your shell config (Bash, Zsh, Fish, Powershell, tcsh).](https://github.com/nvbn/thefuck/wiki/Shell-aliases)\n\nChanges will be available only in a new shell session.\nTo make them available immediately, run `source ~/.bashrc` (or your shell config file like `.zshrc`).\n\n\n## Update\n\n```bash\nsudo pip install thefuck --upgrade\n```\n\n**Aliases changed in 1.34.**\n\n## How it works\n\nThe Fuck tries to match a rule for the previous command, creates a new command\nusing the matched rule and runs it. Rules enabled by default are as follows:\n\n* `cargo` &ndash; runs `cargo build` instead of `cargo`;\n* `cargo_no_command` &ndash; fixes wrongs commands like `cargo buid`;\n* `cd_correction` &ndash; spellchecks and correct failed cd commands;\n* `cd_mkdir` &ndash; creates directories before cd'ing into them;\n* `cd_parent` &ndash; changes `cd..` to `cd ..`;\n* `composer_not_command` &ndash; fixes composer command name;\n* `cp_omitting_directory` &ndash; adds `-a` when you `cp` directory;\n* `cpp11` &ndash; adds missing `-std=c++11` to `g++` or `clang++`;\n* `dirty_untar` &ndash; fixes `tar x` command that untarred in the current directory;\n* `dirty_unzip` &ndash; fixes `unzip` command that unzipped in the current directory;\n* `django_south_ghost` &ndash; adds `--delete-ghost-migrations` to failed because ghosts django south migration;\n* `django_south_merge` &ndash; adds `--merge` to inconsistent django south migration;\n* `docker_not_command` &ndash; fixes wrong docker commands like `docker tags`;\n* `dry` &ndash; fixes repetitions like `git git push`;\n* `fix_alt_space` &ndash; replaces Alt+Space with Space character;\n* `fix_file` &ndash; opens a file with an error in your `$EDITOR`;\n* `git_add` &ndash; fixes *\"Did you forget to 'git add'?\"*;\n* `git_branch_delete` &ndash; changes `git branch -d` to `git branch -D`;\n* `git_branch_list` &ndash; catches `git branch list` in place of `git branch` and removes created branch;\n* `git_checkout` &ndash; fixes branch name or creates new branch;\n* `git_diff_staged` &ndash; adds `--staged` to previous `git diff` with unexpected output;\n* `git_fix_stash` &ndash; fixes `git stash` commands (misspelled subcommand and missing `save`);\n* `git_not_command` &ndash; fixes wrong git commands like `git brnch`;\n* `git_pull` &ndash; sets upstream before executing previous `git pull`;\n* `git_pull_clone` &ndash; clones instead of pulling when the repo does not exist;\n* `git_push` &ndash; adds `--set-upstream origin $branch` to previous failed `git push`;\n* `git_push_pull` &ndash; runs `git pull` when `push` was rejected;\n* `git_stash` &ndash; stashes you local modifications before rebasing or switching branch;\n* `git_two_dashes` &ndash; adds a missing dash to commands like `git commit -amend` or `git rebase -continue`;\n* `go_run` &ndash; appends `.go` extension when compiling/running Go programs\n* `grep_recursive` &ndash; adds `-r` when you trying to `grep` directory;\n* `gulp_not_task` &ndash; fixes misspelled `gulp` tasks;\n* `has_exists_script` &ndash; prepends `./` when script/binary exists;\n* `heroku_not_command` &ndash; fixes wrong `heroku` commands like `heroku log`;\n* `history` &ndash; tries to replace command with most similar command from history;\n* `java` &ndash; removes `.java` extension when running Java programs;\n* `javac` &ndash; appends missing `.java` when compiling Java files;\n* `lein_not_task` &ndash; fixes wrong `lein` tasks like `lein rpl`;\n* `ls_lah` &ndash; adds `-lah` to `ls`;\n* `man` &ndash; changes manual section;\n* `man_no_space` &ndash; fixes man commands without spaces, for example `mandiff`;\n* `mercurial` &ndash; fixes wrong `hg` commands;\n* `mkdir_p` &ndash; adds `-p` when you trying to create directory without parent;\n* `mvn_no_command` &ndash; adds `clean package` to `mvn`;\n* `mvn_unknown_lifecycle_phase` &ndash; fixes misspelled lifecycle phases with `mvn`;\n* `no_command` &ndash; fixes wrong console commands, for example `vom/vim`;\n* `no_such_file` &ndash; creates missing directories with `mv` and `cp` commands;\n* `open` &ndash; prepends `http` to address passed to `open`;\n* `pip_unknown_command` &ndash; fixes wrong `pip` commands, for example `pip instatl/pip install`;\n* `python_command` &ndash; prepends `python` when you trying to run not executable/without `./` python script;\n* `python_execute` &ndash; appends missing `.py` when executing Python files;\n* `quotation_marks` &ndash; fixes uneven usage of `'` and `\"` when containing args';\n* `rm_dir` &ndash; adds `-rf` when you trying to remove directory;\n* `sed_unterminated_s` &ndash; adds missing '/' to `sed`'s `s` commands;\n* `sl_ls` &ndash; changes `sl` to `ls`;\n* `ssh_known_hosts` &ndash; removes host from `known_hosts` on warning;\n* `sudo` &ndash; prepends `sudo` to previous command if it failed because of permissions;\n* `switch_lang` &ndash; switches command from your local layout to en;\n* `systemctl` &ndash; correctly orders parameters of confusing `systemctl`;\n* `test.py` &ndash; runs `py.test` instead of `test.py`;\n* `touch` &ndash; creates missing directories before \"touching\";\n* `tsuru_login` &ndash; runs `tsuru login` if not authenticated or session expired;\n* `tsuru_not_command` &ndash; fixes wrong `tsuru` commands like `tsuru shell`;\n* `tmux` &ndash; fixes `tmux` commands;\n* `unknown_command` &ndash; fixes hadoop hdfs-style \"unknown command\", for example adds missing '-' to the command on `hdfs dfs ls`;\n* `vagrant_up` &ndash; starts up the vagrant instance;\n* `whois` &ndash; fixes `whois` command.\n\nEnabled by default only on specific platforms:\n\n* `apt_get` &ndash; installs app from apt if it not installed (requires `python-commandnotfound` / `python3-commandnotfound`);\n* `apt_get_search` &ndash; changes trying to search using `apt-get` with searching using `apt-cache`;\n* `brew_install` &ndash; fixes formula name for `brew install`;\n* `brew_unknown_command` &ndash; fixes wrong brew commands, for example `brew docto/brew doctor`;\n* `brew_upgrade` &ndash; appends `--all` to `brew upgrade` as per Homebrew's new behaviour;\n* `pacman` &ndash; installs app with `pacman` if it is not installed (uses `yaourt` if available);\n* `pacman_not_found` &ndash; fixes package name with `pacman` or `yaourt`.\n\nBundled, but not enabled by default:\n\n* `git_push_force` &ndash; adds `--force-with-lease` to a `git push` (may conflict with `git_push_pull`);\n* `rm_root` &ndash; adds `--no-preserve-root` to `rm -rf /` command.\n\n## Creating your own rules\n\nFor adding your own rule you should create `your-rule-name.py`\nin `~/.config/thefuck/rules`. The rule should contain two functions:\n\n```python\nmatch(command: Command) -> bool\nget_new_command(command: Command) -> str | list[str]\n```\n\nAlso the rule can contain an optional function\n\n```python\nside_effect(old_command: Command, fixed_command: str) -> None\n```\nand optional `enabled_by_default`, `requires_output` and `priority` variables.\n\n`Command` has three attributes: `script`, `stdout` and `stderr`.\n\n*Rules api changed in 3.0:* For accessing settings in rule you need to import it with `from thefuck.conf import settings`.\n`settings` is a special object filled with `~/.config/thefuck/settings.py` and values from env ([see more below](#settings)).\n\nSimple example of the rule for running script with `sudo`:\n\n```python\ndef match(command):\n    return ('permission denied' in command.stderr.lower()\n            or 'EACCES' in command.stderr)\n\n\ndef get_new_command(command):\n    return 'sudo {}'.format(command.script)\n\n# Optional:\nenabled_by_default = True\n\ndef side_effect(command, fixed_command):\n    subprocess.call('chmod 777 .', shell=True)\n\npriority = 1000  # Lower first, default is 1000\n\nrequires_output = True\n```\n\n[More examples of rules](https://github.com/nvbn/thefuck/tree/master/thefuck/rules),\n[utility functions for rules](https://github.com/nvbn/thefuck/tree/master/thefuck/utils.py),\n[app/os-specific helpers](https://github.com/nvbn/thefuck/tree/master/thefuck/specific/).\n\n## Settings\n\nThe Fuck has a few settings parameters which can be changed in `$XDG_CONFIG_HOME/thefuck/settings.py` (`$XDG_CONFIG_HOME` defaults to `~/.config`):\n\n* `rules` &ndash; list of enabled rules, by default `thefuck.conf.DEFAULT_RULES`;\n* `exclude_rules` &ndash; list of disabled rules, by default `[]`;\n* `require_confirmation` &ndash; requires confirmation before running new command, by default `True`;\n* `wait_command` &ndash; max amount of time in seconds for getting previous command output;\n* `no_colors` &ndash; disable colored output;\n* `priority` &ndash; dict with rules priorities, rule with lower `priority` will be matched first;\n* `debug` &ndash; enables debug output, by default `False`.\n\nExample of `settings.py`:\n\n```python\nrules = ['sudo', 'no_command']\nexclude_rules = ['git_push']\nrequire_confirmation = True\nwait_command = 10\nno_colors = False\npriority = {'sudo': 100, 'no_command': 9999}\ndebug = False\n```\n\nOr via environment variables:\n\n* `THEFUCK_RULES` &ndash; list of enabled rules, like `DEFAULT_RULES:rm_root` or `sudo:no_command`;\n* `THEFUCK_EXCLUDE_RULES` &ndash; list of disabled rules, like `git_pull:git_push`; \n* `THEFUCK_REQUIRE_CONFIRMATION` &ndash; require confirmation before running new command, `true/false`;\n* `THEFUCK_WAIT_COMMAND` &ndash; max amount of time in seconds for getting previous command output;\n* `THEFUCK_NO_COLORS` &ndash; disable colored output, `true/false`;\n* `THEFUCK_PRIORITY` &ndash; priority of the rules, like `no_command=9999:apt_get=100`,\nrule with lower `priority` will be matched first;\n* `THEFUCK_DEBUG` &ndash; enables debug output, `true/false`.\n\nFor example:\n\n```bash\nexport THEFUCK_RULES='sudo:no_command'\nexport THEFUCK_EXCLUDE_RULES='git_pull:git_push'\nexport THEFUCK_REQUIRE_CONFIRMATION='true'\nexport THEFUCK_WAIT_COMMAND=10\nexport THEFUCK_NO_COLORS='false'\nexport THEFUCK_PRIORITY='no_command=9999:apt_get=100'\n```\n\n## Developing\n\nInstall `The Fuck` for development:\n\n```bash\npip install -r requirements.txt\npython setup.py develop\n```\n\nRun unit tests:\n\n```bash\npy.test\n```\n\nRun unit and functional tests (requires docker):\n\n```bash\npy.test --enable-functional\n```\n\nFor sending package to pypi:\n\n```bash\nsudo apt-get install pandoc\n./release.py\n```\n\n## License MIT\nProject License can be found [here](LICENSE.md).\n",
+      "summary": "Magnificent app which corrects your previous console command, inspired by a [@liamosaur](https://twitter.com/liamosaur/) [tweet](https://twitter.com/liamosaur/status/506975850596536320).",
+      "line_count": 348,
+      "word_count": 1708,
+      "last_modified": "2023-01-18T20:20:48.792831"
+    }
+  ],
+  "file_structure": {
+    "total_files": 199,
+    "total_size": 982815,
+    "file_types": {
+      ".md": 3,
+      ".gif": 1,
+      ".ini": 1,
+      ".sh": 1,
+      ".cfg": 1,
+      ".py": 190,
+      ".in": 1,
+      ".txt": 1
+    },
+    "languages": {
+      "Shell": 1,
+      "Python": 190
+    },
+    "directories": [
+      "thefuck",
+      "tests",
+      "thefuck/specific",
+      "thefuck/rules",
+      "tests/functional",
+      "tests/specific",
+      "tests/rules"
+    ],
+    "largest_files": [
+      [
+        "example.gif",
+        721319
+      ],
+      [
+        "README.md",
+        13133
+      ],
+      [
+        "thefuck/shells.py",
+        9616
+      ],
+      [
+        "thefuck/types.py",
+        9001
+      ],
+      [
+        "tests/test_shells.py",
+        8078
+      ],
+      [
+        "thefuck/utils.py",
+        7230
+      ],
+      [
+        "tests/test_utils.py",
+        6997
+      ],
+      [
+        "tests/rules/test_fix_file.py",
+        6485
+      ],
+      [
+        "tests/rules/test_docker_not_command.py",
+        6175
+      ],
+      [
+        "tests/test_types.py",
+        5312
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "fe91008a9c4e5a454d5fa1d38359aad4d96913de",
+      "author_name": "Vladimir Iakovlev",
+      "author_email": "nvbn.rm@gmail.com",
+      "date": "Fri Nov 6 02:19:07 2015 +0800",
+      "message": "Merge pull request #400 from alessio/fix-memoize"
+    },
+    "remote_url": "https://github.com/bkocis/thefuck.git"
+  },
+  "content_hash": "63e5f526fcb5fdf22af338e19bc8a5d2"
+}

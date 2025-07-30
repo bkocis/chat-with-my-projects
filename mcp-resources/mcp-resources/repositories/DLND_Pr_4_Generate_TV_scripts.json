@@ -1,0 +1,100 @@
+{
+  "repository_name": "DLND_Pr_4_Generate_TV_scripts",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DLND_Pr_4_Generate_TV_scripts",
+  "analysis_timestamp": "2025-07-30T23:57:34.965004",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DLND_Pr_4_Generate_TV_scripts/README.md",
+      "size": 140,
+      "content": "# DLND_Pr_4_Generate_TV_scripts\nImplementation of LSTMs on the example of generating text for tv shows based on a body of Seinfield scripts\n",
+      "summary": "Implementation of LSTMs on the example of generating text for tv shows based on a body of Seinfield scripts",
+      "line_count": 2,
+      "word_count": 21,
+      "last_modified": "2023-01-18T20:17:49.531083"
+    }
+  ],
+  "file_structure": {
+    "total_files": 13,
+    "total_size": 195565111,
+    "file_types": {
+      ".py": 4,
+      ".pt": 3,
+      ".p": 1,
+      ".ipynb": 1,
+      ".md": 1,
+      ".html": 1,
+      ".txt": 2
+    },
+    "languages": {
+      "Python": 4,
+      "HTML": 1
+    },
+    "directories": [
+      "data"
+    ],
+    "largest_files": [
+      [
+        "trained_rnn_regularization.pt",
+        63000007
+      ],
+      [
+        "trained_rnn.pt",
+        62994895
+      ],
+      [
+        "trained_rnn_#4.pt",
+        62994775
+      ],
+      [
+        "data/Seinfeld_Scripts.txt",
+        3471475
+      ],
+      [
+        "preprocess.p",
+        2563651
+      ],
+      [
+        "dlnd_tv_script_generation.html",
+        408035
+      ],
+      [
+        "dlnd_tv_script_generation.ipynb",
+        90540
+      ],
+      [
+        "RNN_tv_script_as_in_the_notebook_validation.py",
+        16094
+      ],
+      [
+        "RNN_tv_script_as_in_the_notebook_dropout.py",
+        13180
+      ],
+      [
+        "problem_unittests.py",
+        9571
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "a477487deb24f92c76e789d7dfdbbe8534f9e75a",
+      "author_name": "tusk",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Mon May 20 07:24:42 2019 +0200",
+      "message": "ready to submit"
+    },
+    "remote_url": "https://github.com/bkocis/DLND_Pr_4_Generate_TV_scripts.git"
+  },
+  "content_hash": "12bc5c2ed89822d81a58d1152979dad1"
+}

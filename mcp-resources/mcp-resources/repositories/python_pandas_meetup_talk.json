@@ -1,0 +1,113 @@
+{
+  "repository_name": "python_pandas_meetup_talk",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/python_pandas_meetup_talk",
+  "analysis_timestamp": "2025-07-30T23:57:35.136385",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/python_pandas_meetup_talk/README.md",
+      "size": 186,
+      "content": "#Ipython notebooks about python pandas* \n\n*General introduction of the package with various test-data.*\n\n*It also contains specific example related to personal scientific research.*\n\n\n\n\n",
+      "summary": "*General introduction of the package with various test-data.* *It also contains specific example related to personal scientific research.*",
+      "line_count": 5,
+      "word_count": 23,
+      "last_modified": "2023-01-18T20:20:42.496770"
+    },
+    {
+      "path": "data/movies/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/python_pandas_meetup_talk/data/movies/README",
+      "size": 5189,
+      "content": "SUMMARY\n================================================================================\n\nThese files contain 1,000,209 anonymous ratings of approximately 3,900 movies \nmade by 6,040 MovieLens users who joined MovieLens in 2000.\n\nUSAGE LICENSE\n================================================================================\n\nNeither the University of Minnesota nor any of the researchers\ninvolved can guarantee the correctness of the data, its suitability\nfor any particular purpose, or the validity of results based on the\nuse of the data set.  The data set may be used for any research\npurposes under the following conditions:\n\n     * The user may not state or imply any endorsement from the\n       University of Minnesota or the GroupLens Research Group.\n\n     * The user must acknowledge the use of the data set in\n       publications resulting from the use of the data set, and must\n       send us an electronic or paper copy of those publications.\n\n     * The user may not redistribute the data without separate\n       permission.\n\n     * The user may not use this information for any commercial or\n       revenue-bearing purposes without first obtaining permission\n       from a faculty member of the GroupLens Research Project at the\n       University of Minnesota.\n\nIf you have any further questions or comments, please contact Sean McNee\n<mcnee@cs.umn.edu>. \n\nACKNOWLEDGEMENTS\n================================================================================\n\nThanks to Shyong Lam and Jon Herlocker for cleaning up and generating the data\nset.\n\nFURTHER INFORMATION ABOUT THE GROUPLENS RESEARCH PROJECT\n================================================================================\n\nThe GroupLens Research Project is a research group in the Department of \nComputer Science and Engineering at the University of Minnesota. Members of \nthe GroupLens Research Project are involved in many research projects related \nto the fields of information filtering, collaborative filtering, and \nrecommender systems. The project is lead by professors John Riedl and Joseph \nKonstan. The project began to explore automated collaborative filtering in \n1992, but is most well known for its world wide trial of an automated \ncollaborative filtering system for Usenet news in 1996. Since then the project \nhas expanded its scope to research overall information filtering solutions, \nintegrating in content-based methods as well as improving current collaborative \nfiltering technology.\n\nFurther information on the GroupLens Research project, including research \npublications, can be found at the following web site:\n        \n        http://www.grouplens.org/\n\nGroupLens Research currently operates a movie recommender based on \ncollaborative filtering:\n\n        http://www.movielens.org/\n\nRATINGS FILE DESCRIPTION\n================================================================================\n\nAll ratings are contained in the file \"ratings.dat\" and are in the\nfollowing format:\n\nUserID::MovieID::Rating::Timestamp\n\n- UserIDs range between 1 and 6040 \n- MovieIDs range between 1 and 3952\n- Ratings are made on a 5-star scale (whole-star ratings only)\n- Timestamp is represented in seconds since the epoch as returned by time(2)\n- Each user has at least 20 ratings\n\nUSERS FILE DESCRIPTION\n================================================================================\n\nUser information is in the file \"users.dat\" and is in the following\nformat:\n\nUserID::Gender::Age::Occupation::Zip-code\n\nAll demographic information is provided voluntarily by the users and is\nnot checked for accuracy.  Only users who have provided some demographic\ninformation are included in this data set.\n\n- Gender is denoted by a \"M\" for male and \"F\" for female\n- Age is chosen from the following ranges:\n\n\t*  1:  \"Under 18\"\n\t* 18:  \"18-24\"\n\t* 25:  \"25-34\"\n\t* 35:  \"35-44\"\n\t* 45:  \"45-49\"\n\t* 50:  \"50-55\"\n\t* 56:  \"56+\"\n\n- Occupation is chosen from the following choices:\n\n\t*  0:  \"other\" or not specified\n\t*  1:  \"academic/educator\"\n\t*  2:  \"artist\"\n\t*  3:  \"clerical/admin\"\n\t*  4:  \"college/grad student\"\n\t*  5:  \"customer service\"\n\t*  6:  \"doctor/health care\"\n\t*  7:  \"executive/managerial\"\n\t*  8:  \"farmer\"\n\t*  9:  \"homemaker\"\n\t* 10:  \"K-12 student\"\n\t* 11:  \"lawyer\"\n\t* 12:  \"programmer\"\n\t* 13:  \"retired\"\n\t* 14:  \"sales/marketing\"\n\t* 15:  \"scientist\"\n\t* 16:  \"self-employed\"\n\t* 17:  \"technician/engineer\"\n\t* 18:  \"tradesman/craftsman\"\n\t* 19:  \"unemployed\"\n\t* 20:  \"writer\"\n\nMOVIES FILE DESCRIPTION\n================================================================================\n\nMovie information is in the file \"movies.dat\" and is in the following\nformat:\n\nMovieID::Title::Genres\n\n- Titles are identical to titles provided by the IMDB (including\nyear of release)\n- Genres are pipe-separated and are selected from the following genres:\n\n\t* Action\n\t* Adventure\n\t* Animation\n\t* Children's\n\t* Comedy\n\t* Crime\n\t* Documentary\n\t* Drama\n\t* Fantasy\n\t* Film-Noir\n\t* Horror\n\t* Musical\n\t* Mystery\n\t* Romance\n\t* Sci-Fi\n\t* Thriller\n\t* War\n\t* Western\n\n- Some MovieIDs do not correspond to a movie due to accidental duplicate\nentries and/or test entries\n- Movies are mostly entered by hand, so errors and inconsistencies may exist\n",
+      "summary": "SUMMARY ================================================================================ These files contain 1,000,209 anonymous ratings of approximately 3,900 movies",
+      "line_count": 159,
+      "word_count": 696,
+      "last_modified": "2023-01-18T20:20:42.672771"
+    }
+  ],
+  "file_structure": {
+    "total_files": 172,
+    "total_size": 189624739,
+    "file_types": {
+      ".ipynb": 8,
+      ".md": 1,
+      ".json": 1,
+      ".yml": 1,
+      ".csv": 11,
+      ".txt": 134,
+      ".xls": 1,
+      ".dat": 3,
+      "": 1,
+      ".png": 11
+    },
+    "languages": {},
+    "directories": [
+      "data",
+      "img",
+      "data/names",
+      "data/movies"
+    ],
+    "largest_files": [
+      [
+        "data/exp_sub.csv",
+        46882469
+      ],
+      [
+        "foods-2011-10-03.json",
+        31814355
+      ],
+      [
+        "data/den-2008.csv",
+        28556324
+      ],
+      [
+        "data/twitter_stream.txt",
+        26360332
+      ],
+      [
+        "data/movies/ratings.dat",
+        24594131
+      ],
+      [
+        "data/outcome-of-care-measures.csv",
+        3158604
+      ],
+      [
+        "08_plotting_distributions_more_Seaborn.ipynb",
+        1143144
+      ],
+      [
+        "04_Parameter_correlations.ipynb",
+        1100568
+      ],
+      [
+        "img/diffractogram6.png",
+        671609
+      ],
+      [
+        "img/diffractogram5.png",
+        589972
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "0e9637faeb094fb9d8f8e94d4454d6ef6b9b7d39",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Thu Jul 6 12:27:10 2017 +0200",
+      "message": "Set theme jekyll-theme-minimal"
+    },
+    "remote_url": "https://github.com/bkocis/python_pandas_meetup_talk.git"
+  },
+  "content_hash": "ac2f721405c1619f10ff97efa233f04b"
+}

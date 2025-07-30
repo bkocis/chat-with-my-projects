@@ -1,0 +1,119 @@
+{
+  "repository_name": "lane-tracking",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/lane-tracking",
+  "analysis_timestamp": "2025-07-30T23:57:35.066715",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/lane-tracking/README.md",
+      "size": 16,
+      "content": "# lane-tracking\n",
+      "summary": "",
+      "line_count": 1,
+      "word_count": 2,
+      "last_modified": "2023-01-18T20:14:56.961400"
+    },
+    {
+      "path": "advanced-lane-line-tracking/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/lane-tracking/advanced-lane-line-tracking/README.md",
+      "size": 7000,
+      "content": "# Advanced Lane Finding\n[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)\n\n---\n\nThe steps of this project were the following:\n\n* Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.\n* Apply a distortion correction to raw images.\n* Use color transforms, gradients, etc., to create a thresholded binary image.\n* Apply a perspective transform to rectify a binary image to \"birds-eye view\".\n* Detect lane pixels and fit to find the lane boundary.\n* Determine the curvature of the lane and vehicle position with respect to center.\n* Warp the detected lane boundaries back onto the original image.\n* Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.\n\n---\n\nAll code discussed in this writeup can be found in the Advanced-Lane-Line-Tracking notebook in this repository.\n\n## Camera Calibration\n\nUsing OpenCV, I used images of a chessboard to create a calibration matrix that could be used to remove distortion from all future images taken with the camera.\n\nUsing `cv2.findChessboardCorners`, I found all corners in a 9x6 chessboard. Then, I passed the corners into `cv2.calibrateCamera()` which returns a matrix that can be used in the future with the `cv2.undistort()` method.\n\nHere is an example of a raw image from the camera compared to after undistortion.\n\n![distortion]\n\n## Pipeline\n\n### Gradients\n\nIn order to detect high gradient areas of the image (e.g. white or yellow lane lines against pavement), I used the `cv2.Sobel()` method to calculate image derivatives using an extended Sobel operator.\n\nI used the Sobel method in three different ways:\n\nFirstly, to take a directional gradient in either the horizontal or vertical direction. As lane lines are often diagonal from the driver's perspective, these two gradients could be combined to find areas of the image above a certain gradient threshold.\n\nSecondly, to take a magnitude of both directional gradients by squaring both the x and y directions, and then taking the square root of the sum. This provided an additional data point that could be combined with the previous directional gradient.\n\nLastly, to take a directional gradient and filter based on the angle using the `arctan2()` method. As previously mentioned, lane lines are usually somewhat diagonal. As such, lines that are perfectly horizontal or perfectly vertical can usually be safely discarded.\n\nUsing a boolean combination of these three operators, I was able to create a relatively clean binary image isolating the lane lines in the image.\n\n![gradient]\n\n### Color Thresholding\n\nUsing HSL and HSV color space, I was able to effectively filter out low saturation and low value pixels, resulting in a binary image with lane lines largely isolated. As you can see, the sky was often also detected, but this was easily cropped out.\n\n![color]\n\n### Gradients + Color Thresholding\n\nI designed both the gradient and the color thresholding methods to be slightly too harsh on their own. I decided that both of them missing parts of the lane line occasionally was better than false positives.\n\nOnce they were both finished, I combined the outputs with a boolean 'OR' operation, such that they could complement each others blind spots (under the assumption that they did not share blind spots, which I found to be relatively accurate).\n\n### Perspective Transform\n\nUsing the `cv2.getPerspectiveTransform()` method, I created a bird's eye perspective binary image of the road. This allowed for easier detection of lane lines.\n\nA perspective transform shifts works by taking in two sets of four points: a source and a destination. It then \"drags\" the four source points to the four destination points, modifying the image content as it goes. For example, consider the following image and note the blue (source) and red (destination) points:\n\n![perspective]\n\nTo perform a perspective transform, the image will take the four blue points and warp the image as needed to move them to the red points. In this specific instance, this will create a bird's eye view -- although it could be used to a wide variety of interesting applications.\n\n### Lane Line Identification\n\nOnce I had generated a binary bird's eye view image with the lane lines relatively isolated, the next step was to simplify the pixel data to two polynomials, one for each lane line. First, I identified the \"hottest\" (most active pixels in the binary image) area in the bottom left and bottom right quarters of the image. This gave me a good starting point for the search for lane lines. Once this was identified, I used a sliding window approach to continually find the most active area above the already established region, and continue on until I reached the top of the image. This gave me a set of rectangles:\n\n![rect]\n\nOnce these rectangles were established, I could use the pixels inside of them to fit two polynomials to, using the very convenient `np.polyfit()` method. In the video, these two polynomials are displayed at all times in the top right of the video, showing the viewer the current simulated bird's eye view.\n\n### Radius of Curvature\n\nWith the polynomial created, I used the radius equation: R = (1+(2Ay+B)^2)^(3/2) / abs(2A), where A and B are coefficients of the second order polynomial. As the curvature values may vary slightly between the two lane lines due to inaccuracies in the processing pipeline, I took the average between the two. Certain improvements exist here, such as taking the average of the past 10-20 readings to avoid jumping around excessively.\n\n### Final Result\n\nAfter identifying the lane lines, plotting them, and calculating the radius of curvature, I then reverted the perspective transform and applied an overlay showing the lane, as well as the current lane curvature and vehicle position.\n\n![final]\n\n---\n\n### Pipeline (video)\n\nHere's a [link to my video result](https://youtu.be/Zu2TPCp8AwU)!\n\n---\n\n### Discussion\n\nThere are several future areas of development for a system of this nature. Firstly, the perspective transform is computed using hard coded source and destination points. This works well when the road is relatively flat. However, with steep or twisty roads this would not work. A better approach would be to dynamically find the beginning and end of the lane lines in each frame, and then compute the perspective transform based using those points.\n\nSecondly, the gradient and color based features are susceptible to failure in snow, rain, shade, unmarked roads, and more. Perhaps a better approach would be to leverage deep learning techniques.\n\n[distortion]: ./output_images/camera-calibration.png \"Undistorted\"\n[color]: ./output_images/color-space.png \"Color Space\"\n[gradient]: ./output_images/gradient.png \"Gradient\"\n[perspective]: ./output_images/perspective.png \"Perspective\"\n[rect]: ./output_images/rect.png \"Rectangles\"\n[final]: ./output_images/final.png \"Final\"\n",
+      "summary": "[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive) --- The steps of this project were the following:",
+      "line_count": 108,
+      "word_count": 1083,
+      "last_modified": "2023-01-18T20:14:56.973400"
+    }
+  ],
+  "file_structure": {
+    "total_files": 166,
+    "total_size": 197866842,
+    "file_types": {
+      ".md": 2,
+      ".py": 11,
+      ".jpg": 111,
+      ".png": 13,
+      ".mp4": 27,
+      ".ipynb": 1,
+      "": 1
+    },
+    "languages": {
+      "Python": 11
+    },
+    "directories": [
+      "utilities",
+      "simple-lane-line-tracking",
+      "advanced-lane-line-tracking",
+      "advanced-lane-line-tracking/camera_calibration_1920-1080",
+      "advanced-lane-line-tracking/camera_calibration_scale",
+      "advanced-lane-line-tracking/output_images",
+      "advanced-lane-line-tracking/CarND-Advanced-Lane-Lines",
+      "advanced-lane-line-tracking/camera_calibration_scale-512-288",
+      "advanced-lane-line-tracking/test_images",
+      "advanced-lane-line-tracking/camera_calibration_640-480",
+      "advanced-lane-line-tracking/camera_calibration"
+    ],
+    "largest_files": [
+      [
+        "advanced-lane-line-tracking/project_video.mp4",
+        25268015
+      ],
+      [
+        "advanced-lane-line-tracking/harder_challenge_video.mp4",
+        24206640
+      ],
+      [
+        "advanced-lane-line-tracking/bird.mp4",
+        23171977
+      ],
+      [
+        "advanced-lane-line-tracking/_Open_Highway_Long_Road_Winter.mp4",
+        16907070
+      ],
+      [
+        "advanced-lane-line-tracking/berga_road_dji4k06_preview.mp4",
+        11147486
+      ],
+      [
+        "advanced-lane-line-tracking/challenge_video.mp4",
+        8137129
+      ],
+      [
+        "simple-lane-line-tracking/output_simple_line_edge_2.mp4",
+        5777907
+      ],
+      [
+        "advanced-lane-line-tracking/output_simple_line_edge_2.mp4",
+        5777907
+      ],
+      [
+        "simple-lane-line-tracking/output_simple_line_raw_2.mp4",
+        5568263
+      ],
+      [
+        "advanced-lane-line-tracking/output_simple_line_raw_2.mp4",
+        5568263
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "2d9749c51b79eb5e5cd1a66456b5fc9ded2b7be1",
+      "author_name": "bkocis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Thu Oct 31 14:20:15 2019 +0100",
+      "message": "serial connection buffer fush is obligatory"
+    },
+    "remote_url": "https://github.com/bkocis/lane-tracking.git"
+  },
+  "content_hash": "eeb03ecb82088f88da93f4cb1af5f989"
+}

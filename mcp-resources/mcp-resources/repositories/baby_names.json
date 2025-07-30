@@ -1,0 +1,53 @@
+{
+  "repository_name": "baby_names",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/baby_names",
+  "analysis_timestamp": "2025-07-30T23:57:35.740373",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/baby_names/README.md",
+      "size": 49,
+      "content": "An alternative way to search names for your baby\n",
+      "summary": "An alternative way to search names for your baby",
+      "line_count": 1,
+      "word_count": 9,
+      "last_modified": "2023-01-18T20:18:07.375257"
+    }
+  ],
+  "file_structure": {
+    "total_files": 1,
+    "total_size": 49,
+    "file_types": {
+      ".md": 1
+    },
+    "languages": {},
+    "directories": [],
+    "largest_files": [
+      [
+        "README.md",
+        49
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "651d06f46bea199d8e7ca1cb9a3bf5ebe5dc73e0",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Tue May 7 23:59:50 2019 +0200",
+      "message": "Create README.md"
+    },
+    "remote_url": "https://github.com/bkocis/baby_names.git"
+  },
+  "content_hash": "b9797744ceae547c7f7b92aeb3a00044"
+}

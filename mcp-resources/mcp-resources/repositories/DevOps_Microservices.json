@@ -1,0 +1,189 @@
+{
+  "repository_name": "DevOps_Microservices",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DevOps_Microservices",
+  "analysis_timestamp": "2025-07-30T23:57:35.233840",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DevOps_Microservices/README.md",
+      "size": 6857,
+      "content": "## Cloud DevOps ND - C4- Microservices at Scale using AWS & Kubernetes - Supporting Material and Project Starter\n\nThis repository is associated with Cloud DevOps ND - Course 04 - Microservices at Scale using AWS & Kubernetes. In here, you'll find:\n1. Supporting material used in the video demonstration in the course \n1. Starting code for a project, in which you can containerize and deploy a machine learning srevice using Kubernetes.\n\n---\n\n### A. Dependencies\n#### A.1. Python\n[Download and install the python](https://www.python.org/downloads/). \n\n#### A.2. Docker Desktop\nYou would require you to install Docker Desktop to create containers for individual microservices. Refer the following links for instructions \n* [macOS](https://docs.docker.com/docker-for-mac/install/), \n* [Windows 10 64-bit: Pro, Enterprise, or Education](https://docs.docker.com/docker-for-windows/install/), \n* [Windows  10 64-bit Home](https://docs.docker.com/toolbox/toolbox_install_windows/). \n* You can find installation instructions for other operating systems at:  https://docs.docker.com/install/\n\n#### A.3. Kubernetes \nYou would need to install any one tool for creating a Kubernetes cluster - KubeOne / Minikube / kubectl on top of Docker Desktop:\n1. [Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) directly on top of Docker desktop - For Windows/macOS\n2. [Install Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) - For Linux/macOS\n\n#### A.4. AWS account to access AWS Lambda\nYou'll need an [AWS account](https://aws.amazon.com/free/?all-free-tier.&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc) to get started with [AWS Lambda](https://aws.amazon.com/lambda/), which is a serverless computing platform on cloud.  \n\n#### A.5. An account with Circle CI\nYou may sign up on [CircleCI.com](https://circleci.com/signup/) with your GitHub credentials. \n\n---\n\n### B. The Overarching Diagram\n\n![Overview](https://camo.githubusercontent.com/bb29cd924f9eb66730bbf7b0ed069a6ae03d2f1a/68747470733a2f2f757365722d696d616765732e67697468756275736572636f6e74656e742e636f6d2f35383739322f35353335343438332d62616537616638302d353437612d313165392d393930392d6135363231323531303635622e706e67)\n\n---\n\n### C. Tutorials\n\n#### C.1. AWS Lambda & Serverless\n\n* [Making Change](https://github.com/udacity/DevOps_Microservices/tree/master/lambda-functions/make-change-tutorial): Create and deploy a serverless lambda function that responds to an input request; this example creates the correct amount of change to make up a value in US dollars.\n* [Wikipedia Query](https://github.com/udacity/DevOps_Microservices/tree/master/lambda-functions/wikipedia-query): Deploy a lambda function that responds to an input, wikipedia page query; this example returns the first sentence of a specific wikipedia page upon being queried.\n\n\n### D. Project Instructions\n\n* [Operationalize a Machine Learning Microservice API](https://github.com/udacity/DevOps_Microservices/tree/master/project-ml-microservice-kubernetes): Deploy a containerized, machine learning application using Kubernetes.\n\nTo run any project code, you'll have to set up a virtual environment with the project dependencies. All of the following instructions are to be completed via a terminal/command line prompt. \n\n### E. Create and Activate an Environment\n\n#### E.1. Git and version control\nThese instructions also assume you have `git` installed for working with Github from a terminal window, but if you do not, you can download that first from this [Github installation page](https://www.atlassian.com/git/tutorials/install-git).\n\n**Now, you're ready to create your local environment!**\n\n1. If you haven't already done so, clone the project repository, and navigate to the main project folder. \n```bash\ngit clone https://github.com/udacity/DevOps_Microservices.git\ncd DevOps_Microservices/project-ml-microservice-kubernetes\n```\n\n2. Create (and activate) a new environment, named `.devops` with Python 3. If prompted to proceed with the install `(Proceed [y]/n)` type y.\n```bash\npython3 -m venv ~/.devops\nsource ~/.devops/bin/activate\n```\n\nAt this point your command line should look something like: `(.devops) <User>:project-ml-microservice-kubernetes<user>$`. The `(.devops)` indicates that your environment has been activated, and you can proceed with further package installations.\n\n3. Installing dependencies via project `Makefile`. Many of the project dependencies are listed in the file `requirements.txt`; these can be installed using `pip` commands in the provided `Makefile`. While in your project directory, type the following command to install these dependencies.\n```bash\nmake install\n```\n\nNow most of the `.devops` libraries are available to you. There are a couple of other libraries that we'll be using, which can be downloaded as specified, below. \n\n---\n\n#### E.2. Other Libraries\n\nWhile you still have your `.devops` environment activated, you will still need to install:\n* Docker\n* Hadolint\n* Kubernetes ([Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) if you want to run Kubernetes locally)\n\n#### E.3. Docker\n\nYou will need to use Docker to build and upload a containerized application. If you already have this installed and created a docker account, you may skip this step.\n\n1. You’ll need to [create a free docker account](https://hub.docker.com/signup), where you’ll choose a unique username and link your email to a docker account. **Your username is your unique docker ID.**\n\n2. To install the latest version of docker, choose the Community Edition (CE) for your operating system, [on docker’s installation site](https://docs.docker.com/v17.12/install/). It is also recommended that you install the latest, **stable** release:\n\n3. After installation, you can verify that you’ve successfully installed docker by printing its version in your terminal: `docker --version`\n\n#### E.4. Run Lint Checks\n\nThis project also must pass two lint checks; `hadolint` checks the Dockerfile for errors and `pylint` checks the `app.py` source code for errors.\n\n1. Install `hadolint` following the instructions, [on hadolint's page]( https://github.com/hadolint/hadolint): \n\n**For Mac:**\n```bash\nbrew install hadolint\n```\n**For Windows:**\n```bash\nscoop install hadolint\n```\n2. In your terminal, type: `make lint` to run lint checks on the project code. If you haven’t changed any code, all requirements should be satisfied, and you should see a printed statement that rates your code (and prints out any additional comments):\n\n```bash\n------------------------------------\nYour code has been rated at 10.00/10\n```\n\nThat's about it! When working with kubernetes, you may need to install some other libraries, but these instructions will set you up with an environment that can build and deploy Docker containers.\n\n",
+      "summary": "This repository is associated with Cloud DevOps ND - Course 04 - Microservices at Scale using AWS & Kubernetes. In here, you'll find: 1. Supporting material used in the video demonstration in the course 1. Starting code for a project, in which you can containerize and deploy a machine learning srevice using Kubernetes.",
+      "line_count": 121,
+      "word_count": 849,
+      "last_modified": "2023-01-18T20:13:41.668667"
+    },
+    {
+      "path": "Lesson-2-Docker-format-containers/class-demos/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DevOps_Microservices/Lesson-2-Docker-format-containers/class-demos/README.md",
+      "size": 622,
+      "content": "[![CircleCI](https://circleci.com/gh/noahgift/udacity-devops-microservices.svg?style=svg&circle-token=644aca8c4c94ca89efb97a97d78a4025468b67cc)](https://circleci.com/gh/noahgift/udacity-devops-microservices)\n\n# udacity-devops-microservices\n\nUdacity devops course on microservices\n\n## Proposed Kubernetes Example Steps\n\n* Setup and Configure Docker locally\n* Setup and Configure Kubernetes locally\n* Create Flask scikit-learn app in Container\n* Run via kubectl\n* Configure cluster and Deploy\n* Loadtest and verify auto-scale\n\n## Boston Housing Dataset Pickled model Colab\n\nhttps://github.com/noahgift/boston_housing_pickle\n",
+      "summary": "[![CircleCI](https://circleci.com/gh/noahgift/udacity-devops-microservices.svg?style=svg&circle-token=644aca8c4c94ca89efb97a97d78a4025468b67cc)](https://circleci.com/gh/noahgift/udacity-devops-microservices) Udacity devops course on microservices * Setup and Configure Docker locally",
+      "line_count": 18,
+      "word_count": 54,
+      "last_modified": "2023-01-18T20:13:41.664667"
+    },
+    {
+      "path": "Lesson-2-Docker-format-containers/class-demos/demos/flask-sklearn-student-starter/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DevOps_Microservices/Lesson-2-Docker-format-containers/class-demos/demos/flask-sklearn-student-starter/README.md",
+      "size": 382,
+      "content": "## Install\n\n* Create a virtualenv and source\n* run `make install`\n\n### Running app\n\n#### Three modes:\n\n1. Standalone:  `python app.py`\n2. Run in Docker:  `./run_docker.sh`\n3. Run in Kubernetes:  `./run_kubernetes.sh`\n\n### Kubernetes \n\n#### Local Deploy and Testing\n\n\n#### AWS Deploy Options\n\n1. EKS\n2. Fargate (TBD...not ready yet)\n\n### Reference\n\n* https://aws.amazon.com/eks/faqs/",
+      "summary": "* Create a virtualenv and source * run `make install` 1. Standalone:  `python app.py`",
+      "line_count": 26,
+      "word_count": 54,
+      "last_modified": "2023-01-18T20:13:41.664667"
+    },
+    {
+      "path": "Lesson-2-Docker-format-containers/myrepo/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DevOps_Microservices/Lesson-2-Docker-format-containers/myrepo/README.md",
+      "size": 837,
+      "content": "# myrepo\n[![CircleCI](https://circleci.com/gh/noahgift/myrepo.svg?style=svg)](https://circleci.com/gh/noahgift/myrepo)\n\nThis is an example repo of a how to create a Data Science focused Python project.\nThere is a screencast on this project setup here:\n\n[![Data Science Build Project](http://img.youtube.com/vi/xYX7n5bZw-w/0.jpg)](http://www.youtube.com/watch?v=xYX7n5bZw-w)\n\nA few things to do with this project:\n\n* install software: ```make install```\n* test code: ```make test```\n* lint code: ```make lint```\n* run commandline tool:  \n\n```bash\n./cli.py --name john \njohn-apple\n```\n\n* run jupyter notebook:\n\n```\njupyter notebook notebook.ipynb\n```\n\n* test jupyter notebook:\n\n```\npython -m pytest --nbval notebook.ipynb\n```\n\n## Further Information on this topic can be found here:  https://github.com/noahgift/functional_intro_to_python\n",
+      "summary": "[![CircleCI](https://circleci.com/gh/noahgift/myrepo.svg?style=svg)](https://circleci.com/gh/noahgift/myrepo) This is an example repo of a how to create a Data Science focused Python project. There is a screencast on this project setup here:",
+      "line_count": 33,
+      "word_count": 96,
+      "last_modified": "2023-01-18T20:13:41.668667"
+    },
+    {
+      "path": "Lesson-1-Lambda-functions/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DevOps_Microservices/Lesson-1-Lambda-functions/README.md",
+      "size": 215,
+      "content": "These tutorials assume you are operating within an AWS [Cloud9 environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/tutorial-lambda.html), which allows you to easily create and deploy lambda functions.\n",
+      "summary": "These tutorials assume you are operating within an AWS [Cloud9 environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/tutorial-lambda.html), which allows you to easily create and deploy lambda functions.",
+      "line_count": 1,
+      "word_count": 21,
+      "last_modified": "2023-01-18T20:13:41.664667"
+    },
+    {
+      "path": "Lesson-3-Containerization/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DevOps_Microservices/Lesson-3-Containerization/README.md",
+      "size": 9317,
+      "content": "# Data Engineering API Example\n\nAn example project that shows how to create a Data Engineering API around Flask and Pandas:\n\nData teams often need to build libraries and services to make it easier to work with data on the platform.  In this example there is a need to create a Proof of Concept aggregation of csv data.  A REST API that accepts a csv, a column to group on, and a column to aggregate and returns the result.\n\nNote,this project is a Chapter in the book Pragmatic AI, the entire projects source can be found [here](https://github.com/noahgift/pragmaticai)\n\n## Using the default web app.\nThe Swagger API has some pretty powerful tools built in.\n\n* To list the plugins that are loaded:\n\n![Plugins](https://user-images.githubusercontent.com/58792/37561928-cf57944a-2a18-11e8-8f97-3d1e1cda4041.png)\n\n* To apply one of those functions:\n\n![Swagger API](https://user-images.githubusercontent.com/58792/37561897-019be4fc-2a18-11e8-8351-53d8d7f527b9.png)\n\n## Sample Input\n\n```\nfirst_name,last_name,count\nchuck,norris,10\nkristen,norris,17\njohn,lee,3\nsam,mcgregor,15\njohn,mcgregor,19\n```\n## Sample Output\n\n```\nnorris,27\nlee,3\nmcgregor,34\n```\n\n## How to run example and setup environment:\n\nTo create environment (tested on OS X 10.12.5), run `make setup`, which does the following commands below:\n\n```\nmkdir -p ~/.pai-aws && python3 -m venv ~/.pai-aws\n```\n\nThen source the virtualenv.  Typically I do it this way, I add an alias to my .zshrc:\n\n```\nalias ntop=\"cd ~/src/pai-aws && source ~/.pai-aws/bin/activate\"\n```\n\nI can then type in:  `ntop` and I cd into my checkout and source a virtualenv.  Next, I then make sure I have the latest packages and that linting and tests pass by running make all:\n\n```make all```\n\n\nI also like to verify that pylint and pytest and python are exactly the versions I expect, so I added a make command env to conveniently check for these:\n\n```make env\n\n(.pai-aws) ➜  pai-aws git:(master) ✗ make env\n#Show information about environment\nwhich python3\n/Users/noahgift/.pai-aws/bin/python3\npython3 --version\nPython 3.6.1\nwhich pytest\n/Users/noahgift/.pai-aws/bin/pytest\nwhich pylint\n/Users/noahgift/.pai-aws/bin/pylint\n```\n\n## How to interact with Commandline tool (Click Framework):\n\n\nCheck Version:\n\n```\n(.pai-aws) ➜  pai-aws git:(master) ✗ ./csvutil.py --version\ncsvutil.py, version 0.1\n```\n\nCheck Help:\n\n```\n(.pai-aws) ➜  pai-aws git:(master) ✗ ./csvutil.py --help   \nUsage: csvutil.py [OPTIONS] COMMAND [ARGS]...\n\n  CSV Operations Tool\n\n\n\nOptions:\n  --version  Show the version and exit.\n  --help     Show this message and exit.\n```\n\nAggregate CSV\n\n```\n(.pai-aws) ➜  pai-aws git:(master) ✗ ./csvcli.py cvsagg --file ext/input.csv --column last_name\nProcessing csvfile: ext/input.csv and column name: last_name\n{\"count\":{\"mcgregor\":34,\"lee\":3,\"norris\":27}}\n```\n\nTesting a bigger file than the assignment:\n\n```\n(.pai-aws) ➜  pai-aws git:(master) ✗ ./csvcli.py cvsagg --file ext/large_input.csv --column last_name \nProcessing csvfile: ext/large_input.csv and column name: last_name\n{\"count\":{\"mcgregor\":34,\"lee\":3,\"norris\":27},\"random_column\":{\"mcgregor\":57,\"lee\":61,\"norris\":100}}\n```\n\n\n## How to run webapp (primary question) and use API\n\nTo run the flask api (if you have followed instructions above), you should be able to run the make command `make start-api`.  The output should look like this:\n\n```\n(.pai-aws) ➜  pai-aws git:(master) ✗ make start-api\n#sets PYTHONPATH to directory above, would do differently in production\ncd flask_app && PYTHONPATH=\"..\" python web.py\n2017-06-17 16:34:15,049 - __main__ - INFO - START Flask\n * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)\n * Restarting with stat\n2017-06-17 16:34:15,473 - __main__ - INFO - START Flask\n * Debugger is active!\n * Debugger PIN: 122-568-160\n2017-06-17 16:34:43,736 - __main__ - INFO - {'/api/help': 'Print available api routes', '/favicon.ico': 'The Favicon', '/': 'Home Page'}\n127.0.0.1 - - [17/Jun/2017 16:34:43] \"GET / HTTP/1.1\" 200 -\n```\n\n## Test Client with Swagger UI\n\nNext, open a web browser to view Swagger API documentation (formatted as HTML):\n\n  http://0.0.0.0:5001/apidocs/#/\n\nFor example to see swagger docs/UI for cvs aggregate endpoint go here:\n\n  http://0.0.0.0:5001/apidocs/#!/default/put_api_aggregate\n\n## Interactively Test application in IPython\n\nUsing the requests library you can query the api as follows in IPython:\n\n```\n\nIn [1]: import requests, base64\nIn [2]: url = \"http://0.0.0.0:5001/api/npsum\"\nIn [3]: payload = {'column':'count', 'group_by':\"last_name\"}\nIn [3]: headers = {'Content-Type': 'application/json'}\nIn [3]: with open(\"ext/input.csv\", \"rb\") as f:\n    ...:     data = base64.b64encode(f.read())\n\nIn [4]: r = requests.put(url, data=data, params=payload, headers=headers)\n\nIn [5]: r.content\nOut[5]: b'{\"count\":{\"mcgregor\":34,\"lee\":3,\"norris\":27}}'\n\n```\n\n## How to simulate Client:\n  run the client_simulation script\n```\n(.pai-aws) ➜  tests git:(inperson-interview) ✗ python client_simulation.py \nstatus code:  400\nresponse body:  {'column': 'count', 'error_msg': 'Query Parameter column or group_by not set', 'group_by': None}\nstatus code:  200\nresponse body:  {'first_name': {'3': 'john', '10': 'chuck', '15': 'sam', '17': 'kristen', '19': 'john'}, 'last_name': {'3': 'lee', '10': 'norris', '15': 'mcgregor', '17': 'norris', '19': 'mcgregor'}}\n```\n\n## How to interact with python library (nlib):\n\n  Typically I use commandline IPython to test libraries that I create.  Here is how to ensure the library is working (should be able to get version number):\n\n```\nIn [1]: from nlib import csvops\n\nIn [2]: df = csvops.ingest_csv(\"ext/input.csv\")\n2017-06-17 17:00:33,973 - nlib.csvops - INFO - CSV to DF conversion with CSV File Path ext/input.csv\n\nIn [3]: df.head()\nOut[3]: \n  first_name last_name  count\n0      chuck     norris     10\n1    kristen     norris     17\n2       john       lee      3\n3        sam     mcgregor     15\n4       john     mcgregor     19\n\n```\n\n\n\n\n## Benchmark web Service\n\nFinally, the simplest way to test everything is to use the Makefile to start the web service and then benchmark it (which uploads base64 encoded csv):\n\n```\n\n(.pai-aws) ➜  pai-aws git:(master) ✗ make start-api\n\n```\n\nThen run the apache benchmark via Makefile.  The output should look something like this:\n\n```\n\n(.pai-aws) ➜  pai-aws git:(inperson-interview) ✗ make benchmark-web\n#very simple benchmark of api\nab -n 1000 -c 100 -T 'application/json' -u ext/input_base64.txt http://0.0.0.0:5001/api/aggregate\\?column=count\\&group_by=last_name\nThis is ApacheBench, Version 2.3 <$Revision: 1757674 $>\nCopyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/\nLicensed to The Apache Software Foundation, http://www.apache.org/\n\nBenchmarking 0.0.0.0 (be patient)\nCompleted 100 requests\nCompleted 200 requests\nCompleted 300 requests\nCompleted 400 requests\nCompleted 500 requests\nCompleted 600 requests\nCompleted 700 requests\nCompleted 800 requests\nCompleted 900 requests\nCompleted 1000 requests\nFinished 1000 requests\n\n\nServer Software:        Werkzeug/0.12.2\nServer Hostname:        0.0.0.0\nServer Port:            5001\n\nDocument Path:          /api/aggregate?column=count&group_by=last_name\nDocument Length:        154 bytes\n\nConcurrency Level:      100\nTime taken for tests:   7.657 seconds\nComplete requests:      1000\nFailed requests:        0\nTotal transferred:      309000 bytes\nTotal body sent:        308000\nHTML transferred:       154000 bytes\nRequests per second:    130.60 [#/sec] (mean)\nTime per request:       765.716 [ms] (mean)\nTime per request:       7.657 [ms] (mean, across all concurrent requests)\nTransfer rate:          39.41 [Kbytes/sec] received\n                        39.28 kb/s sent\n                        78.69 kb/s total\n\nConnection Times (ms)\n              min  mean[+/-sd] median   max\nConnect:        0    0   1.1      0       6\nProcessing:    18  730 142.4    757     865\nWaiting:       18  730 142.4    756     865\nTotal:         23  731 141.3    757     865\n\nPercentage of the requests served within a certain time (ms)\n  50%    757\n  66%    777\n  75%    787\n  80%    794\n  90%    830\n  95%    850\n  98%    860\n  99%    862\n 100%    865 (longest request)\n\n\n\n```\n\n### Viewing Juypter Notebooks\n\nThey can be found here:\nhttps://github.com/noahgift/pai-aws/blob/inperson-interview/notebooks/api.ipynb\n\n### Circle CI Configuration\n\nCircle CI is used to build the project.  The configuration file looks like follows:\n\n```\nmachine:\n  python:\n    version: 3.6.1\n\ndependencies:\n  pre:\n    - make install\n\ntest:\n  pre:\n    - make lint-circleci\n    - make test-circleci\n```\n\nThose make commands being called are below.  They write artifacts to the Circle CI Artifacts Directory:\n\n\n```\nlint-circleci:                                                              \n  pylint --output-format=parseable --load-plugins pylint_flask --disable=R,C flask_app/*.py nlib csvcli > $$CIRCLE_ARTIFACTS/pylint.html  \n\ntest-circleci:\n  @cd tests; pytest -vv --cov-report html:$$CIRCLE_ARTIFACTS --cov=web --cov=nlib test_*.py  \n```\n\nThe URL for the project build is here:  https://circleci.com/gh/noahgift/pai-aws.  To see artificats pylint output and/or test coverage output, you can go to the artificats directory here (for build 24):  \n\nhttps://circleci.com/gh/noahgift/pai-aws/24#artifacts/containers/0\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      "summary": "An example project that shows how to create a Data Engineering API around Flask and Pandas: Data teams often need to build libraries and services to make it easier to work with data on the platform.  In this example there is a need to create a Proof of Concept aggregation of csv data.  A REST API that accepts a csv, a column to group on, and a column to aggregate and returns the result. Note,this project is a Chapter in the book Pragmatic AI, the entire projects source can be found [here](https:...",
+      "line_count": 312,
+      "word_count": 1182,
+      "last_modified": "2023-01-18T20:13:41.668667"
+    },
+    {
+      "path": "project-ml-microservice-kubernetes/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DevOps_Microservices/project-ml-microservice-kubernetes/README.md",
+      "size": 2222,
+      "content": "<include a CircleCI status badge, here>\n\n## Project Overview\n\nIn this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. \n\nYou are given a pre-trained, `sklearn` model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on. You can read more about the data, which was initially taken from Kaggle, on [the data source site](https://www.kaggle.com/c/boston-housing). This project tests your ability to operationalize a Python flask app—in a provided file, `app.py`—that serves out predictions (inference) about housing prices through API calls. This project could be extended to any pre-trained machine learning model, such as those for image recognition and data labeling.\n\n### Project Tasks\n\nYour project goal is to operationalize this working, machine learning microservice using [kubernetes](https://kubernetes.io/), which is an open-source system for automating the management of containerized applications. In this project you will:\n* Test your project code using linting\n* Complete a Dockerfile to containerize this application\n* Deploy your containerized application using Docker and make a prediction\n* Improve the log statements in the source code for this application\n* Configure Kubernetes and create a Kubernetes cluster\n* Deploy a container using Kubernetes and make a prediction\n* Upload a complete Github repo with CircleCI to indicate that your code has been tested\n\nYou can find a detailed [project rubric, here](https://review.udacity.com/#!/rubrics/2576/view).\n\n**The final implementation of the project will showcase your abilities to operationalize production microservices.**\n\n---\n\n## Setup the Environment\n\n* Create a virtualenv and activate it\n* Run `make install` to install the necessary dependencies\n\n### Running `app.py`\n\n1. Standalone:  `python app.py`\n2. Run in Docker:  `./run_docker.sh`\n3. Run in Kubernetes:  `./run_kubernetes.sh`\n\n### Kubernetes Steps\n\n* Setup and Configure Docker locally\n* Setup and Configure Kubernetes locally\n* Create Flask app in Container\n* Run via kubectl\n",
+      "summary": "<include a CircleCI status badge, here> In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. You are given a pre-trained, `sklearn` model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on. You can read more about the data, which was initially taken from Kaggle, on [the data source sit...",
+      "line_count": 42,
+      "word_count": 321,
+      "last_modified": "2023-01-18T20:13:41.672667"
+    }
+  ],
+  "file_structure": {
+    "total_files": 75,
+    "total_size": 3574378,
+    "file_types": {
+      ".md": 7,
+      ".pptx": 1,
+      ".ipynb": 3,
+      ".csv": 6,
+      ".yml": 3,
+      ".txt": 9,
+      "": 8,
+      ".py": 25,
+      ".json": 1,
+      ".sh": 8,
+      ".joblib": 2,
+      ".ico": 1,
+      ".html": 1
+    },
+    "languages": {
+      "Python": 25,
+      "Shell": 8,
+      "HTML": 1
+    },
+    "directories": [
+      "Supporting-material",
+      "Lesson-2-Docker-format-containers",
+      "Lesson-1-Lambda-functions",
+      "Lesson-3-Containerization",
+      "project-ml-microservice-kubernetes",
+      "Supporting-material/example_src",
+      "Lesson-2-Docker-format-containers/class-demos",
+      "Lesson-2-Docker-format-containers/myrepo",
+      "Lesson-2-Docker-format-containers/class-demos/demos",
+      "Lesson-2-Docker-format-containers/class-demos/demos/flask-sklearn-student-starter",
+      "Lesson-2-Docker-format-containers/myrepo/myrepolib",
+      "Lesson-2-Docker-format-containers/myrepo/tests",
+      "Lesson-1-Lambda-functions/wikipedia-query",
+      "Lesson-1-Lambda-functions/make-change-tutorial",
+      "Lesson-3-Containerization/tests",
+      "Lesson-3-Containerization/nlib",
+      "Lesson-3-Containerization/ext",
+      "Lesson-3-Containerization/notebooks",
+      "Lesson-3-Containerization/flask_app",
+      "Lesson-3-Containerization/flask_app/static",
+      "Lesson-3-Containerization/flask_app/templates",
+      "project-ml-microservice-kubernetes/model_data",
+      "project-ml-microservice-kubernetes/output_txt_files"
+    ],
+    "largest_files": [
+      [
+        "Supporting-material/beginning_lambda.pptx",
+        1667422
+      ],
+      [
+        "Lesson-2-Docker-format-containers/class-demos/demos/flask-sklearn-student-starter/boston_housing_prediction.joblib",
+        681425
+      ],
+      [
+        "project-ml-microservice-kubernetes/model_data/boston_housing_prediction.joblib",
+        681425
+      ],
+      [
+        "Supporting-material/all_data.csv",
+        314528
+      ],
+      [
+        "Lesson-2-Docker-format-containers/class-demos/demos/flask-sklearn-student-starter/housing.csv",
+        49082
+      ],
+      [
+        "project-ml-microservice-kubernetes/model_data/housing.csv",
+        49082
+      ],
+      [
+        "Supporting-material/beginners_guide_aws_lambda.ipynb",
+        41934
+      ],
+      [
+        "Lesson-3-Containerization/notebooks/api.ipynb",
+        16524
+      ],
+      [
+        "Lesson-3-Containerization/README.md",
+        9317
+      ],
+      [
+        "README.md",
+        6857
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "1d5fe1ddf5c5c07c4b1cf9df4eb532c01e0cb5bf",
+      "author_name": "SudKul",
+      "author_email": "sudhanshu.kulshrestha@gmail.com",
+      "date": "Thu Feb 27 12:25:28 2020 +0530",
+      "message": "Updated the README.md, added a new folder - Supporting material, and renamed the existing folder as per standards"
+    },
+    "remote_url": "https://github.com/bkocis/DevOps_Microservices.git"
+  },
+  "content_hash": "a79330018aecb08d639de49f91965dcf"
+}

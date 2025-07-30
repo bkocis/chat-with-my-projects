@@ -1,0 +1,94 @@
+{
+  "repository_name": "AlgoRun",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/AlgoRun",
+  "analysis_timestamp": "2025-07-30T23:57:35.179291",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/AlgoRun/README.md",
+      "size": 1774,
+      "content": "\n---\n\n__Update: 04-04-2025 update to python3.12.__\n\n---\n\n# AlgoRun\n## Automated Rietveld refinement code for FullProf software\n\nThis repo contains the source code for the automated rietveld strategy testing program that is built on top of [Fullprof](https://www.ill.eu/sites/fullprof/php/downloads.html) crystallographic structure refinement software based on the Rietveld crystallographic refinement method.\n\n\n### Description\n\nIn order to explore the stability of a Rietveld refinement solution a python script “AlgoRun” was written that uses “FullProf”-s refinement engine. Originally “FullProf” can handle multiple file refinements (by applying the same *.pcr file to\nmany diffraction pattern files), however, it does not have a feature for refinement strategy comparison and stepwise execution of refinements on single and/or multiple datasets and using several crystallographic models. The code described in this thesis\nextends “FullProf”-s functionality by accessing the refinement control file (*.pcr file) and directly modifying it programmaticaly. In this way one can test: 1) many variations of the *.pcr file onto one diffraction pattern, where the modification of the *.pcr file can be parametrized as well, 2) evaluation of many diffraction patterns all\nwith various, altered *.pcr files.\n\n### Source code\n\nThe source code is written in python 2.7, migration to python3 is in preparation. \nThe program does not require installation. \n\nRequirement:\n- python packages\n  - numpy \n  - matplotlib\n  - pandas\n- [\"Fullprof\"](https://www.ill.eu/sites/fullprof/php/downloads.html) sotfrare installed\n\nThe program is invoke by the `start_0254.py` from the command line and it is a interface for running all subroutines from the python files in the repo.\n\n",
+      "summary": "--- __Update: 04-04-2025 update to python3.12.__ ---",
+      "line_count": 32,
+      "word_count": 243,
+      "last_modified": "2025-04-04T22:44:48.354975"
+    }
+  ],
+  "file_structure": {
+    "total_files": 15,
+    "total_size": 176519,
+    "file_types": {
+      "": 1,
+      ".md": 1,
+      ".txt": 1,
+      ".py": 12
+    },
+    "languages": {
+      "Python": 12
+    },
+    "directories": [
+      "resources",
+      "algor_v0.254",
+      "resources/algor_v0.254"
+    ],
+    "largest_files": [
+      [
+        "LICENSE",
+        35149
+      ],
+      [
+        "resources/algor_v0.254/strategy_results.py",
+        25814
+      ],
+      [
+        "algor_v0.254/strategy_results.py",
+        25814
+      ],
+      [
+        "resources/algor_v0.254/lock_by_ctrl_scheme.py",
+        23946
+      ],
+      [
+        "algor_v0.254/lock_by_ctrl_scheme.py",
+        23946
+      ],
+      [
+        "resources/algor_v0.254/library.py",
+        17016
+      ],
+      [
+        "algor_v0.254/library.py",
+        17016
+      ],
+      [
+        "resources/algor_v0.254/start_0254.py",
+        1797
+      ],
+      [
+        "algor_v0.254/start_0254.py",
+        1797
+      ],
+      [
+        "README.md",
+        1774
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [
+      "NumPy",
+      "Pandas"
+    ],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "remote_url": "https://github.com/bkocis/AlgoRun.git"
+  },
+  "content_hash": "ad68ed1994267837fc746b5fa7457c67"
+}

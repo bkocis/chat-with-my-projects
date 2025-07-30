@@ -1,0 +1,53 @@
+{
+  "repository_name": "conditional-random-fields",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/conditional-random-fields",
+  "analysis_timestamp": "2025-07-30T23:57:34.722707",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/conditional-random-fields/README.md",
+      "size": 347,
+      "content": "# CRM - conditional-random-fields\nAbout the topic of conditional random fields\n\nReferences:\n\n- https://towardsdatascience.com/conditional-random-field-tutorial-in-pytorch-ca0d04499463\n- https://www.tensorflow.org/addons/api_docs/python/tfa/layers/CRF\n- https://github.com/howl-anderson/tf_crf_layer\n- https://github.com/andreipruteanu/pluralsight\n",
+      "summary": "About the topic of conditional random fields References: - https://towardsdatascience.com/conditional-random-field-tutorial-in-pytorch-ca0d04499463",
+      "line_count": 9,
+      "word_count": 20,
+      "last_modified": "2023-01-18T20:12:34.376012"
+    }
+  ],
+  "file_structure": {
+    "total_files": 1,
+    "total_size": 347,
+    "file_types": {
+      ".md": 1
+    },
+    "languages": {},
+    "directories": [],
+    "largest_files": [
+      [
+        "README.md",
+        347
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "098cc2892a9c3a1640c39a336581440f8a205f56",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Thu Sep 15 23:35:35 2022 +0200",
+      "message": "Update README.md"
+    },
+    "remote_url": "https://github.com/bkocis/conditional-random-fields.git"
+  },
+  "content_hash": "958ba87c1be899f7427b8239a0e01b5f"
+}

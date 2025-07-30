@@ -1,0 +1,120 @@
+{
+  "repository_name": "simupro_bokeh_1.2",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/simupro_bokeh_1.2",
+  "analysis_timestamp": "2025-07-30T23:57:35.007645",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/simupro_bokeh_1.2/README.md",
+      "size": 64,
+      "content": "# simupro_bokeh_1.2\nsimupro code written with bokeh version 1.2\n",
+      "summary": "simupro code written with bokeh version 1.2",
+      "line_count": 2,
+      "word_count": 9,
+      "last_modified": "2023-01-18T20:14:01.168857"
+    }
+  ],
+  "file_structure": {
+    "total_files": 37,
+    "total_size": 187827,
+    "file_types": {
+      ".sh": 1,
+      ".md": 1,
+      ".py": 11,
+      ".css": 3,
+      ".html_": 3,
+      ".html": 3,
+      "": 1,
+      ".csv": 5,
+      ".png": 1,
+      ".py_fucked_up": 2,
+      ".py_backup": 2,
+      ".py_backup_1": 1,
+      ".py_mod_2": 1,
+      ".py_drones_self_cars": 1,
+      ".py_backup_2": 1
+    },
+    "languages": {
+      "Shell": 1,
+      "Python": 11,
+      "CSS": 3,
+      "HTML": 3
+    },
+    "directories": [
+      "S-PRO_survey",
+      "thank_you",
+      "backup_rest",
+      "S-PRO_gen-survey_5020",
+      "S-PRO_eval_arg",
+      "S-PRO_Qgen",
+      "S-PRO_eval",
+      "S-PRO_survey/templates",
+      "thank_you/templates",
+      "backup_rest/trianlge_test",
+      "S-PRO_gen-survey_5020/templates"
+    ],
+    "largest_files": [
+      [
+        "S-PRO_gen-survey_5020/templates/da_logo.png",
+        27690
+      ],
+      [
+        "S-PRO_eval/main.py",
+        14832
+      ],
+      [
+        "S-PRO_survey/main.py",
+        13356
+      ],
+      [
+        "S-PRO_gen-survey_5020/main.py",
+        13299
+      ],
+      [
+        "S-PRO_Qgen/S-Pro_Qgen.py",
+        12720
+      ],
+      [
+        "backup_rest/simupro_questionnaire.py",
+        10748
+      ],
+      [
+        "S-PRO_Qgen/S-Pro_Qgen.py_backup_1",
+        9143
+      ],
+      [
+        "S-PRO_eval/main.py_backup_2",
+        8573
+      ],
+      [
+        "S-PRO_eval_arg/main.py_fucked_up",
+        7585
+      ],
+      [
+        "S-PRO_eval/main.py_fucked_up",
+        7585
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "28dca4178aad0215f3c1e387183842a32495648c",
+      "author_name": "bkocis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Thu Dec 12 19:30:41 2019 +0000",
+      "message": "triangle update"
+    },
+    "remote_url": "https://github.com/bkocis/simupro_bokeh_1.2.git"
+  },
+  "content_hash": "cc15f1bedaa8cfa1c96711fdebf042c2"
+}

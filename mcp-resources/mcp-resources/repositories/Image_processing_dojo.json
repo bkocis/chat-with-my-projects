@@ -1,0 +1,76 @@
+{
+  "repository_name": "Image_processing_dojo",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/Image_processing_dojo",
+  "analysis_timestamp": "2025-07-30T23:57:34.910162",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/Image_processing_dojo/README.md",
+      "size": 1079,
+      "content": "# Collection of image processing demo examples\n\n## Requirements \nThe demos require an installed package of openCV, and a webcam.\nIn case the examples are run from a virtual enviroment, in some occasions if the openCV library is installed from source, the python virtual environment need to gain acces to the cv2\\*so files. This can be done by copying the cv2*.so file from the dist-packages to the site-packages folder of the virtual environment. For example:\n\n`cp /usr/lib/python3.6/dist-packages/cv2.cpython-36m-aarch64-linux-gnu.so ~/your_virt_env_folder/YOUR_VIRT_ENV_NAME/lib/python3.6/site-packages/`\n\n\n## Example scripts:\n- Plant green area calculator \n  - detection of a defined HSV colour and calculate its area\n- Color patch shape, size and area retrieval \n\n## Interesting resources\nThe following links point to post, challenges and small project that tackle interesting aspects in the application of computer vison. \n\n- [Coca-cola can recognition](https://stackoverflow.com/questions/10168686/image-processing-algorithm-improvement-for-coca-cola-can-recognition?rq=1)\n",
+      "summary": "The demos require an installed package of openCV, and a webcam. In case the examples are run from a virtual enviroment, in some occasions if the openCV library is installed from source, the python virtual environment need to gain acces to the cv2\\*so files. This can be done by copying the cv2*.so file from the dist-packages to the site-packages folder of the virtual environment. For example: `cp /usr/lib/python3.6/dist-packages/cv2.cpython-36m-aarch64-linux-gnu.so ~/your_virt_env_folder/YOUR_VIR...",
+      "line_count": 18,
+      "word_count": 132,
+      "last_modified": "2023-01-18T20:14:58.593416"
+    }
+  ],
+  "file_structure": {
+    "total_files": 5,
+    "total_size": 2223749,
+    "file_types": {
+      ".py": 1,
+      ".md": 1,
+      ".ipynb": 1,
+      ".jpg": 2
+    },
+    "languages": {
+      "Python": 1
+    },
+    "directories": [
+      "assets"
+    ],
+    "largest_files": [
+      [
+        "assets/color-blind-test.jpg",
+        1289246
+      ],
+      [
+        "color_pattern_patch-Copy1.ipynb",
+        889493
+      ],
+      [
+        "assets/mix_2.jpg",
+        41727
+      ],
+      [
+        "plant_cv2_FPV.py",
+        2204
+      ],
+      [
+        "README.md",
+        1079
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "6b378738ce02902b08dddad28ea22686fb1df036",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Tue Oct 29 17:26:56 2019 +0100",
+      "message": "Update README"
+    },
+    "remote_url": "https://github.com/bkocis/Image_processing_dojo.git"
+  },
+  "content_hash": "c0023ecfb2737d56d803d01c1c24f8ee"
+}

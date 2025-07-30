@@ -1,0 +1,84 @@
+{
+  "repository_name": "notes",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/notes",
+  "analysis_timestamp": "2025-07-30T23:57:34.811455",
+  "is_git_repo": true,
+  "readme_files": [],
+  "file_structure": {
+    "total_files": 49,
+    "total_size": 74633096,
+    "file_types": {
+      ".pdf": 2,
+      ".odp": 2,
+      ".md": 1,
+      ".png": 42,
+      ".jpg": 2
+    },
+    "languages": {},
+    "directories": [
+      "figures"
+    ],
+    "largest_files": [
+      [
+        "Dissertation_concept_17.pdf",
+        31109847
+      ],
+      [
+        "presentation-version-2.odp",
+        12625178
+      ],
+      [
+        "presentation-version-2.pdf",
+        9535964
+      ],
+      [
+        "presentation.odp",
+        9036491
+      ],
+      [
+        "figures/6.5.png",
+        987167
+      ],
+      [
+        "figures/3.3-Rietveld-ref.png",
+        875428
+      ],
+      [
+        "figures/4.8.png",
+        680533
+      ],
+      [
+        "figures/6.6-Rietveld-HyTh.png",
+        590555
+      ],
+      [
+        "figures/6.4.png",
+        564785
+      ],
+      [
+        "figures/6.12.png",
+        525372
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "dc48b6a0a7169cbb7d1100630cb010ad8a35e7ef",
+      "author_name": "balazs kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Thu Apr 15 11:52:42 2021 +0200",
+      "message": "update"
+    },
+    "remote_url": "https://github.com/bkocis/notes.git"
+  },
+  "content_hash": "e3c65adf43c3ebb88ab5e7a8e947a3ba"
+}

@@ -1,0 +1,105 @@
+{
+  "repository_name": "advance-your-python",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/advance-your-python",
+  "analysis_timestamp": "2025-07-30T23:57:35.189807",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/advance-your-python/README.md",
+      "size": 3278,
+      "content": "# Advance Your Python\n\nA collection of Python tutorials and examples to help you advance your Python skills.\n\n### Examples of some concepts in python, and other python handy-dandys\n___\n\nThis repo is written in a style of a book, where code examples are given in a very pragmatic and simplistic manner. \nThe aim of this presentation is to offer a catalogue of examples of some of the most important concepts in python, and other python handy-dandys.\nIt is not meant to be a complete reference, but rather a quick reference for those who are already familiar with the basics of python.\nThe audience of this book is assumed to be for fellow data scientist, who are looking for a quick reference to some of the more advanced concepts in python gathered at one place, and in short. \n\nContents:\n## Some topics of Object-oriented programming in python\nThe [classes_in_python](classes_in_python) directory contains comprehensive documentation and examples of different types of classes in Python.\n\nThe main documentation is available in [classes.md](classes_in_python/classes.md), which covers:\n\n\n## Parallelization - Multiprocessing\n\nThe [examples_of_multiprocessing](examples_of_multiprocessing) directory contains examples and explanations of Python's multiprocessing capabilities.\n\nThe main documentation is available in [multiprocessing.md](examples_of_multiprocessing/multiprocessing.md), which covers:\n\n- When to use multiprocessing vs multithreading\n- Basic multiprocessing examples\n- Advanced multiprocessing patterns\n- Best practices and performance considerations\n\n- [Examples of using multiprocessing](https://bkocis.github.io/advance-your-python/examples_of_multiprocessing/multiprocessing)\n\n## Some example of functions \n\n- [map](https://bkocis.github.io/advance-your-python/functions_and_their_usage/examples_of_functions#map)\n\n## Generators\n\n- [generators](https://bkocis.github.io/advance-your-python/generators)\n\n## Closures and decorators\n\n- [decorators](https://bkocis.github.io/advance-your-python/decorators)\n- [context managers](https://bkocis.github.io/advance-your-python/context_managers)\n\n## Some example of expressions\n\n- [assignment expressions](https://bkocis.github.io/advance-your-python/expressions/python_expressions#Assignment_expressions)\n\n## Some example of itertools\n\n- [iterators](https://bkocis.github.io/advance-your-python/iterators)\n\n\n---\n\nReading references:\n\n[5-python-tricks](https://towardsdatascience.com/5-python-tricks-that-distinguish-senior-developers-from-juniors-826d57ab3940)\n\n[How-to-level-up-by-learning-from-professionals](https://medium.com/towards-data-science/how-to-level-up-your-python-skills-by-learning-from-these-professionals-3e906b83f355)\n\n[10-code-examples-AoC](https://medium.com/techtofreedom/10-remarkable-python-oop-tips-that-will-optimize-your-code-significantly-a47e4103b44d)\n\n[comparing-list-comprehensions-vs-built-in-functions-in-python-which-is-better](https://towardsdatascience.com/comparing-list-comprehensions-vs-built-in-functions-in-python-which-is-better-1e2c9646fafe)\n\n[should-you-use-getters-and-setters-in-python](https://python.plainenglish.io/should-you-use-getters-and-setters-in-python-d4db9a892878)\n\n[Protocols-in-python](https://godatadriven.com/blog/protocols-in-python-why-you-need-them/)\n",
+      "summary": "A collection of Python tutorials and examples to help you advance your Python skills. ___ This repo is written in a style of a book, where code examples are given in a very pragmatic and simplistic manner.",
+      "line_count": 69,
+      "word_count": 265,
+      "last_modified": "2025-04-13T20:14:45.926382"
+    }
+  ],
+  "file_structure": {
+    "total_files": 16,
+    "total_size": 85025,
+    "file_types": {
+      ".md": 6,
+      ".yml": 1,
+      "": 1,
+      ".ipynb": 2,
+      ".py": 6
+    },
+    "languages": {
+      "Python": 6
+    },
+    "directories": [
+      "functions_and_their_usage",
+      "resources",
+      "expressions",
+      "classes_in_python",
+      "examples_of_multiprocessing",
+      "classes_in_python/resources",
+      "examples_of_multiprocessing/resources"
+    ],
+    "largest_files": [
+      [
+        "classes_in_python/resources/classes.ipynb",
+        30506
+      ],
+      [
+        "resources/Demonstration_of_python_OOP_on_a_GUI_design.ipynb",
+        14056
+      ],
+      [
+        "classes_in_python/classes.md",
+        9303
+      ],
+      [
+        "functions_and_their_usage/built-in_functions.md",
+        7530
+      ],
+      [
+        "classes_in_python/resources/improved_classes.py",
+        5910
+      ],
+      [
+        "examples_of_multiprocessing/multiprocessing.md",
+        5244
+      ],
+      [
+        "README.md",
+        3278
+      ],
+      [
+        "classes_in_python/resources/test_classes.py",
+        2317
+      ],
+      [
+        "examples_of_multiprocessing/resources/multiprocessing_with_queue.py",
+        1579
+      ],
+      [
+        "examples_of_multiprocessing/resources/multiprocessing_exampe_n_cores.py",
+        1395
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": [
+      "Make"
+    ]
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "4773ff09cdeb0d715cd1315b46dcf790295857d9",
+      "author_name": "Balazs.Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Sun Apr 13 18:00:30 2025 +0200",
+      "message": "content simplified"
+    },
+    "remote_url": "https://github.com/bkocis/Notebooks.git"
+  },
+  "content_hash": "e0ab6a68c2bce66478ca433d683745c1"
+}

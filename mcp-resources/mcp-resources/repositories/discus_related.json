@@ -1,0 +1,119 @@
+{
+  "repository_name": "discus_related",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/discus_related",
+  "analysis_timestamp": "2025-07-30T23:57:34.839849",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/discus_related/README.md",
+      "size": 194,
+      "content": "##### discus_rel ii\n\nImpressions from the lecture, what is to be corrected: \n- after running the PDFgetX3 and before the fit, check the corresponding files\n\n\n- pdfgui : take the output files ! \n",
+      "summary": "Impressions from the lecture, what is to be corrected: - after running the PDFgetX3 and before the fit, check the corresponding files - pdfgui : take the output files !",
+      "line_count": 7,
+      "word_count": 33,
+      "last_modified": "2023-01-18T20:20:47.072814"
+    }
+  ],
+  "file_structure": {
+    "total_files": 71,
+    "total_size": 5665723,
+    "file_types": {
+      ".md": 1,
+      ".ipynb": 1,
+      ".record": 1,
+      ".dat": 2,
+      ".gr": 14,
+      ".txt": 1,
+      ".py": 1,
+      ".ddp": 2,
+      ".stru": 2,
+      ".mac": 15,
+      ".cell": 2,
+      ".tth": 8,
+      ".bs": 7,
+      ".plot": 3,
+      ".cgr": 1,
+      ".png": 10
+    },
+    "languages": {
+      "Python": 1
+    },
+    "directories": [
+      "lec",
+      "img",
+      "lec/Exercise_1",
+      "lec/Exercise_2_b",
+      "lec/Exercise_3_DISCUS",
+      "lec/Exercise_2",
+      "lec/Exercise_3_DISCUS/3p1",
+      "lec/Exercise_3_DISCUS/3p2",
+      "lec/Exercise_3_DISCUS/3p1/DATA",
+      "lec/Exercise_3_DISCUS/3p1/PLOT",
+      "lec/Exercise_3_DISCUS/3p2/DATA",
+      "lec/Exercise_3_DISCUS/3p2/PLOT"
+    ],
+    "largest_files": [
+      [
+        "lec/Exercise_2_b/CdSe-nano.ddp",
+        1496853
+      ],
+      [
+        "lec/Exercise_1/ni300mesh_300k_nor_1-5-pdfgetx2.gr",
+        695767
+      ],
+      [
+        "lec/Exercise_2/project_.ddp",
+        519657
+      ],
+      [
+        "lec/Exercise_2_b/CdSe-bulk.gr",
+        316398
+      ],
+      [
+        "lec/Exercise_2_b/CdSe-3nm.gr",
+        316322
+      ],
+      [
+        "img/ordering.png",
+        160534
+      ],
+      [
+        "lec/Exercise_2/Ni-xray.gr",
+        143812
+      ],
+      [
+        "img/ni_bulk_particle.png",
+        127208
+      ],
+      [
+        "lec/Exercise_3_DISCUS/3p2/DATA/relaxed_0040.0_0005.0_2.00_linear_xray.gr",
+        114400
+      ],
+      [
+        "img/pdfgetx3_01.png",
+        112234
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "10b48cec4db6b08af011d119cc7eddf629d5f9eb",
+      "author_name": "mnost",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Tue Apr 12 13:52:27 2016 +0200",
+      "message": "1"
+    },
+    "remote_url": "https://github.com/bkocis/discus_related.git"
+  },
+  "content_hash": "413b135104859d6a09d8878f01eaab22"
+}

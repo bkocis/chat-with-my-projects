@@ -1,0 +1,80 @@
+{
+  "repository_name": "CloudDevOps-ND-Microservices-AWS",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CloudDevOps-ND-Microservices-AWS",
+  "analysis_timestamp": "2025-07-30T23:57:34.999896",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CloudDevOps-ND-Microservices-AWS/README.md",
+      "size": 1314,
+      "content": "\n[![bkocis](https://circleci.com/gh/bkocis/CloudDevOps-ND-Microservices-AWS.svg?style=svg)](https://app.circleci.com/pipelines/github/bkocis/CloudDevOps-ND-Microservices-AWS)\n\n# Description\n\nThis porject contain files for deploying a machine leaning app on AWS using docker. The project is focused in the steps of building and linting the infrastructure of the app. \n\n# Steps\n\nInitialize a cloud9 environment with an Ubuntu 18.04 AMI\n\nModify the EC2 instance volume (at least 25GB)\n\nMake a python env.\n\n\n\n## github repo of the project\nhttps://github.com/udacity/DevOps_Microservices\n\n## install hadolint\nhttps://github.com/hadolint/hadolint/\n\nInstall \"haskel\" first then \"stack\".\n\n#### Haskel: \n`sudo apt-get install haskell-platform`\n\n#### stack:\n`curl -sSL https://get.haskellstack.org/ | sh`\n\n#### hadolint\n`git clone https://github.com/hadolint/hadolint\ncd hadolint\nstack install`\n\n#### CircleCI\n\n`sudo curl -fLSs https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/install.sh | sudo bash`\n\n\n#### kubernetes\n\n\n#### minikube onm linux machine\n\nhttps://computingforgeeks.com/how-to-install-minikube-on-ubuntu-debian-linux/\n\n`wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64`\n`chmod +x minikube-linux-amd64`\n`sudo mv minikube-linux-amd64 /usr/local/bin/minikube`",
+      "summary": "[![bkocis](https://circleci.com/gh/bkocis/CloudDevOps-ND-Microservices-AWS.svg?style=svg)](https://app.circleci.com/pipelines/github/bkocis/CloudDevOps-ND-Microservices-AWS) This porject contain files for deploying a machine leaning app on AWS using docker. The project is focused in the steps of building and linting the infrastructure of the app. Initialize a cloud9 environment with an Ubuntu 18.04 AMI",
+      "line_count": 50,
+      "word_count": 120,
+      "last_modified": "2023-01-18T20:13:40.172652"
+    }
+  ],
+  "file_structure": {
+    "total_files": 5,
+    "total_size": 2127,
+    "file_types": {
+      ".md": 1,
+      ".py": 1,
+      "": 2,
+      ".txt": 1
+    },
+    "languages": {
+      "Python": 1
+    },
+    "directories": [],
+    "largest_files": [
+      [
+        "README.md",
+        1314
+      ],
+      [
+        "Makefile",
+        536
+      ],
+      [
+        "app.py",
+        140
+      ],
+      [
+        "Dockerfile",
+        118
+      ],
+      [
+        "requirements.txt",
+        19
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [
+      "Flask"
+    ],
+    "tools": [],
+    "databases": [],
+    "deployment": [
+      "Docker"
+    ],
+    "testing": [],
+    "build_systems": [
+      "Make"
+    ]
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "20c82f1b59b7621379c48ee0c95c16ceed8e871f",
+      "author_name": "bkocis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Thu Aug 27 07:36:13 2020 +0000",
+      "message": "readme edit install steps"
+    },
+    "remote_url": "https://github.com/bkocis/CloudDevOps-ND-Microservices-AWS.git"
+  },
+  "content_hash": "529f7997eae3e8649611722b38d7f525"
+}

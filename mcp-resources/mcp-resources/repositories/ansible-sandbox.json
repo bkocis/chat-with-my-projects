@@ -1,0 +1,53 @@
+{
+  "repository_name": "ansible-sandbox",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/ansible-sandbox",
+  "analysis_timestamp": "2025-07-30T23:57:35.078513",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/ansible-sandbox/README.md",
+      "size": 17,
+      "content": "# ansible-sandbox",
+      "summary": "",
+      "line_count": 1,
+      "word_count": 2,
+      "last_modified": "2023-01-18T20:12:29.367963"
+    }
+  ],
+  "file_structure": {
+    "total_files": 1,
+    "total_size": 17,
+    "file_types": {
+      ".md": 1
+    },
+    "languages": {},
+    "directories": [],
+    "largest_files": [
+      [
+        "README.md",
+        17
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "8432211fbc9676d7773f963e0dff00db32aca4ec",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Sat Sep 24 17:35:15 2022 +0200",
+      "message": "Initial commit"
+    },
+    "remote_url": "https://github.com/bkocis/ansible-sandbox.git"
+  },
+  "content_hash": "153e89bdc9502736ac5b8260677f2e93"
+}

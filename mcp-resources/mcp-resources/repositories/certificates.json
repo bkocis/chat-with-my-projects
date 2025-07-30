@@ -1,0 +1,60 @@
+{
+  "repository_name": "certificates",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/certificates",
+  "analysis_timestamp": "2025-07-30T23:57:34.957291",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/certificates/README.md",
+      "size": 1903,
+      "content": "## Certificates and completed projects\n\n---\n\nA place to collect the obtained certificates of online courses, accomplishments, and projects. \n\n______\n## Stanford Online Courses  \n\n- [Statistical Learning](https://www.edx.org/course/statistical-learning) ([📜](https://courses.edx.org/certificates/2a53aa41a4a74acdbaeac6331e9e11ac))\n\n## Deep Learning Courses\n\n- [Deep Learning (Udacity)](https://www.udacity.com/course/deep-learning-nanodegree--nd101) ([📜](https://graduation.udacity.com/confirm/6EJKU62G))\n\n- [Tensorflow Developer (Coursera)](https://www.coursera.org/professional-certificates/tensorflow-in-practice) ([📜](https://coursera.org/share/2afa85bbb2f03516bd95ef8479446e1e))\n\n- [Deep Learning Track (DataCamp)](https://app.datacamp.com/learn/skill-tracks/deep-learning-in-python) ([📜](https://www.datacamp.com/statement-of-accomplishment/track/0f1d4807ffd7d5902f9dde55198fa018be0c6305)) \n\n## Reinforcement Learning Courses\n\n- [Deep Reinforcement Learning (Udacity)](https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893) ([📜](https://graduation.udacity.com/confirm/94GUPQ5F))\n\n## Computer Vision Courses\n\n- [Computer Vision (Udacity)](https://www.udacity.com/course/computer-vision-nanodegree--nd891) ([📜](https://graduation.udacity.com/confirm/DVEJCJ2F))\n\n## Deployment and ML Systems \n\n- [Cloud DevOps Engineer Udacity](https://www.udacity.com/course/cloud-dev-ops-nanodegree--nd9991) ([📜](https://graduation.udacity.com/confirm/9KEALLXK))\n\n## Machine Learning \n\n- [AWS Machine Learning Foundations]() ([📜](https://confirm.udacity.com/6ZCAPJWP))\n\n----\n\n## Community Projects\n\n- [Omdena -  Detecting Violence Between Caregivers and Elderly/Children Using Computer Vision and Deep Learning]()\n\n- [Omdena - Estimate Biomass of Fish for Sustainable Food Production Using Computer Vision](./certs/Omdena_Fish_Biomass_Certificate_Balazs%20Kocsis.pdf)\n\n",
+      "summary": "--- A place to collect the obtained certificates of online courses, accomplishments, and projects. ______",
+      "line_count": 42,
+      "word_count": 120,
+      "last_modified": "2023-01-18T20:12:57.016232"
+    }
+  ],
+  "file_structure": {
+    "total_files": 2,
+    "total_size": 218605,
+    "file_types": {
+      ".md": 1,
+      ".pdf": 1
+    },
+    "languages": {},
+    "directories": [
+      "certs"
+    ],
+    "largest_files": [
+      [
+        "certs/Omdena_Fish_Biomass_Certificate_Balazs Kocsis.pdf",
+        216702
+      ],
+      [
+        "README.md",
+        1903
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "9d71b78d02f9ef008b23486421aff1fb49ecf589",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bal.koksis.a3@gmail.com",
+      "date": "Sun Mar 27 20:55:19 2022 +0200",
+      "message": "certificates added"
+    },
+    "remote_url": "https://github.com/bkocis/certificates.git"
+  },
+  "content_hash": "6bbc3278dc9409ebddadab2cd4de1e84"
+}

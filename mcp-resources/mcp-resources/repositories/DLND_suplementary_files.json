@@ -1,0 +1,98 @@
+{
+  "repository_name": "DLND_suplementary_files",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DLND_suplementary_files",
+  "analysis_timestamp": "2025-07-30T23:57:35.311618",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DLND_suplementary_files/README.md",
+      "size": 25,
+      "content": "# DLND_suplementary_files",
+      "summary": "",
+      "line_count": 1,
+      "word_count": 2,
+      "last_modified": "2023-01-18T20:18:04.135226"
+    }
+  ],
+  "file_structure": {
+    "total_files": 22,
+    "total_size": 69128621,
+    "file_types": {
+      ".py": 17,
+      "": 1,
+      ".pt": 1,
+      ".p": 1,
+      ".md": 1,
+      ".txt": 1
+    },
+    "languages": {
+      "Python": 17
+    },
+    "directories": [
+      "data"
+    ],
+    "largest_files": [
+      [
+        "trained_rnn_regularization.pt",
+        62999645
+      ],
+      [
+        "data/Seinfeld_Scripts.txt",
+        3471475
+      ],
+      [
+        "preprocess.p",
+        2563651
+      ],
+      [
+        "RNN_tv_script_as_in_the_notebook_validation.py",
+        16094
+      ],
+      [
+        "RNN_tv_script_as_in_the_notebook_dropout.py",
+        13180
+      ],
+      [
+        "RNN_tv_script_as_in_the_notebook.py",
+        13120
+      ],
+      [
+        "problem_unittests.py",
+        9571
+      ],
+      [
+        "TV_script_project_RNN_Network_LSTM.py",
+        7076
+      ],
+      [
+        "Characters_LSTM.py",
+        6836
+      ],
+      [
+        "CNN_CIFAR10.py",
+        5838
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "dfa2b2897c0d67ffd8b50df3c713c0b304099fa5",
+      "author_name": "tusk",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Sun May 19 23:05:52 2019 +0200",
+      "message": "RNN examples into python files"
+    },
+    "remote_url": "https://github.com/bkocis/DLND_suplementary_files.git"
+  },
+  "content_hash": "d145fbed730474daaf4800f3e6bf3daa"
+}

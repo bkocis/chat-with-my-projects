@@ -1,0 +1,71 @@
+{
+  "repository_name": "rplidar",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/rplidar",
+  "analysis_timestamp": "2025-07-30T23:57:35.285856",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/rplidar/README.md",
+      "size": 593,
+      "content": "\nInterpreting the data from plana-rotary lidar\n---------------------------------------------\n\nAt the moment the reading from the lidar are visualized using matplotlib. This is, off cource too slow for meamingful evaluation.\n\n<img src=\"assets/Screenshot from 2019-08-01 11-51-36.png\" width=60%>\n\n\nReferences for the hardware used:\nPlanar lidar from slamtec\n[Slamtec Lidar](http://www.slamtec.com/en/support#rplidar-a1) and corresponding [C++ SDK](https://github.com/Slamtec/rplidar_sdk)\n\n[Python library from Adafruits](https://learn.adafruit.com/slamtec-rplidar-on-pi/cpython-on-raspberry-pi)\n",
+      "summary": "Interpreting the data from plana-rotary lidar --------------------------------------------- At the moment the reading from the lidar are visualized using matplotlib. This is, off cource too slow for meamingful evaluation.",
+      "line_count": 13,
+      "word_count": 53,
+      "last_modified": "2023-01-23T00:05:06.137514"
+    }
+  ],
+  "file_structure": {
+    "total_files": 4,
+    "total_size": 140507,
+    "file_types": {
+      ".py": 2,
+      ".md": 1,
+      ".png": 1
+    },
+    "languages": {
+      "Python": 2
+    },
+    "directories": [
+      "assets"
+    ],
+    "largest_files": [
+      [
+        "assets/Screenshot from 2019-08-01 11-51-36.png",
+        138544
+      ],
+      [
+        "read_plot_lidar_data.py",
+        1225
+      ],
+      [
+        "README.md",
+        593
+      ],
+      [
+        "stop_lidar_360.py",
+        145
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "6623ba46cc0075b6592e4b0bce4b40a88d00b92d",
+      "author_name": "Balazs.Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Mon Jan 23 00:05:26 2023 +0100",
+      "message": "readme edit"
+    },
+    "remote_url": "https://github.com/bkocis/rplidar.git"
+  },
+  "content_hash": "686b6cd27191b2460cece74b7a6d712c"
+}

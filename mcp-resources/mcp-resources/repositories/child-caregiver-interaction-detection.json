@@ -1,0 +1,112 @@
+{
+  "repository_name": "child-caregiver-interaction-detection",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/child-caregiver-interaction-detection",
+  "analysis_timestamp": "2025-07-30T23:57:35.085963",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/child-caregiver-interaction-detection/README.md",
+      "size": 5093,
+      "content": "Omdena EyeKnow challenge \n\nTask 6 : Pipeline design and deployment\n=======================================\n\n### Description \n\n##### Task Objective: \n\nThe focus of the task is to design a data/ML pipeline for the implementation of modelling approaches across all tasks. The goal is to write code implementation as an application integrating and/or adapting the code from notebooks of collaborators. Furthermore, the deployment of the application is also considered as part of the task. However, this depends on the future works and development of the ideas in the challenge.\n\n##### Approach\n\nSeveral approaches are planned to be integrated, for example object detection using Yolov5, pose estimation. In addition, multiple pipelines can be defined each with their own application implementation. Currently, two pipelines are considered and are in development:\n\n##### Pipeline 1 - Yolo+Mediapipe\n\n- The current state of the application processes frames and as the final output return body landmark point for detected child and caregiver. At the moment no logic is implemented to interpret the extracted information. \ningest/upload of video\n- Extract frames \n- Apply object detection - export detected child and caregiver entity bounding boxed and cropped image\n- Apply pose body landmark extraction using Mediapipe \n\n##### Pipeline 2 - Yolo+NN\n\n- A pipeline is in the conception phase - it applies image feature extraction using pre-trained CNN \nimplementations (VGG16/VGG19). The extracted data is fed into a NN with convolutional lstm layers\nfor temporal information extraction. \n\n\n\n### Implementation \n##### Proposed approach\nA python application that can process video, extract frames and applies one or more \nalgorithms that can return a marker, or signal that violence occurred in the defined use cases. The python application should be configurable, either as a stand-alone app that runs on a local device, or \nrunning inside a web server\n\n\nIn order to complete the task, three steps can be defined:\n \n##### Pipeline design\n\n- assembly of the video processing logic using code from all relevant tasks of the challenge\n\n- defining the input and output of each task and combine into the app as modules \n\n\n##### Benchmarking \nIn order to compare the performance of the models in the various pipelines (and also improvements of individual models) an\nindependent tests dataset is needed to be defined constituted of 3-10 complete videos of various content and quality.\nThe inference metrics are to be captured, as well as the execution times and computational resource consumption.\n\n\n##### Deploying the application  \n\nThe destination device of system that can run the application can be local, edge, or cloud virtual \nmachine instance. The target system and setting depend on the results of the benchmarking with focus on the \nresource consumption and model accuracy and precision\n\n##### Installation and execution\n\nRequirements:\n\n- python 3.8 (tested)\n- optional GPU (tested on 8GB RAM Nvidia RTX 3080, with CUDA 11.4)\n  \n  - make sure the nvidia drivers are installed, with cuda version 11.4 \n    \n  - test with `nvidia-smi`\n\n- docker (optional, required in case of building and image and running locally)\n\n    - in order to run the docker image with gpu support, you will need to install [nvidia-container toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)\n\n- python packages listed in the requirements file\n\nVirtrual environment and python packages\n\nBefore installing the python packages, make sure you create a new virtual environment (using venv - how to install venv read [here](https://www.arubacloud.com/tutorial/how-to-create-a-python-virtual-environment-on-ubuntu.aspx), and activate it :\n\n```bash\npython3.8 -m venv <PATHT_TO_YOUR_ENVIRONMENT>/<NAME_OF_ENVIRONEMNT>\nsource <PATHT_TO_YOUR_ENVIRONMENT>/<NAME_OF_ENVIRONEMNT>/bin/activate\n```\nWhen you are inside the virtual environment, then install python packages defined in the requirements.txt, by running:\n```bash\npip install -r requirements.txt -f https://download.pytorch.org/whl/cu113/torch_stable.html`\n```\n\nHere, we added an URL to the pip install call, as it is required for the specific version of pytorch.\n\n\nRunning the application\n\n\nClone the repo/branch `https://dagshub.com/Omdena/EyeKnow.git` and checkout branch `deployment`\n\nNavigate yourself into the folder so that you see `pythonEyeknowWebAppA` listed in your working directory. \n\nExecute:\n```bash \npython pythonEyeknowWebAppA/app/main.py\n```\n\n##### Output of the pipeline - results folder\n\n\n--------------\n\n## Next Steps:\n- integrate video upload and frame-by-frame evaluation\n- bbox moving speed \n- anomalies in speed or direction of bounding box movement \n- tracking / counting  \n- number of entities (legal requirements of how many caregivers has to be present of how many children)\n- statistics \n- time series \n- tabular data of a video - transcription of the video to tabular data\n- focus on caregiver bboxes \n- interaction definition \n- polarity of interaction (violent, non-violent, action, no-action)\n",
+      "summary": "Omdena EyeKnow challenge Task 6 : Pipeline design and deployment =======================================",
+      "line_count": 121,
+      "word_count": 722,
+      "last_modified": "2023-01-18T20:12:39.856065"
+    }
+  ],
+  "file_structure": {
+    "total_files": 43,
+    "total_size": 6295388,
+    "file_types": {
+      ".md": 1,
+      ".py": 14,
+      ".txt": 4,
+      ".jpg": 11,
+      ".png": 6,
+      ".yaml": 2,
+      ".csv": 1,
+      ".0": 1,
+      ".sh": 1,
+      "": 1,
+      ".json": 1
+    },
+    "languages": {
+      "Python": 14,
+      "Shell": 1
+    },
+    "directories": [
+      "app",
+      "utils",
+      "pythonEyeknowWebAppA",
+      "app/person_detection",
+      "app/label_fix4",
+      "pythonEyeknowWebAppA/app",
+      "pythonEyeknowWebAppA/app/config",
+      "pythonEyeknowWebAppA/app/service",
+      "pythonEyeknowWebAppA/app/service/impl"
+    ],
+    "largest_files": [
+      [
+        "app/label_fix4/events.out.tfevents.1644966844.care.10812.0",
+        1277265
+      ],
+      [
+        "app/label_fix4/val_batch1_pred.jpg",
+        476034
+      ],
+      [
+        "app/label_fix4/val_batch1_labels.jpg",
+        471989
+      ],
+      [
+        "app/label_fix4/val_batch0_pred.jpg",
+        424669
+      ],
+      [
+        "app/label_fix4/val_batch2_pred.jpg",
+        423130
+      ],
+      [
+        "app/label_fix4/val_batch2_labels.jpg",
+        421115
+      ],
+      [
+        "app/label_fix4/val_batch0_labels.jpg",
+        416808
+      ],
+      [
+        "app/label_fix4/train_batch2.jpg",
+        373489
+      ],
+      [
+        "app/label_fix4/train_batch1.jpg",
+        371691
+      ],
+      [
+        "app/label_fix4/train_batch0.jpg",
+        359149
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "4bc1be9cf21975d98a5668d164ee668f28557568",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bal.koksis.a3@gmail.com",
+      "date": "Sat Jun 18 16:48:57 2022 +0200",
+      "message": "cleaning models"
+    },
+    "remote_url": "https://github.com/bkocis/child-caregiver-interaction-detection.git"
+  },
+  "content_hash": "a674aebd3db5275e748f433e3691a1c7"
+}

@@ -1,0 +1,65 @@
+{
+  "repository_name": "DLND_Pr_2_dog_breed_classifier",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DLND_Pr_2_dog_breed_classifier",
+  "analysis_timestamp": "2025-07-30T23:57:34.792914",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DLND_Pr_2_dog_breed_classifier/README.md",
+      "size": 33,
+      "content": "# DLND_Pr_2_dog_breed_classifier\n",
+      "summary": "",
+      "line_count": 1,
+      "word_count": 2,
+      "last_modified": "2023-01-18T20:18:08.919272"
+    }
+  ],
+  "file_structure": {
+    "total_files": 3,
+    "total_size": 5559333,
+    "file_types": {
+      ".ipynb": 1,
+      ".md": 1,
+      ".html": 1
+    },
+    "languages": {
+      "HTML": 1
+    },
+    "directories": [],
+    "largest_files": [
+      [
+        "dog_app_3.html",
+        2983500
+      ],
+      [
+        "dog_app_3.ipynb",
+        2575800
+      ],
+      [
+        "README.md",
+        33
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "599054f04ba621969c68b76d5a9796f30efdca86",
+      "author_name": "tusk",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Fri May 3 01:08:52 2019 +0200",
+      "message": "first commit"
+    },
+    "remote_url": "https://github.com/bkocis/DLND_Pr_2_dog_breed_classifier.git"
+  },
+  "content_hash": "3c5e69f6676201883ea4ce6c9ec0ec65"
+}

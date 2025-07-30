@@ -1,0 +1,55 @@
+{
+  "repository_name": "ocr-references",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/ocr-references",
+  "analysis_timestamp": "2025-07-30T23:57:34.707947",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/ocr-references/README.md",
+      "size": 141,
+      "content": "# ocr-references\nRepo containing references on the topic of OCR\n\n\n### Datasets \n\n- [FUNSD](https://guillaumejaume.github.io/FUNSD/download/)\n",
+      "summary": "Repo containing references on the topic of OCR - [FUNSD](https://guillaumejaume.github.io/FUNSD/download/)",
+      "line_count": 7,
+      "word_count": 14,
+      "last_modified": "2023-01-24T22:11:46.753522"
+    }
+  ],
+  "file_structure": {
+    "total_files": 1,
+    "total_size": 141,
+    "file_types": {
+      ".md": 1
+    },
+    "languages": {},
+    "directories": [
+      "datasets"
+    ],
+    "largest_files": [
+      [
+        "README.md",
+        141
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "9b9b51cc61c74a141a7ba6d7acb0ec5790a277f1",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Sat Jan 14 09:54:52 2023 +0100",
+      "message": "Initial commit"
+    },
+    "remote_url": "https://github.com/bkocis/ocr-references.git"
+  },
+  "content_hash": "8b11335af2add3f81a6e8f5b74074b65"
+}

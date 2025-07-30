@@ -1,0 +1,107 @@
+{
+  "repository_name": "CVND_Pr_2_Image_captioning",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CVND_Pr_2_Image_captioning",
+  "analysis_timestamp": "2025-07-30T23:57:34.849977",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CVND_Pr_2_Image_captioning/README.md",
+      "size": 1392,
+      "content": "# CVND---Image-Captioning-Project\n\n# Instructions  \n1. Clone this repo: https://github.com/cocodataset/cocoapi  \n```\ngit clone https://github.com/cocodataset/cocoapi.git  \n```\n\n2. Setup the coco API (also described in the readme [here](https://github.com/cocodataset/cocoapi)) \n```\ncd cocoapi/PythonAPI  \nmake  \ncd ..\n```\n\n3. Download some specific data from here: http://cocodataset.org/#download (described below)\n\n* Under **Annotations**, download:\n  * **2014 Train/Val annotations [241MB]** (extract captions_train2014.json and captions_val2014.json, and place at locations cocoapi/annotations/captions_train2014.json and cocoapi/annotations/captions_val2014.json, respectively)  \n  * **2014 Testing Image info [1MB]** (extract image_info_test2014.json and place at location cocoapi/annotations/image_info_test2014.json)\n\n* Under **Images**, download:\n  * **2014 Train images [83K/13GB]** (extract the train2014 folder and place at location cocoapi/images/train2014/)\n  * **2014 Val images [41K/6GB]** (extract the val2014 folder and place at location cocoapi/images/val2014/)\n  * **2014 Test images [41K/6GB]** (extract the test2014 folder and place at location cocoapi/images/test2014/)\n\n4. The project is structured as a series of Jupyter notebooks that are designed to be completed in sequential order (`0_Dataset.ipynb, 1_Preliminaries.ipynb, 2_Training.ipynb, 3_Inference.ipynb`).\n\n",
+      "summary": "1. Clone this repo: https://github.com/cocodataset/cocoapi ``` git clone https://github.com/cocodataset/cocoapi.git",
+      "line_count": 27,
+      "word_count": 146,
+      "last_modified": "2023-01-18T20:15:42.169841"
+    }
+  ],
+  "file_structure": {
+    "total_files": 22,
+    "total_size": 125919564,
+    "file_types": {
+      ".html": 2,
+      ".txt": 3,
+      ".py": 4,
+      ".md": 1,
+      ".ipynb": 5,
+      ".pkl": 2,
+      ".jpg": 1,
+      ".png": 4
+    },
+    "languages": {
+      "HTML": 2,
+      "Python": 4
+    },
+    "directories": [
+      "models",
+      "images"
+    ],
+    "largest_files": [
+      [
+        "models/encoder_n2-3.pkl",
+        96747717
+      ],
+      [
+        "models/decoder_n2-3.pkl",
+        24178141
+      ],
+      [
+        "3_Inference.html",
+        1350136
+      ],
+      [
+        "3_Inference.ipynb",
+        1085772
+      ],
+      [
+        "training_log.txt",
+        622241
+      ],
+      [
+        "images/encoder.png",
+        392605
+      ],
+      [
+        "2_Training.html",
+        376394
+      ],
+      [
+        "images/encoder-decoder.png",
+        302509
+      ],
+      [
+        "images/decoder.png",
+        238368
+      ],
+      [
+        "0_Dataset.ipynb",
+        210970
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [
+      "Scikit-learn",
+      "SciPy",
+      "NumPy",
+      "Pandas"
+    ],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "c82e27f581148cb4e8231418a62bdf3b05bacc12",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Tue Oct 22 00:44:01 2019 +0200",
+      "message": "readme added"
+    },
+    "remote_url": "https://github.com/bkocis/CVND_Pr_2_Image_captioning.git"
+  },
+  "content_hash": "63f0a413694d93c992e7af95d4048487"
+}

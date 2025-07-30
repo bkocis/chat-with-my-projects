@@ -1,0 +1,83 @@
+{
+  "repository_name": "bokeh_app_monitor",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bokeh_app_monitor",
+  "analysis_timestamp": "2025-07-30T23:57:35.392369",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bokeh_app_monitor/README.md",
+      "size": 454,
+      "content": "Front-end application for visualization of running screen session with bokeh apps.\n\nThe app executes linux command in subprocess Popen method\n\n`command = \"\"\"ps -ef | grep \"SCREEN\" | awk '{ if ($13~\"bokeh\") print $2 \" \" $19 \" \" $23 }'\"\"\"`\n\nIn the front-end app button actions are assigned to `kill` process commands:\n\n`kill_command = \"screen -XS \" + \"S-PRO_gen-survey_\" + P7_port.value + \" quit\"`\n\nwhich terminate the screen session with the running app.\n",
+      "summary": "Front-end application for visualization of running screen session with bokeh apps. The app executes linux command in subprocess Popen method `command = \"\"\"ps -ef | grep \"SCREEN\" | awk '{ if ($13~\"bokeh\") print $2 \" \" $19 \" \" $23 }'\"\"\"`",
+      "line_count": 11,
+      "word_count": 74,
+      "last_modified": "2023-01-18T20:16:11.094123"
+    }
+  ],
+  "file_structure": {
+    "total_files": 6,
+    "total_size": 17299,
+    "file_types": {
+      ".md": 1,
+      ".py": 2,
+      ".css": 1,
+      ".html_": 1,
+      ".html": 1
+    },
+    "languages": {
+      "Python": 2,
+      "CSS": 1,
+      "HTML": 1
+    },
+    "directories": [
+      "templates"
+    ],
+    "largest_files": [
+      [
+        "bokeh_app_monitor.py",
+        9858
+      ],
+      [
+        "bokeh_app_monitor_refactor.py",
+        4775
+      ],
+      [
+        "templates/styles.css",
+        1020
+      ],
+      [
+        "templates/index.html",
+        924
+      ],
+      [
+        "README.md",
+        454
+      ],
+      [
+        "templates/index.html_",
+        268
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "bc8d374a7067130ee4ee477f65d046727081bdc1",
+      "author_name": "Balazs.Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Fri Apr 21 00:06:26 2023 +0200",
+      "message": "refactor"
+    },
+    "remote_url": "https://github.com/bkocis/bokeh_app_monitor.git"
+  },
+  "content_hash": "b0052d02ad270fddd2b0c9a72f02ddb0"
+}

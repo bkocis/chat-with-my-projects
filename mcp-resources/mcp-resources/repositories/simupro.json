@@ -1,0 +1,110 @@
+{
+  "repository_name": "simupro",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/simupro",
+  "analysis_timestamp": "2025-07-30T23:57:34.901338",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/simupro/README.md",
+      "size": 2894,
+      "content": "# simupro\nsimupro tool for quantitative user experience measurement via surveys \n\n\nmysql setup instructions\n\nCREATE DATABASE hux_brill_test_1;\n\nCREATE TABLE questionaire (id INT AUTO_INCREMENT PRIMARY KEY, entry_time TIMESTAMP(2) DEFAULT CURRENT_TIMESTAMP(2), TEXT VARCHAR(50), BRAND INT, DESIGN INT, VISUALS INT, GEARBOX INT, EASE_OF_USE INT);\n\n\n\n# ADD USER AND GIVE PRIVILEDGES\n# without defining the host IP of the user \n\nINSERT INTO mysql.user (User, authentication_string,ssl_cipher,x509_issuer,x509_subject) VALUES('hux',PASSWORD('huxhux'),'','','');\n\nGRANT ALL PRIVILEGES ON hux_brill_test_1.* TO 'hux'@'%' IDENTIFIED BY 'huxhux';\n\nFLUSH PRIVILEGES;\n\n# this way any pi can write to the zero database, from any IP. \n\n\n\n# when I need the users to create own databases -> grant all priviledges to user for db-s that start with string ::\n\n#https://stackoverflow.com/questions/2950054/let-mysql-users-create-databases-but-allow-access-to-only-their-own-databases\n\nGRANT ALL PRIVILEGES ON `hux_project_%` . * TO 'hux'@'%' IDENTIFIED BY 'huxhux';\nFLUSH PRIVILEGES;\n\n\n\nSELECT User, Host, authentication_string FROM mysql.user;\n\n\n##### SIMUPRO ###############################\nINSERT INTO mysql.user (User, authentication_string,ssl_cipher,x509_issuer,x509_subject) VALUES('simupro',PASSWORD('simupro'),'','','');\n\nGRANT ALL PRIVILEGES ON `simupro_project_%` . * TO 'simupro'@'%' IDENTIFIED BY 'simupro';\n\nFLUSH PRIVILEGES;\n\nCREATE database simupro_project_init;\n\nCREATE TABLE page_2 (id INT AUTO_INCREMENT PRIMARY KEY, entry_time TIMESTAMP(2) DEFAULT CURRENT_TIMESTAMP(2), TEXT VARCHAR(50), IMG_LINK VARCHAR(500), AGE INT, GENDER INT, F1 INT, F2 INT, F3 INT, F4 INT, F5 INT, F6 INT, F7 INT, F8 INT, F9 INT, F10 INT, F11 INT, F12 INT, F13 INT, F14 INT, F15 INT);\n#############################################\n\n\n\n#In Python\n----------\n\n## Storing the data\n-------------------\nimport mariasql\ndb = mariasql.MariaSQL(host='192.168.0.101', port=3306, user='hux', password='huxhux', db='hux_brill_test_1')\n\ndata = {'BRAND': 7,\n        'DESIGN': 7,\n        'VISUALS': 7,\n        'GEARBOX':2, \n        'EASE_OF_USE': 2,\n       }\ndb.insert('questionaire',data)\n\n\n## Retrieve the data\n--------------------\n\nimport mariasql\nimport pandas as pa\nimport matplotlib.pyplot as plt\n\ndb = mariasql.MariaSQL(host='192.168.0.101', port=3306, user='hux', password='huxhux', db='hux_brill_test_1')\n\n\n# get all the data from the db into a DataFrame\ndf = pa.DataFrame(db.query(\"select * from questionaire;\"))\n\n# get the last 10 entries\ndf_last = pa.DataFrame(db.query(\"select * from questionaire order by id DESC limit 10;\"))\n\n\ndf.drop(columns=['TEXT', 'entry_time','id'])\n\n\n\n\n\n\n\nMySQL routing check\n-------------------\n#####\nmysql -u root -p    #psswrd is #F4ae50[]\nsudo netstat -lnp | grep mysql\n\nsystemctl status mysql.service\nsudo systemctl restart mysql\n\nsudo vi /etc/mysql/mysql.conf.d/mysqld.cnf  >- bind-address\n",
+      "summary": "simupro tool for quantitative user experience measurement via surveys mysql setup instructions CREATE DATABASE hux_brill_test_1;",
+      "line_count": 103,
+      "word_count": 328,
+      "last_modified": "2023-01-18T20:17:11.514712"
+    }
+  ],
+  "file_structure": {
+    "total_files": 28,
+    "total_size": 3337989,
+    "file_types": {
+      ".html": 6,
+      ".ipynb": 3,
+      ".py": 9,
+      ".md": 1,
+      "": 1,
+      ".css": 2,
+      ".html_": 1,
+      ".csv": 3,
+      ".png": 1,
+      ".gif": 1
+    },
+    "languages": {
+      "HTML": 6,
+      "Python": 9,
+      "CSS": 2
+    },
+    "directories": [
+      "S-PRO_survey",
+      "trianlge_test",
+      "openURL_test",
+      "hide_element_test",
+      "img",
+      "S-PRO_survey/templates",
+      "hide_element_test/templates"
+    ],
+    "largest_files": [
+      [
+        "img/coca_cola_01.gif",
+        2206304
+      ],
+      [
+        "img/mavic2.png",
+        307662
+      ],
+      [
+        "index_page.html",
+        251003
+      ],
+      [
+        "Untitled.html",
+        250164
+      ],
+      [
+        "thank_you_page.html",
+        249836
+      ],
+      [
+        "S-PRO_survey/main.py",
+        11254
+      ],
+      [
+        "eval_simupro.py",
+        11060
+      ],
+      [
+        "simupro_questionnaire_backup.py",
+        10747
+      ],
+      [
+        "trianlge_test/triangle_bokeh_test.py",
+        6475
+      ],
+      [
+        "openURL_test/openurl.html",
+        5639
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "4a5e46336490e46c3e083de4925516bf9e253032",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Sun Jun 9 00:53:51 2019 +0200",
+      "message": "index page notebook"
+    },
+    "remote_url": "https://github.com/bkocis/simupro.git"
+  },
+  "content_hash": "b7b73dcdd5bb64f89408fcd74671fe72"
+}

@@ -1,0 +1,99 @@
+{
+  "repository_name": "DRLND_Pr_3_Collaboration_and_Competition",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DRLND_Pr_3_Collaboration_and_Competition",
+  "analysis_timestamp": "2025-07-30T23:57:34.693734",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DRLND_Pr_3_Collaboration_and_Competition/README.md",
+      "size": 5098,
+      "content": "[//]: # (Image References)\n\n[image1]: https://user-images.githubusercontent.com/10624937/42135623-e770e354-7d12-11e8-998d-29fc74429ca2.gif \"Trained Agent\"\n[image2]: https://user-images.githubusercontent.com/10624937/42135622-e55fb586-7d12-11e8-8a54-3c31da15a90a.gif \"Soccer\"\n\n\n# Project 3: Collaboration and Competition\n\n### Introduction\n\nFor this project, you will work with the [Tennis](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#tennis) environment.\n\n![Trained Agent][image1]\n\nIn this environment, two agents control rackets to bounce a ball over a net. If an agent hits the ball over the net, it receives a reward of +0.1.  If an agent lets a ball hit the ground or hits the ball out of bounds, it receives a reward of -0.01.  Thus, the goal of each agent is to keep the ball in play.\n\nThe observation space consists of 8 variables corresponding to the position and velocity of the ball and racket. Each agent receives its own, local observation.  Two continuous actions are available, corresponding to movement toward (or away from) the net, and jumping.\n\nThe task is episodic, and in order to solve the environment, your agents must get an average score of +0.5 (over 100 consecutive episodes, after taking the maximum over both agents). Specifically,\n\n- After each episode, we add up the rewards that each agent received (without discounting), to get a score for each agent. This yields 2 (potentially different) scores. We then take the maximum of these 2 scores.\n- This yields a single **score** for each episode.\n\nThe environment is considered solved, when the average (over 100 episodes) of those **scores** is at least +0.5.\n\n<br>\n<br>\n\n---\n### Report\n\n__The final report summarizing the code implementation and my solution of the environemnt is in the [`report.md`](https://github.com/bkocis/DRLND_Pr_3_Collaboration_and_Competition/blob/master/report.md).__\n<br>\n\n---\n\n<br>\n<br>\n\n\n### Getting Started and installation\n\n#### Installation and Setup\n\n1. Download the environment from one of the links below.  You need only select the environment that matches your operating system:\n      - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Linux.zip)\n      - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis.app.zip)\n      - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Windows_x86.zip)\n      - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Windows_x86_64.zip)\n\n      (_For Windows users_) Check out [this link](https://support.microsoft.com/en-us/help/827218/how-to-determine-whether-a-computer-is-running-a-32-bit-version-or-64) if you need help with determining if your computer is running a 32-bit version or 64-bit version of the Windows operating system.\n\n      (_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Linux_NoVis.zip) to obtain the \"headless\" version of the environment.  You will **not** be able to watch the agent without enabling a virtual screen, but you will be able to train the agent.  (_To watch the agent, you should follow the instructions to [enable a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md), and then download the environment for the **Linux** operating system above._)\n\n\n2. Install things on local computer\n\n  To set up your python environment to run the code in this repository, follow the instructions below.\n\n    - 2.1. Create (and activate) a new environment with Python 3.6.\n\n      ```bash\n      conda create --name drlnd python=3.6\n      source activate drlnd  \n      or\n      virtualenv drlnd\n      source drlnd/bin/actiate\n      ```\n\n    - 2.2. Follow the instructions in [this repository](https://github.com/openai/gym) to perform a minimal install of OpenAI gym.  \n    \t- Next, install the **classic control** environment group by following the instructions [here](https://github.com/openai/gym#classic-control).\n    \t- Then, install the **box2d** environment group by following the instructions [here](https://github.com/openai/gym#box2d).\n\n    - 2.3. Clone the repository (if you haven't already!), and navigate to the `python/` folder.  Then, install several dependencies.\n    ```bash\n    git clone https://github.com/udacity/deep-reinforcement-learning.git\n    cd deep-reinforcement-learning/python\n    pip install .\n    ```\n\n    - 2.4. Create an [IPython kernel](http://ipython.readthedocs.io/en/stable/install/kernel_install.html) for the `drlnd` environment.  \n    ```bash\n    python -m ipykernel install --user --name drlnd --display-name \"drlnd\"\n    ```\n\n    - 2.5. Before running code in a notebook, change the kernel to match the `drlnd` environment by using the drop-down `Kernel` menu.\n",
+      "summary": "[//]: # (Image References) [image1]: https://user-images.githubusercontent.com/10624937/42135623-e770e354-7d12-11e8-998d-29fc74429ca2.gif \"Trained Agent\" [image2]: https://user-images.githubusercontent.com/10624937/42135622-e55fb586-7d12-11e8-8a54-3c31da15a90a.gif \"Soccer\"",
+      "line_count": 86,
+      "word_count": 577,
+      "last_modified": "2023-01-18T20:13:58.552831"
+    }
+  ],
+  "file_structure": {
+    "total_files": 11,
+    "total_size": 766687,
+    "file_types": {
+      ".py": 2,
+      ".md": 2,
+      ".ipynb": 1,
+      ".pth": 2,
+      ".log": 1,
+      ".jpg": 2,
+      ".png": 1
+    },
+    "languages": {
+      "Python": 2
+    },
+    "directories": [
+      "img"
+    ],
+    "largest_files": [
+      [
+        "tennis-critic-moving_avgs.pth",
+        279631
+      ],
+      [
+        "tennis-actor-moving_avgs.pth",
+        278833
+      ],
+      [
+        "img/female_tennis_1.jpg",
+        78030
+      ],
+      [
+        "Tennis.ipynb",
+        74692
+      ],
+      [
+        "img/grab.jpg",
+        21062
+      ],
+      [
+        "img/best_training.png",
+        11134
+      ],
+      [
+        "ddpg_agent_tennis.py",
+        8704
+      ],
+      [
+        "report.md",
+        6404
+      ],
+      [
+        "README.md",
+        5098
+      ],
+      [
+        "model_tennis.py",
+        3077
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "534e428d16cbcff2d4168190b5e9acbf8f963662",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Tue Dec 17 14:29:09 2019 +0100",
+      "message": "submit"
+    },
+    "remote_url": "https://github.com/bkocis/DRLND_Pr_3_Collaboration_and_Competition.git"
+  },
+  "content_hash": "54cee56a971348201a6e4b8753a410e7"
+}

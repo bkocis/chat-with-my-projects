@@ -1,0 +1,160 @@
+{
+  "repository_name": "41_ML-pack-repo-to-github",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/41_ML-pack-repo-to-github",
+  "analysis_timestamp": "2025-07-30T23:57:35.169283",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "Mastering-Python-Data-Analysis/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/41_ML-pack-repo-to-github/Mastering-Python-Data-Analysis/README.md",
+      "size": 2261,
+      "content": "# Mastering-Python-Data-Analysis\nChapter-wise code examples\n\nThis is the code repository for [Mastering Python Data Analysis](https://www.packtpub.com/big-data-and-business-intelligence/mastering-python-data-analysis?utm_source=github&utm_medium=repository&utm_campaign=9781783553297), published by Packt Publishing. It contains all the supporting code files necessary to work through the book from start to finish.\n\nAll you need to follow through the examples in this book is a computer running any recent version of Python. While the examples use Python 3, they can easily be adapted to work with Python 2, with only minor changes. The packages used in the examples are NumPy, SciPy, matplotlib, Pandas, statsmodels, PyMC, Scikit-learn. Optionally, the packages basemap and cartopy are used to plot coordinate points on maps. The easiest way to obtain and maintain a Python environment that meets all the requirements of this book is to download a prepackaged Python distribution. In this book, we have checked all the code against Continuum Analytics' Anaconda Python distribution and Ubuntu Xenial Xerus (16.04) running Python 3.\n\nThis book is intended for professionals with a beginner to intermediate level of Python programming knowledge who want to move in the direction of solving more sophisticated problems and gain deeper insights through advanced data analysis. Some experience with the math behind basic statistics is assumed, but quick introductions are given where required. If you want to learn the breadth of statistical analysis techniques in Python and get an overview of the methods and tools available, you will find this book helpful. Each chapter consists of a number of examples using mostly real-world data to highlight various aspects of the topic and teach how to conduct data analysis from start to finish.\n\n\n## Related Python Data Analysis books\n* [Python Data Analysis](https://www.packtpub.com/big-data-and-business-intelligence/python-data-analysis?utm_source=github&utm_medium=repository&utm_campaign=9781783553358)\n* [Getting Started with Python Data Analysis](https://www.packtpub.com/big-data-and-business-intelligence/getting-started-python-data-analysis?utm_source=github&utm_medium=repository&utm_campaign=9781785285110)\n",
+      "summary": "Chapter-wise code examples This is the code repository for [Mastering Python Data Analysis](https://www.packtpub.com/big-data-and-business-intelligence/mastering-python-data-analysis?utm_source=github&utm_medium=repository&utm_campaign=9781783553297), published by Packt Publishing. It contains all the supporting code files necessary to work through the book from start to finish. All you need to follow through the examples in this book is a computer running any recent version of Python. While the...",
+      "line_count": 13,
+      "word_count": 281,
+      "last_modified": "2023-01-18T20:13:06.924328"
+    },
+    {
+      "path": "Mastering-Python-Data-Analysis/Chapter 1/data/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/41_ML-pack-repo-to-github/Mastering-Python-Data-Analysis/Chapter 1/data/README.md",
+      "size": 8413,
+      "content": "#MovieTweetings\n##Some stats\n\nMetric | Value\n--- | ---\nTotal number of ratings                 | 506,505\nNumber of unique users                  | 43,134\nNumber of unique items                  | 25,002\nThese stats were last autocalculated on Sat Jun 18 00:33:45 CEST 2016  ([more stats here](./stats.md))\n\n##A Movie Rating Dataset Collected From Twitter\n\nMovieTweetings is a dataset consisting of ratings on movies that were contained in well-structured tweets on Twitter. This dataset is the result of research conducted by [Simon Dooms] (http://scholar.google.be/citations?user=owaD8qkAAAAJ) (Ghent University, Belgium) and has been presented on the [CrowdRec 2013 workshop](http://crowdrec2013.noahlab.com.hk) which is co-located with the [ACM RecSys 2013 conference](http://recsys.acm.org/recsys13/). Please cite the [corresponding paper](http://crowdrec2013.noahlab.com.hk/papers/crowdrec2013_Dooms.pdf) if you make use of this dataset. The presented slides can be found [on slideshare] (http://www.slideshare.net/simondooms/movie-tweetings-a-movie-rating-dataset-collected-from-twitter).\n\nFollow us on Twitter ([@mvtweetings](https://twitter.com/mvtweetings)) for the latest news, info and fun facts about the dataset.\n\nBibtex: *@conference{Dooms13crowdrec, author = {Dooms, Simon and De Pessemier, Toon and Martens, Luc}, title = {MovieTweetings: a Movie Rating Dataset Collected From Twitter}, booktitle = {Workshop on Crowdsourcing and Human Computation for Recommender Systems, CrowdRec at RecSys 2013}, year = {2013} }*\n\nAn excerpt of the abstract of the paper:\n\n> Public rating datasets, like MovieLens or Netflix, have long been popular and widely used in the recommender systems domain for experimentation and comparison. More and more however they are becoming outdated and fail to incorporate new and relevant items. In our work, we tap into the vast availability of social media and construct a new movie rating dataset 'MovieTweetings' based on public and well-structured tweets. With the addition of around 500 new ratings per day we believe this dataset can be very useful as an always up-to-date and natural rating dataset for movie recommenders.\n\nThe goal of this dataset is to provide the RecSys community with a live, natural and always up-to-date movie ratings dataset. The dataset will be updated as much as possible to incorporate rating data from the newest tweets available. The earliest rating contained in this dataset is from 28 Feb 2013, and I pledge to keep this system up and running for as long as I can. Note however that this dataset is automatically gathered and therefore depending on the continuation of the IMDb apps and Twitter API.\n\nDon't hesitate to contact me for any comments, questions or proposals you might have.\n\n##Ratings from Twitter\n\nAs said, this dataset consists of ratings extracted from tweets. To be able to extract the ratings, we query the Twitter API for well-structured tweets. We have found such tweets originating from the social rating widget available in IMDb apps. While rating movies, in these apps, a well-structured tweet is proposed of the form:\n\n*\"I rated The Matrix 9/10 http://www.imdb.com/title/tt0133093/ #IMDb\"*\n\nOn a daily basis the Twitter API is queried for the term **\"I rated #IMDb\"**. Through a series of regular expressions, relevant information such as user, movie and rating is extracted, and cross-referenced with the according IMDb page to provide also genre metadata. The numeric IMDb identifier was adopted as item id to facilitate additional metadata enrichment and guarantee movie uniqueness. For example, for the above tweet the item id would be **\"0133093\"** which allows to infer the corresponding IMDb page link (add *http://www.imdb.com/title/tt*). The user id simply ranges from 1 to the number of users.\n\n##The dataset\n\nSince this dataset will be updated regularly we have structured the dataset in different folders /latest and /snapshots. The /latest folder will always contain the complete dataset as available at the time of the commit, while the /snapshots contain fixed portions of the dataset to allow experimentation and reproducibility of research. The *10K* snapshot represents the ratings from the first 10,000 collected tweets, *20K* the first 20,000, and so on.\n\nThe dataset files are modeled after the [MovieLens dataset] (http://www.grouplens.org/node/73) to make them as interchangeable as possible. There are three files: **users.dat**, **items.dat** and **ratings.dat**.\n\n###users.dat\n\nContains the mapping of the users ids on their true Twitter id in the following format: *userid::twitter_id*. For example:\n\n1::177651718\n\nWe provide the Twitter id and not the Twitter @handle (username) because while the @handle can be changed, the id will always remain the same. Conversions from Twitter id to @handle can be done by means of an online tool like [Tweeterid] (http://tweeterid.com/) or simply through the Twitter API itself. The mapping provided here again facilitates additional metadata enrichment.\n\n###items.dat\n\nContains the items (i.e., movies) that were rated in the tweets, together with their genre metadata in the following format: *movie_id::movie_title (movie_year)::genre|genre|genre*. For example:\n\n0110912::Pulp Fiction (1994)::Crime|Thriller\n\nThe file is UTF-8 encoded to deal with the many foreign movie titles contained in tweets.\n\n###ratings.dat\n\nIn this file the extracted ratings are stored in the following format: *user_id::movie_id::rating::rating_timestamp*. For example:\n\n14927::0110912::9::1375657563\n\nThe ratings contained in the tweets are scaled from 0 to 10, as is the norm on the IMDb platform. To prevent information loss we have chosen to not down-scale this rating value, so all rating values of this dataset are contained in the interval [0,10].\n\n##Publications using this dataset\n- [MovieTweetings: a Movie Rating Dataset Collected From Twitter](http://crowdrec2013.noahlab.com.hk/papers/crowdrec2013_Dooms.pdf)\n- [Probabilistic Neighborhood Selection\nin Collaborative Filtering Systems\n] (http://people.stern.nyu.edu/padamopo/Probabilistic%20Neighborhood%20Selection%20in%20Collaborative%20Filtering%20Systems%20-%20Working%20Paper.pdf)\n- [Harvesting movie ratings from structured data in social media](http://dl.acm.org/citation.cfm?id=2559862)\n- [Social Popularity based SVD++ Recommender System](http://research.ijcaonline.org/volume87/number14/pxc3894033.pdf)\n- [Cold-Start Active Learning with Robust Ordinal Matrix Factorization](http://jmlr.org/proceedings/papers/v32/houlsby14-supp.zip)\n- [SemanticSVD++: Incorporating Semantic Taste Evolution for Predicting Ratings](http://www.lancaster.ac.uk/staff/rowem/files/mrowe-wi2014.pdf)\n- [Estimating the Value of Multi-Dimensional Data Sets in Context-based Recommender Systems](http://ceur-ws.org/Vol-1247/recsys14_poster7.pdf)\n- [An Extended Data Model Format for Composite Recommendation](http://ceur-ws.org/Vol-1247/recsys14_poster20.pdf)\n- [Improving IMDb Movie Recommendations with Interactive Settings and Filters](http://ceur-ws.org/Vol-1247/recsys14_poster19.pdf)\n- [ConcertTweets: A Multi-Dimensional Data Set for Recommender Systems Research](http://people.stern.nyu.edu/padamopo/data/ConcertTweets.pdf)\n- [On over-specialization and concentration bias of recommendations: probabilistic neighborhood selection in collaborative filtering systems](http://dl.acm.org/citation.cfm?id=2645752)\n- [Recommender systems challenge 2014](http://dl.acm.org/citation.cfm?id=2645779)\n- [CrowdRec project](http://crowdrec.eu/)\n- [Comparing a Social Robot and a Mobile Application for Movie Recommendation: A Pilot Study](http://ceur-ws.org/Vol-1382/paper5.pdf)\n- [Augmenting a Feature Set of Movies Using Linked Open Data](https://www.csw.inf.fu-berlin.de/ruleml2015-ceur/paper16.pdf)\n- [Adaptive User Engagement Evaluation via Multi-task Learning](http://dl.acm.org/citation.cfm?id=2767785)\n- [Crowd Source Movie Ratings Based on Twitter Data Analytics](http://csus-dspace.calstate.edu/bitstream/handle/10211.3/138435/2015HolikattiPriya.pdf)\n- [Combining similarity and sentiment in opinion mining for product recommendation](http://link.springer.com/article/10.1007/s10844-015-0379-y)\n- [7 Relevance of Social Data in Video Recommendation](https://comcast.app.box.com/recsystv-2015-xu)\n\n[Contact me](http://twitter.com/sidooms) if you know of any work (maybe your own?) that can be added to this list!\n",
+      "summary": "Metric | Value --- | --- Total number of ratings                 | 506,505",
+      "line_count": 88,
+      "word_count": 1031,
+      "last_modified": "2023-01-18T20:13:06.792327"
+    },
+    {
+      "path": "example-practice/relayr/test_for_application/readme.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/41_ML-pack-repo-to-github/example-practice/relayr/test_for_application/readme.md",
+      "size": 1617,
+      "content": "# Relayr Data Science Assignment\n\n### Intro\n\nThe aim of this task is for you to demonstrate your knowledge, experience and creativity when applied to a classic data sciene problem - explore the dataset and build the best predictive model.\n\nPlease submit your results in a python (prefferably python3) jupyter notebook, with all cells pre-run. \n\n### Data\n\nThe dataset comes from a continuous manufacturing process in which raw ingredients are continuously pumped in and the final product continuously flows out. The entire process (from injecting raw ingredients to recieving final product) takes roughly 90 minutes from start to finish. The data can be found in the following 2 files:\n\n* predictors.csv - contains time series feature data describing the manufacturing process. Each feature corresponds to sensor data attached to different machines along the manufacturing process.\n* labels.csv - contains a time series of labels. Each label can be considered as a spot measurement of the product as it is produced.\n\n### Objectives\n\nThe goal of this task is as follows:\n\n1. explore / clean the data\n2. build a predictive (supervised) model\n3. validate your model\n4. refine your model\n\nWe will be evaluating your descision making at each step - so make sure to leave a couple of comments to explain your reasoning!\n\nAs part of the technical interview, we will be discussing your assignment. We'll also discuss the following questions: \n\n1. what might a semi-supervised predictive model look like for such a problem?\n2. what would a system designed to alter the parameters of the process to minimize the label look like?",
+      "summary": "The aim of this task is for you to demonstrate your knowledge, experience and creativity when applied to a classic data sciene problem - explore the dataset and build the best predictive model. Please submit your results in a python (prefferably python3) jupyter notebook, with all cells pre-run. The dataset comes from a continuous manufacturing process in which raw ingredients are continuously pumped in and the final product continuously flows out. The entire process (from injecting raw ingredie...",
+      "line_count": 30,
+      "word_count": 264,
+      "last_modified": "2023-01-18T20:13:07.052330"
+    }
+  ],
+  "file_structure": {
+    "total_files": 88,
+    "total_size": 142052844,
+    "file_types": {
+      ".md": 8,
+      ".ipynb": 21,
+      ".mplstyle": 9,
+      ".txt": 11,
+      ".csv": 9,
+      ".pdf": 4,
+      ".dta": 1,
+      ".dat": 4,
+      ".desc": 1,
+      ".h5": 4,
+      ".gz": 1,
+      ".pick": 1,
+      ".tab": 1,
+      ".csv_backup": 1,
+      ".xml": 1,
+      ".png": 2,
+      ".py": 1,
+      ".zip": 1,
+      ".arff": 5,
+      ".txt_": 1,
+      ".html": 1
+    },
+    "languages": {
+      "Python": 1,
+      "HTML": 1
+    },
+    "directories": [
+      "Mastering-Python-Data-Analysis",
+      "example-practice",
+      "Mastering-Python-Data-Analysis/Chapter 3",
+      "Mastering-Python-Data-Analysis/Chapter 2",
+      "Mastering-Python-Data-Analysis/Chapter 1",
+      "Mastering-Python-Data-Analysis/Chapter 8",
+      "Mastering-Python-Data-Analysis/Chapter 7",
+      "Mastering-Python-Data-Analysis/Chapter 5",
+      "Mastering-Python-Data-Analysis/Chapter 4",
+      "Mastering-Python-Data-Analysis/Chapter 6",
+      "Mastering-Python-Data-Analysis/Appendix",
+      "Mastering-Python-Data-Analysis/Chapter 3/old",
+      "Mastering-Python-Data-Analysis/Chapter 3/data",
+      "Mastering-Python-Data-Analysis/Chapter 2/data",
+      "Mastering-Python-Data-Analysis/Chapter 1/data",
+      "Mastering-Python-Data-Analysis/Chapter 8/data",
+      "Mastering-Python-Data-Analysis/Chapter 7/data",
+      "Mastering-Python-Data-Analysis/Chapter 5/data",
+      "Mastering-Python-Data-Analysis/Chapter 5/data/uzcJ2000.tab",
+      "Mastering-Python-Data-Analysis/Chapter 4/data",
+      "Mastering-Python-Data-Analysis/Chapter 4/data/country_centroids",
+      "Mastering-Python-Data-Analysis/Chapter 6/data",
+      "example-practice/ACN-ds-assignement",
+      "example-practice/relayr",
+      "example-practice/ACN-ds-assignement/assets",
+      "example-practice/ACN-ds-assignement/data",
+      "example-practice/relayr/test_for_application"
+    ],
+    "largest_files": [
+      [
+        "Mastering-Python-Data-Analysis/Chapter 6/data/AviationData.txt",
+        22283214
+      ],
+      [
+        "Mastering-Python-Data-Analysis/Chapter 2/data/GSS2012merged.csv",
+        11306307
+      ],
+      [
+        "example-practice/ACN-ds-assignement/data.zip",
+        8842018
+      ],
+      [
+        "Mastering-Python-Data-Analysis/Chapter 2/data/GSS2012merged_R5.dta",
+        5964554
+      ],
+      [
+        "example-practice/relayr/test_for_application/relayr_homework_Balazs_Kocsis-Copy1.ipynb",
+        5524257
+      ],
+      [
+        "example-practice/relayr/test_for_application/relayr_homework_Balazs_Kocsis.html",
+        5328674
+      ],
+      [
+        "example-practice/ACN-ds-assignement/data/3year.arff",
+        5169674
+      ],
+      [
+        "example-practice/ACN-ds-assignement/data/2year.arff",
+        4987459
+      ],
+      [
+        "example-practice/relayr/test_for_application/relayr_application_test--3.ipynb",
+        4973909
+      ],
+      [
+        "example-practice/relayr/test_for_application/relayr_homework_Balazs_Kocsis.ipynb",
+        4972358
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "4512e85aa6eed345d2838739565e92ea30d7a205",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Tue Dec 7 22:53:23 2021 +0100",
+      "message": "Add files via upload"
+    },
+    "remote_url": "https://github.com/bkocis/41_ML-pack-repo-to-github.git"
+  },
+  "content_hash": "3b55729482c07cf1448a242d7281065e"
+}

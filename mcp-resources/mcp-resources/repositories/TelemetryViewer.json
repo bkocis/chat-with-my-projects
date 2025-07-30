@@ -1,0 +1,88 @@
+{
+  "repository_name": "TelemetryViewer",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/TelemetryViewer",
+  "analysis_timestamp": "2025-07-30T23:57:35.271237",
+  "is_git_repo": true,
+  "readme_files": [],
+  "file_structure": {
+    "total_files": 81,
+    "total_size": 55662825,
+    "file_types": {
+      ".stl": 1,
+      ".java": 50,
+      ".jar": 26,
+      ".zip": 4
+    },
+    "languages": {
+      "Java": 50
+    },
+    "directories": [
+      "Telemetry Viewer",
+      "Telemetry Viewer/resources",
+      "Telemetry Viewer/src",
+      "Telemetry Viewer/lib"
+    ],
+    "largest_files": [
+      [
+        "Telemetry Viewer/lib/jogl-java-src.zip",
+        24220878
+      ],
+      [
+        "Telemetry Viewer/lib/jogl-javadoc.zip",
+        9299413
+      ],
+      [
+        "Telemetry Viewer/lib/commons-math3-3.6.1-javadoc.jar",
+        6840211
+      ],
+      [
+        "Telemetry Viewer/lib/gluegen-java-src.zip",
+        4156001
+      ],
+      [
+        "Telemetry Viewer/lib/jogl-all.jar",
+        3414448
+      ],
+      [
+        "Telemetry Viewer/lib/commons-math3-3.6.1.jar",
+        2213560
+      ],
+      [
+        "Telemetry Viewer/lib/gluegen-javadoc.zip",
+        1266049
+      ],
+      [
+        "Telemetry Viewer/lib/jetty-util-9.4.0.v20161208.jar",
+        452740
+      ],
+      [
+        "Telemetry Viewer/lib/jogl-all-natives-macosx-universal.jar",
+        443876
+      ],
+      [
+        "Telemetry Viewer/lib/gluegen-rt.jar",
+        345605
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "7c7813b4d98f90e97244ef3fa5e20921a123d907",
+      "author_name": "Farrell Farahbod",
+      "author_email": "farrellfarahbod@gmail.com",
+      "date": "Mon Aug 20 16:28:35 2018 -0700",
+      "message": "Updated text for version 0.5"
+    },
+    "remote_url": "https://github.com/bkocis/TelemetryViewer.git"
+  },
+  "content_hash": "e8d110ab082bd645ed68d98a40952636"
+}

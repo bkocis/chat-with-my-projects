@@ -1,0 +1,53 @@
+{
+  "repository_name": "archive-of-posts",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/archive-of-posts",
+  "analysis_timestamp": "2025-07-30T23:57:35.747666",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/archive-of-posts/README.md",
+      "size": 251,
+      "content": "# archive-of-posts\nThis repo gathers reference links to post that I find by browsing through LinkedIn feeds.\n\n\nOn mobile, the posts are shared as Github Issue via the Github App.\nOn desktop, the link to the post is pasted into a new issue manually.  \n",
+      "summary": "This repo gathers reference links to post that I find by browsing through LinkedIn feeds. On mobile, the posts are shared as Github Issue via the Github App. On desktop, the link to the post is pasted into a new issue manually.",
+      "line_count": 6,
+      "word_count": 44,
+      "last_modified": "2023-01-18T20:12:42.768093"
+    }
+  ],
+  "file_structure": {
+    "total_files": 1,
+    "total_size": 251,
+    "file_types": {
+      ".md": 1
+    },
+    "languages": {},
+    "directories": [],
+    "largest_files": [
+      [
+        "README.md",
+        251
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "77d451d7313aceaa38ef3930ce5ec300624b2280",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Thu Jun 9 09:00:36 2022 +0200",
+      "message": "Update README.md"
+    },
+    "remote_url": "https://github.com/bkocis/archive-of-posts.git"
+  },
+  "content_hash": "96e1fbb768eb3716a30c339fb215c4aa"
+}

@@ -1,0 +1,112 @@
+{
+  "repository_name": "CloudDevOps-ND-Operationalize-ML-Microservice",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CloudDevOps-ND-Operationalize-ML-Microservice",
+  "analysis_timestamp": "2025-07-30T23:57:35.401574",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CloudDevOps-ND-Operationalize-ML-Microservice/README.md",
+      "size": 2844,
+      "content": "[![bkocis](https://circleci.com/gh/bkocis/CloudDevOps-ND-Operationalize-ML-Microservice.svg?style=svg)](https://app.circleci.com/pipelines/github/bkocis/CloudDevOps-ND-Operationalize-ML-Microservice)\n\n\n### Description\n\nThe goal of the project is to operationalize a Machine Learning application as a microservice using Docker and Kubernetes.\nA pre-trained model for predicting housing prices in Boston is used (more about the data initially taken from Kaggle, on [the data source site](https://www.kaggle.com/c/boston-housing). \n\nA Python flask application serves out predictions (inference) about housing prices through API calls. The code is packaged into a docker container and deployed to AWS. Next to docker, a kubernetes cluster is also defined and deployed.\nAdditionally, CI/CD principles are utilizes, such as linting the python code, as well as the docker container and deployment testing via CircleCI SaaS solution.\n\n\nSteps:\n\n* Create a virtualenv and activate it\n\n* Run `make install` to install the necessary dependencies\n\n* Test your project code using linting\n\n    - in the `Makefile` the linting executed via pylint (for the Flask app) and via hadolint for the Dockerfile\n    \n* Complete a Dockerfile to containerize this application\n\n    - in the Dokcerfile the initail container is defined and the files of the applications are copied\n    - port 80 is expoded \n    - CMD executes the program upon creation of the container\n\n* Deploy your containerized application using Docker and make a prediction\n \n    - the docker image is build `docker build --tag=mlapp .``\n    - for a local prediction the app is run from inside the docker `docker run -p 8000:5001 mlapp`\n    - The container is uploaded to AWS ECR and the application (mlapp) is reachable via the EC2 public address\n    - The container is also uploaded to Docker Hub, for the next step of running the Docker with Kubernetes\n    - steps are in `run_docker.sh`, output is captured in the `docker_out.txt`\n\n* Configure Kubernetes and create a Kubernetes cluster\n \n    - the kubectl and minicube have been installed in the cloud9 environment \n\n* Deploy a container using Kubernetes and make a prediction\n\n    - start the kubernetes cluster locally using minicube \n    - define the path to the docker image on the Docker Hub\n    - run kubectl for from the image from the Docker Hub\n    - forward the port to the container and execute the `make_prediction.sh`\n    - steps are in `run_kubernetes.sh`, output is captured in `kubernetes_out.txt`\n\n* Upload a complete Github repo with CircleCI to indicate that your code has been tested\n \n    - the project is uploaded to github and connected to circeCI\n\n\n\n\n---\n\n\n\n\n### Running the Flask application `mlapp.py`\n\n1. Standalone:  `python mlapp.py`\n2. Run in Docker:  `./run_docker.sh`\n3. Run in Kubernetes:  `./run_kubernetes.sh`\n\n\n",
+      "summary": "[![bkocis](https://circleci.com/gh/bkocis/CloudDevOps-ND-Operationalize-ML-Microservice.svg?style=svg)](https://app.circleci.com/pipelines/github/bkocis/CloudDevOps-ND-Operationalize-ML-Microservice) The goal of the project is to operationalize a Machine Learning application as a microservice using Docker and Kubernetes. A pre-trained model for predicting housing prices in Boston is used (more about the data initially taken from Kaggle, on [the data source site](https://www.kaggle.com/c/boston-h...",
+      "line_count": 65,
+      "word_count": 408,
+      "last_modified": "2023-01-18T20:13:38.140632"
+    }
+  ],
+  "file_structure": {
+    "total_files": 13,
+    "total_size": 743934,
+    "file_types": {
+      ".sh": 4,
+      ".md": 1,
+      ".py": 1,
+      "": 2,
+      ".txt": 3,
+      ".joblib": 1,
+      ".csv": 1
+    },
+    "languages": {
+      "Shell": 4,
+      "Python": 1
+    },
+    "directories": [
+      "model_data",
+      "output_txt_files"
+    ],
+    "largest_files": [
+      [
+        "model_data/boston_housing_prediction.joblib",
+        681425
+      ],
+      [
+        "model_data/housing.csv",
+        49082
+      ],
+      [
+        "output_txt_files/kubernetes_out.txt",
+        2850
+      ],
+      [
+        "README.md",
+        2844
+      ],
+      [
+        "output_txt_files/docker_out.txt",
+        2604
+      ],
+      [
+        "mlapp.py",
+        1890
+      ],
+      [
+        "Dockerfile",
+        626
+      ],
+      [
+        "upload_docker.sh",
+        619
+      ],
+      [
+        "Makefile",
+        578
+      ],
+      [
+        "run_kubernetes.sh",
+        549
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [
+      "Flask"
+    ],
+    "tools": [
+      "Scikit-learn",
+      "SciPy",
+      "NumPy",
+      "Pandas"
+    ],
+    "databases": [],
+    "deployment": [
+      "Docker"
+    ],
+    "testing": [],
+    "build_systems": [
+      "Make"
+    ]
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "86a3c29e3a48cfb5770ab5a8f98ac46fb5d8ac5d",
+      "author_name": "bkocis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Thu Aug 27 12:14:44 2020 +0000",
+      "message": "flask app logging step modified"
+    },
+    "remote_url": "https://github.com/bkocis/CloudDevOps-ND-Operationalize-ML-Microservice.git"
+  },
+  "content_hash": "dd9bc6c2d8d092be90c5d1c645849592"
+}

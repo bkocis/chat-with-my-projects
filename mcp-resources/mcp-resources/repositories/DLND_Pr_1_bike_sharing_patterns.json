@@ -1,0 +1,65 @@
+{
+  "repository_name": "DLND_Pr_1_bike_sharing_patterns",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DLND_Pr_1_bike_sharing_patterns",
+  "analysis_timestamp": "2025-07-30T23:57:35.428366",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DLND_Pr_1_bike_sharing_patterns/README.md",
+      "size": 133,
+      "content": "# DLND\nThis repository contains the first project of the Udacity Deep Learning NanoDegree program. \n\nStarting date : March 14th 2019\n",
+      "summary": "This repository contains the first project of the Udacity Deep Learning NanoDegree program. Starting date : March 14th 2019",
+      "line_count": 4,
+      "word_count": 21,
+      "last_modified": "2023-01-18T20:18:06.051244"
+    }
+  ],
+  "file_structure": {
+    "total_files": 3,
+    "total_size": 340263,
+    "file_types": {
+      ".md": 1,
+      ".py": 1,
+      ".ipynb": 1
+    },
+    "languages": {
+      "Python": 1
+    },
+    "directories": [],
+    "largest_files": [
+      [
+        "Bike_Sharing_Pattern_fully_connected_NN.ipynb",
+        333070
+      ],
+      [
+        "my_answers.py",
+        7060
+      ],
+      [
+        "README.md",
+        133
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "290a8a865e738af50bce3ae8b7caed13ac4da1db",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Fri May 17 22:55:18 2019 +0200",
+      "message": "Update README.md"
+    },
+    "remote_url": "https://github.com/bkocis/DLND_Pr_1_bike_sharing_patterns.git"
+  },
+  "content_hash": "e5c75ca6205323a9016f94a24b9652fa"
+}

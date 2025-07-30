@@ -1,0 +1,98 @@
+{
+  "repository_name": "zmatrix",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/zmatrix",
+  "analysis_timestamp": "2025-07-30T23:57:34.800267",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/zmatrix/README.md",
+      "size": 84,
+      "content": "zmatrix\n=======\n\nA class for conversion between zmatrices and cartesian coordinates\n",
+      "summary": "zmatrix ======= A class for conversion between zmatrices and cartesian coordinates",
+      "line_count": 4,
+      "word_count": 11,
+      "last_modified": "2023-01-18T20:20:55.072892"
+    }
+  ],
+  "file_structure": {
+    "total_files": 28,
+    "total_size": 35719,
+    "file_types": {
+      ".py": 3,
+      ".md": 1,
+      ".dat": 24
+    },
+    "languages": {
+      "Python": 3
+    },
+    "directories": [
+      "tests",
+      "tests/zmatrix",
+      "tests/cartesian",
+      "tests/output"
+    ],
+    "largest_files": [
+      [
+        "converter.py",
+        11793
+      ],
+      [
+        "tests/zmatrix/cholesterol.dat",
+        3635
+      ],
+      [
+        "tests/output/cholesterol-zmatrix.dat",
+        3635
+      ],
+      [
+        "tests/cartesian/cholesterol.dat",
+        3600
+      ],
+      [
+        "tests/output/cholesterol-cartesian.dat",
+        3411
+      ],
+      [
+        "runtests.py",
+        1169
+      ],
+      [
+        "tests/cartesian/Fe2CO9.dat",
+        955
+      ],
+      [
+        "tests/output/Fe2CO9-cartesian.dat",
+        955
+      ],
+      [
+        "tests/output/Fe2CO9-zmatrix.dat",
+        835
+      ],
+      [
+        "tests/zmatrix/Fe2CO9.dat",
+        723
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "2c8df6ea7b519964924383363469edab18c79512",
+      "author_name": "Jonathon Vandezande",
+      "author_email": "jevandezande@gmail.com",
+      "date": "Sat Sep 14 21:14:22 2013 -0400",
+      "message": "Updated comments to improve readability."
+    },
+    "remote_url": "https://github.com/bkocis/zmatrix.git"
+  },
+  "content_hash": "f6730fbd4320d534fdf22d69416c419b"
+}

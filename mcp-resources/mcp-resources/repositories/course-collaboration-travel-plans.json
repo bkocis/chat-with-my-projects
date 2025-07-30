@@ -1,0 +1,70 @@
+{
+  "repository_name": "course-collaboration-travel-plans",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/course-collaboration-travel-plans",
+  "analysis_timestamp": "2025-07-30T23:57:35.303343",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/course-collaboration-travel-plans/README.md",
+      "size": 85,
+      "content": "# Travel Destinations\n\nA simple app to keep track of destinations I'd like to visit.\n",
+      "summary": "A simple app to keep track of destinations I'd like to visit.",
+      "line_count": 3,
+      "word_count": 15,
+      "last_modified": "2023-01-18T20:13:55.372800"
+    }
+  ],
+  "file_structure": {
+    "total_files": 3,
+    "total_size": 1478,
+    "file_types": {
+      ".md": 1,
+      ".html": 1,
+      ".css": 1
+    },
+    "languages": {
+      "HTML": 1,
+      "CSS": 1
+    },
+    "directories": [
+      "css",
+      "js",
+      "img"
+    ],
+    "largest_files": [
+      [
+        "css/app.css",
+        871
+      ],
+      [
+        "index.html",
+        522
+      ],
+      [
+        "README.md",
+        85
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "650a8de5481791eae2bc2e64db13b37d2d20c51a",
+      "author_name": "eve——o_0",
+      "author_email": "1572534835@qq.com",
+      "date": "Mon Jul 9 11:40:27 2018 +0800",
+      "message": "Update index.html"
+    },
+    "remote_url": "https://github.com/bkocis/course-collaboration-travel-plans.git"
+  },
+  "content_hash": "85c7a1b568e5cb0e26de7c0e5c3f2dad"
+}

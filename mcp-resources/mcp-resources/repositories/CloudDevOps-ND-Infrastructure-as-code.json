@@ -1,0 +1,82 @@
+{
+  "repository_name": "CloudDevOps-ND-Infrastructure-as-code",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CloudDevOps-ND-Infrastructure-as-code",
+  "analysis_timestamp": "2025-07-30T23:57:34.973952",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CloudDevOps-ND-Infrastructure-as-code/README.md",
+      "size": 1296,
+      "content": "\n# Description \n\nThe code contains AWS Cloud Formation confioguration for creating an infrastructure of multiple EC2 instances, load balancer in a network of private and public subnets. The project is part of Udacity's CloudDevOps nanodegree. \n\n\n# Files:\n\nDefining the resources for the network: \n\n- resources.yaml\n- resources-parameters.json\n\nDefining the computational instances:\n\n- servers_final.yaml\n- servers-final-parameters.json\n\n\n# Running the code that build the cloud infrastructure\n\n### 1. create the network and elements subnets, VPS, gateways, etc.\n\n`bash create_stack.sh resources resources.yaml resources-parameters.json \n\n### 2. create the instances and the define the code for the installation inside the instances\nbash create_stack.sh instances servers_final.yaml servers-final-parameters.json\n\n\n### AMI of choice \nhttps://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html\n\nSelect an AMI considering:\n\n- Region\n\n- operating system\n\n- architecture: 32-bit (i386), 64-bit (x86_64), or 64-bit ARM (arm64)\n\n- root device type: Amazon EBS or instance store\n\n- provider (for example, Amazon Web Services)\n\n- additional software (for example, SQL server)\n\nSome AMI could still be incompatible; search for an adequate one can be made in the EC2, Image AMI search pane. \n\n\n",
+      "summary": "The code contains AWS Cloud Formation confioguration for creating an infrastructure of multiple EC2 instances, load balancer in a network of private and public subnets. The project is part of Udacity's CloudDevOps nanodegree. Defining the resources for the network: - resources.yaml",
+      "line_count": 46,
+      "word_count": 169,
+      "last_modified": "2023-01-18T20:13:45.276702"
+    }
+  ],
+  "file_structure": {
+    "total_files": 7,
+    "total_size": 13187,
+    "file_types": {
+      ".sh": 2,
+      ".md": 1,
+      ".yaml": 2,
+      ".json": 2
+    },
+    "languages": {
+      "Shell": 2
+    },
+    "directories": [],
+    "largest_files": [
+      [
+        "resources.yaml",
+        7467
+      ],
+      [
+        "servers_final.yaml",
+        3486
+      ],
+      [
+        "README.md",
+        1296
+      ],
+      [
+        "resources-parameters.json",
+        583
+      ],
+      [
+        "create_stack.sh",
+        127
+      ],
+      [
+        "update_stack.sh",
+        127
+      ],
+      [
+        "servers-final-parameters.json",
+        101
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "a9e5031807906848b7473639747701e5e1e436c9",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Tue Aug 11 10:58:08 2020 +0200",
+      "message": "yaml and json files upload"
+    },
+    "remote_url": "https://github.com/bkocis/CloudDevOps-ND-Infrastructure-as-code.git"
+  },
+  "content_hash": "8733086112259052c5792c14755ca25f"
+}

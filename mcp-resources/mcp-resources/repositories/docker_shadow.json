@@ -1,0 +1,87 @@
+{
+  "repository_name": "docker_shadow",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/docker_shadow",
+  "analysis_timestamp": "2025-07-30T23:57:35.296791",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/docker_shadow/README.md",
+      "size": 592,
+      "content": "# docker_shadow\ndocker test repo\n\n\n\nOwn dockerfile based on the tensorflow dockerfile repo\nFile: `dockerfile`\n\n[https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/dockerfiles/dockerfiles/gpu.Dockerfile]\n\nModified the base version\n\n`ARG CUDA=11.0\nFROM nvidia/cuda${ARCH:+-$ARCH}:${CUDA}-base-ubuntu${UBUNTU_VERSION} as base\n`\n\nFrom the Cudnn archive selected the matching cuda version number for the libcudnn8:\n\n`libcudnn8=${CUDNN}+cuda11.2 \\`\n\n\nAdded tensorflow package version:\n\n`ARG TF_PACKAGE_VERSION=2.4.1`\n\nAdded the python app for the test of tensorflow gpu support.\n",
+      "summary": "docker test repo Own dockerfile based on the tensorflow dockerfile repo File: `dockerfile`",
+      "line_count": 26,
+      "word_count": 59,
+      "last_modified": "2023-01-18T20:13:13.496392"
+    }
+  ],
+  "file_structure": {
+    "total_files": 8,
+    "total_size": 19356,
+    "file_types": {
+      ".py": 1,
+      ".md": 1,
+      "": 5,
+      ".sh": 1
+    },
+    "languages": {
+      "Python": 1,
+      "Shell": 1
+    },
+    "directories": [],
+    "largest_files": [
+      [
+        "cuda-nvidia-docker-gpu",
+        7839
+      ],
+      [
+        "tf-cudnn-cuda-version-matching",
+        6766
+      ],
+      [
+        "dockerfile",
+        2699
+      ],
+      [
+        "dockerfile_1",
+        727
+      ],
+      [
+        "README.md",
+        592
+      ],
+      [
+        "install_docker.sh",
+        370
+      ],
+      [
+        "app-test.py",
+        229
+      ],
+      [
+        "docker_run",
+        134
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "0fe91256c6c4a6e78ce41d94ae32b736eb222613",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Sat Oct 2 21:11:01 2021 +0200",
+      "message": "Update tf-cudnn-cuda-version-matching"
+    },
+    "remote_url": "https://github.com/bkocis/docker_shadow.git"
+  },
+  "content_hash": "0e7fe18db112e1267ee83d077994b65a"
+}

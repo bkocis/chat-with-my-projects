@@ -1,0 +1,124 @@
+{
+  "repository_name": "Arduino_sketchbook_files",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/Arduino_sketchbook_files",
+  "analysis_timestamp": "2025-07-30T23:57:34.655766",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/Arduino_sketchbook_files/README.md",
+      "size": 404,
+      "content": "About:\n------\n\nRepository of .ino files of various projects.\n\nThe projects are not described here. \n\n\n<hr>\n\n#### **Note on running arduino/libraries:**\n\n\n-1. Arduino libraries are located at sudo su; root /Arduino folder \n\n-2. the latest version of Arduino is always in the ~/Downloads folder. cd ~/Downloads/arduino_1.8.X; sudo ./arduino\n\n-3. proejct related ino files are to be stored in ~/sketchbook\n\n",
+      "summary": "About: ------ Repository of .ino files of various projects.",
+      "line_count": 18,
+      "word_count": 59,
+      "last_modified": "2023-01-18T20:16:13.970151"
+    },
+    {
+      "path": "libraries/readme.txt",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/Arduino_sketchbook_files/libraries/readme.txt",
+      "size": 83,
+      "content": "For information on installing libraries, see: http://arduino.cc/en/Guide/Libraries\n",
+      "summary": "For information on installing libraries, see: http://arduino.cc/en/Guide/Libraries",
+      "line_count": 1,
+      "word_count": 7,
+      "last_modified": "2023-01-18T20:16:13.970151"
+    }
+  ],
+  "file_structure": {
+    "total_files": 22,
+    "total_size": 107686,
+    "file_types": {
+      ".md": 1,
+      ".ino": 19,
+      ".h": 1,
+      ".txt": 1
+    },
+    "languages": {},
+    "directories": [
+      "RobotKit_BTS7960_4WD_Bluetooth_Controlled",
+      "Bleuart_cmdmode",
+      "AP_SimpleWebServer_mod_with_BNO055_mod_3-a",
+      "SparkFun_Gesture_BME280-Temp_sensor",
+      "HC-05_with_voltage_splitter",
+      "libraries",
+      "AP_SimpleWebServer_mod_with_BNO055_3",
+      "WiFiUdpSendReceiveString_mod",
+      "RobotKit_BTS7960_4WD_mod_01",
+      "HC-05",
+      "SparkFun_Proximity___BME280-Temp_sensor.ino",
+      "Adafruits_APDS_gesture_sensor_mod",
+      "BNO055_WiFi_Feather_M0_via_UDP_Quaternals",
+      "SparkFun_OpenPIR_Motion_Detector_WhiteDome__APDS_Gesture_sensor",
+      "SparkFun_OpenPIR_Motion_Detector_WhiteDome",
+      "SparkFun_OpenPIR_Motion_Detector_WhiteDome__SparkFun_APDS_Proxi",
+      "RobotKit_BTS7960_4WD_mod_02",
+      "BNO055_WiFi_Feather_M0_via_UDP",
+      "BNO055_WiFi_Feather_M0_via_UDP_Euler_angles",
+      "SparkFun_Proximity___BME280-Temp_sensor__SparkFun_OpenPIR.ino",
+      "Bleuart_cmdmode/bleuart_cmdmode"
+    ],
+    "largest_files": [
+      [
+        "AP_SimpleWebServer_mod_with_BNO055_mod_3-a/AP_SimpleWebServer_mod_with_BNO055_mod_3-a.ino",
+        10958
+      ],
+      [
+        "RobotKit_BTS7960_4WD_mod_02/RobotKit_BTS7960_4WD_mod_02.ino",
+        10924
+      ],
+      [
+        "RobotKit_BTS7960_4WD_mod_01/RobotKit_BTS7960_4WD_mod_01.ino",
+        10598
+      ],
+      [
+        "AP_SimpleWebServer_mod_with_BNO055_3/AP_SimpleWebServer_mod_with_BNO055_3.ino",
+        10505
+      ],
+      [
+        "BNO055_WiFi_Feather_M0_via_UDP_Quaternals/BNO055_WiFi_Feather_M0_via_UDP_Quaternals.ino",
+        8052
+      ],
+      [
+        "RobotKit_BTS7960_4WD_Bluetooth_Controlled/RobotKit_BTS7960_4WD_Bluetooth_Controlled.ino",
+        7842
+      ],
+      [
+        "Bleuart_cmdmode/bleuart_cmdmode/bleuart_cmdmode.ino",
+        7521
+      ],
+      [
+        "BNO055_WiFi_Feather_M0_via_UDP/BNO055_WiFi_Feather_M0_via_UDP.ino",
+        7126
+      ],
+      [
+        "BNO055_WiFi_Feather_M0_via_UDP_Euler_angles/BNO055_WiFi_Feather_M0_via_UDP_Euler_angles.ino",
+        7126
+      ],
+      [
+        "SparkFun_Proximity___BME280-Temp_sensor__SparkFun_OpenPIR.ino/SparkFun_Proximity___BME280-Temp_sensor__SparkFun_OpenPIR.ino.ino",
+        4293
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "630bd6f099ddcc3ccea7a7e933bb0fd80a917b0e",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Thu Sep 19 17:11:57 2019 +0200",
+      "message": "initial commit"
+    },
+    "remote_url": "https://github.com/bkocis/Arduino_sketchbook_files.git"
+  },
+  "content_hash": "89ccffdf7286abb775d503af6ee6a3cc"
+}

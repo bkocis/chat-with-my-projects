@@ -4,7 +4,7 @@ MCP HTTP Client for Credit Card Server
 
 This client connects to the credit card MCP server and provides
 an easy interface for calling tools and reading resources.
-Enhanced with Azure OpenAI o1-preview and Ollama for ReAct (Reasoning and Acting) capabilities.
+Enhanced with Azure OpenAI GPT-4o and Ollama for ReAct (Reasoning and Acting) capabilities.
 """
 
 import json
@@ -296,7 +296,7 @@ class QueryProcessor:
 
 class ReActAgent:
     """
-    Reasoning and Acting agent using Azure OpenAI o1-preview model.
+    Reasoning and Acting agent using Azure OpenAI GPT-4o model.
     Implements the ReAct pattern for intelligent tool usage.
     """
     
@@ -326,7 +326,7 @@ class ReActAgent:
                 api_version=os.getenv("AZURE_OPENAI_API_VERSION", "2024-12-01-preview"),
                 azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT")
             )
-            self.model_name = os.getenv("AZURE_OPENAI_MODEL_NAME", "o1-preview-0912")
+            self.model_name = os.getenv("AZURE_OPENAI_MODEL_NAME", "gpt-4o-0513-eu")
         except Exception as e:
             print(f"Failed to initialize Azure OpenAI client: {e}")
             self.azure_client = None
@@ -882,10 +882,10 @@ class EnhancedQueryProcessor(QueryProcessor):
         """Initialize the appropriate ReAct agent based on agent_type"""
         try:
             if self.agent_type.lower() == "ollama":
-                self.react_agent = OllamaReActAgent(self.mcp_client)
+                self.react_agent = OllamaReActAgent(self.client)
                 print(f"Initialized Ollama ReAct agent with model: {self.react_agent.model_name}")
             else:  # default to azure
-                self.react_agent = ReActAgent(self.mcp_client)
+                self.react_agent = ReActAgent(self.client)
                 print("Initialized Azure OpenAI ReAct agent")
         except Exception as e:
             print(f"Failed to initialize {self.agent_type} ReAct agent: {e}")

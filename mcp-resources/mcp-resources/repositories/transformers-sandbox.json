@@ -1,0 +1,128 @@
+{
+  "repository_name": "transformers-sandbox",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/transformers-sandbox",
+  "analysis_timestamp": "2025-07-30T23:57:34.664400",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/transformers-sandbox/README.md",
+      "size": 1023,
+      "content": "1. Transformer from scratch\n\n✅ [kaggle-Transformer from scratch using pytorch](https://www.kaggle.com/code/arunmohan003/transformer-from-scratch-using-pytorch)\n\n✅ [Transformer in TensorFlow from scratch](https://www.kaggle.com/code/samuelnordmann/transformer-in-tensorflow-from-scratch)\n\n2. Video resources\n\n✅ [Transformers & Attention 1: Self Attention](https://www.youtube.com/watch?v=yGTUuEx3GkA)\n\n✅ [Transformers & Attention 2: Keys, Values, Queries](https://www.youtube.com/watch?v=tIvKXrEDMhk&t=518s)\n\n✅ [Transformers & Attention 3: Multi Head Attention](https://www.youtube.com/watch?v=23XUv0T9L5c)\n\n✅ [Transformers & Attention 4 - Transformers](https://www.youtube.com/watch?v=EXNBy8G43MM)\n\n3. Guides\n\n✅ [Illustrated Guide to Transformers Neural Network: A step by step explanation](https://www.youtube.com/watch?v=4Bdc55j80l8&list=WL&index=48)\n\n4. Vision Transformer\n\n✅ [Understinding ViT](https://theaisummer.com/vit-properties/?utm_campaign=meetedgar&utm_medium=social&utm_source=meetedgar.com)\n\n",
+      "summary": "1. Transformer from scratch ✅ [kaggle-Transformer from scratch using pytorch](https://www.kaggle.com/code/arunmohan003/transformer-from-scratch-using-pytorch) ✅ [Transformer in TensorFlow from scratch](https://www.kaggle.com/code/samuelnordmann/transformer-in-tensorflow-from-scratch)",
+      "line_count": 23,
+      "word_count": 69,
+      "last_modified": "2023-11-15T20:06:01.699843"
+    },
+    {
+      "path": "transformers_for_NLP_Rothman/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/transformers-sandbox/transformers_for_NLP_Rothman/README.md",
+      "size": 3659,
+      "content": "# Transformers for Natural Language Processing\nThis is the code repository for [Transformers for Natural Language Processing](https://www.packtpub.com/product/transformers-for-natural-language-processing/9781800565791), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the book from start to finish.\n\n* **Paperback**: 384 pages\n* **ISBN-13**: 9781800565791\n* **Date Of Publication**: January 2021\n\n[<img src=\"./.other/cover.png\" width=\"248\">](https://www.amazon.com/Transformers-Natural-Language-Processing-architectures-ebook/dp/B08S977X8K/)\n\n## Links\n\n* [Amazon](https://www.amazon.com/Transformers-Natural-Language-Processing-architectures-ebook/dp/B08S977X8K/)\n\n* [Packt Publishing](https://www.packtpub.com/product/transformers-for-natural-language-processing/9781800565791)\n\n## About the Book\nTransformers for Natural Language Processing investigates in vast detail the deep learning for machine translations, speech-to-text, text-to-speech, language modeling, question answering, and many more NLP domains in context with the Transformers.\n\nThe book takes you through Natural language processing with Python and examines various eminent models and datasets in the transformer technology created by pioneers such as Google, Facebook, Microsoft, OpenAI, Hugging Face, and other contributors.\n\nThe book trains you in three stages. The first stage introduces you to transformer architectures, starting with the original Transformer, before moving on to RoBERTa, BERT, and DistilBERT models. You will discover training methods for smaller Transformers that can outperform GPT-3 in some cases. In the second stage, you will apply Transformers for Natural Language Understanding (NLU) and Generation. Finally, the third stage will help you grasp advanced language understanding techniques such as optimizing social network datasets and fake news identification.\n\nBy the end of this NLP book, you will understand transformers from a cognitive science perspective and be proficient in applying pre-trained transformer models by tech giants to various datasets.\n\n## Things you will learn\n* Use the latest pretrained transformer models\n* Grasp the workings of the original Transformer, GPT-2, BERT, T5, and other transformer models\n* Create language understanding Python programs using concepts that outperform classical deep learning models\n* Use a variety of NLP platforms, including Hugging Face, Trax, and AllenNLP\n* Apply Python, TensorFlow, and Keras programs to sentiment analysis, text summarization, speech recognition, machine translations, and more\n* Measure the productivity of key transformers to define their scope, potential, and limits in production\n\n## Instructions and Navigation\nAll of the code is organized into folders that are named chapter-wise, for example: `Chapter02`.\n\nThe code will look like the following:\n```python\n#@title Activating the GPU\n# Main menu->Runtime->Change Runtime Type\nimport tensorflow as tf\ndevice_name = tf.test.gpu_device_name()\nif device_name != ‘/device:GPU:0’:\n  raise SystemError(‘GPU device not found’)\nprint(‘Found GPU at: {}’.format(device_name))\n```\n\n## Software Requirements\n\nCheck this file for the hardware and software requirements: [technical_requirements.md](./.other/technical_requirements.md)\n\n## Related Products\n\n* [Python Machine Learning - Third Edition](https://www.packtpub.com/product/python-machine-learning-third-edition/9781789955750)\n* [Hands-On Explainable AI (XAI) with Python - Second Edition](https://www.packtpub.com/product/hands-on-explainable-ai-xai-with-python/9781800208131)\n\n",
+      "summary": "This is the code repository for [Transformers for Natural Language Processing](https://www.packtpub.com/product/transformers-for-natural-language-processing/9781800565791), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the book from start to finish. * **Paperback**: 384 pages * **ISBN-13**: 9781800565791",
+      "line_count": 54,
+      "word_count": 419,
+      "last_modified": "2023-01-18T20:12:33.184000"
+    }
+  ],
+  "file_structure": {
+    "total_files": 44,
+    "total_size": 37686613,
+    "file_types": {
+      ".md": 2,
+      ".txt": 7,
+      ".py": 15,
+      ".ipynb": 18,
+      ".tsv": 2
+    },
+    "languages": {
+      "Python": 15
+    },
+    "directories": [
+      "pretraining-roberta",
+      "transformers_for_NLP_Rothman",
+      "examples",
+      "transformers_for_NLP_Rothman/Chapter05",
+      "transformers_for_NLP_Rothman/Chapter10",
+      "transformers_for_NLP_Rothman/Chapter09",
+      "transformers_for_NLP_Rothman/Chapter04",
+      "transformers_for_NLP_Rothman/Chapter12",
+      "transformers_for_NLP_Rothman/Chapter06",
+      "transformers_for_NLP_Rothman/Chapter11",
+      "transformers_for_NLP_Rothman/Chapter07",
+      "transformers_for_NLP_Rothman/Chapter02",
+      "transformers_for_NLP_Rothman/Chapter08",
+      "transformers_for_NLP_Rothman/Chapter03",
+      "transformers_for_NLP_Rothman/Chapter01",
+      "transformers_for_NLP_Rothman/Chapter06/gpt-2-train_files",
+      "transformers_for_NLP_Rothman/Chapter08/gpt-2-train_files"
+    ],
+    "largest_files": [
+      [
+        "transformers_for_NLP_Rothman/Chapter08/text.txt",
+        11477755
+      ],
+      [
+        "transformers_for_NLP_Rothman/Chapter06/gpt-2-train_files/dset.txt",
+        11258065
+      ],
+      [
+        "transformers_for_NLP_Rothman/Chapter03/kant.txt",
+        11258065
+      ],
+      [
+        "transformers_for_NLP_Rothman/Chapter06/head_view_bert.ipynb",
+        1091800
+      ],
+      [
+        "transformers_for_NLP_Rothman/Chapter02/in_domain_train.tsv",
+        438726
+      ],
+      [
+        "transformers_for_NLP_Rothman/Chapter03/KantaiBERT.ipynb",
+        306713
+      ],
+      [
+        "transformers_for_NLP_Rothman/Chapter07/Summarizing_Text_with_T5.ipynb",
+        297085
+      ],
+      [
+        "transformers_for_NLP_Rothman/Chapter09/SRL.ipynb",
+        276251
+      ],
+      [
+        "transformers_for_NLP_Rothman/Chapter08/Summarizing_Text_V2.ipynb",
+        267754
+      ],
+      [
+        "transformers_for_NLP_Rothman/Chapter02/BERT_Fine_Tuning_Sentence_Classification_DR.ipynb",
+        177929
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [
+      "Scikit-learn",
+      "PyTorch",
+      "NumPy",
+      "Pandas"
+    ],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "7340d05ba4fbb820f6b2b1519636a49ae5d8bb8d",
+      "author_name": "Balazs.Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Wed Nov 15 23:35:17 2023 +0100",
+      "message": "kaggle transformers from scratch tf"
+    },
+    "remote_url": "https://github.com/bkocis/transformers-sandbox.git"
+  },
+  "content_hash": "1e7015ac3e76f5596130c7aad4aaefe9"
+}

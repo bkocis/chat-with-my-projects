@@ -1,0 +1,130 @@
+{
+  "repository_name": "flask_bokeh",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/flask_bokeh",
+  "analysis_timestamp": "2025-07-30T23:57:34.918224",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/flask_bokeh/README.md",
+      "size": 36,
+      "content": "# flask_bokeh\nflask_bokeh_test_code\n",
+      "summary": "flask_bokeh_test_code",
+      "line_count": 2,
+      "word_count": 3,
+      "last_modified": "2023-01-18T20:17:13.266729"
+    }
+  ],
+  "file_structure": {
+    "total_files": 52,
+    "total_size": 1692727,
+    "file_types": {
+      ".md": 1,
+      ".txt": 1,
+      ".py": 28,
+      ".json": 1,
+      ".html": 10,
+      "": 3,
+      ".css": 5,
+      ".ipynb": 1,
+      ".xlsx": 1,
+      ".csv": 1
+    },
+    "languages": {
+      "Python": 28,
+      "HTML": 10,
+      "CSS": 5
+    },
+    "directories": [
+      "HUX_questionair",
+      "HUX_eval",
+      "bokeh_update_plot_test",
+      "HUX_questionair/hux_flask",
+      "HUX_questionair/hux_bokeh_users_questionnaire",
+      "HUX_questionair/hux_bokeh_questionnair_generator",
+      "HUX_questionair/hux_flask/test_2",
+      "HUX_questionair/hux_flask/test_1",
+      "HUX_questionair/hux_flask/test_2/static",
+      "HUX_questionair/hux_flask/test_2/templates",
+      "HUX_questionair/hux_flask/test_2/static/data",
+      "HUX_questionair/hux_flask/test_1/templates",
+      "HUX_questionair/hux_bokeh_users_questionnaire/questionnaire",
+      "HUX_questionair/hux_bokeh_users_questionnaire/questionnaire/templates",
+      "HUX_questionair/hux_bokeh_questionnair_generator/questionnaire",
+      "HUX_questionair/hux_bokeh_questionnair_generator/questionnaire/templates",
+      "HUX_eval/simulation",
+      "HUX_eval/mysql_database_eval",
+      "HUX_eval/old_data",
+      "HUX_eval/simulation/templates",
+      "HUX_eval/mysql_database_eval/backups",
+      "HUX_eval/mysql_database_eval/templates",
+      "HUX_eval/old_data/data",
+      "HUX_eval/old_data/templates",
+      "bokeh_update_plot_test/sliders",
+      "bokeh_update_plot_test/weather",
+      "bokeh_update_plot_test/weather/data"
+    ],
+    "largest_files": [
+      [
+        "HUX_eval/old_data/data/869917697_China_SUV_owner_survey_FinalData_131216_3.xlsx",
+        1310348
+      ],
+      [
+        "HUX_eval/mysql_database_eval/hux_mysql_communication.ipynb",
+        99075
+      ],
+      [
+        "bokeh_update_plot_test/weather/data/2015_weather.csv",
+        36438
+      ],
+      [
+        "HUX_eval/mysql_database_eval/backups/hux_eval_dashboard_good_2.py",
+        17450
+      ],
+      [
+        "HUX_eval/mysql_database_eval/backups/hux_eval_dashboard_good_1.py",
+        17137
+      ],
+      [
+        "HUX_eval/mysql_database_eval/backups/hux_eval_dashboard_2.py",
+        16871
+      ],
+      [
+        "HUX_eval/mysql_database_eval/backups/hux_eval_dashboard_1.py",
+        16592
+      ],
+      [
+        "HUX_eval/simulation/hux_data_eval_page_flask.py",
+        12363
+      ],
+      [
+        "HUX_eval/mysql_database_eval/hux_eval_dashboard.py",
+        11257
+      ],
+      [
+        "HUX_eval/mysql_database_eval/hux_eval_dashboard_backup_1.py",
+        11168
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "4aee7d4f5a1ed1d31fb64e30ac91b3083fc6e64a",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Thu Jun 6 00:02:05 2019 +0200",
+      "message": "moving to DigOc"
+    },
+    "remote_url": "https://github.com/bkocis/flask_bokeh.git"
+  },
+  "content_hash": "20a3576eb312aa575bac9b484750c7f0"
+}

@@ -1,0 +1,72 @@
+{
+  "repository_name": "strato-vm-configuration",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/strato-vm-configuration",
+  "analysis_timestamp": "2025-07-30T23:57:34.677501",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/strato-vm-configuration/README.md",
+      "size": 3042,
+      "content": "### Setting up web hosted apps on german provider [Strato](https://www.strato.de)\n____\n\n## Cofigure and set up a VM on Strato\n\n### Description\n\nThis repo contains instruction to set up and configure a virtual machine instance in cloud provider Strato. \n\nThe configuration of the vm focuses on enabling nginx web server for revere proxy-ing ml python applications. \n\n\n### Strato vm configuration\n\nReprository for setting up infrastructure on Strato cloud provider\n\n\n### Seting up MLFlow experiment tracking\n\n\n`mlflow server --host 127.0.0.1 --port 5000 --static-prefix /mlflow`\n\n\n### Let's encrypt and certbot SSL certificate renewal\n\n\n- don't use the renew way \n- delete old certificates with certbot delete\n\n`sudo certbot delete`\n\n- generate new ones \n\n`sudo certbot --nginx -d example.com -d www.example.com`\n\nIf restart/reboot on nginx fails with bind problem 0.0.0.0:80 used \nthen \n\n`sudo killall apache2`   \n\nhttps://stackoverflow.com/questions/14972792/nginx-nginx-emerg-bind-to-80-failed-98-address-already-in-use\n\n\n### Don't set up `ufw` firewall! \n\nDon't apply the setps of allowing HTTPS through the firewall [https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04](digitalocean link)\n\n\n\nExample of the site-enabled for nginx: \n\n```\nserver {\n    #listen [::]:80;\n\n    root /var/www/balazskocsis.de/html;\n    index index.html index.html index.html;\n\n    server_name balazskocsis.de www.balazskocsis.de;\n\n    location / {\n        try_files $uri $uri/ =404;\n    }\n\n    location /mlflow {\n        proxy_pass http://localhost:5000;\n        proxy_http_version 1.1;\n        proxy_set_header Upgrade $http_upgrade;\n        proxy_set_header Connection 'upgrade';\n        proxy_set_header Host $host;\n        proxy_cache_bypass $http_upgrade;\n\n    }\n\n\n    #listen 80; # managed by Certbot\n\n    #listen 443 ssl; # managed by Certbot\n    #ssl_certificate /etc/letsencrypt/live/balazskocsis.de/fullchain.pem; # managed by Certbot\n    #ssl_certificate_key /etc/letsencrypt/live/balazskocsis.de/privkey.pem; # managed by Certbot\n    #include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot\n    #ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot\n\n\n    auth_basic \"Restricted Content\";\n    auth_basic_user_file /etc/nginx/.htpasswd;\n\n\n    listen 443 ssl; # managed by Certbot\n    ssl_certificate /etc/letsencrypt/live/balazskocsis.de/fullchain.pem; # managed by Certbot\n    ssl_certificate_key /etc/letsencrypt/live/balazskocsis.de/privkey.pem; # managed by Certbot\n    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot\n    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot\n\n\n}\nserver {\n    if ($host = www.balazskocsis.de) {\n        return 301 https://$host$request_uri;\n    } # managed by Certbot\n\n\n    if ($host = balazskocsis.de) {\n        return 301 https://$host$request_uri;\n    } # managed by Certbot\n\n\n    listen 80;\n\n    server_name balazskocsis.de www.balazskocsis.de;\n    return 404; # managed by Certbot\n\n\n\n\n}\n```\n\n\n\n",
+      "summary": "____ This repo contains instruction to set up and configure a virtual machine instance in cloud provider Strato. The configuration of the vm focuses on enabling nginx web server for revere proxy-ing ml python applications.",
+      "line_count": 117,
+      "word_count": 313,
+      "last_modified": "2023-01-18T20:12:17.999853"
+    }
+  ],
+  "file_structure": {
+    "total_files": 4,
+    "total_size": 10790,
+    "file_types": {
+      ".md": 1,
+      ".log": 1,
+      ".sh": 2
+    },
+    "languages": {
+      "Shell": 2
+    },
+    "directories": [
+      "debian-setup",
+      "ubuntu-setup"
+    ],
+    "largest_files": [
+      [
+        "history.log",
+        6205
+      ],
+      [
+        "README.md",
+        3042
+      ],
+      [
+        "ubuntu-setup/install.sh",
+        1116
+      ],
+      [
+        "debian-setup/install.sh",
+        427
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "fcdb506eb60dcca8a919d1e8c15c5d12c2e394a1",
+      "author_name": "Balazs.Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Sat Dec 16 02:02:29 2023 +0100",
+      "message": "update devbian readme"
+    },
+    "remote_url": "https://github.com/bkocis/strato-vm-configuration.git"
+  },
+  "content_hash": "75734c55140bbe9f12da7912f406ecd7"
+}

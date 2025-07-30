@@ -1,0 +1,72 @@
+{
+  "repository_name": "cloud-miniproject-01",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/cloud-miniproject-01",
+  "analysis_timestamp": "2025-07-30T23:57:34.826766",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/cloud-miniproject-01/README.md",
+      "size": 1447,
+      "content": "\n# Building and deploying flask apps in Docker using Jenkins and Kubernetes \n\nThis repo is for exercise only and contains Jenkinsfiles for dockerizing and running flask apps in various ways. The repo has multiple branches for various scenarios and they are built separatelly in Jenskins.\n\nBranch (`git checkout <BRANCH>`):\n\n- __test-docker__\n\tThe Jenkins builds the dokcer image, and runs it on the same instance. In this case the last stage is open untill the build is not stopped. The app can be available from the public address url of the instance and the defined port. \n\n- __test-kubernetes__\n\tThe build in this branch defines a kubernetes cluster in one stage of the jenkins build, and in another one deploys the defined docker image. After the last stage is finished, the app that is now running in the kubernetes cluster, can be reached via the load balancer's public address (and defined port). \n\n- __test-systemd__\n\tBuilding with Jenkind and setting up systemd for the app server\n\n\n## Screenshots\n\n__1. test-docker branch build__\n\n<img src=\"screenshots/docker-run-from-jenkins.png\" width=90%>\n\n\n__2. test-docker branch app running__\n\n<img src=\"screenshots/docker-running.png\" width=90%>\n\n\n__3. test-kubernetes, the app is deployed into a EKS cluster, with the last stage having a timer (with the `sleep` linux function, which shuts down the cluster after specified time__)\n\n<img src=\"screenshots/kubernetes-cluster-delete.png\" width=90%>",
+      "summary": "This repo is for exercise only and contains Jenkinsfiles for dockerizing and running flask apps in various ways. The repo has multiple branches for various scenarios and they are built separatelly in Jenskins. Branch (`git checkout <BRANCH>`): - __test-docker__",
+      "line_count": 31,
+      "word_count": 213,
+      "last_modified": "2023-01-18T20:13:35.100603"
+    }
+  ],
+  "file_structure": {
+    "total_files": 5,
+    "total_size": 783761,
+    "file_types": {
+      ".md": 1,
+      ".png": 4
+    },
+    "languages": {},
+    "directories": [
+      "screenshots"
+    ],
+    "largest_files": [
+      [
+        "screenshots/kubernetes-cluster-delete.png",
+        296304
+      ],
+      [
+        "screenshots/docker-running.png",
+        229950
+      ],
+      [
+        "screenshots/docker-run-from-jenkins.png",
+        194187
+      ],
+      [
+        "screenshots/elastic-ip-set-on-jenkins-instance.png",
+        61873
+      ],
+      [
+        "README.md",
+        1447
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "960374bc2d529c36daaf14ca1cbe1ba7193f7daf",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Mon Sep 21 23:15:06 2020 +0200",
+      "message": "readme edit"
+    },
+    "remote_url": "https://github.com/bkocis/cloud-miniproject-01.git"
+  },
+  "content_hash": "c45d19cf9ede34e433c677f2926e6145"
+}

@@ -1,0 +1,100 @@
+{
+  "repository_name": "Quaternion-sensor-data-clustering",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/Quaternion-sensor-data-clustering",
+  "analysis_timestamp": "2025-07-30T23:57:35.732296",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/Quaternion-sensor-data-clustering/README.md",
+      "size": 1004,
+      "content": "Demonstration of data labeling from a [9-axis absolute orientation sensor BNO055](https://learn.adafruit.com/adafruit-bno055-absolute-orientation-sensor).\n----------------------------------------------------------------------\n\nThis repo showcases a short demo of the experiment of interpreting quaternion data from a giro sensor. In this usecase the sensor was mounted on a dummy-toothbrush in order to experiment with motion clustering in the context of oral health. \n\n- [Ardunio board](https://www.adafruit.com/product/3010)\n- [BNO055 sensor](https://learn.adafruit.com/adafruit-bno055-absolute-orientation-sensor) \n\nPython code uses sklearn KNN algorithm to cluster the datapoints and for the class label inference of new datapoints.\n\nDemo videos:\n\n[<img src=\"https://img.youtube.com/vi/9Ww4DPw2Ses/maxresdefault.jpg\" width=\"30%\">](https://youtu.be/9Ww4DPw2Ses)\n\n\nDemo of the problem:\n\n[<img src=\"https://img.youtube.com/vi/qMMOt3G3qhg/maxresdefault.jpg\" width=\"30%\">](https://youtu.be/qMMOt3G3qhg)\n\n\n",
+      "summary": "Demonstration of data labeling from a [9-axis absolute orientation sensor BNO055](https://learn.adafruit.com/adafruit-bno055-absolute-orientation-sensor). ---------------------------------------------------------------------- This repo showcases a short demo of the experiment of interpreting quaternion data from a giro sensor. In this usecase the sensor was mounted on a dummy-toothbrush in order to experiment with motion clustering in the context of oral health.",
+      "line_count": 18,
+      "word_count": 89,
+      "last_modified": "2023-01-18T20:12:55.360216"
+    }
+  ],
+  "file_structure": {
+    "total_files": 11,
+    "total_size": 833846,
+    "file_types": {
+      ".py": 3,
+      ".txt": 4,
+      ".md": 1,
+      ".sh": 1,
+      ".h": 1,
+      ".ino": 1
+    },
+    "languages": {
+      "Python": 3,
+      "Shell": 1
+    },
+    "directories": [
+      "arduino_code",
+      "arduino_code/BNO055_WiFi_Feather_M0_via_UDP_Quaternals"
+    ],
+    "largest_files": [
+      [
+        "test_data_LL_2_.txt",
+        783707
+      ],
+      [
+        "UDP_with_pySocket_01_plot.py",
+        11656
+      ],
+      [
+        "arduino_code/BNO055_WiFi_Feather_M0_via_UDP_Quaternals/BNO055_WiFi_Feather_M0_via_UDP_Quaternals.ino",
+        8052
+      ],
+      [
+        "test_data_UL_2_.txt",
+        7773
+      ],
+      [
+        "test_data_LR_2_.txt",
+        7773
+      ],
+      [
+        "test_data_UR_2_.txt",
+        7770
+      ],
+      [
+        "calibrate_data_labeling.sh",
+        2107
+      ],
+      [
+        "UDP_with_pySocket_01__live_prediciton.py",
+        2084
+      ],
+      [
+        "UDP_with_pySocket_01.py",
+        1852
+      ],
+      [
+        "README.md",
+        1004
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "6ddb555780d6af70088349cf1fd77616375e75de",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Sun Apr 3 08:08:08 2022 +0200",
+      "message": "Update README.md"
+    },
+    "remote_url": "https://github.com/bkocis/Quaternion-sensor-data-clustering.git"
+  },
+  "content_hash": "18d115af5b42f3731d3ea4f4e0fd44a6"
+}

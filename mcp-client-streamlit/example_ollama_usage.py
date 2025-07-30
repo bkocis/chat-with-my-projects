@@ -105,7 +105,7 @@ def setup_environment():
     print("For Azure OpenAI:")
     print("export AZURE_OPENAI_API_KEY=your_key")
     print("export AZURE_OPENAI_ENDPOINT=your_endpoint")
-    print("export AZURE_OPENAI_MODEL_NAME=o1-preview-0912")
+    print("export AZURE_OPENAI_MODEL_NAME=gpt-4o-0513-eu")
     print()
 
 if __name__ == "__main__":

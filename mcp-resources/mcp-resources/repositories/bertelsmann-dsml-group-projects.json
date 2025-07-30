@@ -1,0 +1,106 @@
+{
+  "repository_name": "bertelsmann-dsml-group-projects",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bertelsmann-dsml-group-projects",
+  "analysis_timestamp": "2025-07-30T23:57:34.685894",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bertelsmann-dsml-group-projects/README.md",
+      "size": 2192,
+      "content": "\n#### Bertelsmann Tech Scholarhip Challenge - sg_datascience-machinelearning  \n\n## Desrciption\n\nThis repository contains related material, project files, logs and resources for the Data Sicence / Machine Learning Study Group.\n\n## The AWS ML Stack\n\nIn the course material from the Machine Learning Career Pathway lesson at the AWS Educate, there was a short quiz testing the intuition on cloud service selection matching the requirements and needs of a hypothetical client. I made a small summary for you in the [AWS_ML_stack.md](https://github.com/bkocis/bertelsmann-dsml-group/blob/master/AWS_ML_stack.md).\n\n\n\n## Projects:\n\n### 1. AWS service control\n\nIn this notebook [AWS-SDK-for-python-boto3](https://github.com/bkocis/bertelsmann-dsml-group-projects/blob/master/Project-boto/AWS-SDK-for-python-boto3.ipynb), the boto library is used to execute creation, deletion, adding files, manage permission for an S3 bucket. Furthermore, it show how to incorporate file listing and html generation using pandas, as well as demonstration of data visualization in bokeh with html conversion. \n\nIn this notebook, the AWS Rekognite service is utilized in combination with S3 and boto. A front-end part is yet to be added for simple presentation of the results of image classification.\n[AWS-boto3-AWS-Rekognite](https://github.com/bkocis/bertelsmann-dsml-group-projects/blob/master/Project-boto/AWS-boto3-AWS-Rekognite.ipynb)\n\n### 2. Sentiment analysis app deployment on AWS (in-progress)\n\n[Project_AWS_Sagemaker](https://github.com/bkocis/bertelsmann-dsml-group/tree/master/Project_AWS_Sagemaker) - Code from the Deep Learning Nanodegree program.\n\n#### Getting started\n\nSelection and configuration of AWS services\n\nIntroduction:\n[Building a model using SageMaker L2-1](https://www.youtube.com/watch?time_continue=39&v=nJCc4_9-iAQ&feature=emb_logo)\n\nSetting up jupyter notebooks:\n[Building a model using SageMaker - L2-4](https://www.youtube.com/watch?time_continue=147&v=TRUCNy5Eqjc&feature=emb_logo)\n\nVideo tutorial from Udacity:\n[Cloning a repo to SageMaker](https://www.youtube.com/watch?time_continue=76&v=jqL74whe9yo&feature=emb_logo)\n\n### 3. Image captioning app deployment on AWS (in-progress) \n",
+      "summary": "This repository contains related material, project files, logs and resources for the Data Sicence / Machine Learning Study Group. In the course material from the Machine Learning Career Pathway lesson at the AWS Educate, there was a short quiz testing the intuition on cloud service selection matching the requirements and needs of a hypothetical client. I made a small summary for you in the [AWS_ML_stack.md](https://github.com/bkocis/bertelsmann-dsml-group/blob/master/AWS_ML_stack.md). In this no...",
+      "line_count": 39,
+      "word_count": 228,
+      "last_modified": "2023-01-18T20:12:26.767938"
+    }
+  ],
+  "file_structure": {
+    "total_files": 52,
+    "total_size": 21553881,
+    "file_types": {
+      ".md": 2,
+      ".ipynb": 2,
+      ".html": 7,
+      ".csv": 1,
+      ".txt": 1,
+      ".jpg": 14,
+      ".4": 1,
+      ".1": 3,
+      ".3": 2,
+      ".2": 3,
+      ".png": 16
+    },
+    "languages": {
+      "HTML": 7
+    },
+    "directories": [
+      "Project-boto",
+      "assets",
+      "Project-boto/images",
+      "assets/AWS_Educate_ML"
+    ],
+    "largest_files": [
+      [
+        "Project-boto/images/21NYTODAY01-superJumbo_with_boxes.png",
+        4610059
+      ],
+      [
+        "Project-boto/images/Bicycle-car_accident.jpg.1",
+        2039955
+      ],
+      [
+        "Project-boto/images/Bicycle-car_accident 1.jpg",
+        2039955
+      ],
+      [
+        "Project-boto/images/Bicycle-car_accident.jpg.3",
+        2039955
+      ],
+      [
+        "Project-boto/images/Bicycle-car_accident.jpg",
+        2039955
+      ],
+      [
+        "Project-boto/images/Bicycle-car_accident.jpg.2",
+        2039955
+      ],
+      [
+        "Project-boto/AWS-boto3-AWS-Rekognite.ipynb",
+        1334270
+      ],
+      [
+        "Project-boto/images/21NYTODAY01-superJumbo.jpg",
+        802875
+      ],
+      [
+        "Project-boto/test.html",
+        743606
+      ],
+      [
+        "Project-boto/images/non-overlapping_bike_car.jpg",
+        230435
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "7bb2e7342e656bbadc5b6e7d56f5dcd424396a5b",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Mon Feb 3 23:44:55 2020 +0100",
+      "message": "initial commit"
+    },
+    "remote_url": "https://github.com/bkocis/bertelsmann-dsml-group-projects.git"
+  },
+  "content_hash": "de725b47235aa83c42c13ae7ecbe248e"
+}

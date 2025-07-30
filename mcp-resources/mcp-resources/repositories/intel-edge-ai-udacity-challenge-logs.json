@@ -1,0 +1,53 @@
+{
+  "repository_name": "intel-edge-ai-udacity-challenge-logs",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/intel-edge-ai-udacity-challenge-logs",
+  "analysis_timestamp": "2025-07-30T23:57:34.991731",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/intel-edge-ai-udacity-challenge-logs/README.md",
+      "size": 39,
+      "content": "# intel-edge-ai-udacity-challenge-logs\n",
+      "summary": "",
+      "line_count": 1,
+      "word_count": 2,
+      "last_modified": "2023-01-18T20:13:56.940815"
+    }
+  ],
+  "file_structure": {
+    "total_files": 1,
+    "total_size": 39,
+    "file_types": {
+      ".md": 1
+    },
+    "languages": {},
+    "directories": [],
+    "largest_files": [
+      [
+        "README.md",
+        39
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "68969234119dfee07d6931950890564b2f797672",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Sun Dec 22 02:56:49 2019 +0100",
+      "message": "first commit"
+    },
+    "remote_url": "https://github.com/bkocis/intel-edge-ai-udacity-challenge-logs.git"
+  },
+  "content_hash": "7ac92fafeeb7566636915c3e32492879"
+}

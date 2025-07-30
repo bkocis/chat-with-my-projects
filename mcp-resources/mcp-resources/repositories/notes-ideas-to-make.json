@@ -1,0 +1,53 @@
+{
+  "repository_name": "notes-ideas-to-make",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/notes-ideas-to-make",
+  "analysis_timestamp": "2025-07-30T23:57:34.874869",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/notes-ideas-to-make/README.md",
+      "size": 4337,
+      "content": "```mermaid\n  graph TD;\n    A-->B;\n    A-->C;\n    C-->D;\n    B-->D;\n```\n\nVideo mining/mixing\n===================\n\nmix movies together - use a scene from one movie and stylize characters scene. \nTo add new story to a movie scene, render new action - using stable diffusion for exampe to generate new imagery.\n(for example Fire & Ice (1983) + Dune (2021))\n\n\nTo buy - to make\n================\n\n- microscope with movable table (alternatively make) \n- spectrometer\n- microscape for microgramm weighting \n\n\n- Boxing\n\n- videos of Debates Hitchens, sarcasm, video+audio+nlp\n\n- Video analytics: amount of bluriness if the video, duration, colour distribution, Is the video a cut-out from tv....etc\n\n- Headlessly Watching Netflix\n\n\nNotes-ideas-to-make\n=====================\n\n- Fruitfly genetic experiment\n\n- highest speed for underwater vehicle\n\n- track all questions quizez and exercises from the tf developer coursera\n\ngithub timeblock art bas hcrontab reads from a csv file, moves plotted number of commits and moves that line to done.csv (for state traking), python code only for calculating the number of commits pro day needed according thedesigned pattern \n\npython bash coding comparison\n=============================\n\n[python way with argunments | python way OOP way |  bash script ]\n[run python --arg --arg |  python app/main  | bash sh]\n\n\nChallenge\n=========\n\n-write 10000 lines of code of whatever, from scratch - typing in all  - lint it with flake8 python \n\n\nnotes about the random ideas for a maker project\n\n\n- diffraction demonstrator - use a rotating table with screws on a grid. Make a macine that puts a screw into a table\n  printout/simulate a grid with different unit cells\n  use lamp on one side to illuminate the grid, and a camera detector on the other side to capture the dimming of the light \n  \n- data from bicycle - sensors of GPS, camera, sideways, front back, lidar?, distance meter, gyro. \n\n- capture driving image + telemetry package. \n\n- mooose growth following \n\n- bügelperlen automatization \n\n\nWeb-apps\n========\nuser\n46.101.224.210\n\nAPI-s\n=====\n-behance api rework\n-maps\n-medium api from the emails hack\n\n- Stackoverflow - track and examine post of top stackoverflow contributors such as https://stackoverflow.com/users/69755/brian-campbell ; https://stackoverflow.com/users/2422776/mureinik?tab=answers&sort=newest bigreddot https://stackoverflow.com/users/674039/wim ; https://unix.stackexchange.com/users/885/gilles-so-stop-being-evil?tab=profile\n\n- save stackoverflow - give an upvote to somebody automtically, what impackt would that have - increase the internet points of people on stackoverflow \n\nOpenCV\n======\n- track fish in tank, make recording upon appearence of Knutchie\n  - mini u-boat in combination with FPV camera and gougles, drive inside a fishtank Magdi\n- frizbee flying-rotating pattern \n\n- computer vision/optical microscope \n  - move microscope depth and x-y table position and connct it to fpv Add guesture control for the movement, just like in VR  \n  \n  https://www.nature.com/articles/s41467-021-22518-0\n\n\n- optical stuff - Flechte monitoring, CO2 up-take\n\n- measure angles, wasserwage monitor with camera sensor \n\n- gesture (linkedIn links) tracking volume control, game control for kids using gesture controle. Luki tetris video\n\n- dive into a microscopic image and make a game out of it ; FPV control, VR ,- but instead of moving a virtual image , or augmented reality, one is moving inside a microscopic image, scene - like augmented reality, but projected not 1:1 onto the observed, but into the microscopic. \n\n\nPresonal portfolio \n==================\n- bokeh apps \n- update the audi dataset visualizer and share how-to-s\n\n- pipe-blocks entropy calcuator. estimate the degree of nominal entropy when the blocks are mixed together and when separated. Use computer vision color detection, shape and distane estimation. Maybe some sort of calibration will be needed.\n\n- kibana, elasticsearch set-up on virtual machine, monitor home, \n- use strato instance, set-up domain, securoty, log-in credentials \n- track gps \n- use hybrid computation systems (use local GPU for experiments) controlled by and monitored by a remote instance. \n\n\nProjects for agriculture.home MagyarchernyeAI\n=============================================\n\n\nPoljOpsAI  PoljopSAI - Poljoprivredni Sistemi AI\nFeldOpsAi\n",
+      "summary": "```mermaid graph TD; A-->B;",
+      "line_count": 128,
+      "word_count": 619,
+      "last_modified": "2023-01-18T20:12:35.608024"
+    }
+  ],
+  "file_structure": {
+    "total_files": 1,
+    "total_size": 4337,
+    "file_types": {
+      ".md": 1
+    },
+    "languages": {},
+    "directories": [],
+    "largest_files": [
+      [
+        "README.md",
+        4337
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "5093a9f8b9787f9dd7665ac30498414543a21308",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Thu Sep 15 14:07:00 2022 +0200",
+      "message": "Update README.md"
+    },
+    "remote_url": "https://github.com/bkocis/notes-ideas-to-make.git"
+  },
+  "content_hash": "f12ee126de18a6780a389c70f4dfaa46"
+}

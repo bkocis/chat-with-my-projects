@@ -1,0 +1,118 @@
+{
+  "repository_name": "ai-campus-automl",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/ai-campus-automl",
+  "analysis_timestamp": "2025-07-30T23:57:35.333831",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "Chapter_4_Basics-of-HPO/ex04-hpo-basics/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/ai-campus-automl/Chapter_4_Basics-of-HPO/ex04-hpo-basics/README.md",
+      "size": 134,
+      "content": "# ex04-hpo-basics\n\n\tFrom the lecture you have learned about evolutionary algorithms and simple methods of hyperparameter optimization.",
+      "summary": "From the lecture you have learned about evolutionary algorithms and simple methods of hyperparameter optimization.",
+      "line_count": 3,
+      "word_count": 17,
+      "last_modified": "2023-01-18T20:13:18.140438"
+    },
+    {
+      "path": "Chapter_2_Evaluation_of_ML_Models/ex02-evaluation/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/ai-campus-automl/Chapter_2_Evaluation_of_ML_Models/ex02-evaluation/README.md",
+      "size": 195,
+      "content": "# ex02-evaluation\nHaving learned about different ways to empirically evaluate the performances of algorithms and AutoML systems, in this exercise you will now implement some of these techniques.\n",
+      "summary": "Having learned about different ways to empirically evaluate the performances of algorithms and AutoML systems, in this exercise you will now implement some of these techniques.",
+      "line_count": 2,
+      "word_count": 28,
+      "last_modified": "2023-01-18T20:13:18.140438"
+    }
+  ],
+  "file_structure": {
+    "total_files": 34,
+    "total_size": 8681413,
+    "file_types": {
+      ".pdf": 6,
+      ".zip": 3,
+      ".md": 2,
+      ".txt": 2,
+      "": 2,
+      ".py": 16,
+      ".csv": 3
+    },
+    "languages": {
+      "Python": 16
+    },
+    "directories": [
+      "Chapter_3_Algorithm_selection",
+      "Chapter_4_Basics-of-HPO",
+      "papers-references",
+      "Chapter_2_Evaluation_of_ML_Models",
+      "Chapter_4_Basics-of-HPO/ex04-hpo-basics",
+      "Chapter_4_Basics-of-HPO/ex04-hpo-basics/tests",
+      "Chapter_4_Basics-of-HPO/ex04-hpo-basics/src",
+      "Chapter_2_Evaluation_of_ML_Models/ex02-evaluation",
+      "Chapter_2_Evaluation_of_ML_Models/ex02-evaluation/tests",
+      "Chapter_2_Evaluation_of_ML_Models/ex02-evaluation/src"
+    ],
+    "largest_files": [
+      [
+        "papers-references/AutoML_Book.pdf",
+        6857643
+      ],
+      [
+        "papers-references/bergstra12a.pdf",
+        728274
+      ],
+      [
+        "Chapter_3_Algorithm_selection/03.zip",
+        359817
+      ],
+      [
+        "papers-references/die98.pdf",
+        270952
+      ],
+      [
+        "Chapter_2_Evaluation_of_ML_Models/02.pdf",
+        147001
+      ],
+      [
+        "Chapter_3_Algorithm_selection/03.pdf",
+        125876
+      ],
+      [
+        "Chapter_4_Basics-of-HPO/04.pdf",
+        102959
+      ],
+      [
+        "Chapter_2_Evaluation_of_ML_Models/ex02-evaluation/src/TMStTestData.csv",
+        20950
+      ],
+      [
+        "Chapter_2_Evaluation_of_ML_Models/02.zip",
+        16259
+      ],
+      [
+        "Chapter_4_Basics-of-HPO/ex04-hpo-basics/src/evolution.py",
+        12272
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "83f17920d6de8dcfda34f5f197b0cb47179a4f47",
+      "author_name": "bkocis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Mon May 3 02:10:22 2021 +0200",
+      "message": "init"
+    },
+    "remote_url": "https://github.com/bkocis/ai-campus-automl.git"
+  },
+  "content_hash": "67fa625add0f2e2c3f7d013816896a6f"
+}

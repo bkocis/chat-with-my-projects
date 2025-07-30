@@ -1,0 +1,143 @@
+{
+  "preprocessing": {
+    "root_directory": "/home/snow/Documents/Projects/github-repositories/bkocis",
+    "output_directory": "mcp-resources",
+    "skip_directories": [
+      ".git",
+      "node_modules",
+      "__pycache__",
+      ".venv",
+      "venv",
+      "build",
+      "dist",
+      "target",
+      ".gradle",
+      ".idea",
+      ".vscode"
+    ],
+    "skip_file_extensions": [
+      ".pyc",
+      ".pyo",
+      ".pyd",
+      ".log",
+      ".tmp",
+      ".cache"
+    ],
+    "max_file_size_mb": 10,
+    "readme_patterns": [
+      "readme",
+      "readme.md",
+      "readme.txt",
+      "readme.rst"
+    ]
+  },
+  "analysis": {
+    "enable_git_analysis": true,
+    "enable_dependency_analysis": true,
+    "enable_file_structure_analysis": true,
+    "enable_language_detection": true,
+    "max_git_timeout_seconds": 10,
+    "summary_max_chars": 500,
+    "top_files_count": 10
+  },
+  "language_mappings": {
+    ".py": "Python",
+    ".js": "JavaScript",
+    ".ts": "TypeScript",
+    ".jsx": "React",
+    ".tsx": "React TypeScript",
+    ".vue": "Vue.js",
+    ".java": "Java",
+    ".cpp": "C++",
+    ".c": "C",
+    ".h": "C/C++ Header",
+    ".cs": "C#",
+    ".php": "PHP",
+    ".rb": "Ruby",
+    ".go": "Go",
+    ".rs": "Rust",
+    ".swift": "Swift",
+    ".kt": "Kotlin",
+    ".scala": "Scala",
+    ".html": "HTML",
+    ".css": "CSS",
+    ".scss": "SCSS",
+    ".sass": "SASS",
+    ".less": "LESS",
+    ".sql": "SQL",
+    ".sh": "Shell",
+    ".bash": "Bash",
+    ".zsh": "Zsh",
+    ".ps1": "PowerShell",
+    ".r": "R",
+    ".m": "MATLAB",
+    ".dart": "Dart",
+    ".lua": "Lua",
+    ".perl": "Perl",
+    ".pl": "Perl"
+  },
+  "framework_detection": {
+    "node_patterns": {
+      "react": "React",
+      "vue": "Vue.js",
+      "angular": "Angular",
+      "@angular": "Angular",
+      "express": "Express.js",
+      "fastify": "Fastify",
+      "koa": "Koa.js",
+      "next": "Next.js",
+      "nuxt": "Nuxt.js",
+      "gatsby": "Gatsby",
+      "svelte": "Svelte",
+      "sveltekit": "SvelteKit",
+      "remix": "Remix"
+    },
+    "python_patterns": {
+      "django": "Django",
+      "flask": "Flask",
+      "fastapi": "FastAPI",
+      "tornado": "Tornado",
+      "pyramid": "Pyramid",
+      "bottle": "Bottle",
+      "streamlit": "Streamlit",
+      "gradio": "Gradio",
+      "dash": "Dash",
+      "quart": "Quart"
+    },
+    "tool_patterns": {
+      "webpack": "Webpack",
+      "vite": "Vite",
+      "rollup": "Rollup",
+      "parcel": "Parcel",
+      "babel": "Babel",
+      "eslint": "ESLint",
+      "prettier": "Prettier",
+      "typescript": "TypeScript",
+      "tailwindcss": "Tailwind CSS",
+      "bootstrap": "Bootstrap"
+    },
+    "testing_patterns": {
+      "jest": "Jest",
+      "mocha": "Mocha",
+      "chai": "Chai",
+      "cypress": "Cypress",
+      "playwright": "Playwright",
+      "selenium": "Selenium",
+      "pytest": "Pytest",
+      "unittest": "Unittest",
+      "nose": "Nose"
+    },
+    "database_patterns": {
+      "postgres": "PostgreSQL",
+      "postgresql": "PostgreSQL",
+      "mysql": "MySQL",
+      "sqlite": "SQLite",
+      "mongodb": "MongoDB",
+      "mongo": "MongoDB",
+      "redis": "Redis",
+      "elasticsearch": "Elasticsearch",
+      "cassandra": "Cassandra",
+      "neo4j": "Neo4j"
+    }
+  }
+}

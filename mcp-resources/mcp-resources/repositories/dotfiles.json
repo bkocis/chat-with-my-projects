@@ -1,0 +1,71 @@
+{
+  "repository_name": "dotfiles",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/dotfiles",
+  "analysis_timestamp": "2025-07-30T23:57:35.216479",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/dotfiles/README.md",
+      "size": 2277,
+      "content": "#### Repository of linux rc files\n\n### bashrc\n\n - Extend the functionality of a bash shell by adding a few extra lines to the .bashrc:\n\n\t`cdl() { clear -x ; cd \"$1\" ; pushd . > /dev/null ; tput setaf 1; pwd ; tput sgr 0 ; ls ; }`\n\n\t`cdp() { clear -x ; cd .. \"$1\" ; dirs -c ;tput setaf 1; pwd ; ls ;}`\n\n\tFunction `cdl` and `cdp` are extending the `cd` and `cd ..`, respectively,\n\twith: (1) clearing the screen, (2) listing the content of the folder and (3)\n\tprinting the current working directory as the first line.  \n\n\n\tThe `cdl` is extended with `pushd` as well, just in case you accidentally hit 'enter' after `cd`. When that happens \n\ttype `popd` and you are back where you were instead of the '/home' directory. \n\n\tExample:\n\n\t- ![bash_example](https://raw.github.com/bkocis/linux_rc-s/master/bash_prompt.gif)\n\n\n - Default auto completion in bash uses the tabulator key to match up until the next ambiguous character.\n\tIn case you want to circulate between all possibilities (similaly to zsh default) use `bind`. Adding the following `bind` commands to the .bashrc will asign the key combination of LEFT-SHIFT + the UP arrow to bind and will execute the autocomplete by iteration through all complete possibilities, not just up untill the next common character.\n\n\t`bind '\"\\e[1;2A\":menu-complete-backward`\n\n\t`bind '\"\\e[1;2B\":menu-complete'`\n\n\tTo list out all available sockets to bind see `bind -ls`. \n\tThe LEFT-SHIFT+Up arrow has the `^[[1;2A` metacharacter, while the LEFT-SHIFT+Down arrow has the `^[[1;2B`. \n\n\n - To further customize the shell use different colors for various extensions.\n\tEvaluate the .dircolors by:\n\t`eval \"$(dircolors -b .dircolors)\"`\n\n\n## vimrc\n\nUse VimPlug to install plugins from https://github.com/junegunn/vim-plug\n\nEnable autocomplete with Coc - needs yarn to build and install from .vimrc coc folder \n\nTo support autocomplete from a venv in python, add the line to .vimrc\n\n`let g:python3_host_prog='/usr/bin/python3'`\n\nhttps://vimawesome.com/plugin/vim-python-virtualenv-hard-things\n\nhttps://vimawesome.com/plugin/coc-nvim\n\n\n---\n[.bashrc](https://github.com/bkocis/linux_rc-s/blob/master/bashrc)\n\n\n[.vimrc](https://github.com/bkocis/linux_rc-s/blob/master/vimrc)\n\n\n[.dircolors](https://github.com/bkocis/linux_rc-s/blob/master/dircolors)\n\n\n \n\n\n",
+      "summary": "- Extend the functionality of a bash shell by adding a few extra lines to the .bashrc: `cdl() { clear -x ; cd \"$1\" ; pushd . > /dev/null ; tput setaf 1; pwd ; tput sgr 0 ; ls ; }` `cdp() { clear -x ; cd .. \"$1\" ; dirs -c ;tput setaf 1; pwd ; ls ;}`",
+      "line_count": 62,
+      "word_count": 307,
+      "last_modified": "2023-02-12T23:50:00.345066"
+    }
+  ],
+  "file_structure": {
+    "total_files": 5,
+    "total_size": 126168,
+    "file_types": {
+      "": 3,
+      ".md": 1,
+      ".gif": 1
+    },
+    "languages": {},
+    "directories": [],
+    "largest_files": [
+      [
+        "bash_prompt.gif",
+        115712
+      ],
+      [
+        "dircolors",
+        4528
+      ],
+      [
+        "bashrc",
+        2716
+      ],
+      [
+        "README.md",
+        2277
+      ],
+      [
+        "vimrc",
+        935
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "89354122355de20fef320c90b35a7f62b39b7d18",
+      "author_name": "Balazs.Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Sun Feb 12 23:51:25 2023 +0100",
+      "message": "vimrc modified"
+    },
+    "remote_url": "https://github.com/bkocis/dotfiles.git"
+  },
+  "content_hash": "6a11ad1a03b803b5bb5131ccac791de1"
+}

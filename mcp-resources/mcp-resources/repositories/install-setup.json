@@ -1,0 +1,58 @@
+{
+  "repository_name": "install-setup",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/install-setup",
+  "analysis_timestamp": "2025-07-30T23:57:34.833223",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/install-setup/README.md",
+      "size": 78,
+      "content": "# install-setup\nInstructions for installation and set-up of linux desktop env\n",
+      "summary": "Instructions for installation and set-up of linux desktop env",
+      "line_count": 2,
+      "word_count": 11,
+      "last_modified": "2023-01-18T20:13:14.784405"
+    }
+  ],
+  "file_structure": {
+    "total_files": 2,
+    "total_size": 528,
+    "file_types": {
+      ".md": 1,
+      ".txt": 1
+    },
+    "languages": {},
+    "directories": [],
+    "largest_files": [
+      [
+        "basic-install.txt",
+        450
+      ],
+      [
+        "README.md",
+        78
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "10b88d85c2b7f2e48949b78900262e2047efc071",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Fri Oct 1 00:11:35 2021 +0200",
+      "message": "Update basic-install.txt"
+    },
+    "remote_url": "https://github.com/bkocis/install-setup.git"
+  },
+  "content_hash": "3d83d27f2da8c27056f0542a98230505"
+}

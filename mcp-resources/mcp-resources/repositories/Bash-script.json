@@ -1,0 +1,115 @@
+{
+  "repository_name": "Bash-script",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/Bash-script",
+  "analysis_timestamp": "2025-07-30T23:57:35.755032",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.creole",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/Bash-script/README.creole",
+      "size": 2135,
+      "content": "= Bash Script\n\nThe [[http://gnu.org/s/bash/|Bash]] shell used as default shell on GNU/Linux operating system is a versatile enhancement of the Bourne shell, suitable for use as\ninteractive command processor and as script interpreter.\n\nThis repository contains a collection of scripts, each directory contains one script and the related files.\n\nHere are some scripts I wrote.\n\n* **buzz.sh** - Schedules an at job to pop up a message using various commands.\n* **cookieclean.sh** - Cleans up the Mozilla cookie file removing unwanted items.\n* **duplicated.sh** - Create a list of all duplicated files based on comparing their checksums.\n* **killrenegade.sh** - Kill the processes with given name which use to much resources.\n* **lyndex.sh** - Create a word index from the Lynx traversal crawl files.\n* **minesweeper.sh** - The classic mine sweeper game in text mode.\n* **mksfx.sh** - Add a shell script header to a compressed file, to make it selfextractor.\n* **mpc.sh** - Just a rudimental frontend for the most basic music playing functionalities.\n* **onceaday.sh** - Run commands enumerated in a configuration file, conditionally, only once a day.\n* **pacman.sh** - Adds some frequently needed minor functionalities to pacman-g2.\n* **psqall.sh** - Runs the psql tool in a loop for more databases of the same server.\n* **seq.sh** - Use the seq command to replace numeric part of a string with numeric sequences and multiplying the string.\n* **onceaday.sh** - Run commands enumerated in a configuration file, conditionally, only once a day.\n* **psqall.sh** - Runs the psql tool in a loop for more databases of the same server.\n* **seq.sh** - Use the seq command to replace numeric part of a string with numeric sequences and multiplying the string.\n* **symlink_ntfs.sh** - Restores symlinks after copying them to NTFS and back.\n* **taborder.sh** - Reorders the controls in the XFM file based on the declarations in the Pas file.\n* **termclock.sh** - Analog clock displayed using only bash arithmetics and tput.\n\nThese scripts were intentionally kept short. For details see the [[http://feherke.github.io/bash/|Bash section of my site]].\n",
+      "summary": "= Bash Script The [[http://gnu.org/s/bash/|Bash]] shell used as default shell on GNU/Linux operating system is a versatile enhancement of the Bourne shell, suitable for use as interactive command processor and as script interpreter.",
+      "line_count": 29,
+      "word_count": 339,
+      "last_modified": "2023-01-18T20:20:53.504877"
+    }
+  ],
+  "file_structure": {
+    "total_files": 79,
+    "total_size": 196612,
+    "file_types": {
+      ".creole": 1,
+      "": 28,
+      ".sh": 15,
+      ".1": 13,
+      ".pod": 14,
+      ".awk": 1,
+      ".ini": 5,
+      ".6": 1,
+      ".ok": 1
+    },
+    "languages": {
+      "Shell": 15
+    },
+    "directories": [
+      "pacman",
+      "killrenegade",
+      "buzz",
+      "termclock",
+      "onceaday",
+      "duplicated",
+      "seq",
+      "symlink_ntfs",
+      "mksfx",
+      "minesweeper",
+      "cookieclean",
+      "psqall",
+      "lyndex",
+      "mpc",
+      "taborder"
+    ],
+    "largest_files": [
+      [
+        "pacman/pacman.sh.1",
+        10249
+      ],
+      [
+        "killrenegade/killstatistic.awk",
+        9821
+      ],
+      [
+        "onceaday/onceaday.sh.1",
+        8831
+      ],
+      [
+        "cookieclean/cookieclean.sh.1",
+        8632
+      ],
+      [
+        "mpc/mpc.sh.1",
+        8629
+      ],
+      [
+        "psqall/psqall.sh.1",
+        7854
+      ],
+      [
+        "pacman/pacman.sh",
+        7209
+      ],
+      [
+        "symlink_ntfs/symlink_ntfs.sh.1",
+        6102
+      ],
+      [
+        "mpc/mpc.sh",
+        5875
+      ],
+      [
+        "mksfx/mksfx.sh.1",
+        5730
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "711aa548a4c78cf1d3818646d8690227efc7d20f",
+      "author_name": "feherke",
+      "author_email": "feherke@master",
+      "date": "Thu Nov 21 18:49:17 2013 +0200",
+      "message": "added pacman.sh"
+    },
+    "remote_url": "https://github.com/bkocis/Bash-script.git"
+  },
+  "content_hash": "7f4141ce43a1cbd9209bdafabe382602"
+}

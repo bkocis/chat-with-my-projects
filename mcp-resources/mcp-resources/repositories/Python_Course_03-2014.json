@@ -1,0 +1,91 @@
+{
+  "repository_name": "Python_Course_03-2014",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/Python_Course_03-2014",
+  "analysis_timestamp": "2025-07-30T23:57:35.262751",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/Python_Course_03-2014/README.md",
+      "size": 313,
+      "content": "# Python course 03-2014\n\n\nMaterial for my introdcutory course of Python programming language tought at the Department of Geo and Environmental Sciences of the Ludwig-Maximilian University \n\nThe topcis covered are: \n\n- data structures in python and numpy arrays \n- functions \n- numerical python packages *sympy*\n\n\n",
+      "summary": "Material for my introdcutory course of Python programming language tought at the Department of Geo and Environmental Sciences of the Ludwig-Maximilian University The topcis covered are: - data structures in python and numpy arrays",
+      "line_count": 10,
+      "word_count": 45,
+      "last_modified": "2023-01-18T20:16:08.062093"
+    }
+  ],
+  "file_structure": {
+    "total_files": 17,
+    "total_size": 961917,
+    "file_types": {
+      ".ipynb": 8,
+      ".pdf": 8,
+      ".md": 1
+    },
+    "languages": {},
+    "directories": [],
+    "largest_files": [
+      [
+        "First contact with python.pdf",
+        138720
+      ],
+      [
+        "Sympy and algebra.pdf",
+        112483
+      ],
+      [
+        "Data Structures IV-ndarray.pdf",
+        109825
+      ],
+      [
+        "Before_start.pdf",
+        108502
+      ],
+      [
+        "Functions.pdf",
+        85001
+      ],
+      [
+        "Data structures I.pdf",
+        76284
+      ],
+      [
+        "Functions.ipynb",
+        68616
+      ],
+      [
+        "Data Structures III-dict-dictionary.pdf",
+        63442
+      ],
+      [
+        "Data Structures II - what we can do with lists.pdf",
+        62473
+      ],
+      [
+        "First contact with Ipython notebook.ipynb",
+        57474
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "19a5ae1606ee02c386ee25596197681ee1d33ce5",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Wed Oct 9 23:49:11 2019 +0200",
+      "message": "update of the README"
+    },
+    "remote_url": "https://github.com/bkocis/Python_Course_03-2014.git"
+  },
+  "content_hash": "57f0b810b4178dccb9336997f26f4cc7"
+}

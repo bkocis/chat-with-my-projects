@@ -1,0 +1,42 @@
+{
+  "repository_name": "power-bi-analytics",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/power-bi-analytics",
+  "analysis_timestamp": "2025-07-30T23:57:35.147127",
+  "is_git_repo": true,
+  "readme_files": [],
+  "file_structure": {
+    "total_files": 1,
+    "total_size": 552,
+    "file_types": {
+      ".md": 1
+    },
+    "languages": {},
+    "directories": [],
+    "largest_files": [
+      [
+        "links.md",
+        552
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "a0c9756685ceb999518a8852d1b958ce9e39a408",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Mon Mar 16 11:03:57 2020 +0100",
+      "message": "inital commit"
+    },
+    "remote_url": "https://github.com/bkocis/power-bi-analytics.git"
+  },
+  "content_hash": "49b05957c5b6253a75f26499d268c389"
+}

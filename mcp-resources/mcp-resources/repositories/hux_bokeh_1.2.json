@@ -1,0 +1,127 @@
+{
+  "repository_name": "hux_bokeh_1.2",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/hux_bokeh_1.2",
+  "analysis_timestamp": "2025-07-30T23:57:35.103982",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/hux_bokeh_1.2/README.md",
+      "size": 1685,
+      "content": "# hux_bokeh_1.2\nholistic user experiance survey\n\n\n\nCREATE DATABASE hux_brill_test_1;\n\nCREATE TABLE questionaire (id INT AUTO_INCREMENT PRIMARY KEY, entry_time TIMESTAMP(2) DEFAULT CURRENT_TIMESTAMP(2), TEXT VARCHAR(50), BRAND INT, DESIGN INT, VISUALS INT, GEARBOX INT, EASE_OF_USE INT);\n\n\n\n# ADD USER AND GIVE PRIVILEDGES - without defining the host IP of the user \n\nINSERT INTO mysql.user (User, authentication_string,ssl_cipher,x509_issuer,x509_subject) VALUES('hux',PASSWORD('huxhux'),'','','');\n\nGRANT ALL PRIVILEGES ON hux_brill_test_1.* TO 'hux'@'%' IDENTIFIED BY 'huxhux';\n\nFLUSH PRIVILEGES;\n\n\n\n\nWhen I need the users to create own databases -> grant all priviledges to user for db-s that start with string ::\n\n[https://stackoverflow.com/questions/2950054/let-mysql-users-create-databases-but-allow-access-to-only-their-own-databases]\n\nGRANT ALL PRIVILEGES ON `hux_project_%` . * TO 'hux'@'%' IDENTIFIED BY 'huxhux';\nFLUSH PRIVILEGES;\n\n\n\nSELECT User, Host, authentication_string FROM mysql.user;\n\n\n##### SIMUPRO ###############################\nINSERT INTO mysql.user (User, authentication_string,ssl_cipher,x509_issuer,x509_subject) VALUES('simupro',PASSWORD('simupro'),'','','');\n\nGRANT ALL PRIVILEGES ON `simupro_project_%` . * TO 'simupro'@'%' IDENTIFIED BY 'simupro';\n\nFLUSH PRIVILEGES;\n\nCREATE database simupro_project_init;\n\nCREATE TABLE page_2 (id INT AUTO_INCREMENT PRIMARY KEY, entry_time TIMESTAMP(2) DEFAULT CURRENT_TIMESTAMP(2), TEXT VARCHAR(50), IMG_LINK VARCHAR(500), AGE INT, GENDER INT, F1 INT, F2 INT, F3 INT, F4 INT, F5 INT, F6 INT, F7 INT, F8 INT, F9 INT, F10 INT, F11 INT, F12 INT, F13 INT, F14 INT, F15 INT);\n#############################################\n\n\n",
+      "summary": "holistic user experiance survey CREATE DATABASE hux_brill_test_1; CREATE TABLE questionaire (id INT AUTO_INCREMENT PRIMARY KEY, entry_time TIMESTAMP(2) DEFAULT CURRENT_TIMESTAMP(2), TEXT VARCHAR(50), BRAND INT, DESIGN INT, VISUALS INT, GEARBOX INT, EASE_OF_USE INT);",
+      "line_count": 45,
+      "word_count": 186,
+      "last_modified": "2023-01-18T20:16:09.682109"
+    }
+  ],
+  "file_structure": {
+    "total_files": 55,
+    "total_size": 4939180,
+    "file_types": {
+      ".md": 1,
+      ".txt": 1,
+      "": 3,
+      ".py": 23,
+      ".css": 7,
+      ".html": 9,
+      ".py_backup": 1,
+      ".py_old": 1,
+      ".ipynb": 1,
+      ".test": 1,
+      ".csv": 6,
+      ".xlsx": 1
+    },
+    "languages": {
+      "Python": 23,
+      "CSS": 7,
+      "HTML": 9
+    },
+    "directories": [
+      "HUX_questionnaire",
+      "HUX_eval",
+      "HUX_questionnaire/hux_bokeh_users_questionnaire",
+      "HUX_questionnaire/hux_bokeh_questionnair_generator",
+      "HUX_questionnaire/hux_bokeh_users_questionnaire/backup-first_version",
+      "HUX_questionnaire/hux_bokeh_users_questionnaire/user_questionnaire_builder_1",
+      "HUX_questionnaire/hux_bokeh_users_questionnaire/backup-first_version/questionnaire",
+      "HUX_questionnaire/hux_bokeh_users_questionnaire/backup-first_version/questionnaire/templates",
+      "HUX_questionnaire/hux_bokeh_users_questionnaire/user_questionnaire_builder_1/templates",
+      "HUX_questionnaire/hux_bokeh_questionnair_generator/questionnaire",
+      "HUX_questionnaire/hux_bokeh_questionnair_generator/questionnaire/templates",
+      "HUX_eval/simulation",
+      "HUX_eval/mysql_database_eval",
+      "HUX_eval/old_data",
+      "HUX_eval/simulation/templates",
+      "HUX_eval/mysql_database_eval/backups_2",
+      "HUX_eval/mysql_database_eval/backups",
+      "HUX_eval/mysql_database_eval/templates",
+      "HUX_eval/old_data/templates_old",
+      "HUX_eval/old_data/data",
+      "HUX_eval/old_data/hux_data_eval_page_bokeh",
+      "HUX_eval/old_data/hux_data_eval_page_bokeh/templates"
+    ],
+    "largest_files": [
+      [
+        "HUX_eval/old_data/test.test",
+        3209054
+      ],
+      [
+        "HUX_eval/old_data/data/869917697_China_SUV_owner_survey_FinalData_131216_3.xlsx",
+        1310348
+      ],
+      [
+        "HUX_eval/mysql_database_eval/backups_2/hux_mysql_communication.ipynb",
+        99075
+      ],
+      [
+        "HUX_eval/mysql_database_eval/backups/hux_eval_dashboard_good_2.py",
+        17450
+      ],
+      [
+        "HUX_eval/mysql_database_eval/backups/hux_eval_dashboard_good_1.py",
+        17137
+      ],
+      [
+        "HUX_eval/mysql_database_eval/backups/hux_eval_dashboard_2.py",
+        16871
+      ],
+      [
+        "HUX_eval/mysql_database_eval/backups/hux_eval_dashboard_1.py",
+        16592
+      ],
+      [
+        "HUX_eval/simulation/hux_data_eval_page_flask.py",
+        12363
+      ],
+      [
+        "HUX_eval/old_data/hux_data_eval_page_bokeh/main.py",
+        12138
+      ],
+      [
+        "HUX_eval/mysql_database_eval/main.py",
+        11974
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "f94b832b8661b4ab06858b3c7485c58c6192bb20",
+      "author_name": "bkocis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Mon Sep 30 23:39:34 2019 +0000",
+      "message": "hux evaluation code cleaned"
+    },
+    "remote_url": "https://github.com/bkocis/hux_bokeh_1.2.git"
+  },
+  "content_hash": "91f9ee4f3fca1a18803ca83800c398e8"
+}

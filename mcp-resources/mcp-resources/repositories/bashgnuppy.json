@@ -1,0 +1,81 @@
+{
+  "repository_name": "bashgnuppy",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bashgnuppy",
+  "analysis_timestamp": "2025-07-30T23:57:35.254054",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bashgnuppy/README.md",
+      "size": 369,
+      "content": "Gnuplot is great for fast plotting, however, it can't do mathematical transformation and more complicated data preparation. \n\nHere, an example code is given for combining matplotlib and gnuplot in a bash shell script. Executes from the command line by pasting arguments. The data transformation is done in python, and the result are forwarded to gnuplot for plotting. \n",
+      "summary": "Gnuplot is great for fast plotting, however, it can't do mathematical transformation and more complicated data preparation. Here, an example code is given for combining matplotlib and gnuplot in a bash shell script. Executes from the command line by pasting arguments. The data transformation is done in python, and the result are forwarded to gnuplot for plotting.",
+      "line_count": 3,
+      "word_count": 57,
+      "last_modified": "2023-01-18T20:16:20.202212"
+    }
+  ],
+  "file_structure": {
+    "total_files": 7,
+    "total_size": 212020,
+    "file_types": {
+      ".md": 1,
+      ".gnupy": 2,
+      ".dat": 4
+    },
+    "languages": {},
+    "directories": [
+      "example"
+    ],
+    "largest_files": [
+      [
+        "example/3h_aniso_muliphase_fitfit.dat",
+        75324
+      ],
+      [
+        "example/0min_fitdat.dat",
+        49236
+      ],
+      [
+        "example/3h_aniso_muliphase_fitdata.dat",
+        46557
+      ],
+      [
+        "example/0min_fitfit.dat",
+        37300
+      ],
+      [
+        "gnuppy_01.gnupy",
+        1804
+      ],
+      [
+        "example/gnuppy_01.gnupy",
+        1430
+      ],
+      [
+        "README.md",
+        369
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "0d2525cab56437caf136083456a341175d89922f",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Thu Jul 18 00:10:03 2019 +0200",
+      "message": "Update README.md"
+    },
+    "remote_url": "https://github.com/bkocis/bashgnuppy.git"
+  },
+  "content_hash": "ef654f15a59d7f7e6ea876e81c86330b"
+}

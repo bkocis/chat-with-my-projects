@@ -1,0 +1,55 @@
+{
+  "repository_name": "DLND_Pr_5_Face_Generation",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/DLND_Pr_5_Face_Generation",
+  "analysis_timestamp": "2025-07-30T23:57:35.225904",
+  "is_git_repo": true,
+  "readme_files": [],
+  "file_structure": {
+    "total_files": 3,
+    "total_size": 13262040,
+    "file_types": {
+      ".py": 1,
+      ".html": 1,
+      ".ipynb": 1
+    },
+    "languages": {
+      "Python": 1,
+      "HTML": 1
+    },
+    "directories": [],
+    "largest_files": [
+      [
+        "dlnd_face_generation.ipynb",
+        6652275
+      ],
+      [
+        "dlnd_face_generation.html",
+        6607652
+      ],
+      [
+        "problem_unittests.py",
+        2113
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "98d9a95e05e99ac778040f19443a47f0dfc27842",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Tue Jul 30 20:56:03 2019 +0200",
+      "message": "revision"
+    },
+    "remote_url": "https://github.com/bkocis/DLND_Pr_5_Face_Generation.git"
+  },
+  "content_hash": "82f11dca4f2364f9d609c33c10d4a8ef"
+}

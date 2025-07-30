@@ -1,0 +1,97 @@
+{
+  "repository_name": "bitcoin-price-api",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bitcoin-price-api",
+  "analysis_timestamp": "2025-07-30T23:57:34.892739",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bitcoin-price-api/README.md",
+      "size": 2137,
+      "content": "Bitcoin Price API\n----------------------------------------------------------------------\n\nIf you are trying to do interesting things with bitcoin price data,\nyou shouldn't have to be concerned with the low-level details of how\nto obtain that data, or the particular JSON structures that it comes in.\nThis module will provide a unified way of getting price data from various\nexchanges which have publicly available API's, as well as a unified\nrepresentation of that data rather than exchange specific ones.\n\n### Quick Guide\n\n        >>> from exchanges.bitfinex import Bitfinex\n        >>> Bitfinex().get_current_price()\n        Decimal('371.17')\n\n### Dependencies\n\nThe only dependency is on the `requests` library. You can either\ndo `pip install requests` or `pip install -r requirements.txt` inside the\ndirectory.\n\n### Bitstamp, Bitfinex, OKCoin, Huobi, and Coinapult\n\nAll of these classes expose the interface below:\n\n    get_current_price()\n    get_current_bid()\n    get_current_ask()\n\nwhich will return a `Decimal` object.\nNote that all exchanges return values in USD, with the\nexception of Huobi which returns CNY.\n\nCoinapult is special in that you can specify the currency for the above\nthree methods.\n\n    get_current_price(currency='EUR')\n\n### Coindesk\n\nThe Coindesk class offers a much richer price interface:\n\n    get_current_price(currency='USD')\n    get_past_price(date)\n    get_historical_data_as_dict(start='2013-09-01', end=None)\n    get_historical_data_as_list(start='2013-09-01', end=None)\n\n`get_current_price` and `get_past_price` both return `Decimal` objects.\n\n`get_current_price` takes in an optional parameter specifying the currency.\n\nThe dates for all functions must be in the form 'YYYY-MM-DD'.\n\n`get_historical_data_as_dict` will return a dictionary of the following format:\n\n    {'2014-10-20': 400.00, '2014-10-21': 301.99}\n\nRemember that these date/prices will not be in any given order.\n\n`get_historical_data_as_list` will return a list of dictionaries, correctly\nsorted by date from start to end.\n\n    [\n        {'date': 'YYYY-MM-DD', 'price': 300.00},\n        {'date': 'YYYY-MM-DD', 'price': 301.00 }\n    ]\n",
+      "summary": "Bitcoin Price API ---------------------------------------------------------------------- If you are trying to do interesting things with bitcoin price data,",
+      "line_count": 67,
+      "word_count": 260,
+      "last_modified": "2023-01-18T20:19:32.560088"
+    }
+  ],
+  "file_structure": {
+    "total_files": 21,
+    "total_size": 18969,
+    "file_types": {
+      ".md": 1,
+      ".txt": 2,
+      ".cfg": 1,
+      ".in": 1,
+      ".py": 16
+    },
+    "languages": {
+      "Python": 16
+    },
+    "directories": [
+      "exchanges"
+    ],
+    "largest_files": [
+      [
+        "README.md",
+        2137
+      ],
+      [
+        "exchanges/base.py",
+        2132
+      ],
+      [
+        "exchanges/bitvc.py",
+        1875
+      ],
+      [
+        "exchanges/okcoin.py",
+        1825
+      ],
+      [
+        "exchanges/coindesk.py",
+        1574
+      ],
+      [
+        "exchanges/coinapult.py",
+        1453
+      ],
+      [
+        "exchanges/bitmex.py",
+        1222
+      ],
+      [
+        "LICENSE.txt",
+        1077
+      ],
+      [
+        "exchanges/__init__.py",
+        954
+      ],
+      [
+        "exchanges/kraken.py",
+        865
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "abc186041d7041c9465f476bade589da042f6d6d",
+      "author_name": "dursk",
+      "author_email": "dursk@users.noreply.github.com",
+      "date": "Sat Aug 26 10:23:35 2017 -0400",
+      "message": "Merge pull request #10 from PokestarFan/patch-1"
+    },
+    "remote_url": "https://github.com/bkocis/bitcoin-price-api.git"
+  },
+  "content_hash": "cf5a7c48ebb5c6878805d5b114236cda"
+}

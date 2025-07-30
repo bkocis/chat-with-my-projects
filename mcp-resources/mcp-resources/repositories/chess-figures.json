@@ -1,0 +1,126 @@
+{
+  "repository_name": "chess-figures",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/chess-figures",
+  "analysis_timestamp": "2025-07-30T23:57:34.563615",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/chess-figures/README.md",
+      "size": 17,
+      "content": "# chess-figures\n\n",
+      "summary": "",
+      "line_count": 1,
+      "word_count": 2,
+      "last_modified": "2023-01-18T20:12:41.796084"
+    },
+    {
+      "path": "chess/README.roboflow.txt",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/chess-figures/chess/README.roboflow.txt",
+      "size": 813,
+      "content": "\nChess Sample - v1 chess_anootations_2022-03-26\n==============================\n\nThis dataset was exported via roboflow.ai on March 26, 2022 at 12:43 PM GMT\n\nIt includes 14 images.\nPieces are annotated in YOLO v5 PyTorch format.\n\nThe following pre-processing was applied to each image:\n* Auto-orientation of pixel data (with EXIF-orientation stripping)\n* Resize to 416x416 (Stretch)\n* Grayscale (CRT phosphor)\n\nThe following augmentation was applied to create 3 versions of each source image:\n* 50% probability of horizontal flip\n* Randomly crop between 0 and 30 percent of the image\n* Random rotation of between -5 and +5 degrees\n* Random brigthness adjustment of between -25 and +25 percent\n* Random exposure adjustment of between -25 and +25 percent\n* Salt and pepper noise was applied to 2 percent of pixels\n\n\n",
+      "summary": "Chess Sample - v1 chess_anootations_2022-03-26 ============================== This dataset was exported via roboflow.ai on March 26, 2022 at 12:43 PM GMT",
+      "line_count": 20,
+      "word_count": 128,
+      "last_modified": "2023-01-18T20:12:41.796084"
+    },
+    {
+      "path": "chess/README.dataset.txt",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/chess-figures/chess/README.dataset.txt",
+      "size": 149,
+      "content": "# undefined > chess_anootations_2022-03-26\nhttps://public.roboflow.ai/object-detection/undefined\n\nProvided by undefined\nLicense: CC BY 4.0\n\nundefined",
+      "summary": "https://public.roboflow.ai/object-detection/undefined Provided by undefined License: CC BY 4.0",
+      "line_count": 7,
+      "word_count": 13,
+      "last_modified": "2023-01-18T20:12:41.796084"
+    }
+  ],
+  "file_structure": {
+    "total_files": 58,
+    "total_size": 2538428,
+    "file_types": {
+      ".md": 1,
+      ".txt": 17,
+      ".zip": 2,
+      ".yaml": 1,
+      ".jpg": 26,
+      ".xml": 11
+    },
+    "languages": {},
+    "directories": [
+      "chess",
+      "chess/train",
+      "chess/test",
+      "chess/chessSampleData",
+      "chess/valid",
+      "chess/train/labels",
+      "chess/train/images",
+      "chess/test/labels",
+      "chess/test/images",
+      "chess/valid/labels",
+      "chess/valid/images"
+    ],
+    "largest_files": [
+      [
+        "chess/Chess Sample.v1-chess_anootations_2022-03-26.yolov5pytorch.zip",
+        649506
+      ],
+      [
+        "chess/chessSampleData.zip",
+        602120
+      ],
+      [
+        "chess/train/images/d9a_jpg.rf.ffd31db6ea7fe1c50628005acd15101a.jpg",
+        63534
+      ],
+      [
+        "chess/train/images/1be_jpg.rf.be84d0201a668857aec25d4af94b382b.jpg",
+        62742
+      ],
+      [
+        "chess/train/images/d9a_jpg.rf.7b1c486a73988779b92d5c1ba3c11d51.jpg",
+        57187
+      ],
+      [
+        "chess/train/images/1be_jpg.rf.aa1202029b5b3f4f0109773c8a870d1a.jpg",
+        56548
+      ],
+      [
+        "chess/chessSampleData/a97.jpg",
+        55562
+      ],
+      [
+        "chess/train/images/d9a_jpg.rf.870f7cc02a59747a9ed6d636ed4b6456.jpg",
+        55533
+      ],
+      [
+        "chess/train/images/bc5_jpg.rf.eb57b68ea1b0c5e4cb089d6f535d076e.jpg",
+        54832
+      ],
+      [
+        "chess/chessSampleData/bc5.jpg",
+        54767
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "7c912b632ae0eb05978a9a1779ce5d8d0b82c51d",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bal.koksis.a3@gmail.com",
+      "date": "Sat Jun 18 11:20:22 2022 +0200",
+      "message": "Merge branch 'main' of https://dagshub.com/bkocis/chess-figures into main"
+    },
+    "remote_url": "https://github.com/bkocis/chess-figures.git"
+  },
+  "content_hash": "844a7507f989baf761f94a0b40c16775"
+}

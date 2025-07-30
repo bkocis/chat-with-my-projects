@@ -1,0 +1,9 @@
+# Data Preprocessing Requirements
+# No additional dependencies needed - uses only Python standard library
+# The script is designed to work with minimal dependencies for maximum compatibility
+
+# Optional: If you want to add more advanced analysis features, uncomment below:
+# gitpython==3.1.40  # For more advanced git analysis
+# pygments==2.17.2   # For syntax highlighting and language detection
+# chardet==5.2.0     # For better encoding detection
+# pyyaml==6.0.1      # For YAML config file parsing

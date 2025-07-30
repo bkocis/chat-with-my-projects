@@ -1,0 +1,104 @@
+{
+  "repository_name": "smart_mirror",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/smart_mirror",
+  "analysis_timestamp": "2025-07-30T23:57:35.722040",
+  "is_git_repo": true,
+  "readme_files": [],
+  "file_structure": {
+    "total_files": 80,
+    "total_size": 400166662,
+    "file_types": {
+      "": 4,
+      ".png": 23,
+      ".py": 32,
+      ".dat": 4,
+      ".txt": 12,
+      ".2019": 2,
+      ".sh": 3
+    },
+    "languages": {
+      "Python": 32,
+      "Shell": 3
+    },
+    "directories": [
+      "related_projects",
+      "system-1",
+      "related_projects/Ritik_Gupta_blog",
+      "related_projects/pyimagesearch",
+      "related_projects/make_art_with_python_blog",
+      "related_projects/opencv-face-eyes-smile-detector",
+      "related_projects/Ritik_Gupta_blog/modern-snake-game-opencv",
+      "related_projects/Ritik_Gupta_blog/Python-Face-Recongition-ML-OpenCv",
+      "related_projects/pyimagesearch/ball-movement-tracking-pyimagesearch",
+      "related_projects/make_art_with_python_blog/snapchat-lens-effect-in-python",
+      "related_projects/make_art_with_python_blog/face_detector_opencv",
+      "related_projects/make_art_with_python_blog/face_detector_opencv/automatic-memes",
+      "system-1/sensor_read",
+      "system-1/object_tracking_color",
+      "system-1/icons",
+      "system-1/facial_landmark_tracking"
+    ],
+    "largest_files": [
+      [
+        "related_projects/pyimagesearch/ball-movement-tracking-pyimagesearch/shape_predictor_68_face_landmarks.dat",
+        99693937
+      ],
+      [
+        "system-1/shape_predictor_68_face_landmarks.dat",
+        99693937
+      ],
+      [
+        "system-1/object_tracking_color/shape_predictor_68_face_landmarks.dat",
+        99693937
+      ],
+      [
+        "system-1/facial_landmark_tracking/shape_predictor_68_face_landmarks.dat",
+        99693937
+      ],
+      [
+        "system-1/sensor_read/test_data_LL.txt",
+        131737
+      ],
+      [
+        "related_projects/pyimagesearch/ball-movement-tracking-pyimagesearch/teeth_row.png",
+        70915
+      ],
+      [
+        "system-1/teeth_row.png",
+        70915
+      ],
+      [
+        "system-1/object_tracking_color/teeth_row.png",
+        70915
+      ],
+      [
+        "system-1/facial_landmark_tracking/teeth_row.png",
+        70915
+      ],
+      [
+        "system-1/sensor_read/test_data_UR.txt",
+        65768
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "2cf579e5c0d569cd62ca8b1cfb181b6d5a56cf4a",
+      "author_name": "bkocis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Tue Oct 22 19:21:06 2019 +0200",
+      "message": "approach 4 added cleaned from rectangles"
+    },
+    "remote_url": "https://github.com/bkocis/smart_mirror.git"
+  },
+  "content_hash": "51f5824fba3616df4da917591c70f78c"
+}

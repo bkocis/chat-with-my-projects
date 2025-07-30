@@ -180,7 +180,7 @@ def display_tool_execution_trace(execution_trace):
                                 st.text_area("Full Result:", value=result, height=200, key=f"full_text_{iteration}_{i}")
 
 
-def display_query_metrics(start_time, end_time, execution_trace=None):
+def display_query_metrics(start_time, end_time, execution_trace=None, agent_info=None):
     """Display query execution metrics"""
     execution_time = end_time - start_time
     
@@ -198,8 +198,20 @@ def display_query_metrics(start_time, end_time, execution_trace=None):
         st.metric("🔧 Tool Calls", total_actions)
     
     with col4:
-        mode = "🤖 ReAct AI" if execution_trace else "📝 Traditional"
-        st.metric("🧠 Mode", mode)
+        if execution_trace and agent_info:
+            agent_type = agent_info.get('type', 'unknown')
+            model_name = agent_info.get('model', 'unknown')
+            if agent_type == 'azure':
+                mode = f"🌐 Azure ({model_name.split('-')[0]})"
+            elif agent_type == 'ollama':
+                mode = f"🏠 Ollama ({model_name.split(':')[0]})"
+            elif agent_type == 'none':
+                mode = "❌ No Agent"
+            else:
+                mode = "🤖 ReAct AI"
+        else:
+            mode = "🤖 ReAct AI" if execution_trace else "📝 Traditional"
+        st.metric("🧠 Model", mode)
 
 
 def display_readme_files(files_list):
@@ -295,25 +307,184 @@ def main():
             st.session_state.use_react = use_react
             st.rerun()
         
+        # Model Selection (only show when ReAct is enabled)
+        if use_react:
+            st.subheader("🎯 Model Selection")
+            
+            # Get current agent info
+            try:
+                current_agent_info = st.session_state.processor.get_agent_info()
+                current_agent_type = current_agent_info.get('type', 'azure')
+            except (AttributeError, Exception):
+                # Fallback if processor doesn't have get_agent_info method
+                current_agent_info = {'type': 'azure', 'available': False}
+                current_agent_type = 'azure'
+            
+            # Model selection dropdown
+            agent_options = {
+                "azure": "🌐 Azure OpenAI (GPT-4o)",
+                "ollama": "🏠 Ollama (Local LLM)"
+            }
+            
+            # Handle case where current_agent_type might be 'none' or other unexpected value
+            if current_agent_type not in agent_options:
+                current_agent_type = 'azure'  # Default to azure if type is unknown
+            
+            selected_agent = st.selectbox(
+                "Choose AI Model:",
+                options=list(agent_options.keys()),
+                index=list(agent_options.keys()).index(current_agent_type),
+                format_func=lambda x: agent_options[x],
+                help="Select between cloud-based Azure OpenAI or local Ollama models"
+            )
+            
+            # Advanced Ollama configuration
+            if selected_agent == "ollama":
+                with st.expander("🔧 Ollama Configuration", expanded=False):
+                    st.write("**Model Selection:**")
+                    
+                    # Allow custom model name for Ollama
+                    import os
+                    current_model = os.getenv("OLLAMA_MODEL_NAME", "llama3.1:8b")
+                    
+                    ollama_model = st.text_input(
+                        "Ollama Model Name:",
+                        value=current_model,
+                        help="e.g., llama3.1:8b, llama3.1:70b, mistral:7b, codellama:7b",
+                        key="ollama_model_input"
+                    )
+                    
+                    ollama_host = st.text_input(
+                        "Ollama Host:",
+                        value=os.getenv("OLLAMA_HOST", "http://localhost:11434"),
+                        help="Default: http://localhost:11434",
+                        key="ollama_host_input"
+                    )
+                    
+                    if st.button("🔄 Update Ollama Config"):
+                        # Set environment variables temporarily for this session
+                        os.environ["OLLAMA_MODEL_NAME"] = ollama_model
+                        os.environ["OLLAMA_HOST"] = ollama_host
+                        st.success(f"Updated Ollama config: {ollama_model} @ {ollama_host}")
+                        
+                        # Reinitialize the agent with new settings
+                        success = st.session_state.processor.switch_agent_type("ollama")
+                        if success:
+                            st.success("✅ Ollama agent reinitialized with new settings")
+                        else:
+                            st.error("❌ Failed to reinitialize Ollama agent")
+                        st.rerun()
+            
+            # Switch agent if selection changed
+            if selected_agent != current_agent_type:
+                with st.spinner(f"Switching to {agent_options[selected_agent]}..."):
+                    success = st.session_state.processor.switch_agent_type(selected_agent)
+                    if success:
+                        st.success(f"✅ Switched to {agent_options[selected_agent]}")
+                        st.rerun()
+                    else:
+                        st.error(f"❌ Failed to switch to {selected_agent}")
+        
         # Show current mode status
         if use_react:
-            # Check if Azure OpenAI is actually available
+            st.subheader("📊 Agent Status")
+            
+            # Get updated agent info
             try:
-                from mcp_client import ReActAgent
-                test_agent = ReActAgent(st.session_state.mcp_client)
-                if test_agent.azure_client:
-                    st.success("🤖 AI Agent Mode: Active")
-                    st.caption("Using Azure OpenAI for intelligent reasoning")
+                agent_info = st.session_state.processor.get_agent_info()
+                agent_type = agent_info.get('type', 'none')
+                is_available = agent_info.get('available', False)
+            except (AttributeError, Exception):
+                # Fallback if processor doesn't have get_agent_info method
+                agent_info = {'type': 'none', 'available': False}
+                agent_type = 'none'
+                is_available = False
+            
+            if agent_type == 'none':
+                st.warning("⚠️ No AI Agent Initialized")
+                st.caption("Agent initialization failed. Trying to initialize...")
+                # Try to initialize with default agent type
+                success = st.session_state.processor.switch_agent_type('azure')
+                if not success:
+                    st.session_state.processor.switch_agent_type('ollama')
+                st.caption("Please refresh or check your configuration")
+            
+            elif agent_type == 'azure':
+                model_name = agent_info.get('model', 'unknown')
+                if is_available:
+                    st.success("🌐 Azure OpenAI Agent: Active")
+                    st.caption(f"Model: {model_name}")
                 else:
-                    st.warning("🤖 AI Agent Mode: Unavailable")
-                    st.caption("Missing Azure OpenAI environment variables")
+                    st.warning("🌐 Azure OpenAI Agent: Unavailable")
+                    st.caption("Missing environment variables:")
+                    st.caption("• AZURE_OPENAI_API_KEY")
+                    st.caption("• AZURE_OPENAI_ENDPOINT")
                     st.caption("Will fall back to traditional mode")
-            except Exception:
-                st.warning("🤖 AI Agent Mode: Error")
-                st.caption("Azure OpenAI configuration issue")
+            
+            elif agent_type == 'ollama':
+                model_name = agent_info.get('model', 'unknown')
+                ollama_host = agent_info.get('host', 'unknown')
+                if is_available:
+                    st.success("🏠 Ollama Agent: Active")
+                    st.caption(f"Model: {model_name}")
+                    st.caption(f"Host: {ollama_host}")
+                else:
+                    st.warning("🏠 Ollama Agent: Unavailable")
+                    st.caption("Make sure:")
+                    st.caption("• Ollama is installed and running")
+                    st.caption("• ollama package is installed: pip install ollama")
+                    st.caption("• Model is available: ollama pull llama3.1:8b")
+                    st.caption("Will fall back to traditional mode")
+            
+            else:
+                st.error("❌ No AI Agent Available")
+                st.caption("Neither Azure OpenAI nor Ollama is properly configured")
         else:
             st.info("📝 Traditional Mode: Active")
             st.caption("Using rule-based query processing")
+        
+        # Model comparison help
+        if use_react:
+            with st.expander("ℹ️ Model Comparison", expanded=False):
+                st.markdown("""
+                **🌐 Azure OpenAI (GPT-4o):**
+                - ✅ State-of-the-art reasoning capabilities
+                - ✅ Excellent at complex multi-step tasks
+                - ✅ Fast response times
+                - ❌ Requires internet connection
+                - ❌ Usage costs apply
+                - ❌ Requires Azure OpenAI credentials
+                
+                **🏠 Ollama (Local LLM):**
+                - ✅ Runs locally on your machine
+                - ✅ No internet connection required
+                - ✅ No usage costs
+                - ✅ Privacy-focused (data stays local)
+                - ❌ Slower than cloud models
+                - ❌ Limited by local hardware
+                - ❌ Requires model download (~4-70GB)
+                
+                **💡 Recommendations:**
+                - Use **Azure** for best performance and complex reasoning
+                - Use **Ollama** for privacy, offline use, or cost savings
+                """)
+                
+                st.markdown("""
+                **🚀 Quick Setup for Ollama:**
+                ```bash
+                # Install Ollama
+                curl -fsSL https://ollama.ai/install.sh | sh
+                
+                # Pull a model (choose one)
+                ollama pull llama3.1:8b      # Good balance (4.7GB)
+                ollama pull llama3.1:70b     # Best quality (40GB)
+                ollama pull mistral:7b       # Fast and efficient (4.1GB)
+                ollama pull codellama:7b     # Good for code (3.8GB)
+                
+                # Install Python package
+                pip install ollama
+                ```
+                """)
         
         # Repository Configuration
         st.divider()
@@ -426,13 +597,21 @@ def main():
                         end_time = time.time()
                         
                         # Store in history with trace information
+                        current_agent_info = None
+                        if execution_trace:
+                            try:
+                                current_agent_info = st.session_state.processor.get_agent_info()
+                            except (AttributeError, Exception):
+                                current_agent_info = {'type': 'none', 'available': False}
+                        
                         history_item = {
                             'query': query,
                             'result': result,
                             'execution_trace': execution_trace,
                             'timestamp': time.time(),
                             'execution_time': end_time - start_time,
-                            'mode': 'ReAct' if (use_react_mode and execution_trace) else 'Traditional'
+                            'mode': 'ReAct' if (use_react_mode and execution_trace) else 'Traditional',
+                            'agent_info': current_agent_info
                         }
                         st.session_state.query_history.append(history_item)
                         
@@ -449,7 +628,13 @@ def main():
                         
                         # Display execution metrics if enabled
                         if st.session_state.get('show_metrics', True):
-                            display_query_metrics(start_time, end_time, execution_trace)
+                            agent_info = None
+                            if execution_trace:
+                                try:
+                                    agent_info = st.session_state.processor.get_agent_info()
+                                except (AttributeError, Exception):
+                                    agent_info = {'type': 'none', 'available': False}
+                            display_query_metrics(start_time, end_time, execution_trace, agent_info)
                         
                         # Display tool execution trace if enabled and available
                         if st.session_state.get('show_trace', True) and execution_trace:
@@ -519,8 +704,21 @@ def main():
                 execution_trace = history_item.get('execution_trace')
                 mode = history_item.get('mode', 'Unknown')
                 execution_time = history_item.get('execution_time', 0)
+                agent_info = history_item.get('agent_info')
                 
-                with st.expander(f"🔍 Query {len(st.session_state.query_history) - i}: {query[:50]}... ({mode} mode, {execution_time:.2f}s)"):
+                # Create display label with model info
+                display_mode = mode
+                if agent_info and execution_trace:
+                    agent_type = agent_info.get('type', 'unknown')
+                    model_name = agent_info.get('model', 'unknown')
+                    if agent_type == 'azure':
+                        display_mode = f"🌐 Azure ({model_name.split('-')[0]})"
+                    elif agent_type == 'ollama':
+                        display_mode = f"🏠 Ollama ({model_name.split(':')[0]})"
+                    elif agent_type == 'none':
+                        display_mode = "❌ No Agent"
+                
+                with st.expander(f"🔍 Query {len(st.session_state.query_history) - i}: {query[:50]}... ({display_mode}, {execution_time:.2f}s)"):
                     st.markdown("**Query:**")
                     st.info(query)
                     

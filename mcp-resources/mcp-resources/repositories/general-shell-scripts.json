@@ -1,0 +1,120 @@
+{
+  "repository_name": "general-shell-scripts",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/general-shell-scripts",
+  "analysis_timestamp": "2025-07-30T23:57:35.698511",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/general-shell-scripts/README.md",
+      "size": 709,
+      "content": "### Repository for bash shell scripts  \n___\n## General shell scripts for various purposes \n\n##### Scripts for command line access to power settings (mainly interesting on laptop)\n\n- `battery-stat` is a `sensors` based script that pretty-prints current power state\n\n- `suspend-if-battery-low.sh` - crontab based script that checks the battery status and in case of power is less then a chosen threshold value, an alarm tune is played, or the system is put to suspend, saving from an unwanted shutdown due to lack of power \n\n##### Logging - to generate a record of operations - all of which is interesting only for daily command line users \n\n- `term_log` functions for logging \n\n##### Fun\n\n- `ascii-image-echo`\n",
+      "summary": "___ - `battery-stat` is a `sensors` based script that pretty-prints current power state - `suspend-if-battery-low.sh` - crontab based script that checks the battery status and in case of power is less then a chosen threshold value, an alarm tune is played, or the system is put to suspend, saving from an unwanted shutdown due to lack of power",
+      "line_count": 17,
+      "word_count": 114,
+      "last_modified": "2023-01-24T00:12:52.370044"
+    },
+    {
+      "path": "nmcli_commandline/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/general-shell-scripts/nmcli_commandline/README.md",
+      "size": 266,
+      "content": "nmcli \n\n- to list out uuid codes: \n\n`nmlci con list`\n\n- to connect to specific network, use it's uuid\n\n`nmcli con up uuid LONG_ID` \n\n- toggle on/off the wifi device \n\n`nmcli nm wifi on/off` \n\n- check references for network connection if they are on 'auto_connect' \n\n",
+      "summary": "nmcli - to list out uuid codes: `nmlci con list`",
+      "line_count": 15,
+      "word_count": 45,
+      "last_modified": "2023-01-23T23:50:40.057330"
+    }
+  ],
+  "file_structure": {
+    "total_files": 33,
+    "total_size": 299768,
+    "file_types": {
+      ".md": 2,
+      "": 4,
+      ".txt": 13,
+      ".sh": 13,
+      ".odt": 1
+    },
+    "languages": {
+      "Shell": 13
+    },
+    "directories": [
+      "kitchen-tv",
+      "crontabbed",
+      "libre_office",
+      "countdown",
+      "espeaks",
+      "term-log",
+      "ascii-image-echo",
+      "nmcli_commandline",
+      "suspend-if-battery-low",
+      "monitoring-CPU-GPU",
+      "battery-stats",
+      "kitchen-tv/videos",
+      "kitchen-tv/images",
+      "ascii-image-echo/ascii_images"
+    ],
+    "largest_files": [
+      [
+        "nmcli_commandline/Wifi_Hotspot_for_linux_to_android.odt",
+        266521
+      ],
+      [
+        "ascii-image-echo/ascii_images/animal9.txt",
+        4120
+      ],
+      [
+        "ascii-image-echo/ascii_images/animal6.txt",
+        3234
+      ],
+      [
+        "ascii-image-echo/ascii_images/animal11.txt",
+        2480
+      ],
+      [
+        "ascii-image-echo/ascii_images/animal8.txt",
+        2430
+      ],
+      [
+        "ascii-image-echo/ascii_images/animal10.txt",
+        2420
+      ],
+      [
+        "ascii-image-echo/ascii_images/animal3.txt",
+        1834
+      ],
+      [
+        "kitchen-tv/schedule.sh",
+        1803
+      ],
+      [
+        "ascii-image-echo/ascii_images/animal4.txt",
+        1699
+      ],
+      [
+        "libre_office/libreoffice_recently_used.sh",
+        1272
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "f7cd89bfad6d315fe80a04e112126f9008bd87a7",
+      "author_name": "Balazs.Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Tue Jan 24 23:07:44 2023 +0100",
+      "message": "random video play on a panel"
+    },
+    "remote_url": "https://github.com/bkocis/hacks-in-a-shell.git"
+  },
+  "content_hash": "b2ed812ee30d82fae1f4cb46334b7198"
+}

@@ -1,0 +1,96 @@
+{
+  "repository_name": "CloudDevOps-ND-Jenkins-Pipelines",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CloudDevOps-ND-Jenkins-Pipelines",
+  "analysis_timestamp": "2025-07-30T23:57:35.161512",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CloudDevOps-ND-Jenkins-Pipelines/README.md",
+      "size": 1986,
+      "content": "## Build Jenkins Pipelines\nThis repository provides the project description for the deployment of a static website on S3 AWS using the Jenkins Pipeline.\nThe files in this repository contain a simple index.html file for testing the linting stage and the final upload. \nThe main file is the Jenkinsfile, containing the configuration settings for a simple build pipeline and deployment.\n\n\n### Dependencies\n##### 1. AWS account\n\n#### 2. Jenkins\n\n## Prerequisite\n1. AWS account with a user (non root) having restricted permission\n1. create an ec2 instance, install and configure Jenkins running on it\n1. modify the \"Jenkinsfile\" in order to include linting, security check, and upload to AWS \n\n\n### Screenshots \n\n1. The AWS console with the permissions being created\n\n<img src=\"screenshots/screenshot-01.png\" width=60%>\n\n\n2. The unique AWS URL of your EC2\n\n<img src=\"screenshots/screenshot-02.png\" width=60%>\n\n\n3. Jenkins running on unique AWS URL \n\n<img src=\"screenshots/screenshot-03.png\" width=60%>\n\n\n4. AWS urlr with the Blue Ocean link in the sidebar\n\n<img src=\"screenshots/screenshot-04.png\" width=60%>\n\n\n5. GitHub project as a pipeline - master branch \n\n<img src=\"screenshots/screenshot-05.png\" width=60%>\n\n\n5. GitHub project as a pipeline - multibranch/stage pipeline as in BlueOcean\n\n<img src=\"screenshots/screenshot-05-b.png\" width=60%>\n\n\n5. GitHub project as a pipeline - master brach pipeline successful build \n\n<img src=\"screenshots/screenshot-05-c.png\" width=60%>\n\n\n6. AWS link to S3 with the index.html file \n\n<img src=\"screenshots/screenshot-06-a.png\" width=60%>\n\n\n6. rendering of the index.html from the S3 \n\n<img src=\"screenshots/screenshot-06-b.png\" width=60%>\n\n\n7. Linting fail \n\n<img src=\"screenshots/screenshot-07.png\" width=60%>\n\n7. multistage and their state \n\n<img src=\"screenshots/screenshot-07-multistage-pipeline.png\" width=60%>\n\n\n8. example of linting fix and AWS upload in the pipeline on non-master branch \n\n<img src=\"screenshots/screenshot-08.png\" width=60%>\n",
+      "summary": "This repository provides the project description for the deployment of a static website on S3 AWS using the Jenkins Pipeline. The files in this repository contain a simple index.html file for testing the linting stage and the final upload. The main file is the Jenkinsfile, containing the configuration settings for a simple build pipeline and deployment.",
+      "line_count": 76,
+      "word_count": 254,
+      "last_modified": "2023-01-18T20:13:44.216691"
+    }
+  ],
+  "file_structure": {
+    "total_files": 15,
+    "total_size": 2082195,
+    "file_types": {
+      "": 1,
+      ".md": 1,
+      ".html": 1,
+      ".png": 12
+    },
+    "languages": {
+      "HTML": 1
+    },
+    "directories": [
+      "screenshots"
+    ],
+    "largest_files": [
+      [
+        "screenshots/screenshot-02.png",
+        315500
+      ],
+      [
+        "screenshots/screenshot-08.png",
+        276708
+      ],
+      [
+        "screenshots/screenshot-07-multistage-pipeline.png",
+        235762
+      ],
+      [
+        "screenshots/screenshot-05.png",
+        211904
+      ],
+      [
+        "screenshots/screenshot-01.png",
+        203483
+      ],
+      [
+        "screenshots/screenshot-07.png",
+        189492
+      ],
+      [
+        "screenshots/screenshot-06-a.png",
+        150925
+      ],
+      [
+        "screenshots/screenshot-05-b.png",
+        125598
+      ],
+      [
+        "screenshots/screenshot-04.png",
+        115416
+      ],
+      [
+        "screenshots/screenshot-05-c.png",
+        103057
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "8e89f5512d56f20fbdc9fa123a1b670fff389e33",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Wed Aug 19 09:32:10 2020 +0200",
+      "message": "Merge pull request #4 from bkocis/fix_hhtml"
+    },
+    "remote_url": "https://github.com/bkocis/CloudDevOps-ND-Jenkins-Pipelines.git"
+  },
+  "content_hash": "1aacb04073c4b333d68f5fb2d63da1af"
+}

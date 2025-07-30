@@ -1,0 +1,303 @@
+{
+  "repository_name": "handson-ml",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml",
+  "analysis_timestamp": "2025-07-30T23:57:34.760552",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/README.md",
+      "size": 8007,
+      "content": "Machine Learning Notebooks\n==========================\n\nThis project aims at teaching you the fundamentals of Machine Learning in\npython. It contains the example code and solutions to the exercises in my O'Reilly book [Hands-on Machine Learning with Scikit-Learn and TensorFlow](http://shop.oreilly.com/product/0636920052289.do):\n\n[![book](http://akamaicovers.oreilly.com/images/0636920052289/cat.gif)](http://shop.oreilly.com/product/0636920052289.do)\n\nSimply open the [Jupyter](http://jupyter.org/) notebooks you are interested in:\n\n* Using [jupyter.org's notebook viewer](http://nbviewer.jupyter.org/github/ageron/handson-ml/blob/master/index.ipynb)\n    * note: [github.com's notebook viewer](https://github.com/ageron/handson-ml/blob/master/index.ipynb) also works but it is slower and the math formulas are not displayed correctly,\n* or by cloning this repository and running Jupyter locally. This option lets you play around with the code. In this case, follow the installation instructions below.\n\n# Installation\n\nFirst, you will need to install [git](https://git-scm.com/), if you don't have it already.\n\nNext, clone this repository by opening a terminal and typing the following commands:\n\n    $ cd $HOME  # or any other development directory you prefer\n    $ git clone https://github.com/ageron/handson-ml.git\n    $ cd handson-ml\n\nIf you want to go through chapter 16 on Reinforcement Learning, you will need to [install OpenAI gym](https://gym.openai.com/docs) and its dependencies for Atari simulations.\n\nIf you are familiar with Python and you know how to install Python libraries, go ahead and install the libraries listed in `requirements.txt` and jump to the [Starting Jupyter](#starting-jupyter) section. If you need detailed instructions, please read on.\n\n## Python & Required Libraries\nOf course, you obviously need Python. Python 2 is already preinstalled on most systems nowadays, and sometimes even Python 3. You can check which version(s) you have by typing the following commands:\n\n    $ python --version   # for Python 2\n    $ python3 --version  # for Python 3\n\nAny Python 3 version should be fine, preferably ≥3.5. If you don't have Python 3, I recommend installing it (Python ≥2.6 should work, but it is deprecated so Python 3 is preferable). To do so, you have several options: on Windows or MacOSX, you can just download it from [python.org](https://www.python.org/downloads/). On MacOSX, you can alternatively use [MacPorts](https://www.macports.org/) or [Homebrew](https://brew.sh/). On Linux, unless you know what you are doing, you should use your system's packaging system. For example, on Debian or Ubuntu, type:\n\n    $ sudo apt-get update\n    $ sudo apt-get install python3\n\nAnother option is to download and install [Anaconda](https://www.continuum.io/downloads). This is a package that includes both Python and many scientific libraries. You should prefer the Python 3 version.\n\nIf you choose to use Anaconda, read the next section, or else jump to the [Using pip](#using-pip) section.\n\n## Using Anaconda\nWhen using Anaconda, you can optionally create an isolated Python environment dedicated to this project. This is recommended as it makes it possible to have a different environment for each project (e.g. one for this project), with potentially different libraries and library versions:\n\n    $ conda create -n mlbook python=3.5 anaconda\n    $ source activate mlbook\n\nThis creates a fresh Python 3.5 environment called `mlbook` (you can change the name if you want to), and it activates it. This environment contains all the scientific libraries that come with Anaconda. This includes all the libraries we will need (NumPy, Matplotlib, Pandas, Jupyter and a few others), except for TensorFlow, so let's install it:\n\n    $ conda install -n mlbook -c conda-forge tensorflow=1.0.0\n\nThis installs TensorFlow 1.0.0 in the `mlbook` environment (fetching it from the `conda-forge` repository). If you chose not to create an `mlbook` environment, then just remove the `-n mlbook` option.\n\nNext, you can optionally install Jupyter extensions. These are useful to have nice tables of contents in the notebooks, but they are not required.\n\n    $ conda install -n mlbook -c conda-forge jupyter_contrib_nbextensions\n\nYou are all set! Next, jump to the [Starting Jupyter](#starting-jupyter) section.\n\n## Using pip \nIf you are not using Anaconda, you need to install several scientific Python libraries that are necessary for this project, in particular NumPy, Matplotlib, Pandas, Jupyter and TensorFlow (and a few others). For this, you can either use Python's integrated packaging system, pip, or you may prefer to use your system's own packaging system (if available, e.g. on Linux, or on MacOSX when using MacPorts or Homebrew). The advantage of using pip is that it is easy to create multiple isolated Python environments with different libraries and different library versions (e.g. one environment for each project). The advantage of using your system's packaging system is that there is less risk of having conflicts between your Python libraries and your system's other packages. Since I have many projects with different library requirements, I prefer to use pip with isolated environments.\n\nThese are the commands you need to type in a terminal if you want to use pip to install the required libraries. Note: in all the following commands, if you chose to use Python 2 rather than Python 3, you must replace `pip3` with `pip`, and `python3` with `python`.\n\nFirst you need to make sure you have the latest version of pip installed:\n\n    $ pip3 install --user --upgrade pip\n\nThe `--user` option will install the latest version of pip only for the current user. If you prefer to install it system wide (i.e. for all users), you must have administrator rights (e.g. use `sudo pip3` instead of `pip3` on Linux), and you should remove the `--user` option. The same is true of the command below that uses the `--user` option.\n\nNext, you can optionally create an isolated environment. This is recommended as it makes it possible to have a different environment for each project (e.g. one for this project), with potentially very different libraries, and different versions:\n\n    $ pip3 install --user --upgrade virtualenv\n    $ virtualenv -p `which python3` env\n\nThis creates a new directory called `env` in the current directory, containing an isolated Python environment based on Python 3. If you installed multiple versions of Python 3 on your system, you can replace `` `which python3` `` with the path to the Python executable you prefer to use.\n\nNow you must activate this environment. You will need to run this command every time you want to use this environment.\n\n    $ source ./env/bin/activate\n\nNext, use pip to install the required python packages. If you are not using virtualenv, you should add the `--user` option (alternatively you could install the libraries system-wide, but this will probably require administrator rights, e.g. using `sudo pip3` instead of `pip3` on Linux).\n\n    $ pip3 install --upgrade -r requirements.txt\n\nGreat! You're all set, you just need to start Jupyter now.\n\n## Starting Jupyter\nIf you want to use the Jupyter extensions (optional, they are mainly useful to have nice tables of contents), you first need to install them:\n\n    $ jupyter contrib nbextension install --user\n\nThen you can activate an extension, such as the Table of Contents (2) extension:\n\n    $ jupyter nbextension enable toc2/main\n\nOkay! You can now start Jupyter, simply type:\n\n    $ jupyter notebook\n\nThis should open up your browser, and you should see Jupyter's tree view, with the contents of the current directory. If your browser does not open automatically, visit [localhost:8888](http://localhost:8888/tree). Click on `index.ipynb` to get started!\n\nNote: you can also visit [http://localhost:8888/nbextensions](http://localhost:8888/nbextensions) to activate and configure Jupyter extensions.\n\nCongrats! You are ready to learn Machine Learning, hands on!\n",
+      "summary": "Machine Learning Notebooks ========================== This project aims at teaching you the fundamentals of Machine Learning in",
+      "line_count": 107,
+      "word_count": 1164,
+      "last_modified": "2023-01-18T20:20:10.524458"
+    },
+    {
+      "path": "datasets/lifesat/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/datasets/lifesat/README.md",
+      "size": 4311,
+      "content": "# Life satisfaction and GDP per capita\n## Life satisfaction\n### Source\nThis dataset was obtained from the OECD's website at: http://stats.oecd.org/index.aspx?DataSetCode=BLI\n\n### Data description\n\n    Int64Index: 3292 entries, 0 to 3291\n    Data columns (total 17 columns):\n    ﻿\"LOCATION\"              3292 non-null object\n    Country                  3292 non-null object\n    INDICATOR                3292 non-null object\n    Indicator                3292 non-null object\n    MEASURE                  3292 non-null object\n    Measure                  3292 non-null object\n    INEQUALITY               3292 non-null object\n    Inequality               3292 non-null object\n    Unit Code                3292 non-null object\n    Unit                     3292 non-null object\n    PowerCode Code           3292 non-null int64\n    PowerCode                3292 non-null object\n    Reference Period Code    0 non-null float64\n    Reference Period         0 non-null float64\n    Value                    3292 non-null float64\n    Flag Codes               1120 non-null object\n    Flags                    1120 non-null object\n    dtypes: float64(3), int64(1), object(13)\n    memory usage: 462.9+ KB\n\n### Example usage using python Pandas\n\n    >>> life_sat = pd.read_csv(\"oecd_bli_2015.csv\", thousands=',')\n    \n    >>> life_sat_total = life_sat[life_sat[\"INEQUALITY\"]==\"TOT\"]\n    \n    >>> life_sat_total = life_sat_total.pivot(index=\"Country\", columns=\"Indicator\", values=\"Value\")\n    \n    >>> life_sat_total.info()\n    <class 'pandas.core.frame.DataFrame'>\n    Index: 37 entries, Australia to United States\n    Data columns (total 24 columns):\n    Air pollution                                37 non-null float64\n    Assault rate                                 37 non-null float64\n    Consultation on rule-making                  37 non-null float64\n    Dwellings without basic facilities           37 non-null float64\n    Educational attainment                       37 non-null float64\n    Employees working very long hours            37 non-null float64\n    Employment rate                              37 non-null float64\n    Homicide rate                                37 non-null float64\n    Household net adjusted disposable income     37 non-null float64\n    Household net financial wealth               37 non-null float64\n    Housing expenditure                          37 non-null float64\n    Job security                                 37 non-null float64\n    Life expectancy                              37 non-null float64\n    Life satisfaction                            37 non-null float64\n    Long-term unemployment rate                  37 non-null float64\n    Personal earnings                            37 non-null float64\n    Quality of support network                   37 non-null float64\n    Rooms per person                             37 non-null float64\n    Self-reported health                         37 non-null float64\n    Student skills                               37 non-null float64\n    Time devoted to leisure and personal care    37 non-null float64\n    Voter turnout                                37 non-null float64\n    Water quality                                37 non-null float64\n    Years in education                           37 non-null float64\n    dtypes: float64(24)\n    memory usage: 7.2+ KB\n\n## GDP per capita\n### Source\nDataset obtained from the IMF's website at: http://goo.gl/j1MSKe\n\n### Data description\n\n    Int64Index: 190 entries, 0 to 189\n    Data columns (total 7 columns):\n    Country                          190 non-null object\n    Subject Descriptor               189 non-null object\n    Units                            189 non-null object\n    Scale                            189 non-null object\n    Country/Series-specific Notes    188 non-null object\n    2015                             187 non-null float64\n    Estimates Start After            188 non-null float64\n    dtypes: float64(2), object(5)\n    memory usage: 11.9+ KB\n\n### Example usage using python Pandas\n\n    >>> gdp_per_capita = pd.read_csv(\n    ...     datapath+\"gdp_per_capita.csv\", thousands=',', delimiter='\\t',\n    ...     encoding='latin1', na_values=\"n/a\", index_col=\"Country\")\n    ...\n    >>> gdp_per_capita.rename(columns={\"2015\": \"GDP per capita\"}, inplace=True)\n\n",
+      "summary": "This dataset was obtained from the OECD's website at: http://stats.oecd.org/index.aspx?DataSetCode=BLI Int64Index: 3292 entries, 0 to 3291 Data columns (total 17 columns):",
+      "line_count": 93,
+      "word_count": 394,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "datasets/housing/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/datasets/housing/README.md",
+      "size": 3679,
+      "content": "# California Housing\n\n## Source\nThis dataset is a modified version of the California Housing dataset available from [http://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html](Luís Torgo's page) (University of Porto). Luís Torgo obtained it from the StatLib repository (which is closed now). The dataset may also be downloaded from StatLib mirrors.\n\nThis dataset appeared in a 1997 paper titled *Sparse Spatial Autoregressions* by Pace, R. Kelley and Ronald Barry, published in the *Statistics and Probability Letters* journal. They built it using the 1990 California census data. It contains one row per census block group. A block group is the smallest geographical unit for which the U.S. Census Bureau publishes sample data (a block group typically has a population of 600 to 3,000 people).\n\n## Tweaks\nThe dataset in this directory is almost identical to the original, with two differences:\n\n* 207 values were randomly removed from the `total_bedrooms` column, so we can discuss what to do with missing data.\n* An additional categorical attribute called `ocean_proximity` was added, indicating (very roughly) whether each block group is near the ocean, near the Bay area, inland or on an island. This allows discussing what to do with categorical data.\n\nNote that the block groups are called \"districts\" in the Jupyter notebooks, simply because in some contexts the name \"block group\" was confusing.\n\n## Data description\n\n    >>> housing.info()\n    <class 'pandas.core.frame.DataFrame'>\n    RangeIndex: 20640 entries, 0 to 20639\n    Data columns (total 10 columns):\n    longitude             20640 non-null float64\n    latitude              20640 non-null float64\n    housing_median_age    20640 non-null float64\n    total_rooms           20640 non-null float64\n    total_bedrooms        20433 non-null float64\n    population            20640 non-null float64\n    households            20640 non-null float64\n    median_income         20640 non-null float64\n    median_house_value    20640 non-null float64\n    ocean_proximity       20640 non-null object\n    dtypes: float64(9), object(1)\n    memory usage: 1.6+ MB\n    \n    >>> housing[\"ocean_proximity\"].value_counts()\n    <1H OCEAN     9136\n    INLAND        6551\n    NEAR OCEAN    2658\n    NEAR BAY      2290\n    ISLAND           5\n    Name: ocean_proximity, dtype: int64\n    \n    >>> housing.describe()\n              longitude      latitude  housing_median_age   total_rooms  \\\n    count  16513.000000  16513.000000        16513.000000  16513.000000   \n    mean    -119.575972     35.639693           28.652335   2622.347605   \n    std        2.002048      2.138279           12.576306   2138.559393   \n    min     -124.350000     32.540000            1.000000      6.000000   \n    25%     -121.800000     33.940000           18.000000   1442.000000   \n    50%     -118.510000     34.260000           29.000000   2119.000000   \n    75%     -118.010000     37.720000           37.000000   3141.000000   \n    max     -114.310000     41.950000           52.000000  39320.000000   \n\n           total_bedrooms    population    households  median_income  \n    count    16355.000000  16513.000000  16513.000000   16513.000000  \n    mean       534.885112   1419.525465    496.975050       3.875651  \n    std        412.716467   1115.715084    375.737945       1.905088  \n    min          2.000000      3.000000      2.000000       0.499900  \n    25%        295.000000    784.000000    278.000000       2.566800  \n    50%        433.000000   1164.000000    408.000000       3.541400  \n    75%        644.000000   1718.000000    602.000000       4.745000  \n    max       6210.000000  35682.000000   5358.000000      15.000100\n ",
+      "summary": "This dataset is a modified version of the California Housing dataset available from [http://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html](Luís Torgo's page) (University of Porto). Luís Torgo obtained it from the StatLib repository (which is closed now). The dataset may also be downloaded from StatLib mirrors. This dataset appeared in a 1997 paper titled *Sparse Spatial Autoregressions* by Pace, R. Kelley and Ronald Barry, published in the *Statistics and Probability Letters* journal. The...",
+      "line_count": 62,
+      "word_count": 389,
+      "last_modified": "2023-01-18T20:20:10.524458"
+    },
+    {
+      "path": "images/deep/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/deep/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/dim_reduction/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/dim_reduction/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/fundamentals/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/fundamentals/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/rnn/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/rnn/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/decision_trees/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/decision_trees/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/distributed/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/distributed/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/end_to_end_project/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/end_to_end_project/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/cnn/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/cnn/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/rl/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/rl/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/tensorflow/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/tensorflow/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/svm/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/svm/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/training_linear_models/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/training_linear_models/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/ensembles/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/ensembles/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/classification/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/classification/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/ann/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/ann/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    },
+    {
+      "path": "images/autoencoders/README",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/handson-ml/images/autoencoders/README",
+      "size": 34,
+      "content": "Images generated by the notebooks\n",
+      "summary": "Images generated by the notebooks",
+      "line_count": 1,
+      "word_count": 5,
+      "last_modified": "2023-01-18T20:20:10.528458"
+    }
+  ],
+  "file_structure": {
+    "total_files": 50,
+    "total_size": 21772762,
+    "file_types": {
+      ".ipynb": 22,
+      "": 17,
+      ".md": 3,
+      ".txt": 2,
+      ".csv": 3,
+      ".tgz": 1,
+      ".png": 2
+    },
+    "languages": {},
+    "directories": [
+      "datasets",
+      "images",
+      "datasets/inception",
+      "datasets/lifesat",
+      "datasets/housing",
+      "images/deep",
+      "images/dim_reduction",
+      "images/fundamentals",
+      "images/rnn",
+      "images/decision_trees",
+      "images/distributed",
+      "images/end_to_end_project",
+      "images/cnn",
+      "images/rl",
+      "images/tensorflow",
+      "images/svm",
+      "images/training_linear_models",
+      "images/ensembles",
+      "images/classification",
+      "images/ann",
+      "images/autoencoders"
+    ],
+    "largest_files": [
+      [
+        "13_convolutional_neural_networks.ipynb",
+        4981104
+      ],
+      [
+        "08_dimensionality_reduction.ipynb",
+        3722584
+      ],
+      [
+        "datasets/housing/housing.csv",
+        1423529
+      ],
+      [
+        "02_end_to_end_machine_learning_project.ipynb",
+        1348323
+      ],
+      [
+        "tools_matplotlib.ipynb",
+        1141232
+      ],
+      [
+        "05_support_vector_machines.ipynb",
+        918548
+      ],
+      [
+        "04_training_linear_models.ipynb",
+        902326
+      ],
+      [
+        "16_reinforcement_learning.ipynb",
+        865400
+      ],
+      [
+        "math_linear_algebra.ipynb",
+        690165
+      ],
+      [
+        "14_recurrent_neural_networks.ipynb",
+        660475
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [
+      "NumPy",
+      "SciPy",
+      "TensorFlow",
+      "Scikit-learn",
+      "Pandas"
+    ],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "e347f122e78cc588a437300d7d7ef845f91ab52d",
+      "author_name": "Aurelien Geron",
+      "author_email": "aurelien.geron@gmail.com",
+      "date": "Fri Oct 20 20:05:09 2017 +0200",
+      "message": "Fix factorize() bug, due to housing_cat being a DataFrame, not a Series, fixes #104"
+    },
+    "remote_url": "https://github.com/bkocis/handson-ml.git"
+  },
+  "content_hash": "de6c9f2fa8ad02f44b9442c3c44a5341"
+}

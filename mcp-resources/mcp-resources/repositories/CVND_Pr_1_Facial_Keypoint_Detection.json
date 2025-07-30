@@ -1,0 +1,104 @@
+{
+  "repository_name": "CVND_Pr_1_Facial_Keypoint_Detection",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CVND_Pr_1_Facial_Keypoint_Detection",
+  "analysis_timestamp": "2025-07-30T23:57:35.419294",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/CVND_Pr_1_Facial_Keypoint_Detection/README.md",
+      "size": 9383,
+      "content": "[//]: # (Image References)\n\n[image1]: ./images/key_pts_example.png \"Facial Keypoint Detection\"\n\n# Facial Keypoint Detection\n\n## Project Overview\n\nIn this project, you’ll combine your knowledge of computer vision techniques and deep learning architectures to build a facial keypoint detection system. Facial keypoints include points around the eyes, nose, and mouth on a face and are used in many applications. These applications include: facial tracking, facial pose recognition, facial filters, and emotion recognition. Your completed code should be able to look at any image, detect faces, and predict the locations of facial keypoints on each face; examples of these keypoints are displayed below.\n\n![Facial Keypoint Detection][image1]\n\nThe project will be broken up into a few main parts in four Python notebooks, **only Notebooks 2 and 3 (and the `models.py` file) will be graded**:\n\n__Notebook 1__ : Loading and Visualizing the Facial Keypoint Data\n\n__Notebook 2__ : Defining and Training a Convolutional Neural Network (CNN) to Predict Facial Keypoints\n\n__Notebook 3__ : Facial Keypoint Detection Using Haar Cascades and your Trained CNN\n\n__Notebook 4__ : Fun Filters and Keypoint Uses\n\n\n\n## Project Instructions\n\nAll of the starting code and resources you'll need to compete this project are in this Github repository. Before you can get started coding, you'll have to make sure that you have all the libraries and dependencies required to support this project. If you have already created a `cv-nd` environment for [exercise code](https://github.com/udacity/CVND_Exercises), then you can use that environment! If not, instructions for creation and activation are below.\n\n*Note that this project does not require the use of GPU, so this repo does not include instructions for GPU setup.*\n\n\n### Local Environment Instructions\n\n1. Clone the repository, and navigate to the downloaded folder. This may take a minute or two to clone due to the included image data.\n```\ngit clone https://github.com/udacity/P1_Facial_Keypoints.git\ncd P1_Facial_Keypoints\n```\n\n2. Create (and activate) a new environment, named `cv-nd` with Python 3.6. If prompted to proceed with the install `(Proceed [y]/n)` type y.\n\n\t- __Linux__ or __Mac__: \n\t```\n\tconda create -n cv-nd python=3.6\n\tsource activate cv-nd\n\t```\n\t- __Windows__: \n\t```\n\tconda create --name cv-nd python=3.6\n\tactivate cv-nd\n\t```\n\t\n\tAt this point your command line should look something like: `(cv-nd) <User>:P1_Facial_Keypoints <user>$`. The `(cv-nd)` indicates that your environment has been activated, and you can proceed with further package installations.\n\n3. Install PyTorch and torchvision; this should install the latest version of PyTorch.\n\t\n\t- __Linux__ or __Mac__: \n\t```\n\tconda install pytorch torchvision -c pytorch \n\t```\n\t- __Windows__: \n\t```\n\tconda install pytorch-cpu -c pytorch\n\tpip install torchvision\n\t```\n\n6. Install a few required pip packages, which are specified in the requirements text file (including OpenCV).\n```\npip install -r requirements.txt\n```\n\n\n### Data\n\nAll of the data you'll need to train a neural network is in the P1_Facial_Keypoints repo, in the subdirectory `data`. In this folder are training and tests set of image/keypoint data, and their respective csv files. This will be further explored in Notebook 1: Loading and Visualizing Data, and you're encouraged to look trough these folders on your own, too.\n\n\n## Notebooks\n\n1. Navigate back to the repo. (Also, your source environment should still be activated at this point.)\n```shell\ncd\ncd P1_Facial_Keypoints\n```\n\n2. Open the directory of notebooks, using the below command. You'll see all of the project files appear in your local environment; open the first notebook and follow the instructions.\n```shell\njupyter notebook\n```\n\n3. Once you open any of the project notebooks, make sure you are in the correct `cv-nd` environment by clicking `Kernel > Change Kernel > cv-nd`.\n\n__NOTE:__ While some code has already been implemented to get you started, you will need to implement additional functionality and answer all of the questions included in the notebook. __Unless requested, it's suggested that you do not modify code that has already been included.__\n\n\n## Evaluation\n\nYour project will be reviewed against the project [rubric](#rubric).  Review this rubric thoroughly, and self-evaluate your project before submission.  All criteria found in the rubric must meet specifications for you to pass.\n\n\n## Project Submission\n\nWhen you are ready to submit your project, collect all of your project files -- all executed notebooks, and python files -- and compress them into a single zip archive for upload.\n\nAlternatively, your submission could consist of only the **GitHub link** to your repository with all of the completed files.\n\n<a id='rubric'></a>\n## Project Rubric\n\n### `models.py`\n\n#### Specify the CNN architecture\n| Criteria       \t\t|     Meets Specifications\t        \t\t\t            | \n|:---------------------:|:---------------------------------------------------------:| \n|  Define a CNN in `models.py`. |  Define a convolutional neural network with at least one convolutional layer, i.e. self.conv1 = nn.Conv2d(1, 32, 5). The network should take in a grayscale, square image. |\n\n\n### Notebook 2\n\n#### Define the data transform for training and test data\n| Criteria       \t\t|     Meets Specifications\t        \t\t\t            | \n|:---------------------:|:---------------------------------------------------------:| \n|  Define a `data_transform` and apply it whenever you instantiate a DataLoader. |  The composed transform should include: rescaling/cropping, normalization, and turning input images into torch Tensors. The transform should turn any input image into a normalized, square, grayscale image and then a Tensor for your model to take it as input. |\n\n#### Define the loss and optimization functions\n| Criteria       \t\t|     Meets Specifications\t        \t\t\t            | \n|:---------------------:|:---------------------------------------------------------:| \n|  Select a loss function and optimizer for training the model. |  The loss and optimization functions should be appropriate for keypoint detection, which is a regression problem. |\n\n\n#### Train the CNN\n\n| Criteria       \t\t|     Meets Specifications\t        \t\t\t            | \n|:---------------------:|:---------------------------------------------------------:| \n| Train your model.  |  Train your CNN after defining its loss and optimization functions. You are encouraged, but not required, to visualize the loss over time/epochs by printing it out occasionally and/or plotting the loss over time. Save your best trained model. |\n\n\n#### Answer questions about model architecture\n\n| Criteria       \t\t|     Meets Specifications\t        \t\t\t            | \n|:---------------------:|:---------------------------------------------------------:| \n| All questions about model, training, and loss choices are answered.  | After training, all 3 questions in notebook 2 about model architecture, choice of loss function, and choice of batch_size and epoch parameters are answered. |\n\n\n#### Visualize one or more learned feature maps\n\n| Criteria       \t\t|     Meets Specifications\t        \t\t\t            | \n|:---------------------:|:---------------------------------------------------------:| \n| Apply a learned convolutional kernel to an image and see its effects. |  Your CNN \"learns\" (updates the weights in its convolutional layers) to recognize features and this step requires that you extract at least one convolutional filter from the trained model, apply it to an image, and see what effect this filter has on the image. |\n\n\n#### Answer question about feature visualization\n| Criteria       \t\t|     Meets Specifications\t        \t\t\t            | \n|:---------------------:|:---------------------------------------------------------:| \n|  After visualizing a feature map, answer: what do you think it detects? | This answer should be informed by how the filtered image (from the step above) looks. |\n\n\n\n### Notebook 3\n\n#### Detect faces in a given image\n| Criteria       \t\t|     Meets Specifications\t        \t\t\t            | \n|:---------------------:|:---------------------------------------------------------:| \n| Use a haar cascade face detector to detect faces in a given image. | The submission successfully employs OpenCV's face detection to detect all faces in a selected image. |\n\n#### Transform each detected face into an input Tensor\n| Criteria       \t\t|     Meets Specifications\t        \t\t\t            | \n|:---------------------:|:---------------------------------------------------------:| \n| Turn each detected image of a face into an appropriate input Tensor. | You should transform any face into a normalized, square, grayscale image and then a Tensor for your model to take in as input (similar to what the `data_transform` did in Notebook 2). |\n\n#### Predict and display the keypoints\n| Criteria       \t\t|     Meets Specifications\t        \t\t\t            | \n|:---------------------:|:---------------------------------------------------------:| \n| Predict and display the keypoints on each detected face. | After face detection with a Haar cascade and face pre-processing, apply your trained model to each detected face, and display the predicted keypoints on each face in the image. |\n\nLICENSE: This project is licensed under the terms of the MIT license.\n",
+      "summary": "[//]: # (Image References) [image1]: ./images/key_pts_example.png \"Facial Keypoint Detection\" In this project, you’ll combine your knowledge of computer vision techniques and deep learning architectures to build a facial keypoint detection system. Facial keypoints include points around the eyes, nose, and mouth on a face and are used in many applications. These applications include: facial tracking, facial pose recognition, facial filters, and emotion recognition. Your completed code should be a...",
+      "line_count": 176,
+      "word_count": 1288,
+      "last_modified": "2023-01-18T20:16:03.422048"
+    }
+  ],
+  "file_structure": {
+    "total_files": 31,
+    "total_size": 120561162,
+    "file_types": {
+      ".zip": 1,
+      ".html": 3,
+      ".py": 3,
+      ".md": 1,
+      ".ipynb": 5,
+      ".xml": 4,
+      ".pt": 1,
+      ".jpg": 4,
+      ".png": 9
+    },
+    "languages": {
+      "HTML": 3,
+      "Python": 3
+    },
+    "directories": [
+      "detector_architectures",
+      "saved_models",
+      "images"
+    ],
+    "largest_files": [
+      [
+        "saved_models/keypoints_model_1_initial_01.pt",
+        100729601
+      ],
+      [
+        "project1.zip",
+        3425719
+      ],
+      [
+        "images/the_beatles.jpg",
+        2221061
+      ],
+      [
+        "detector_architectures/haarcascade_mcs_nose.xml",
+        1585209
+      ],
+      [
+        "3. Facial Keypoint Detection, Complete Pipeline.html",
+        1541300
+      ],
+      [
+        "3. Facial Keypoint Detection, Complete Pipeline.ipynb",
+        1246810
+      ],
+      [
+        "images/sunglasses.png",
+        1171164
+      ],
+      [
+        "2. Define the Network Architecture.html",
+        1109802
+      ],
+      [
+        "detector_architectures/haarcascade_frontalface_default.xml",
+        930127
+      ],
+      [
+        "2. Define the Network Architecture.ipynb",
+        870440
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "1b28bb7dd75f160d21dafa592fd262697deb8a5e",
+      "author_name": "Balazs Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Mon Oct 21 23:52:35 2019 +0200",
+      "message": "readme added"
+    },
+    "remote_url": "https://github.com/bkocis/CVND_Pr_1_Facial_Keypoint_Detection.git"
+  },
+  "content_hash": "c80014f93f4491ea08a089f12a0b88a0"
+}

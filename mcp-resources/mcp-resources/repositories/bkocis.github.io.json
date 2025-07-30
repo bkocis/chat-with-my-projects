@@ -1,0 +1,112 @@
+{
+  "repository_name": "bkocis.github.io",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bkocis.github.io",
+  "analysis_timestamp": "2025-07-30T23:57:35.355316",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bkocis.github.io/README.md",
+      "size": 70,
+      "content": "Connecting the repo-s \n[bkocis.github.io](https://bkocis.github.io/)\n\n",
+      "summary": "Connecting the repo-s [bkocis.github.io](https://bkocis.github.io/)",
+      "line_count": 2,
+      "word_count": 4,
+      "last_modified": "2023-01-18T20:14:17.901020"
+    }
+  ],
+  "file_structure": {
+    "total_files": 49,
+    "total_size": 6439276,
+    "file_types": {
+      ".md": 9,
+      ".txt": 1,
+      "": 2,
+      ".html": 17,
+      ".yml": 2,
+      ".gemspec": 1,
+      ".xml": 2,
+      ".md__": 1,
+      ".scss": 5,
+      ".jpeg": 1,
+      ".png": 7,
+      ".gif": 1
+    },
+    "languages": {
+      "HTML": 17,
+      "SCSS": 5
+    },
+    "directories": [
+      "resources",
+      "resources/_posts",
+      "resources/_sass",
+      "resources/assets",
+      "resources/_includes",
+      "resources/_data",
+      "resources/_layouts",
+      "resources/_sass/whiteglass"
+    ],
+    "largest_files": [
+      [
+        "resources/assets/linux_terminal.png",
+        3076570
+      ],
+      [
+        "resources/assets/blue_smoke.gif",
+        2039744
+      ],
+      [
+        "resources/assets/linuxterminal.png",
+        831247
+      ],
+      [
+        "resources/assets/opencv_01.png",
+        298892
+      ],
+      [
+        "resources/assets/1200px-Kernel_Machine.svg.png",
+        62969
+      ],
+      [
+        "resources/assets/udacity.png",
+        46473
+      ],
+      [
+        "resources/assets/stackoverflow.png",
+        30652
+      ],
+      [
+        "resources/assets/github_gist.png",
+        5765
+      ],
+      [
+        "resources/_posts/2019-09-02-NanoDegrees-from-udacity-summary.md",
+        4482
+      ],
+      [
+        "resources/_layouts/feed.xml",
+        4174
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "4a5b4e6563510c5779d5e6d960298dafa34c90b3",
+      "author_name": "Balazs.Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Tue Mar 21 23:32:16 2023 +0100",
+      "message": "clean up"
+    },
+    "remote_url": "https://github.com/bkocis/bkocis.github.io.git"
+  },
+  "content_hash": "eba7d7d35001e26d1d719db7798052f2"
+}

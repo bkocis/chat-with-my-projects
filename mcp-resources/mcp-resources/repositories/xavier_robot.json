@@ -1,0 +1,205 @@
+{
+  "repository_name": "xavier_robot",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/xavier_robot",
+  "analysis_timestamp": "2025-07-30T23:57:35.371263",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/xavier_robot/README.md",
+      "size": 582,
+      "content": "# Making of a robot rover - a never ending story\n\n\n## Components:\n\n- Jetson Xavier \n\n- Slamtec A1 360° RPLidar\n\n- Zed Stereocamera \n\n- Dc-motors and controler\n\n- power/batties \n\n\n## Implementation of:\n\n- depth camera image analysis \n\n- object detection and segmentation \n\n- interpretation of RPLidar data \n    - mapping of the environment \n    - obsticle avoidance \n\nUsing OpenCV for \n\n- Line tracking \n\n    - [Firefly algorithm](https://www.sciencedirect.com/science/article/pii/S2214914718300333#fig5)\n    \n- Trajectory planning\n    - Path Planning using Quad Tree Decomposition\n",
+      "summary": "- Jetson Xavier - Slamtec A1 360° RPLidar - Zed Stereocamera",
+      "line_count": 34,
+      "word_count": 75,
+      "last_modified": "2023-01-18T20:13:54.324790"
+    },
+    {
+      "path": "rplidar/BreezySLAM/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/xavier_robot/rplidar/BreezySLAM/README.md",
+      "size": 8657,
+      "content": "BreezySLAM\n==========\n\n<img src=\"breezyslam.png\" align=\"center\" width=700>\n\n<p><p><p>\n    \n<a href=\"https://github.com/simondlevy/BreezySLAM\">This repository</a> contains everything you need to\nstart working with \n<a href=\"http://en.wikipedia.org/wiki/Lidar\">Lidar</a>\n-based\n<a href=\"http://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping\">SLAM</a> \nin Python. (There is also support for Matlab, C++, and Java; however, because of the popularity of\nPython for this kind of work, I am no longer updating the code for those languages.)\nBreezySLAM works with Python 3 on Linux and Mac OS X, and\nwith C++ on Linux and Windows.\nBy using Python C extensions, we were able to get the Python and Matlab versions to run\nas fast as C++. For maximum efficiency on 32-bit platforms, we use Streaming\nSIMD extensions (Intel) and NEON (ARMv7) in the compute-intensive part\nof the code.\n</p><p>\nBreezySLAM was inspired by the <a href=\"http://home.wlu.edu/%7Elambertk/#Software\">Breezy</a>\napproach to Graphical User Interfaces developed by my colleague \n<a href=\"http://home.wlu.edu/%7Elambertk/\">Ken Lambert</a>: an object-oriented\nApplication Programming Interface that is simple enough for beginners to use,\nbut that is efficient enough to scale-up to real world problems; for\nexample, the mapping of an entire floor of a house, shown in the image above-right,\nmade by a BreezySLAM \n<a href=\"https://www.linkedin.com/pulse/slam-your-robot-drone-python-150-lidar-chris-fotache\">user</a>.\n\nAs shown in the following code fragment, the basic API is extremely \nsimple: a constructor that accepts Lidar parameters and the size of \nthe map (pixels) and mapping area (meters); a method for updating with the current scan; a method that returns\nthe current robot position; and a method for retrieving the current map as a byte\narray.\n\n<pre>\nfrom breezyslam.algorithms import RMHC_SLAM\n\nlidar = MyLidarModel()\n\nmapbytes = bytearray(800*800)\n\nslam = <b>RMHC_SLAM</b>(lidar, 800, 35) \n\nwhile True:\n\n    scan = readLidar()\n\n    slam.update(scan)\n\n    x, y, theta = slam.<b>getpos</b>(scan)\n\n    slam.getmap(mapbytes)\n</pre>\n\nIf odometry is available, it can also be passed into the update method.  \n\n\n</p><h3>Installing for Python</h3>\n\n<p>\nThe BreezySLAM installation uses the popular\n<a href=\"http://docs.python.org/2/distutils/introduction.html\">distutils</a> \napproach to installing Python packages, so all you should have to do is\ndownload and unzip the file, cd to <tt><b>BreezySLAM/python</b></tt>, and do \n\n<pre>\nsudo python3 setup.py install\n</pre>\n\nFor a quick demo, you can then cd to <tt><b>BreezySLAM/examples</b></tt> and do\n\n<pre>\nmake pytest\n</pre>\n\n\nThis will generate and display a PGM file showing the\nmap and robot trajctory for the Lidar scan and odometry data in the log file\n<tt><b>exp2.dat</b></tt>.  If you have the \n<a href=\"http://www.pythonware.com/products/pil/\">Python Imaging Library</a> installed,\nyou can also try the <b><tt>log2png.py</tt></b> script to generate a\na PNG file instead.\n\nIf you have installed [PyRoboViz](https://github.com/simondlevy/PyRoboViz),\nyou can see a &ldquo;live&rdquo; animation by doing\n\n<pre>\nmake movie\n</pre>\n\nYou can turn off odometry by setting the <b><tt>USE_ODOMETRY</tt></b>\nparameter at the top of the Makefile to 0 (zero). You can turn off \nthe particle-filter (Monte Carlo position estimation) by commenting-out\n<b><tt>RANDOM_SEED</tt></b> parameter.\n\n<p>\n\nTo see what other features are available, do \n\n<pre>\npydoc3 breezyslam\n</pre>\n\nBy using the component classes <b>Map</b>, <b>Scan</b>, and\n<b>Position</b> and the <b>distanceScanToMap()</b> method,\nyou can develop new algorithms and particle filters of your own.\n\n<p><h3>Testing with the Hokuyo URG04LX</h3>\n\nIf you're running on Linux, you can install the <a href=\"http://home.wlu.edu/~levys/software/breezylidar/\">BreezyLidar</a> package, the OpenCV Python package, and \ntry the  <b>urgslam.py</b> example in the examples folder.\n\n<p><h3>Testing with the GetSurreal XV Lidar</h3>\n\nBreezySLAM includes Python support for the inexpensive \n<a href=\"https://www.getsurreal.com/product/xv-lidar-sensor-mount-package\">XV Lidar</a> from GetSurreal.\nTo try it out, you'll also need the <a href=\"https://github.com/simondlevy/xvlidar\">xvlidar</a> \nPython package.  Once you've installed\nboth packages, you can run the <b>xvslam.py</b> example in the <b>BreezySLAM/examples</b> folder.\n\n<p><h3>Testing with the SLAMTEC RPLidar A1</h3>\n\nBreezySLAM also includes Python support for the inexpensive \n<a href=\"http://www.slamtec.com/en/lidar/a1\">RPLidar A1</a> from SLAMTECH.\nTo try it out, you'll also need the <a href=\"https://github.com/SkoltechRobotics/rplidar\">rplidar</a> \nPython package.  Once you've installed that package, you can run the\n<b>rpslam.py</b> example in the <b>BreezySLAM/examples</b> folder.\n\n</p><h3>Installing for Matlab</h3>\n\n<p>\nI have run BreezySLAM in Matlab on 64-bit Windows, Linux, and Mac OS X. The <b>matlab</b> directory contains all the code you\nneed, including pre-compiled binaries for all three operating systems.  To try it out in Matlab, add this directory to your\npath, then change to the <b>examples</b> directory and do\n\n<pre>\n  >> logdemo('exp2', 1)\n</pre> \n\nIf you modify the source code or want to build the binary for a different OS, you can change to the <b>matlab</b> \ndirectory and do\n\n<pre>\n  >> make\n</pre>\n\nFor making the binary on Windows I found \n<a href=\"http://www.mathworks.com/matlabcentral/answers/95039-why-does-the-sdk-7-1-installation-fail-with-an-installation-failed-message-on-my-windows-system\">these instructions</a> very helpful when I ran into trouble.\n\n<h3>Installing for C++</h3>\n\nJust cd to <tt><b>BreezySLAM/cpp</b></tt>, and do\n\n<pre>\nsudo make install\n</pre>\n\nThis will put the <tt><b>libbreezyslam</b></tt> shareable library in your <tt><b>/usr/local/lib</b></tt>\ndirectory.  If you keep your shared libraries elsewhere, just change the <tt><b>LIBDIR</b></tt>\nvariable at the top of the Makefile.  You may also need to add the following line to your <b>~/.bashrc</b>\nfile:\n\n<pre>\nexport LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib\n</pre>\n\n\n<p>\n\nFor a quick demo, you can then cd to <tt><b>BreezySLAM/examples</b></tt> and do\n\n<pre>\nmake cpptest\n</pre>\n\n<p>\n\nAgain, you'll need to change the <tt><b>LIBDIR</b></tt> variable at the top of \nthe Makefile in this directory as well, if you don't use <tt><b>/usr/local/lib</b></tt>.\n\n</p><p>\n\n<h3>Installing for Java</h3>\n\nIn <tt><b>BreezySLAM/java/edu/wlu/cs/levy/breezyslam/algorithms</b></tt> and\n<tt><b>BreezySLAM/java/edu/wlu/cs/levy/breezyslam/components</b></tt>,\nedit the <tt>JDKINC</tt> variable in the Makefile to reflect where you installed the JDK.\nThen run <b>make</b> in these directories.\n\n<p>\n\nFor a quick demo, you can then cd to <tt><b>BreezySLAM/examples</b></tt> and do\n\n<pre>\nmake javatest\n</pre>\n\n<h3>Notes on Windows installation</h3>\n\n\nBecause of the \n<a href=\"http://stackoverflow.com/questions/2817869/error-unable-to-find-vcvarsall-bat\">difficulties</a> that I and others have had installing Python extensions on Windows, I am no longer supporting \nthe Python version of this package on Windows. If you want to try it yourself, <a href=\"https://docs.python.org/2/extending/windows.html\">here</a> are some instructions.\n<p>\nTo build and use the C++ library on Windows, I used MinGW. Whatever C++ compiler\nyou use, you'll have to add the location of the <tt><b>.dll</b></tt> file to your\n<tt><b>PATH</b></tt> environment variable in the Advanced Systems Settings.\n\n<h3>Adding new particle filters</h3>\n\nBecause it is built on top of the CoreSLAM (<a href=\"https://openslam.org/tinyslam.html\">tinySLAM</a>) code base, BreezySLAM\nprovides a clean separation between\nthe map-building and particle-filtering (Monte Carlo position estimation)\ncomponents of SLAM.  To add a new particle filter, you can subclass \n<a href=\"doc/breezyslam.algorithms.html#CoreSLAM\">breezyslam.algorithms.CoreSLAM</a> or \n<a href=\"doc/breezyslam.algorithms.html#SinglePositionSLAM\">breezyslam.algorithms.SinglePositionSLAM</a>\nclasses, implementing the relevant methods.\n\n\n<h3>Copyright, licensing, and questions</h3>\n\nCopyright and licensing information (Gnu \n<a href=\"https://www.gnu.org/licenses/lgpl.html\">LGPL</a>) \ncan be found in the header of each source file. \n\n<h3>Personnel</h3>\n\nSuraj Bajracharya, Simon D. Levy, Matt Lubas, Alfredo Rwagaju\n\n<h3>Acknowledgments</h3>\n\nThis work was supported in part by a  Commonwealth Research Commercialization Fund\ngrant from the Center for Innovative Technology (CRCF #MF14F-011-MS). We thank Michael Searing of Olin College for \nhis help in debugging and testing this package.\n",
+      "summary": "BreezySLAM ========== <img src=\"breezyslam.png\" align=\"center\" width=700>",
+      "line_count": 236,
+      "word_count": 1056,
+      "last_modified": "2023-01-18T20:13:54.324790"
+    },
+    {
+      "path": "rplidar/resources/rplidar_sdk-master/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/xavier_robot/rplidar/resources/rplidar_sdk-master/README.md",
+      "size": 8549,
+      "content": "Slamtec RPLIDAR Public SDK for C++\n==================================\n\nIntroduction\n------------\n\nSlamtec RPLIDAR(https://www.slamtec.com/lidar/a3) series is a set of high-performance and low-cost LIDAR(https://en.wikipedia.org/wiki/Lidar) sensors, which is the perfect sensor of 2D SLAM, 3D reconstruction, multi-touch, and safety applications.\n\nThis is the public SDK of RPLIDAR products in C++, and open-sourced under GPLv3 license.\n\nIf you are using ROS (Robot Operating System), please use our open-source ROS node directly: https://github.com/slamtec/rplidar_ros .\n\nIf you are just evaluating RPLIDAR, you can use Slamtec RoboStudio(https://www.slamtec.com/robostudio) (currently only support Windows) to do the evaulation.\n\nLicense\n-------\n\nThe SDK itself is licensed under BSD 2-clause license.\nThe demo applications are licensed under GPLv3 license.\n\nRelease Notes\n-------------\n\n* [v1.10.0](https://github.com/slamtec/rplidar_sdk/blob/master/docs/ReleaseNote.v1.10.0.md)\n* [v1.9.1](https://github.com/slamtec/rplidar_sdk/blob/master/docs/ReleaseNote.v1.9.1.md)\n* [v1.9.0](https://github.com/slamtec/rplidar_sdk/blob/master/docs/ReleaseNote.v1.9.0.md)\n* [v1.8.1](https://github.com/slamtec/rplidar_sdk/blob/master/docs/ReleaseNote.v1.8.1.md)\n* [v1.8.0](https://github.com/slamtec/rplidar_sdk/blob/master/docs/ReleaseNote.v1.8.0.md)\n\nSupported Platforms\n-------------------\n\nRPLIDAR SDK supports Windows, macOS and Linux by using Visual Studio 2010 projects and Makefile.\n\n| LIDAR Model \\ Platform | Windows | macOS | Linux |\n| ---------------------- | ------- | ----- | ------|\n| A1                     | Yes     | Yes   | Yes   |\n| A2                     | Yes     | Yes   | Yes   |\n| A3                     | Yes     | No    | Yes   |\n\nQuick Start\n-----------\n\n### On Windows\n\nIf you have Microsoft Visual Studio 2010 installed, just open sdk/workspaces/vc10/sdk_and_demo.sln, and compile. It contains the library as well as some demo applications.\n\n### On macOS and Linux\n\n> Note: RPLIDAR A3 is not supported on macOS yet, because macOS doens't support the baudrate used by RPLIDAR A3, which is 256000\n\nPlease make sure you have make and g++ installed, and then just invoke make in the root directory, you can get the compiled result at `output/$PLATFORM/$SCHEME`, such as `output/Linux/Release`.\n\n    make\n\nThe Makefile compiles Release build by default, and you can also use `make DEBUG=1` to compile Debug builds.\n\nCross Compile\n-------------\n\nThe Makefile system used by RPLIDAR public SDK support cross compiling.\n\nThe following command can be used to cross compile the SDK for `arm-linux-gnueabihf` targets:\n\n    CROSS_COMPILE_PREFIX=arm-linux-gnueabihf ./cross_compile.sh\n\nDemo Applications\n-----------------\n\nRPLIDAR public SDK includes some simple demos to do fast evaulation:\n\n### ultra_simple\n\nThis demo application simply connects to an RPLIDAR device and outputs the scan data to the console.\n\n    ultra_simple <serial_port_device>\n\nFor instance:\n\n    ultra_simple \\\\.\\COM11  # on Windows\n    ultra_simple /dev/ttyUSB0\n\n> Note: Usually you need root privilege to access tty devices under Linux. To eliminate this limitation, please add `KERNEL==\"ttyUSB*\", MODE=\"0666\"` to the configuration of udev, and reboot.\n\n### simple_grabber\n\nThis application demonstrates the process of getting RPLIDAR’s serial number, firmware version and healthy status after connecting the PC and RPLIDAR. Then the demo application grabs two round of scan data and shows the range data as histogram in the command line mode.\n\n### frame_grabber (Legacy)\n\nThis demo application can show real-time laser scans in the GUI and is only available on Windows platform.\n\nWe have stopped the development of this demo application, please use Slamtec RoboStudio (https://www.slamtec.com/robostudio) instead.\n\nSDK Usage\n---------\n\n> For detailed documents of RPLIDAR SDK, please refer to our user manual: https://download.slamtec.com/api/download/rplidar-sdk-manual/1.0?lang=en\n\n### Include Header\n\n    #include <rplidar.h>\n\nUsually you only need to include this file to get all functions of RPLIDAR SDK.\n\n### SDK Initialization and Termination\n\nThere are two static interfaces to create and dispose RPLIDAR driver instance. Each RPLIDAR driver instance can only be used to communicate with one RPLIDAR device. You can freely allocate arbitrary number of RPLIDAR driver instances to communicate with multiple RPLIDAR devices concurrently.\n\n    /// Create an RPLIDAR Driver Instance\n    /// This interface should be invoked first before any other operations\n    ///\n    /// \\param drivertype the connection type used by the driver. \n    static RPlidarDriver * RPlidarDriver::CreateDriver(_u32 drivertype = DRIVER_TYPE_SERIALPORT);\n\n    /// Dispose the RPLIDAR Driver Instance specified by the drv parameter\n    /// Applications should invoke this interface when the driver instance is no longer used in order to free memory\n    static void RPlidarDriver::DisposeDriver(RPlidarDriver * drv);\n\nFor example:\n\n    #include <rplidar.h>\n\n    int main(int argc, char* argv)\n    {\n        RPlidarDriver* lidar = RPlidarDriver::CreateDriver();\n\n        // TODO\n\n        RPlidarDriver::DisposeDriver(lidar);\n    }\n\n### Connect to RPLIDAR\n\nAfter creating an RPlidarDriver instance, you can use `connect()` method to connect to a serial port:\n\n    u_result res = lidar->connect(\"/dev/ttyUSB0\", 115200);\n\n    if (IS_OK(res))\n    {\n        // TODO\n        lidar->disconnect();\n    }\n    else\n    {\n        fprintf(stderr, \"Failed to connect to LIDAR %08x\\r\\n\", res);\n    }\n\n### Start spinning motor\n\nThe LIDAR is not spinning by default. Method `startMotor()` is used to start this motor.\n\n> For RPLIDAR A1 series, this method will enable DTR signal to make the motor rotate; for A2 and A3 serieses, the method will make the accessory board to output a PWM signal to MOTOR_PWM pin.\n\n    lidar->startMotor();\n    // TODO\n    lidar->stopMotor();\n\n### Start scan\n\nSlamtec RPLIDAR support different scan modes for compatibility and performance. Since RPLIDAR SDK 1.6.0, a new API `getAllSupportedScanModes()` has been added to the SDK.\n\n    std::vector<RplidarScanMode> scanModes;\n    lidar->getAllSupportedScanModes(scanModes);\n\nYou can pick a scan mode from this list like this:\n\n    lidar->startScanExpress(false, scanModes[0].id);\n\nOr you can just use the typical scan mode of RPLIDAR like this:\n\n    RplidarScanMode scanMode;\n    lidar->startScan(false, true, 0, &scanMode);\n\n### Grab scan data\n\nWhen the RPLIDAR is scanning, you can use `grabScanData()` and `grabScanDataHq()` API to fetch one frame of scan. The difference between `grabScanData()` and `grabScanDataHq()` is the latter one support distances farther than 16.383m, which is required for RPLIDAR A2M6-R4 and RPLIDAR A3 series.\n\n> The `grabScanDataHq()` API is backward compatible with old LIDAR models and old firmwares. So we recommend always using this API, and use `grabScanData()` only for compatibility.\n\n    rplidar_response_measurement_node_hq_t nodes[8192];\n    size_t nodeCount = sizeof(nodes)/sizeof(rplidar_response_measurement_node_hq_t);\n    res = lidar->grabScanDataHq(nodes, nodeCount);\n\n    if (IS_FAIL(res))\n    {\n        // failed to get scan data\n    }\n\n### Defination of data structure `rplidar_response_measurement_node_hq_t`\n\nThe defination of `rplidar_response_measurement_node_hq_t` is:\n\n    #if defined(_WIN32)\n    #pragma pack(1)\n    #endif\n\n    typedef struct rplidar_response_measurement_node_hq_t {\n        _u16   angle_z_q14; \n        _u32   dist_mm_q2; \n        _u8    quality;  \n        _u8    flag;\n    } __attribute__((packed)) rplidar_response_measurement_node_hq_t;\n\n    #if defined(_WIN32)\n    #pragma pack()\n    #endif\n\nThe definiton of each fields are:\n\n| Field       | Data Type | Comments                                             |\n| ----------- | --------- | -----------------------------------------------------|\n| angle_z_q14 | u16_z_q14 | It is a fix-point angle desciption in z presentation |\n| dist_mm_q2  | u32_q2    | Distance in millimeter of fixed point values         |\n| quality     | u8        | Measurement quality (0 ~ 255)                        |\n| flag        | u8        | Flags, current only one bit used: `RPLIDAR_RESP_MEASUREMENT_SYNCBIT` |\n\nFor example:\n\n    float angle_in_degrees = node.angle_z_q14 * 90.f / (1 << 14);\n    float distance_in_meters = node.dist_mm_q2 / 1000.f / (1 << 2);\n\nContact Slamtec\n---------------\n\nIf you have any extra questions, please feel free to contact us at our support email:\n\n    support AT slamtec DOT com",
+      "summary": "Slamtec RPLIDAR Public SDK for C++ ================================== Introduction",
+      "line_count": 228,
+      "word_count": 1056,
+      "last_modified": "2023-01-18T20:13:54.336790"
+    },
+    {
+      "path": "rplidar/PyRoboViz/README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/xavier_robot/rplidar/PyRoboViz/README.md",
+      "size": 431,
+      "content": "<p align=\"center\"> \n<img src=\"roboviz.gif\" width=400> \n<br>\n<i>PyRoboViz used with <a href=\"https://github.com/simondlevy/BreezySLAM\">BreezySLAM</a></i>\n</p>\n\nThis repository contains a simple Python library for visualizing robot pose (X,Y coordinates and\nrotation) and obstacles in a 2D environment.  It is suitable for use in\nSimultaneous Localization And Mapping (SLAM) and related projects.  It requires\nmatplotlib and numpy. \n",
+      "summary": "<p align=\"center\"> <img src=\"roboviz.gif\" width=400> <br>",
+      "line_count": 10,
+      "word_count": 52,
+      "last_modified": "2023-01-18T20:13:54.332790"
+    }
+  ],
+  "file_structure": {
+    "total_files": 223,
+    "total_size": 14998283,
+    "file_types": {
+      ".md": 10,
+      ".py": 37,
+      ".csv": 1,
+      ".png": 1,
+      ".h": 66,
+      ".c": 11,
+      ".mexa64": 1,
+      ".m": 10,
+      ".mexw64": 1,
+      ".mexmaci64": 1,
+      ".java": 12,
+      "": 13,
+      ".dat": 2,
+      ".cpp": 27,
+      ".hpp": 11,
+      ".zip": 2,
+      ".inc": 2,
+      ".sh": 1,
+      ".rc": 1,
+      ".bmp": 1,
+      ".ico": 1,
+      ".sln": 1,
+      ".vcxproj": 4,
+      ".filters": 4,
+      ".a": 1,
+      ".gif": 1
+    },
+    "languages": {
+      "Python": 37,
+      "C": 11,
+      "MATLAB": 10,
+      "Java": 12,
+      "C++": 27,
+      "Shell": 1
+    },
+    "directories": [
+      "zed_camera",
+      "rplidar",
+      "system_integ",
+      "motors",
+      "rplidar/BreezySLAM",
+      "rplidar/resources",
+      "rplidar/PyRoboViz",
+      "rplidar/BreezySLAM/python",
+      "rplidar/BreezySLAM/matlab",
+      "rplidar/BreezySLAM/java",
+      "rplidar/BreezySLAM/examples",
+      "rplidar/BreezySLAM/cpp",
+      "rplidar/BreezySLAM/c",
+      "rplidar/BreezySLAM/python/breezyslam",
+      "rplidar/BreezySLAM/java/edu",
+      "rplidar/BreezySLAM/java/edu/wlu",
+      "rplidar/BreezySLAM/java/edu/wlu/cs",
+      "rplidar/BreezySLAM/java/edu/wlu/cs/levy",
+      "rplidar/BreezySLAM/java/edu/wlu/cs/levy/breezyslam",
+      "rplidar/BreezySLAM/java/edu/wlu/cs/levy/breezyslam/algorithms",
+      "rplidar/BreezySLAM/java/edu/wlu/cs/levy/breezyslam/components",
+      "rplidar/BreezySLAM/java/edu/wlu/cs/levy/breezyslam/robots",
+      "rplidar/resources/rplidar_sdk-master",
+      "rplidar/resources/rplidar_sdk-master/docs",
+      "rplidar/resources/rplidar_sdk-master/sdk",
+      "rplidar/resources/rplidar_sdk-master/tools",
+      "rplidar/resources/rplidar_sdk-master/sdk/app",
+      "rplidar/resources/rplidar_sdk-master/sdk/workspaces",
+      "rplidar/resources/rplidar_sdk-master/sdk/sdk",
+      "rplidar/resources/rplidar_sdk-master/sdk/output",
+      "rplidar/resources/rplidar_sdk-master/sdk/app/frame_grabber",
+      "rplidar/resources/rplidar_sdk-master/sdk/app/ultra_simple",
+      "rplidar/resources/rplidar_sdk-master/sdk/app/simple_grabber",
+      "rplidar/resources/rplidar_sdk-master/sdk/app/frame_grabber/ref",
+      "rplidar/resources/rplidar_sdk-master/sdk/app/frame_grabber/drvlogic",
+      "rplidar/resources/rplidar_sdk-master/sdk/app/frame_grabber/res",
+      "rplidar/resources/rplidar_sdk-master/sdk/app/frame_grabber/ref/wtl",
+      "rplidar/resources/rplidar_sdk-master/sdk/workspaces/vc10",
+      "rplidar/resources/rplidar_sdk-master/sdk/workspaces/vc10/rplidar_driver",
+      "rplidar/resources/rplidar_sdk-master/sdk/workspaces/vc10/frame_grabber",
+      "rplidar/resources/rplidar_sdk-master/sdk/workspaces/vc10/ultra_simple",
+      "rplidar/resources/rplidar_sdk-master/sdk/workspaces/vc10/simple_grabber",
+      "rplidar/resources/rplidar_sdk-master/sdk/sdk/include",
+      "rplidar/resources/rplidar_sdk-master/sdk/sdk/src",
+      "rplidar/resources/rplidar_sdk-master/sdk/sdk/src/arch",
+      "rplidar/resources/rplidar_sdk-master/sdk/sdk/src/hal",
+      "rplidar/resources/rplidar_sdk-master/sdk/sdk/src/arch/win32",
+      "rplidar/resources/rplidar_sdk-master/sdk/sdk/src/arch/macOS",
+      "rplidar/resources/rplidar_sdk-master/sdk/sdk/src/arch/linux",
+      "rplidar/resources/rplidar_sdk-master/sdk/output/Linux",
+      "rplidar/resources/rplidar_sdk-master/sdk/output/Linux/Release",
+      "rplidar/resources/rplidar_sdk-master/tools/cp2102_driver",
+      "rplidar/PyRoboViz/roboviz"
+    ],
+    "largest_files": [
+      [
+        "rplidar/resources/rplidar_sdk_v1.10.0.zip",
+        4314254
+      ],
+      [
+        "rplidar/resources/rplidar_sdk-master/tools/cp2102_driver/CP210x_Windows_Drivers.zip",
+        3856720
+      ],
+      [
+        "rplidar/BreezySLAM/examples/exp1.dat",
+        1741864
+      ],
+      [
+        "rplidar/BreezySLAM/examples/exp2.dat",
+        1446518
+      ],
+      [
+        "rplidar/PyRoboViz/roboviz.gif",
+        661925
+      ],
+      [
+        "rplidar/resources/rplidar_sdk-master/sdk/app/frame_grabber/ref/wtl/atlctrls.h",
+        260949
+      ],
+      [
+        "rplidar/resources/rplidar_sdk-master/sdk/output/Linux/Release/librplidar_sdk.a",
+        182364
+      ],
+      [
+        "rplidar/resources/rplidar_sdk-master/sdk/app/frame_grabber/ref/wtl/atldlgs.h",
+        172555
+      ],
+      [
+        "rplidar/BreezySLAM/breezyslam.png",
+        170184
+      ],
+      [
+        "rplidar/resources/rplidar_sdk-master/sdk/app/frame_grabber/ref/wtl/atlctrlx.h",
+        127591
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "master",
+    "last_commit": {
+      "hash": "74d3f21beab3aa5e05d664551b73c942e8f37cbf",
+      "author_name": "bkocis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Wed Jan 15 15:10:02 2020 +0100",
+      "message": "bluetooth control code modified"
+    },
+    "remote_url": "https://github.com/bkocis/xavier_robot.git"
+  },
+  "content_hash": "6977dc826a714b88c945b7c3356fe445"
+}

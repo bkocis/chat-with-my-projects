@@ -18,6 +18,16 @@ from mcp.server.models import InitializationOptions
 import mcp.types as types
 from mcp.server import NotificationOptions, Server
 
+# Import enhanced tools for preprocessed data
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'mcp-resources'))
+try:
+    from enhanced_mcp_tools import EnhancedRepositoryTools, get_enhanced_mcp_tools, handle_enhanced_tool_call
+    ENHANCED_TOOLS_AVAILABLE = True
+except ImportError:
+    ENHANCED_TOOLS_AVAILABLE = False
+    print("Warning: Enhanced tools not available. Using basic filesystem tools only.")
+
 # HTTP server dependencies
 import uvicorn
 from starlette.applications import Starlette
@@ -37,6 +47,16 @@ GITHUB_ROOT = os.environ.get(
 
 # --- Session management ---
 SESSIONS = {}
+
+# --- Enhanced tools initialization ---
+if ENHANCED_TOOLS_AVAILABLE:
+    # Data is in mcp-resources/mcp-resources (nested structure from preprocessing)
+    data_dir = os.path.join(os.path.dirname(__file__), '..', 'mcp-resources', 'mcp-resources')
+    enhanced_tools = EnhancedRepositoryTools(data_dir)
+    enhanced_tool_list = get_enhanced_mcp_tools()
+else:
+    enhanced_tools = None
+    enhanced_tool_list = []
 
 # --- Tool implementations ---
 def find_all_readme_files() -> List[str]:
@@ -60,10 +80,11 @@ def get_readme_content(path: str) -> str:
 @server.list_tools()
 async def handle_list_tools() -> list[types.Tool]:
     """List available tools"""
-    return [
+    # Basic filesystem tools (always available)
+    basic_tools = [
         types.Tool(
             name="list_readme_files",
-            description="List all README files in all repositories.",
+            description="List all README files in all repositories (filesystem scan).",
             inputSchema={"type": "object", "properties": {}, "required": []}
         ),
         types.Tool(
@@ -79,19 +100,33 @@ async def handle_list_tools() -> list[types.Tool]:
         ),
         types.Tool(
             name="get_all_readmes_content",
-            description="Get the content of all README files as a list of {path, content} objects.",
+            description="Get the content of all README files as a list of {path, content} objects (filesystem scan).",
             inputSchema={"type": "object", "properties": {}, "required": []}
         ),
         types.Tool(
             name="get_all_readmes_summary",
-            description="Get a summary (first 10 lines or 1000 chars) of all README files as a list of {path, summary} objects.",
+            description="Get a summary (first 10 lines or 1000 chars) of all README files as a list of {path, summary} objects (filesystem scan).",
             inputSchema={"type": "object", "properties": {}, "required": []}
         ),
     ]
+    
+    # Add enhanced tools if available
+    if ENHANCED_TOOLS_AVAILABLE and enhanced_tool_list:
+        return basic_tools + enhanced_tool_list
+    else:
+        return basic_tools
 
 @server.call_tool()
 async def handle_call_tool(name: str, arguments: dict) -> list[types.TextContent]:
     """Handle tool calls"""
+    
+    # Check if this is an enhanced tool
+    if ENHANCED_TOOLS_AVAILABLE and enhanced_tools:
+        enhanced_tool_names = [tool.name for tool in enhanced_tool_list]
+        if name in enhanced_tool_names:
+            return await handle_enhanced_tool_call(enhanced_tools, name, arguments)
+    
+    # Handle basic filesystem tools
     if name == "list_readme_files":
         files = find_all_readme_files()
         return [types.TextContent(type="text", text=json.dumps(files, indent=2))]
@@ -352,6 +387,21 @@ def main():
     print("Protocol: Streamable HTTP Transport")
     print(f"Environment: {'Docker Container' if is_docker else 'Local Development'}")
     print(f"Root directory: {GITHUB_ROOT}")
+    
+    # Enhanced tools status
+    if ENHANCED_TOOLS_AVAILABLE and enhanced_tools:
+        print(f"✓ Enhanced tools: {len(enhanced_tool_list)} preprocessing-based tools available")
+        try:
+            # Show data status
+            repos = enhanced_tools.list_all_repositories()
+            stats = enhanced_tools.get_technology_statistics()
+            total_repos = stats.get('overview', {}).get('total_repositories', 0)
+            print(f"✓ Preprocessed data: {total_repos} repositories, {stats.get('overview', {}).get('total_files', 0):,} files")
+        except Exception as e:
+            print(f"⚠ Enhanced tools available but data not accessible: {e}")
+    else:
+        print("⚠ Enhanced tools not available - using basic filesystem tools only")
+        print("  Run preprocessing first: cd mcp-resources && python run_preprocessing.py")
     
     # Bind based on environment
     uvicorn.run(app, host=host, port=port)

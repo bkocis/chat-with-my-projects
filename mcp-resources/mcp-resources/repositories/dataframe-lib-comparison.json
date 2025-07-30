@@ -1,0 +1,71 @@
+{
+  "repository_name": "dataframe-lib-comparison",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/dataframe-lib-comparison",
+  "analysis_timestamp": "2025-07-30T23:57:35.320930",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/dataframe-lib-comparison/README.md",
+      "size": 1650,
+      "content": "# dataframe-lib-comparison\nExample code comparing python dataframe libraries (pandas vs polars vs ...) from the perspective of data science and ml eng\n\npandas 1.5.3\n\n```python \n>>> python testing_polars_vs_pandas.py \n\nrun_polars_df time: 0.14373421669006348\nshape: (5, 6)\n┌─────┬────────┬─────┬────────┬──────┬───────────────┐\n│ A   ┆ fruits ┆ B   ┆ cars   ┆ NAME ┆ multiply_by_2 │\n│ --- ┆ ---    ┆ --- ┆ ---    ┆ ---  ┆ ---           │\n│ i64 ┆ str    ┆ i64 ┆ str    ┆ i32  ┆ i64           │\n╞═════╪════════╪═════╪════════╪══════╪═══════════════╡\n│ 1   ┆ banana ┆ 5   ┆ beetle ┆ 99   ┆ 10            │\n│ 2   ┆ banana ┆ 4   ┆ audi   ┆ 99   ┆ 8             │\n│ 3   ┆ apple  ┆ 3   ┆ beetle ┆ 99   ┆ 6             │\n│ 4   ┆ apple  ┆ 2   ┆ beetle ┆ 99   ┆ 4             │\n│ 5   ┆ banana ┆ 1   ┆ beetle ┆ 99   ┆ 2             │\n└─────┴────────┴─────┴────────┴──────┴───────────────┘\n\nrun_pandas_df time: 0.7659854888916016\n   A  fruits  B    cars  NAME  multiply_by_2\n0  1  banana  5  beetle    99             10\n1  2  banana  4    audi    99              8\n2  3   apple  3  beetle    99              6\n3  4   apple  2  beetle    99              4\n4  5  banana  1  beetle    99              2\n\n```\n\n\n\nPandas 2.0 is out \n",
+      "summary": "Example code comparing python dataframe libraries (pandas vs polars vs ...) from the perspective of data science and ml eng pandas 1.5.3 ```python",
+      "line_count": 35,
+      "word_count": 190,
+      "last_modified": "2023-03-20T22:33:45.397548"
+    }
+  ],
+  "file_structure": {
+    "total_files": 4,
+    "total_size": 4580,
+    "file_types": {
+      ".md": 1,
+      ".py": 2,
+      ".txt": 1
+    },
+    "languages": {
+      "Python": 2
+    },
+    "directories": [],
+    "largest_files": [
+      [
+        "testing_polars_vs_pandas.py",
+        2493
+      ],
+      [
+        "README.md",
+        1650
+      ],
+      [
+        "polars_testig_functions.py",
+        373
+      ],
+      [
+        "requirements.txt",
+        64
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [
+      "Pandas"
+    ],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "9e0ecb9a7e7838799d9c569e6a09a8ef4ea1b3c8",
+      "author_name": "Balazs.Kocsis",
+      "author_email": "balaz.kocis@gmail.com",
+      "date": "Wed Mar 29 08:26:56 2023 +0200",
+      "message": "polars testing funtion"
+    },
+    "remote_url": "https://github.com/bkocis/dataframe-lib-comparison.git"
+  },
+  "content_hash": "c1b757041a43f44acf7c0f46143fd8e0"
+}

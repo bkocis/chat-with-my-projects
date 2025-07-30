@@ -1,0 +1,53 @@
+{
+  "repository_name": "bkocis",
+  "repository_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bkocis",
+  "analysis_timestamp": "2025-07-30T23:57:34.939009",
+  "is_git_repo": true,
+  "readme_files": [
+    {
+      "path": "README.md",
+      "absolute_path": "/home/snow/Documents/Projects/github-repositories/bkocis/bkocis/README.md",
+      "size": 8519,
+      "content": "Hi,👋! I'm a data scientist focusing on machine learning engineer, LLMs, a bit of computer vision, and cloud deployment. \n\n<!--\n| QwQ Model | LaTeX in GitHub Actions | Home Surveillance with LLMs |\n|:-:|:-:|:-:|\n| <a href=\"https://medium.com/@balazskocsis/running-qwq-with-ollama-on-local-hardware-f7cec53d03a0\"><img src=\"https://miro.medium.com/v2/resize:fit:640/format:webp/1*w611lcdR3yKnGf1rwWduKg.jpeg\" width=\"150\" height=\"100\" alt=\"QwQ Model Illustration\"><br><em>QwQ (Qwen with Questions 32B-Preview) is Alibaba's experimental reasoning language model.</em></a> | <a href=\"https://medium.com/@balazskocsis/latex-in-github-actions-3cf2d591fee8\"><img src=\"https://miro.medium.com/v2/resize:fit:640/format:webp/1*s4zL97JLve9H5UCHHjQhDg.jpeg\" width=\"150\" height=\"100\" alt=\"LaTeX in GitHub Actions\"><br><em>LaTeX in GitHub Actions</em></a> | <a href=\"https://python.plainenglish.io/home-surveillance-with-llms-ollama-using-llava-1-6-005f193293d3\"><img src=\"https://miro.medium.com/v2/resize:fit:720/format:webp/1*9X9GKaitSJGF5BmuGOjObw.png\" width=\"150\" height=\"100\" alt=\"Home Surveillance with LLMs\"><br><em>Home Surveillance with LLMs using Ollama and LLaVA</em></a> |\n| <a href=\"https://medium.com/@balazskocsis/running-qwq-with-ollama-on-local-hardware-f7cec53d03a0\"><img src=\"https://miro.medium.com/v2/resize:fit:640/format:webp/1*w611lcdR3yKnGf1rwWduKg.jpeg\" width=\"300\" height=\"200\" alt=\"QwQ Model Illustration\"><br><em>QwQ (Qwen with Questions 32B-Preview) is Alibaba's experimental reasoning language model.</em></a> | <a href=\"https://medium.com/@balazskocsis/latex-in-github-actions-3cf2d591fee8\"><img src=\"https://miro.medium.com/v2/resize:fit:640/format:webp/1*s4zL97JLve9H5UCHHjQhDg.jpeg\" width=\"300\" height=\"200\" alt=\"LaTeX in GitHub Actions\"><br><em>LaTeX in GitHub Actions</em></a> | <a href=\"https://python.plainenglish.io/home-surveillance-with-llms-ollama-using-llava-1-6-005f193293d3\"><img src=\"https://miro.medium.com/v2/resize:fit:720/format:webp/1*9X9GKaitSJGF5BmuGOjObw.png\" width=\"300\" height=\"200\" alt=\"Home Surveillance with LLMs\"><br><em>Home Surveillance with LLMs using Ollama and LLaVA</em></a> |\n\n| QwQ Model | LaTeX in GitHub Actions | Home Surveillance with LLMs |\n|:-:|:-:|:-:|\n| [![QwQ Model](https://miro.medium.com/v2/resize:fit:640/format:webp/1*w611lcdR3yKnGf1rwWduKg.jpeg)](https://medium.com/@balazskocsis/running-qwq-with-ollama-on-local-hardware-f7cec53d03a0)<br>**QwQ Model Overview**<br>Alibaba's experimental reasoning language model for advanced analytical tasks | [![LaTeX in GitHub Actions](https://miro.medium.com/v2/resize:fit:640/format:webp/1*s4zL97JLve9H5UCHHjQhDg.jpeg)](https://medium.com/@balazskocsis/latex-in-github-actions-3cf2d591fee8)<br>**GitHub Actions Tutorial**<br>Integrating LaTeX compilation in CI/CD workflows | [![Home Surveillance LLM](https://miro.medium.com/v2/resize:fit:720/format:webp/1*9X9GKaitSJGF5BmuGOjObw.png)](https://python.plainenglish.io/home-surveillance-with-llms-ollama-using-llava-1-6-005f193293d3)<br>**LLM Surveillance Project**<br>Using Ollama and LLaVA for intelligent home monitoring |\n| [![QwQ Model](https://miro.medium.com/v2/resize:fit:640/format:webp/1*w611lcdR3yKnGf1rwWduKg.jpeg)](https://medium.com/@balazskocsis/running-qwq-with-ollama-on-local-hardware-f7cec53d03a0)<br>**Technical Deep Dive**<br>Exploring QwQ's reasoning capabilities | [![LaTeX in GitHub Actions](https://miro.medium.com/v2/resize:fit:640/format:webp/1*s4zL97JLve9H5UCHHjQhDg.jpeg)](https://medium.com/@balazskocsis/latex-in-github-actions-3cf2d591fee8)<br>**Advanced CI Techniques**<br>Streamlining document generation | [![Home Surveillance LLM](https://miro.medium.com/v2/resize:fit:720/format:webp/1*9X9GKaitSJGF5BmuGOjObw.png)](https://python.plainenglish.io/home-surveillance-with-llms-ollama-using-llava-1-6-005f193293d3)<br>**AI-Powered Monitoring**<br>Intelligent home security solutions |\n\n\n| QwQ Model | LaTeX in GitHub Actions | Home Surveillance with LLMs |\n|:-:|:-:|:-:|\n| [![QwQ Model](https://miro.medium.com/v2/resize:fit:640/format:webp/1*w611lcdR3yKnGf1rwWduKg.jpeg)](https://medium.com/@balazskocsis/running-qwq-with-ollama-on-local-hardware-f7cec53d03a0) | [![LaTeX in GitHub Actions](https://miro.medium.com/v2/resize:fit:640/format:webp/1*s4zL97JLve9H5UCHHjQhDg.jpeg)](https://medium.com/@balazskocsis/latex-in-github-actions-3cf2d591fee8) | [![Home Surveillance LLM](https://miro.medium.com/v2/resize:fit:720/format:webp/1*9X9GKaitSJGF5BmuGOjObw.png)](https://python.plainenglish.io/home-surveillance-with-llms-ollama-using-llava-1-6-005f193293d3) |\n| **QwQ Model Overview** | **GitHub Actions Tutorial** | **LLM Surveillance Project** |\n| *Alibaba's experimental reasoning language model* | *Integrating LaTeX compilation in CI/CD workflows* | *Using Ollama and LLaVA for intelligent home monitoring* |\n| **Key Features:** | **Key Techniques:** | **Project Highlights:** |\n| - Advanced analytical reasoning | - Automated document generation | - AI-powered home security |\n| - 32B parameter model | - Markdown to PDF conversion | - Real-time object detection |\n| - Math & coding focus | - Continuous integration | - LLM-based analysis |\n-->\n\n## 🌱 Latest projects\n \n  - **[LLMs for Video Feed Captioning](https://github.com/bkocis/ollama-home-surveillance)** - Home surveillance system implementation\n    <a href=\"https://medium.com/p/005f193293d3\" target=\"blank\"><img align=\"top\" src=\"https://img.shields.io/badge/Medium-000000?style=for-the-badge&logo=medium&logoColor=white\" alt=\"Read on Medium\"/></a>\n  - **[Ollama CLI Chat Interface](https://github.com/bkocis/ollama-test)** - Interface for various LLM models\n    <a href=\"https://medium.com/@balazskocsis/list/ollama-run-llms-localy-f9f124256761\" target=\"blank\"><img align=\"top\" src=\"https://img.shields.io/badge/Medium-000000?style=for-the-badge&logo=medium&logoColor=white\" alt=\"Read on Medium\"/></a>\n  - **[Dockerized ChatGPT Application](https://github.com/bkocis/chatgpt-api-app)** - Complete deployment pipeline\n    <a href=\"https://medium.com/@balazskocsis/how-to-define-endpoints-for-image-captioning-applications-using-fastapi-0ef5ffba65a4\" target=\"blank\"><img align=\"top\" src=\"https://img.shields.io/badge/Medium-000000?style=for-the-badge&logo=medium&logoColor=white\" alt=\"Read on Medium\"/></a>\n    <a href=\"https://medium.com/@balazskocsis/deploying-to-a-server-with-github-actions-a-deep-dive-e8558e83a4d7\" target=\"blank\"><img align=\"top\" src=\"https://img.shields.io/badge/Medium-000000?style=for-the-badge&logo=medium&logoColor=white\" alt=\"Read on Medium\"/></a>\n    [![Python application](https://github.com/bkocis/gradio-apps/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/bkocis/gradio-apps/actions/workflows/python-app.yml)\n\n  - **[Image Captioning](https://github.com/bkocis/image-captioning-application-pytorch)** - Flask-based implementation\n    <a href=\"https://medium.com/@balazskocsis/background-removal-and-image-captioning-write-a-flask-app-and-host-it-5c8ca4194542\" target=\"blank\"><img align=\"top\" src=\"https://img.shields.io/badge/Medium-000000?style=for-the-badge&logo=medium&logoColor=white\" alt=\"Read on Medium\"/></a>\n    [![Python application](https://github.com/bkocis/image-captioning-applications/actions/workflows/python-app.yml/badge.svg)](https://github.com/bkocis/image-captioning-applications/actions/workflows/python-app.yml) \n\n\n\n<details>\n<summary> ☁️ Other projects and coursework</summary>\n  \n- **[AWS Recognition Object Detection](https://github.com/bkocis/bertelsmann-dsml-group-projects)** - Cloud-based computer vision\n- **Kubernetes & Docker**\n  - [Flask App on AWS EKS](https://github.com/bkocis/CloudDevOps-ND-Capstone) - Docker containerization with Kubernetes deployment\n  - [Kubernetes Cluster Deployment](https://github.com/bkocis/cloud-miniproject-01/tree/test-kubernetes) - Flask application orchestration\n- **[ML Microservice Operationalization](https://github.com/bkocis/CloudDevOps-ND-Operationalize-ML-Microservice)**\n- **[Infrastructure as Code](https://github.com/bkocis/CloudDevOps-ND-Infrastructure-as-code)** - AWS automation\n</details>\n\n\n\n<details>\n<summary> 🐧 Linux Configuration</summary>\n\n- [Linux Command Collection](https://github.com/bkocis/one-liners) - Curated list of useful commands\n- [Dotfiles](https://github.com/bkocis/dotfiles) - Personal configuration files\n  - [Vim Configuration](https://github.com/bkocis/dotfiles/blob/master/vimrc)\n  - [Shell Configuration](https://github.com/bkocis/dotfiles/blob/master/bashrc) - Bash & Zsh\n</details>\n",
+      "summary": "Hi,👋! I'm a data scientist focusing on machine learning engineer, LLMs, a bit of computer vision, and cloud deployment. <!-- | QwQ Model | LaTeX in GitHub Actions | Home Surveillance with LLMs |",
+      "line_count": 63,
+      "word_count": 506,
+      "last_modified": "2025-06-29T11:48:53.131429"
+    }
+  ],
+  "file_structure": {
+    "total_files": 1,
+    "total_size": 8519,
+    "file_types": {
+      ".md": 1
+    },
+    "languages": {},
+    "directories": [],
+    "largest_files": [
+      [
+        "README.md",
+        8519
+      ]
+    ]
+  },
+  "technologies": {
+    "frameworks": [],
+    "tools": [],
+    "databases": [],
+    "deployment": [],
+    "testing": [],
+    "build_systems": []
+  },
+  "git_info": {
+    "current_branch": "main",
+    "last_commit": {
+      "hash": "1e7484af4d64286821aedeea29d126346bfaac22",
+      "author_name": "Balazs Kocsis",
+      "author_email": "bkocis@users.noreply.github.com",
+      "date": "Sun Jan 19 17:16:04 2025 +0100",
+      "message": "Update README.md"
+    },
+    "remote_url": "https://github.com/bkocis/bkocis.git"
+  },
+  "content_hash": "371b5505c08cbf2ca9ac2dd0067b920f"
+}
